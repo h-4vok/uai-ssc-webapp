@@ -1,0 +1,18 @@
+.footer {
+  bottom: 0;
+
+  .footer-appbar {
+    top: unset;
+
+    .footer-toolbar {
+      height: 50px;
+      text-align: center;
+      flex-flow: column;
+
+      .trademark-text {
+        text-align: center;
+        width: 100;
+      }
+    }
+  }
+}

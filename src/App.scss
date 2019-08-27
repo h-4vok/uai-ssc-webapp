@@ -36,3 +36,12 @@ $app-link-color: #61dafb;
     transform: rotate(360deg);
   }
 }
+
+html,
+body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+  * {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  }
+}
