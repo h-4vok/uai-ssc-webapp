@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pending Tasks
+
+I have created a Trello at: https://trello.com/b/8tKvQapU/ssc-webapp
+
+## We have Storybook!
+
+All UI development is expected to be performed on Storybook first. Run it with the following command.
+
+```
+npm run storybook
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
