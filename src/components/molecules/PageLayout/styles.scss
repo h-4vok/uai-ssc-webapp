@@ -1,0 +1,20 @@
+@import '../../../styles/global-params';
+@import '../../../styles/mixins';
+
+.page-layout-container {
+  width: 100%;
+
+  .page-layout-children-container {
+    max-width: calc($breakpoint-md + 16px * 2);
+    margin: 0 auto;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    height: 100%;
+
+    @include from-md {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+}

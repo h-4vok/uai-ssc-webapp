@@ -1,0 +1,86 @@
+@import "./global-params";
+
+// For a specific viewport ONLY
+@mixin for-xxs-only {
+  @media (max-width: $breakpoint-xxs - 0.01px) {
+    @content;
+  }
+}
+@mixin for-xs-only {
+  @media (min-width: $breakpoint-xxs) and (max-width: $breakpoint-xs - 0.01px) {
+    @content;
+  }
+}
+@mixin for-sm-only {
+  @media (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 0.01px) {
+    @content;
+  }
+}
+@mixin for-md-only {
+  @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 0.1px) {
+    @content;
+  }
+}
+
+// From smallest up TO certain viewport
+@mixin up-to-xs {
+  @media (max-width: $breakpoint-xs - 0.01px) {
+    @content;
+  }
+}
+@mixin up-to-sm {
+  @media (max-width: $breakpoint-sm - 0.1px) {
+    @content;
+  }
+}
+@mixin up-to-md {
+  @media (max-width: $breakpoint-md - 0.1px) {
+    @content;
+  }
+}
+
+// FROM certain viewport ONLY
+@mixin from-xs {
+  @media (min-width: $breakpoint-xxs) {
+    @content;
+  }
+}
+@mixin from-sm {
+  @media (min-width: $breakpoint-xs) {
+    @content;
+  }
+}
+
+@mixin from-md {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+@mixin from-lg {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin xs-for-height-and-width {
+  @media (min-height: 667px) and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 0.1px) {
+    @content;
+  }
+}
+
+@mixin xs-for-height-and-width {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+@mixin xs-small-height {
+  @media (max-height: $breakpoint-sm - 0.1px) {
+    @content;
+  }
+}
+
+@mixin from-sm-and-not-large {
+  @media (min-width: $breakpoint-md) and (max-height: $breakpoint-md - 0.1px) {
+    @content;
+  }
+}
