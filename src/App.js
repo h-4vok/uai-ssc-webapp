@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { DefaultPage, MarketingHome } from './components/pages';
 import './App.scss';
+import { UnprotectedRoute, NoMatchRoute } from './components/molecules';
 
-function App() {
-    return (
-        <div className="app">
-            <header className="app-header">
-                <img src={logo} className="app-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="app-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
-}
-
-export default App;
+export const App = () => (
+  <Router>
+    <div>
+      <Switch>
+        <UnprotectedRoute exact path="/" component={MarketingHome} />
+        <UnprotectedRoute path="/pricing" component={DefaultPage} />
+        <UnprotectedRoute path="/ssc" component={DefaultPage} />
+        <UnprotectedRoute path="/about" component={DefaultPage} />
+        <Route component={NoMatchRoute} />
+      </Switch>
+    </div>
+  </Router>
+);

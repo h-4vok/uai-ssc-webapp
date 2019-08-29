@@ -1,10 +1,24 @@
+$link-color: #fff;
+
+html,
 body {
+  min-height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+  * {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas;
+}
+
+a {
+  text-decoration: none;
+  color: $link-color;
 }
