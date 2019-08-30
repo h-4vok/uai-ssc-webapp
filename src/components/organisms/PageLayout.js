@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ApplicationBar, Footer } from '../../atoms';
-import './styles.scss';
+import { ApplicationBar, Footer } from '../molecules';
+import './PageLayout.styles.scss';
 
 export const PageLayout = props => (
   <div className="page-layout-container">

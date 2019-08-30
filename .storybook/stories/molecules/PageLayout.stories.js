@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { PageLayout } from '../../../src/components/molecules';
+import { storiesWithRouterOf } from '../../storiesWithRouterOf';
+import { PageLayout } from '../../../src/components/organisms';
 
-storiesOf('molecules/PageLayout').add('Default', () => (
+storiesWithRouterOf('organisms/PageLayout').add('Default', () => (
   <PageLayout>
     <div style={{ height: '150px' }}>This is a div with some text</div>
   </PageLayout>

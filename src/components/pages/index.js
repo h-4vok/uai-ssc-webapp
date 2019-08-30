@@ -1,2 +1,2 @@
-export { MarketingHome } from './MarketingHome/MarketingHome';
-export { DefaultPage } from './DefaultPage/DefaultPage';
+export { MarketingHome } from './MarketingHome';
+export { DefaultPage } from './DefaultPage';

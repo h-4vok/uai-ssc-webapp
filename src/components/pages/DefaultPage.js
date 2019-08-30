@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageLayout } from '../../organisms';
+import { PageLayout } from '../organisms';
 
 export const DefaultPage = () => (
   <PageLayout>

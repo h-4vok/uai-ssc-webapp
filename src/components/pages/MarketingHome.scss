@@ -1,0 +1,16 @@
+$marketing-background: #f2f2f2;
+$presentation-font-color: #fff;
+
+.marketing-home {
+  min-width: 100%;
+  min-height: 100%;
+  background-color: $marketing-background;
+  text-align: center;
+  padding-top: 5%;
+
+  .marketing-home-grid-list {
+    padding-top: 64px;
+    display: inline-flex;
+    width: 75%;
+  }
+}

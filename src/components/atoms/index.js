@@ -1,5 +1,3 @@
-export { ApplicationBar } from './ApplicationBar/ApplicationBar';
-export { Image } from './Image/Image';
-export { PlatformLogo } from './PlatformLogo/PlatformLogo';
-export { Footer } from './Footer/Footer';
-export { RouteLink } from './RouteLink/RouteLink';
+export { Image } from './Image';
+export { PlatformLogo } from './PlatformLogo';
+export { RouteLink } from './RouteLink';

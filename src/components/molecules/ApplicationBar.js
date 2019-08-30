@@ -2,8 +2,8 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { RouteLink } from '../RouteLink/RouteLink';
-import './styles.scss';
+import { RouteLink } from '../atoms/RouteLink';
+import './ApplicationBar.styles.scss';
 
 export const ApplicationBar = () => (
   <div className="application-bar">
@@ -19,16 +19,18 @@ export const ApplicationBar = () => (
         </IconButton>
 
         <Typography variant="h6" className="application-bar-title">
-          Sample Supply Chain
+          <Button size="large">
+            <RouteLink link="">Sample Supply Chain</RouteLink>
+          </Button>
         </Typography>
 
-        <Button color="inherit">
+        <Button>
           <RouteLink link="pricing">Precios</RouteLink>
         </Button>
-        <Button color="inherit">
+        <Button>
           <RouteLink link="about">Sobre Nosotros</RouteLink>
         </Button>
-        <Button color="inherit">
+        <Button variant="outlined">
           <RouteLink link="ssc">Plataforma</RouteLink>
         </Button>
       </Toolbar>

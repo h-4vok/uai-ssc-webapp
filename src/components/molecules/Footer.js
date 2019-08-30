@@ -1,8 +1,8 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar } from '@material-ui/core';
-import './styles.scss';
-import { PlatformLogo } from '../PlatformLogo/PlatformLogo';
+import './Footer.styles.scss';
+import { PlatformLogo } from '../atoms/PlatformLogo';
 
 export const Footer = () => (
   <div className="footer">

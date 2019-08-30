@@ -1,0 +1,13 @@
+$link-color: #fff;
+$link-color-dark: #000;
+
+a {
+  &.route-link {
+    text-decoration: none;
+    color: $link-color;
+
+    &.dark {
+      color: $link-color-dark;
+    }
+  }
+}

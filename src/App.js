@@ -12,6 +12,7 @@ export const App = () => (
         <UnprotectedRoute path="/pricing" component={DefaultPage} />
         <UnprotectedRoute path="/ssc" component={DefaultPage} />
         <UnprotectedRoute path="/about" component={DefaultPage} />
+        <UnprotectedRoute path="/signup" component={DefaultPage} />
         <Route component={NoMatchRoute} />
       </Switch>
     </div>

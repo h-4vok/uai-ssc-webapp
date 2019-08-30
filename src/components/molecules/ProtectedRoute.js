@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Authorizer } from '../../../lib/SscAuthorize';
+import { Authorizer } from '../../lib/SscAuthorize';
 
 export class ProtectedRoute extends PureComponent {
   render() {
