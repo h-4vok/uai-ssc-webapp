@@ -7,6 +7,7 @@ import {
   Typography,
   Button
 } from '@material-ui/core';
+import './PricingCard.styles.scss';
 
 export const PricingCard = props => (
   <Card>
@@ -17,8 +18,8 @@ export const PricingCard = props => (
       subheaderTypographyProps={{ align: 'center' }}
       className="pricing-header"
     />
-    <CardContent>
-      <div className="pricing-content" align="center">
+    <CardContent className="pricing-content">
+      <div align="center">
         <Typography component="h2" variant="h3" color="textPrimary">
           {props.price}
         </Typography>
@@ -27,6 +28,9 @@ export const PricingCard = props => (
         </Typography>
       </div>
       <ul>
+        <Typography component="li" variant="subtitle1" align="center" key="1">
+          {props.planDescription}
+        </Typography>
         <Typography component="li" variant="subtitle1" align="center" key="1">
           {props.patientSamplesDescription}
         </Typography>
@@ -42,7 +46,11 @@ export const PricingCard = props => (
       </ul>
     </CardContent>
     <CardActions>
-      <Button fullWidth variant="outlined" color="primary">
+      <Button
+        fullWidth
+        variant={props.buttonVariant || 'outlined'}
+        color="primary"
+      >
         {props.signUpDescription}
       </Button>
     </CardActions>

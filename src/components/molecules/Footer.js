@@ -6,7 +6,7 @@ import { PlatformLogo } from '../atoms/PlatformLogo';
 
 export const Footer = () => (
   <div className="footer">
-    <AppBar className="footer-appbar">
+    <AppBar className="footer-appbar" color="default">
       <Toolbar className="footer-toolbar">
         <PlatformLogo edge="start" />
         <span edge="end" className="trademark-text">

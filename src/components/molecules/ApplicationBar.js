@@ -7,7 +7,7 @@ import './ApplicationBar.styles.scss';
 
 export const ApplicationBar = () => (
   <div className="application-bar">
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton
           edge="start"

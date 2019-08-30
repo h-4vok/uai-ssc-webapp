@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, GridList, GridListTile } from '@material-ui/core';
 import { MarketingCard } from '../molecules';
-import { PageLayout } from '../organisms';
+import { PageLayout, PricingChart } from '../organisms';
 import './MarketingHome.scss';
 
 export const MarketingHome = () => (
@@ -48,6 +48,8 @@ export const MarketingHome = () => (
           </MarketingCard>
         </GridListTile>
       </GridList>
+
+      <PricingChart className="pricing-chart" />
     </div>
   </PageLayout>
 );

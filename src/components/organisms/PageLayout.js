@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ApplicationBar, Footer } from '../molecules';
+import { ApplicationBar } from '../molecules';
 import './PageLayout.styles.scss';
 
 export const PageLayout = props => (
@@ -8,8 +8,6 @@ export const PageLayout = props => (
     <ApplicationBar />
 
     <div className="page-layout-children-container">{props.children}</div>
-
-    <Footer />
   </div>
 );
 

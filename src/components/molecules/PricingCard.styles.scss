@@ -1,4 +1,4 @@
-$pricing-card-background: #f6f6f6;
+$pricing-card-background: #eee;
 
 .pricing-header {
   background-color: $pricing-card-background;
@@ -12,9 +12,9 @@ $pricing-card-background: #f6f6f6;
   ul {
     margin: 0;
     padding: 0;
-  }
 
-  li {
-    list-style: none;
+    li {
+      list-style: none;
+    }
   }
 }
