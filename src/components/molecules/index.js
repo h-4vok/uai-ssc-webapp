@@ -4,3 +4,4 @@ export { NoMatchRoute } from './NoMatchRoute';
 export { ApplicationBar } from './ApplicationBar';
 export { Footer } from './Footer';
 export { MarketingCard } from './MarketingCard';
+export { PricingCard } from './PricingCard';
