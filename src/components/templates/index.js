@@ -1,0 +1,1 @@
+export { SignUpInitialTemplate } from './SignUpInitialTemplate';

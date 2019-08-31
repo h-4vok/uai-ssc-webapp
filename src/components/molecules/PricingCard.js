@@ -50,7 +50,7 @@ export const PricingCard = props => (
         fullWidth
         variant={props.buttonVariant || 'outlined'}
         color="primary"
-        onClick={props.onSelection}
+        onClick={() => props.onSelection()}
       >
         {props.signUpDescription}
       </Button>
