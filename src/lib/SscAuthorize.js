@@ -1,17 +1,19 @@
+import { SessionStorage } from './SessionStorage';
+
 class SscAuthorizer {
+  storage = new SessionStorage();
+
   _authorizationCache = [];
 
   _sessionStorageKey = 'sscAuthorizationCache';
 
   clearAuthorizations() {
-    window.sessionStorage.removeItem(this._sessionStorageKey);
+    this.storage.remove(this._sessionStorageKey);
     this._authorizationCache.length = 0;
   }
 
   tryRefreshFromSessionStorage() {
-    const permissions = JSON.parse(
-      window.sessionStorage.getItem(this._sessionStorageKey)
-    );
+    const permissions = JSON.parse(this.storage.get(this._sessionStorageKey));
 
     if (permissions && permissions.length) {
       this.refreshAuthorizations(permissions);
@@ -19,7 +21,7 @@ class SscAuthorizer {
   }
 
   isLoggedIn() {
-    return !!window.sessionStorage.getItem(this._sessionStorageKey);
+    return !!this.storage.get(this._sessionStorageKey);
   }
 
   // Call this from security views where security actions occur
@@ -32,7 +34,7 @@ class SscAuthorizer {
     );
 
     const jsonAuthorization = JSON.stringify(authorizations);
-    window.sessionStorage.setItem(this._sessionStorageKey, jsonAuthorization);
+    this.storage.set(this._sessionStorageKey, jsonAuthorization);
   }
 
   // Send your permissions as a list of string arguments.

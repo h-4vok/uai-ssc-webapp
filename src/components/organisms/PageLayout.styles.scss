@@ -4,6 +4,7 @@
 .page-layout-container {
   width: 100%;
   height: 83vh;
+  margin-top: 96px;
 
   .page-layout-children-container {
     max-width: calc($breakpoint-md + 16px * 2);

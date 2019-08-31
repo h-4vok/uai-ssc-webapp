@@ -4,7 +4,7 @@ import './RouteLink.scss';
 
 export class RouteLink extends PureComponent {
   render() {
-    const { dark, link, to, ...props } = this.props;
+    const { dark, blue, link, to, ...props } = this.props;
     let { className } = this.props;
 
     const linkObject =
@@ -12,6 +12,8 @@ export class RouteLink extends PureComponent {
 
     if (dark) {
       className = `dark ${className}`;
+    } else if (blue) {
+      className = `blue ${className}`;
     }
 
     return (

@@ -31,7 +31,7 @@ export const ApplicationBar = () => (
           <RouteLink link="about">Sobre Nosotros</RouteLink>
         </Button>
         <Button variant="outlined">
-          <RouteLink link="ssc">Plataforma</RouteLink>
+          <RouteLink link="sign-in">Plataforma</RouteLink>
         </Button>
       </Toolbar>
     </AppBar>

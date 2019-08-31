@@ -1,5 +1,6 @@
 $link-color: #fff;
 $link-color-dark: #000;
+$link-color-blue: #3f51b5;
 
 a {
   &.route-link {
@@ -8,6 +9,10 @@ a {
 
     &.dark {
       color: $link-color-dark;
+    }
+
+    &.blue {
+      color: $link-color-blue;
     }
   }
 }
