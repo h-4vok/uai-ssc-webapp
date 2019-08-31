@@ -6,9 +6,11 @@ export class PricingPage extends PureComponent {
   storage = new SingleItemSessionStorage('sign-up-data');
 
   render() {
+    const { history } = this.props;
+
     return (
       <PageLayout>
-        <PricingChart />
+        <PricingChart history={history} />
       </PageLayout>
     );
   }

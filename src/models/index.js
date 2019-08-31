@@ -1,0 +1,1 @@
+export { SignUpDataModel } from './SignUpDataModel';

@@ -1,7 +1,8 @@
 export class SessionStorage {
-  get = key => window.sessionStorage.getItem(key);
+  get = key => JSON.parse(window.sessionStorage.getItem(key));
 
-  set = (key, value) => window.sessionStorage.setItem(key, value);
+  set = (key, value) =>
+    window.sessionStorage.setItem(key, JSON.stringify(value));
 
   remove = key => window.sessionStorage.removeItem(key);
 }
