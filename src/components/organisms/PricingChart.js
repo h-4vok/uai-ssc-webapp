@@ -12,7 +12,7 @@ const startNewSignUp = history => pricingPlan => {
   const storage = new SingleItemSessionStorage(SignUpStorageKey);
   storage.set(model);
 
-  history.push('/sign-up-personal');
+  history.push('/sign-up--initial');
 };
 
 const pricingCards = [

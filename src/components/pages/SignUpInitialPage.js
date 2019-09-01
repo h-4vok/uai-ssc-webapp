@@ -1,20 +1,44 @@
 import React, { PureComponent } from 'react';
+import { withSnackbar } from 'notistack';
 import { PageLayout } from '../organisms';
 import { SignUpInitialTemplate } from '../templates';
 import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
+import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { SignUpStorageKey } from '../../content/StorageKeys';
+import { SignUpDataModelValidator, SignUpDataModel } from '../../models';
 
-export class SignUpInitialPage extends PureComponent {
+class SignUpInitialPageClass extends PureComponent {
   storage = new SingleItemSessionStorage(SignUpStorageKey);
 
-  model = this.storage.get();
+  constructor(props) {
+    super(props);
+
+    this.notifier = new SnackbarVisitor(this.props);
+    this.model = this.storage.get();
+
+    if (!this.model) {
+      this.model = new SignUpDataModel();
+      this.storage.set(this.model);
+    }
+  }
 
   onConfirm = () => {
-    // TODO: Validate
+    const validator = new SignUpDataModelValidator(this.model);
+
+    const validationMsg = validator.validate(
+      'firstName',
+      'lastName',
+      'email',
+      'password',
+      'password2'
+    );
+    if (validationMsg !== true) {
+      this.notifier.warning(validationMsg);
+      return;
+    }
 
     this.storage.set(this.model);
-
-    this.props.history.push('/sign-up-company');
+    this.props.history.push('/sign-up--company');
   };
 
   render() {
@@ -25,3 +49,5 @@ export class SignUpInitialPage extends PureComponent {
     );
   }
 }
+
+export const SignUpInitialPage = withSnackbar(SignUpInitialPageClass);

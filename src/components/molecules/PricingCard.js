@@ -31,16 +31,16 @@ export const PricingCard = props => (
         <Typography component="li" variant="subtitle1" align="center" key="1">
           {props.planDescription}
         </Typography>
-        <Typography component="li" variant="subtitle1" align="center" key="1">
+        <Typography component="li" variant="subtitle1" align="center" key="2">
           {props.patientSamplesDescription}
         </Typography>
-        <Typography component="li" variant="subtitle1" align="center" key="1">
+        <Typography component="li" variant="subtitle1" align="center" key="3">
           {props.controlSamplesDescription}
         </Typography>
-        <Typography component="li" variant="subtitle1" align="center" key="1">
+        <Typography component="li" variant="subtitle1" align="center" key="4">
           {props.userAccountsDescription}
         </Typography>
-        <Typography component="li" variant="subtitle1" align="center" key="1">
+        <Typography component="li" variant="subtitle1" align="center" key="5">
           {props.runExecutionsDescription}
         </Typography>
       </ul>

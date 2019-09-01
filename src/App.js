@@ -12,7 +12,10 @@ export const App = () => (
         <UnprotectedRoute path="/pricing" component={Pages.PricingPage} />
         <UnprotectedRoute path="/ssc" component={Pages.DefaultPage} />
         <UnprotectedRoute path="/about" component={Pages.DefaultPage} />
-        <UnprotectedRoute path="/sign-up" component={Pages.SignUpInitialPage} />
+        <UnprotectedRoute
+          path="/sign-up--initial"
+          component={Pages.SignUpInitialPage}
+        />
         <UnprotectedRoute path="/sign-in" component={Pages.SignInPage} />
         <UnprotectedRoute
           path="/forgot-password"
