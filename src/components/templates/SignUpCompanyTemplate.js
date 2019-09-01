@@ -2,6 +2,37 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { SimpleSelect } from '../atoms';
+
+const provinces = [
+  'Buenos Aires',
+  'Catamarca',
+  'Chaco',
+  'Chubut',
+  'Córdoba',
+  'Corrientes',
+  'Entre Ríos',
+  'Formosa',
+  'Jujuy',
+  'La Pampa',
+  'La Rioja',
+  'Mendoza',
+  'Neuquén',
+  'Río Negro',
+  'Salta',
+  'San Juan',
+  'Santa Cruz',
+  'Santa Fe',
+  'Santiago del Estero',
+  'Tierra del Fuego',
+  'Tucumán'
+];
+
+const provincesItems = [];
+
+for (let i = 0; i < provinces.length; i++) {
+  provincesItems.push({ value: i, label: provinces[i] });
+}
 
 export const SignUpCompanyTemplate = () => (
   <>
@@ -18,7 +49,12 @@ export const SignUpCompanyTemplate = () => (
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TextField id="province" name="province" label="Provincia" fullWidth />
+        <SimpleSelect
+          name="province"
+          label="Provincia"
+          fullWidth
+          items={provincesItems}
+        />
       </Grid>
       <Grid item xs={12} sm={6}>
         <TextField id="city" name="city" label="Ciudad" fullWidth />

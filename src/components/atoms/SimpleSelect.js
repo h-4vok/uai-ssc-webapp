@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   formControl: {
-    margin: theme.spacing(1),
     minWidth: 120
   },
   selectEmpty: {
@@ -36,7 +35,7 @@ class SimpleSelectComponent extends PureComponent {
 
   render() {
     return (
-      <FormControl className={this.classes.formControl}>
+      <FormControl {...this.props} className={this.classes.formControl}>
         <InputLabel htmlFor={this.state.name}>{this.state.label}</InputLabel>
         <Select
           value={this.state.value}
