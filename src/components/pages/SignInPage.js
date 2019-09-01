@@ -95,7 +95,7 @@ export function SignInPage() {
                 </RouteLink>
               </Grid>
               <Grid item>
-                <RouteLink blue link="pricing" variant="body2">
+                <RouteLink blue link="sign-up--initial" variant="body2">
                   {'Registrar nueva cuenta'}
                 </RouteLink>
               </Grid>

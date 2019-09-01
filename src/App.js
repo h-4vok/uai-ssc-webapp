@@ -16,6 +16,10 @@ export const App = () => (
           path="/sign-up--initial"
           component={Pages.SignUpInitialPage}
         />
+        <UnprotectedRoute
+          path="/sign-up--company"
+          component={Pages.SignUpCompanyPage}
+        />
         <UnprotectedRoute path="/sign-in" component={Pages.SignInPage} />
         <UnprotectedRoute
           path="/forgot-password"

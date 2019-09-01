@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { withSnackbar } from 'notistack';
 import { PageLayout } from '../organisms';
-import { SignUpInitialTemplate } from '../templates';
+import { SignUpCompanyTemplate } from '../templates';
 import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { SignUpStorageKey } from '../../content/StorageKeys';
-import { SignUpDataModelValidator, SignUpDataModel } from '../../models';
+import { SignUpDataModelValidator } from '../../models';
 
-class SignUpInitialPageComponent extends PureComponent {
+class SignUpCompanyPageComponent extends PureComponent {
   storage = new SingleItemSessionStorage(SignUpStorageKey);
 
   constructor(props) {
@@ -17,8 +17,7 @@ class SignUpInitialPageComponent extends PureComponent {
     this.model = this.storage.get();
 
     if (!this.model) {
-      this.model = new SignUpDataModel();
-      this.storage.set(this.model);
+      this.history.push('/sign-up--initial');
     }
   }
 
@@ -26,11 +25,13 @@ class SignUpInitialPageComponent extends PureComponent {
     const validator = new SignUpDataModelValidator(this.model);
 
     const validationMsg = validator.validate(
-      'firstName',
-      'lastName',
-      'email',
-      'password',
-      'password2'
+      'companyName',
+      'province',
+      'city',
+      'street',
+      'streetNumber',
+      'departmet',
+      'postalCode'
     );
 
     if (validationMsg !== true) {
@@ -39,16 +40,16 @@ class SignUpInitialPageComponent extends PureComponent {
     }
 
     this.storage.set(this.model);
-    this.props.history.push('/sign-up--company');
+    this.props.history.push('/sign-up--pricing');
   };
 
   render() {
     return (
       <PageLayout>
-        <SignUpInitialTemplate model={this.model} onConfirm={this.onConfirm} />
+        <SignUpCompanyTemplate model={this.model} onConfirm={this.onConfirm} />
       </PageLayout>
     );
   }
 }
 
-export const SignUpInitialPage = withSnackbar(SignUpInitialPageComponent);
+export const SignUpCompanyPage = withSnackbar(SignUpCompanyPageComponent);
