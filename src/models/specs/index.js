@@ -5,3 +5,4 @@ export { StringMaxLengthSpec } from './StringMaxLengthSpec';
 export { StringMinLengthSpec } from './StringMinLengthSpec';
 export { SameStringSpec } from './SameStringSpec';
 export { PasswordStrengthSpec } from './PasswordStrengthSpec';
+export { MandatorySelectionSpec } from './MandatorySelectionSpec';

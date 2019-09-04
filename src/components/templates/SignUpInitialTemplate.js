@@ -17,7 +17,7 @@ const styles = theme => ({
     }
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -28,7 +28,7 @@ const styles = theme => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(1)
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
@@ -140,7 +140,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
               className={classes.submit}
               onClick={onConfirm}
             >
-              Registrarse
+              Continuar
             </Button>
             <Grid container justify="flex-end">
               <Grid item>

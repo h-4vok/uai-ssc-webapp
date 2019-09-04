@@ -30,7 +30,7 @@ class SignUpCompanyPageComponent extends PureComponent {
       'city',
       'street',
       'streetNumber',
-      'departmet',
+      'department',
       'postalCode'
     );
 
