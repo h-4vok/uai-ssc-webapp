@@ -4,3 +4,4 @@ export { SignInPage } from './SignInPage';
 export { PricingPage } from './PricingPage';
 export { SignUpInitialPage } from './SignUpInitialPage';
 export { SignUpCompanyPage } from './SignUpCompanyPage';
+export { SignUpPricingPage } from './SignUpPricingPage';

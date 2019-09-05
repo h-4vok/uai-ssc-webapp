@@ -15,6 +15,15 @@ const startNewSignUp = history => pricingPlan => {
   history.push('/sign-up--initial');
 };
 
+const continueSignUp = (history, model) => pricingPlan => {
+  model.pricingPlan = pricingPlan;
+
+  const storage = new SingleItemSessionStorage(SignUpStorageKey);
+  storage.set(model);
+
+  history.push('/sign-up--payment-data');
+};
+
 const pricingCards = [
   {
     title: 'Gratuito',
@@ -60,7 +69,14 @@ const pricingCards = [
 
 export class PricingChart extends PureComponent {
   render() {
-    const { history } = this.props;
+    const { history, model, isSignUp } = this.props;
+
+    let onSelection = null;
+    if (isSignUp) {
+      onSelection = code => continueSignUp(history, model)(code);
+    } else {
+      onSelection = code => startNewSignUp(history)(code);
+    }
 
     return (
       <>
@@ -75,7 +91,7 @@ export class PricingChart extends PureComponent {
               <Grid item key={item.title} xs={12} md={4}>
                 <PricingCard
                   {...item}
-                  onSelection={() => startNewSignUp(history)(item.code)}
+                  onSelection={() => onSelection(item.code)}
                 />
               </Grid>
             ))}
