@@ -3,3 +3,4 @@ export { PlatformLogo } from './PlatformLogo';
 export { RouteLink } from './RouteLink';
 export { PasswordRequirementsBox } from './PasswordRequirementsBox';
 export { SimpleSelect } from './SimpleSelect';
+export { SimpleTextField } from './SimpleTextField';
