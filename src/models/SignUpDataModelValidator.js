@@ -64,6 +64,53 @@ export class SignUpDataModelValidator extends ValidatorVisitor {
     postalCode: [
       Specs.MandatoryStringSpec(this.model, 'postalCode', 'Código Postal'),
       Specs.StringMaxLengthSpec(this.model, 35, 'postalCode', 'Código Postal')
+    ],
+    creditCardNumber: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'creditCardNumber',
+        'Número de tarjeta de crédito'
+      ),
+      Specs.StringMinLengthSpec(
+        this.model,
+        16,
+        'creditCardNumber',
+        'Número de tarjeta de crédito'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        19,
+        'creditCardNumber',
+        'Número de tarjeta de crédito'
+      )
+    ],
+    creditCardHolder: [
+      Specs.MandatoryStringSpec(this.model, 'creditCardHolder', 'Titular'),
+      Specs.StringMaxLengthSpec(this.model, 200, 'creditCardHolder', 'Titular')
+    ],
+    creditCardCcv: [
+      Specs.MandatoryStringSpec(this.model, 'creditCardCcv', 'CCV'),
+      Specs.StringMaxLengthSpec(this.model, 4, 'creditCardCcv', 'CCV'),
+      Specs.StringMinLengthSpec(this.model, 3, 'creditCardCcv', 'CCV')
+    ],
+    creditCardExpirationDate: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'creditCardExpirationDate',
+        'Fecha de Expiración'
+      ),
+      Specs.StringMinLengthSpec(
+        this.model,
+        4,
+        'creditCardExpirationDate',
+        'Fecha de Expiración'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        4,
+        'creditCardExpirationDate',
+        'Fecha de Expiración'
+      )
     ]
   };
 }

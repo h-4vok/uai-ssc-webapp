@@ -54,7 +54,7 @@ const styles = theme => ({
   }
 });
 
-export class SignUpCompanyTemplateComponent extends PureComponent {
+class SignUpCompanyTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 

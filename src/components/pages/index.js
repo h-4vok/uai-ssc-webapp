@@ -5,3 +5,4 @@ export { PricingPage } from './PricingPage';
 export { SignUpInitialPage } from './SignUpInitialPage';
 export { SignUpCompanyPage } from './SignUpCompanyPage';
 export { SignUpPricingPage } from './SignUpPricingPage';
+export { SignUpPaymentPage } from './SignUpPaymentPage';
