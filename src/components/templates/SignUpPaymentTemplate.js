@@ -32,7 +32,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
       creditCardHolder,
       creditCardCcv,
       creditCardExpirationDate
-    } = this.props;
+    } = this.props.model;
 
     this.state = {
       creditCardNumber,

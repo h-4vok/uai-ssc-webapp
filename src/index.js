@@ -6,7 +6,10 @@ import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <SnackbarProvider anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+  <SnackbarProvider
+    maxSnack={3}
+    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+  >
     <App />
   </SnackbarProvider>,
   document.getElementById('root')

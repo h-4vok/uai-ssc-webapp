@@ -82,6 +82,11 @@ export class SignUpDataModelValidator extends ValidatorVisitor {
         19,
         'creditCardNumber',
         'Número de tarjeta de crédito'
+      ),
+      Specs.IsNumberSpec(
+        this.model,
+        'creditCardNumber',
+        'Número de tarjeta de crédito'
       )
     ],
     creditCardHolder: [
@@ -110,6 +115,84 @@ export class SignUpDataModelValidator extends ValidatorVisitor {
         4,
         'creditCardExpirationDate',
         'Fecha de Expiración'
+      )
+    ],
+    billingCompanyName: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingCompanyName',
+        'Denominación Fiscal'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'billingCompanyNamme',
+        'Denominación Fiscal'
+      )
+    ],
+    billingCompanyIdentification: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingCompanyIdentification',
+        'Número de identificación fiscal'
+      ),
+      Specs.StringMinLengthSpec(
+        this.model,
+        11,
+        'billingCompanyIdentification',
+        'Número de identificación fiscal'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        11,
+        'billingCompanyIdentification',
+        'Número de identificación fiscal'
+      ),
+      Specs.IsNumberSpec(
+        this.model,
+        'billingCompanyIdentification',
+        'Número de identificación fiscal'
+      )
+    ],
+    billingProvince: [
+      Specs.MandatorySelectionSpec(this.model, 'billingProvince', 'Provincia')
+    ],
+    billingCity: [
+      Specs.MandatoryStringSpec(this.model, 'billingCity', 'Ciudad'),
+      Specs.StringMaxLengthSpec(this.model, 200, 'billingCity', 'Ciudad')
+    ],
+    billingStreet: [
+      Specs.MandatoryStringSpec(this.model, 'billingStreet', 'Calle'),
+      Specs.StringMaxLengthSpec(this.model, 500, 'billingStreet', 'Calle')
+    ],
+    billingStreetNumber: [
+      Specs.MandatoryStringSpec(this.model, 'billingStreetNumber', 'Número'),
+      Specs.StringMaxLengthSpec(this.model, 35, 'billingStreetNumber', 'Número')
+    ],
+    billingDepartment: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingDepartment',
+        'Departamento'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'billingDepartment',
+        'Departamento'
+      )
+    ],
+    billingPostalCode: [
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingPostalCode',
+        'Código Postal'
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'billingPostalCode',
+        'Código Postal'
       )
     ]
   };
