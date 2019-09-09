@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { Container, CssBaseline } from '@material-ui/core';
+import { SimpleTextField } from '../atoms';
 
 const styles = theme => ({
   paper: {
@@ -31,7 +32,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
       creditCardHolder,
       creditCardCcv,
       creditCardExpirationDate
-    } = this.props;
+    } = this.props.model;
 
     this.state = {
       creditCardNumber,
@@ -65,37 +66,37 @@ class SignUpPaymentTemplateComponent extends PureComponent {
           <form className={classes.form} noValidate>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <TextField
+                <SimpleTextField
                   required
                   id="creditCardNumber"
                   name="creditCardNumber"
                   label="Número de tarjeta"
                   fullWidth
-                  inputProps={{ maxLength: 19 }}
+                  maxLength="19"
                   value={creditCardNumber}
                   onChange={this.onInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <SimpleTextField
                   required
                   id="creditCardHolder"
                   name="creditCardHolder"
                   label="Titular"
                   fullWidth
-                  inputProps={{ maxLength: 200 }}
+                  maxLength="200"
                   value={creditCardHolder}
                   onChange={this.onInputChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <SimpleTextField
                   required
                   id="creditCardCcv"
                   name="creditCardCcv"
                   label="CCV"
                   fullWidth
-                  inputProps={{ maxLength: 4 }}
+                  maxLength="4"
                   value={creditCardCcv}
                   onChange={this.onInputChange}
                 />
@@ -107,7 +108,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
                   name="creditCardExpirationDate"
                   label="Fecha de Expiración"
                   fullWidth
-                  inputProps={{ maxLength: 4 }}
+                  maxLength="4"
                   value={creditCardExpirationDate}
                   onChange={this.onInputChange}
                 />
