@@ -1,13 +1,14 @@
 /* eslint-disable complexity */
 import HttpVerbs from './HttpVerbs';
 
-const isResponseError = err => err && err.status >= 500;
-const isResponseSuccess = res =>
-  [200, 201, 204].some(status => res.status === status);
+const checkIsSuccess = res => expected =>
+  res && res.body && res.body.IsSuccess === expected;
+const isFailure = res => checkIsSuccess(res)(false);
+const isSuccess = res => checkIsSuccess(res)(true);
 
 export default class ApiResponseImplementor {
-  constructor(notifierImplementor) {
-    this.notifierImplementor = notifierImplementor;
+  constructor(notifier) {
+    this.notifier = notifier;
   }
 
   handleResponse = (req, err, res) => {
@@ -17,23 +18,21 @@ export default class ApiResponseImplementor {
     //   "result": {} | ""
     // }
 
-    if (err && !res) {
-      this.handleResponseError(req, err);
+    if (err) {
+      this.handleResponseError(req, err, res);
       return;
     }
 
-    if (isResponseSuccess(res)) {
-      this.handleResponseSuccess(req, res);
-    } else if (isResponseError(err)) {
-      this.handleResponseError(req, err, res);
-    } else {
+    if (isFailure(res)) {
       this.handleResponseFailure(req, err, res);
+    } else if (isSuccess(res)) {
+      this.handleResponseSuccess(req, res);
     }
   };
 
   handleResponseSuccess = (req, res) => {
     if (req.allowsDefaultSuccess && req.verb !== HttpVerbs.get) {
-      this.notifierImplementor.handleOperationSuccess();
+      this.notifier.success();
     }
 
     req.callbacks.success.forEach(callback => callback(res));
@@ -41,25 +40,17 @@ export default class ApiResponseImplementor {
 
   handleResponseFailure = (req, err, res) => {
     if (req.allowsDefaultFailure) {
-      const errMessage = res && res.body ? res.body.result : null;
+      const errMessage = res && res.body ? res.body.ErrorMessage : null;
 
-      this.notifierImplementor.handleResponseFailure(errMessage);
+      this.notifier.error(errMessage);
     }
 
     req.callbacks.failure.forEach(callback => callback(res));
   };
 
-  handleResponseNull = (req, err) => {
-    if (req.allowsDefaultError) {
-      this.notifierImplementor.handleResponseError(req, err, null);
-    }
-
-    req.callbacks.error.forEach(callback => callback(err, null));
-  };
-
   handleResponseError = (req, err, res) => {
     if (req.allowsDefaultError) {
-      this.notifierImplementor.handleResponseError(req, err, res);
+      this.notifier.error();
     }
 
     req.callbacks.error.forEach(callback => callback(err, res));
