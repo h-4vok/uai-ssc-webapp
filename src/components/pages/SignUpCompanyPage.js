@@ -6,6 +6,8 @@ import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { SignUpStorageKey } from '../../content/StorageKeys';
 import { SignUpDataModelValidator } from '../../models';
+import { buildCompanySignUpBody } from '../../models/SignUpDataModel';
+import { API } from '../../lib/xhr';
 
 class SignUpCompanyPageComponent extends PureComponent {
   storage = new SingleItemSessionStorage(SignUpStorageKey);
@@ -39,8 +41,17 @@ class SignUpCompanyPageComponent extends PureComponent {
       return;
     }
 
-    this.storage.set(this.model);
-    this.props.history.push('/sign-up--pricing');
+    const api = new API(this.notifier);
+    const body = buildCompanySignUpBody(this.model);
+
+    api.request
+      .post('signup', body)
+      .preventDefaultSuccess()
+      .success(() => {
+        this.storage.set(this.model);
+        this.props.history.push('/sign-up--pricing');
+      })
+      .go();
   };
 
   render() {

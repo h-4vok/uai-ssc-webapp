@@ -9,7 +9,33 @@ export const buildInitialSignUpBody = model => {
     email: UserName,
     password: Password
   } = model;
-  const output = { FirstName, LastName, UserName, Password };
+  const output = { FirstName, LastName, UserName, Password, Step: 'Initial' };
+
+  return output;
+};
+
+export const buildCompanySignUpBody = model => {
+  const {
+    companyName: Name,
+    province: ProvinceId,
+    city: City,
+    street: StreetName,
+    streetNumber: Number,
+    department: Department,
+    postalCode: PostalCode
+  } = model;
+  const output = {
+    CompanyData: {
+      Name,
+      ProvinceId,
+      City,
+      StreetName,
+      Number,
+      Department,
+      PostalCode
+    },
+    Step: 'Company'
+  };
 
   return output;
 };
