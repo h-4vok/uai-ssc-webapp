@@ -39,3 +39,22 @@ export const buildCompanySignUpBody = model => {
 
   return output;
 };
+
+export const buildCreditCardSignUpBody = model => {
+  const {
+    creditCardNumber: CreditCardNumber,
+    creditCardHolder: CreditCardOwner,
+    creditCardCcv: CreditCardCCV,
+    creditCardExpirationDate: CreditCardExpirationDateMMYY
+  } = model;
+
+  const output = {
+    CreditCardNumber,
+    CreditCardOwner,
+    CreditCardCCV,
+    CreditCardExpirationDateMMYY,
+    Step: 'Payment'
+  };
+
+  return output;
+};
