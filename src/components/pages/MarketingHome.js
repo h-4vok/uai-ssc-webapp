@@ -50,6 +50,9 @@ export const MarketingHome = () => (
       </GridList>
 
       <PricingChart className="pricing-chart" />
+      <div style={{ visibility: 'hidden', display: 'none' }}>
+        {process.env.REACT_APP_API_PREFIX}
+      </div>
     </div>
   </PageLayout>
 );

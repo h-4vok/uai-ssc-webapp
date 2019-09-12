@@ -13,7 +13,7 @@ export class API {
     const apiImplementor = new SuperagentApiImplementor(responseImplementor);
     this.request = new ApiRequestFactory(
       apiImplementor,
-      'http://localhost:50257/api/'
+      process.env.REACT_APP_API_PREFIX
     );
   }
 }
