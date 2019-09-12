@@ -15,7 +15,7 @@ class SimpleSelectComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { classes, name, value, label, items, noEmpty } = this.props;
+    const { classes, name, value, label, items = [], noEmpty } = this.props;
 
     this.classes = classes;
 

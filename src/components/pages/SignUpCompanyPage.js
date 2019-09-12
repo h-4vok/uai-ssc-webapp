@@ -46,7 +46,11 @@ class SignUpCompanyPageComponent extends PureComponent {
   render() {
     return (
       <PageLayout>
-        <SignUpCompanyTemplate model={this.model} onConfirm={this.onConfirm} />
+        <SignUpCompanyTemplate
+          model={this.model}
+          notifier={this.notifier}
+          onConfirm={this.onConfirm}
+        />
       </PageLayout>
     );
   }

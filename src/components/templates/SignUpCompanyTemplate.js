@@ -6,37 +6,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { Container, CssBaseline } from '@material-ui/core';
 import { SimpleSelect, RouteLink } from '../atoms';
-
-const provinces = [
-  'Ciudad Autónoma de Buenos Aires',
-  'Buenos Aires',
-  'Catamarca',
-  'Chaco',
-  'Chubut',
-  'Córdoba',
-  'Corrientes',
-  'Entre Ríos',
-  'Formosa',
-  'Jujuy',
-  'La Pampa',
-  'La Rioja',
-  'Mendoza',
-  'Neuquén',
-  'Río Negro',
-  'Salta',
-  'San Juan',
-  'Santa Cruz',
-  'Santa Fe',
-  'Santiago del Estero',
-  'Tierra del Fuego',
-  'Tucumán'
-];
-
-const provincesItems = [];
-
-for (let i = 0; i < provinces.length; i++) {
-  provincesItems.push({ value: i + 1, label: provinces[i] });
-}
+import { API } from '../../lib/xhr';
 
 const styles = theme => ({
   paper: {
@@ -58,6 +28,8 @@ class SignUpCompanyTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.api = new API(this.props.notifier);
+
     const {
       companyName,
       province,
@@ -75,8 +47,26 @@ class SignUpCompanyTemplateComponent extends PureComponent {
       street,
       streetNumber,
       department,
-      postalCode
+      postalCode,
+      provinceItems: [],
+      provinceItemsLoaded: false
     };
+  }
+
+  componentDidMount() {
+    this.api.request
+      .get('province')
+      .success(res => {
+        const provinces = [];
+
+        res.body.Result.forEach(province => {
+          const { Id: value, Name: label } = province;
+          provinces.push({ value, label });
+        });
+
+        this.setState({ provinceItems: provinces, provinceItemsLoaded: true });
+      })
+      .go();
   }
 
   onInputChange = event => {
@@ -93,7 +83,9 @@ class SignUpCompanyTemplateComponent extends PureComponent {
       street,
       streetNumber,
       department,
-      postalCode
+      postalCode,
+      provinceItems,
+      provinceItemsLoaded
     } = this.state;
 
     return (
@@ -118,15 +110,17 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <SimpleSelect
-                  required
-                  name="province"
-                  label="Provincia"
-                  fullWidth
-                  items={provincesItems}
-                  value={province}
-                  onChange={this.onInputChange}
-                />
+                {provinceItemsLoaded && (
+                  <SimpleSelect
+                    required
+                    name="province"
+                    label="Provincia"
+                    fullWidth
+                    items={provinceItems}
+                    value={province}
+                    onChange={this.onInputChange}
+                  />
+                )}
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
