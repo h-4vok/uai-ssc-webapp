@@ -1,6 +1,7 @@
 import superagent from 'superagent';
 import Apiimplementor from './ApiImplementor';
 import HttpVerbs from './HttpVerbs';
+import { GlobalState } from '../GlobalState';
 
 export default class SuperagentApiImplementor extends Apiimplementor {
   constructor(responseImplementor) {
@@ -16,59 +17,34 @@ export default class SuperagentApiImplementor extends Apiimplementor {
   }
 
   execute = req => {
+    GlobalState.SpinnerService.up();
+
     super.execute(req);
 
     const closure = this.handlers[req.verb];
     closure(req);
   };
 
-  get = req => {
-    superagent
-      .get(req.address)
+  templateExec = (req, superagentReq) => {
+    superagentReq
       .set(req.headers)
       .query(req.queries)
-      .end((err, res) =>
-        this.responseImplementor.handleResponse(req, err, res)
-      );
+      .end((err, res) => {
+        this.responseImplementor.handleResponse(req, err, res);
+        GlobalState.SpinnerService.down();
+      });
   };
 
-  del = req => {
-    superagent
-      .del(req.address)
-      .set(req.headers)
-      .query(req.queries)
-      .end((err, res) =>
-        this.responseImplementor.handleResponse(req, err, res)
-      );
-  };
+  get = req => this.templateExec(req, superagent.get(req.address));
 
-  post = req => {
-    superagent
-      .post(req.address)
-      .set(req.headers)
-      .send(req.body)
-      .end((err, res) =>
-        this.responseImplementor.handleResponse(req, err, res)
-      );
-  };
+  del = req => this.templateExec(req, superagent.del(req.address));
 
-  put = req => {
-    superagent
-      .put(req.address)
-      .set(req.headers)
-      .send(req.body)
-      .end((err, res) =>
-        this.responseImplementor.handleResponse(req, err, res)
-      );
-  };
+  post = req =>
+    this.templateExec(req, superagent.post(req.address).send(req.body));
 
-  patch = req => {
-    superagent
-      .patch(req.address)
-      .set(req.headers)
-      .send(req.body)
-      .end((err, res) =>
-        this.responseImplementor.handleResponse(req, err, res)
-      );
-  };
+  put = req =>
+    this.templateExec(req, superagent.put(req.address).send(req.body));
+
+  patch = req =>
+    this.templateExec(req, superagent.patch(req.address).send(req.body));
 }

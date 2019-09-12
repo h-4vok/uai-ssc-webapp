@@ -5,3 +5,4 @@ export { ApplicationBar } from './ApplicationBar';
 export { Footer } from './Footer';
 export { MarketingCard } from './MarketingCard';
 export { PricingCard } from './PricingCard';
+export { SpinnerComponent } from './SpinnerComponent';

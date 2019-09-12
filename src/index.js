@@ -4,14 +4,18 @@ import { SnackbarProvider } from 'notistack';
 import './index.scss';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
+import { SpinnerComponent } from './components/molecules';
+import { GlobalState } from './lib/GlobalState';
 
 ReactDOM.render(
-  <SnackbarProvider
-    maxSnack={3}
-    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-  >
-    <App />
-  </SnackbarProvider>,
+  <SpinnerComponent spinnerService={GlobalState.SpinnerService}>
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+    >
+      <App />
+    </SnackbarProvider>
+  </SpinnerComponent>,
   document.getElementById('root')
 );
 
