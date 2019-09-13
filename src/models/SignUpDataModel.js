@@ -58,3 +58,92 @@ export const buildCreditCardSignUpBody = model => {
 
   return output;
 };
+
+export const buildFullSignUpBody = model => {
+  const {
+    firstName: FirstName,
+    lastName: LastName,
+    email: UserName,
+    password: Password,
+
+    companyName: Name,
+
+    province: AddressProvinceId,
+    city: AddressCity,
+    street: AddressStreetName,
+    streetNumber: AddressStreetNumber,
+    department: AddressDepartment,
+    postalCode: AddressPostalCode,
+
+    billingCompanyName,
+    billingCompanyIdentification,
+    billingProvince,
+    billingCity,
+    billingStreet,
+    billingStreetNumber,
+    billingDepartment,
+    billingPostalCode,
+
+    pricingPlan,
+
+    creditCardNumber,
+    creditCardHolder,
+    creditCardCcv,
+    creditCardExpirationDate
+  } = model;
+
+  const output = {
+    User: {
+      UserName,
+      Password,
+      FirstName,
+      LastName,
+      Addresses: [
+        {
+          Province: { Id: AddressProvinceId },
+          StreetName: AddressStreetName,
+          StreetNumber: AddressStreetNumber,
+          City: AddressCity,
+          Department: AddressDepartment,
+          PostalCode: AddressPostalCode
+        }
+      ]
+    },
+    ClientCompany: {
+      Name,
+      CurrentPricingPlan: {
+        Code: pricingPlan
+      },
+      Addresses: [
+        {
+          Province: { Id: AddressProvinceId },
+          StreetName: AddressStreetName,
+          StreetNumber: AddressStreetNumber,
+          City: AddressCity,
+          Department: AddressDepartment,
+          PostalCode: AddressPostalCode
+        }
+      ],
+      BillingInformation: {
+        LegalName: billingCompanyName,
+        TaxCode: billingCompanyIdentification,
+        Address: {
+          Province: { Id: billingProvince },
+          StreetName: billingStreet,
+          StreetNumber: billingStreetNumber,
+          City: billingCity,
+          Department: billingDepartment,
+          PostalCode: billingPostalCode
+        }
+      },
+      DefaultCreditCard: {
+        Number: creditCardNumber,
+        Owner: creditCardHolder,
+        CCV: creditCardCcv,
+        ExpirationDateMMYY: creditCardExpirationDate
+      }
+    }
+  };
+
+  return output;
+};

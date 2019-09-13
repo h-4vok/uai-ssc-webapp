@@ -16,6 +16,7 @@
     "react-app-polyfill": "^1.0.2",
     "react-dom": "^16.9.0",
     "react-flexbox-grid": "^2.1.2",
+    "react-google-recaptcha": "^2.0.0-rc.1",
     "react-helmet": "^5.2.0",
     "react-loadable": "^5.4.0",
     "react-loading-overlay": "^1.0.1",
