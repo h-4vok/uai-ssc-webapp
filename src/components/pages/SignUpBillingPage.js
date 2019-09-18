@@ -6,7 +6,7 @@ import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { SignUpStorageKey } from '../../content/StorageKeys';
 import { SignUpDataModelValidator } from '../../models';
-import { buildFullSignUpBody } from '../../models/SignUpDataModel';
+import { buildBillingSignUpBody } from '../../models/SignUpDataModel';
 import { API } from '../../lib/xhr';
 
 class SignUpBillingPageComponent extends PureComponent {
@@ -43,19 +43,16 @@ class SignUpBillingPageComponent extends PureComponent {
     }
 
     const api = new API(this.notifier);
-    const body = buildFullSignUpBody(this.model);
+    const body = buildBillingSignUpBody(this.model);
 
     api.request
       .post('signup', body)
       .preventDefaultSuccess()
       .success(() => {
         this.storage.set(this.model);
-        this.props.history.push('/sign-in');
+        this.props.history.push('/sign-up--confirm-pending');
       })
       .go();
-
-    // this.storage.set(this.model);
-    // this.props.history.push('/sign-up--preview');
   };
 
   render() {

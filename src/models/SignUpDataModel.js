@@ -59,6 +59,33 @@ export const buildCreditCardSignUpBody = model => {
   return output;
 };
 
+export const buildBillingSignUpBody = model => {
+  const {
+    billingCompanyName: BillingCompanyName,
+    billingCompanyIdentification: BillingCompanyIdentification,
+    billingProvince: BillingProvinceId,
+    billingCity: BillingCity,
+    billingStreet: BillingStreet,
+    billingStreetNumber: BillingStreetNumber,
+    billingDepartment: BillingDepartment,
+    billingPostalCode: BillingPostalCode
+  } = model;
+
+  const output = {
+    BillingCompanyName,
+    BillingCompanyIdentification,
+    BillingProvinceId,
+    BillingCity,
+    BillingStreet,
+    BillingStreetNumber,
+    BillingDepartment,
+    BillingPostalCode,
+    Step: 'Billing'
+  };
+
+  return output;
+};
+
 export const buildFullSignUpBody = model => {
   const {
     firstName: FirstName,
