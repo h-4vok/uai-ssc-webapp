@@ -37,7 +37,8 @@
     "sasslint": "npm run sasslint:run -- -v -q",
     "sasslint:run": "sass-lint",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "firefox-debug": "firefox -start-debugger-server -no-remote"
   },
   "lint-staged": {
     "*.{js,jsx}": [

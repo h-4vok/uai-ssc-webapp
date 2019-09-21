@@ -1,18 +1,38 @@
 import React, { PureComponent } from 'react';
-// import { withSnackbar } from 'notistack';
+import { withSnackbar } from 'notistack';
 import { PageLayout } from '../organisms';
 import { SignUpConfirmTemplate } from '../templates';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
-// import { API } from '../../lib/xhr';
+import { buildFullSignUpBody } from '../../models/SignUpDataModel';
+import { SignUpStorageKey } from '../../content/StorageKeys';
+import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
+import { API } from '../../lib/xhr';
 
-export class SignUpConfirmPageComponent extends PureComponent {
+class SignUpConfirmPageComponent extends PureComponent {
+  storage = new SingleItemSessionStorage(SignUpStorageKey);
+
   constructor(props) {
     super(props);
 
     this.notifier = new SnackbarVisitor(this.props);
+    this.model = this.storage.get();
+
+    if (!this.model) {
+      this.history.push('/sign-up--initial');
+    }
   }
 
-  onConfirm = () => {};
+  onConfirm = () => {
+    const body = buildFullSignUpBody(this.model);
+    const api = new API(this.notifier);
+
+    api.request
+      .put('signup', body, 0)
+      .success(() => {
+        this.props.history.push('/sign-in');
+      })
+      .go();
+  };
 
   render() {
     return (
@@ -22,3 +42,5 @@ export class SignUpConfirmPageComponent extends PureComponent {
     );
   }
 }
+
+export const SignUpConfirmPage = withSnackbar(SignUpConfirmPageComponent);

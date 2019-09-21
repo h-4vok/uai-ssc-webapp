@@ -14,6 +14,8 @@ import Container from '@material-ui/core/Container';
 import { RouteLink } from '../atoms';
 import { PageLayout } from '../organisms';
 
+import './SignInPage.scss';
+
 const styles = theme => ({
   '@global': {
     body: {
@@ -95,6 +97,7 @@ export class SignInPageComponent extends PureComponent {
                 label="Recordar mi cuenta"
               />
               <ReCAPTCHA
+                className="recaptcha-wrapper"
                 sitekey="6Lf8LrgUAAAAALSADHJAG6aYkrUwlCUAHTY8ZZiY"
                 onChange={this.onCaptchaSuccess}
               />

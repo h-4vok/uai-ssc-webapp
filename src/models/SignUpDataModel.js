@@ -61,6 +61,7 @@ export const buildCreditCardSignUpBody = model => {
 
 export const buildBillingSignUpBody = model => {
   const {
+    email: UserName,
     billingCompanyName: BillingCompanyName,
     billingCompanyIdentification: BillingCompanyIdentification,
     billingProvince: BillingProvinceId,
@@ -72,6 +73,7 @@ export const buildBillingSignUpBody = model => {
   } = model;
 
   const output = {
+    UserName,
     BillingCompanyName,
     BillingCompanyIdentification,
     BillingProvinceId,
@@ -88,6 +90,8 @@ export const buildBillingSignUpBody = model => {
 
 export const buildFullSignUpBody = model => {
   const {
+    verificationCode: VerificationCode,
+
     firstName: FirstName,
     lastName: LastName,
     email: UserName,
@@ -120,6 +124,8 @@ export const buildFullSignUpBody = model => {
   } = model;
 
   const output = {
+    VerificationCode,
+
     User: {
       UserName,
       Password,

@@ -7,3 +7,4 @@ export { SignUpCompanyPage } from './SignUpCompanyPage';
 export { SignUpPricingPage } from './SignUpPricingPage';
 export { SignUpPaymentPage } from './SignUpPaymentPage';
 export { SignUpBillingPage } from './SignUpBillingPage';
+export { SignUpConfirmPage } from './SignUpConfirmPage';
