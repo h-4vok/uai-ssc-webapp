@@ -9,3 +9,11 @@
     flex-grow: 1;
   }
 }
+
+$menu-button-color: #f5f5f5;
+
+.menu-button {
+  span {
+    color: $menu-button-color;
+  }
+}

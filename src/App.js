@@ -38,8 +38,17 @@ export const App = () => (
         />
         <UnprotectedRoute path="/sign-in" component={Pages.SignInPage} />
         <UnprotectedRoute
+          path="/platform-home"
+          component={Pages.PlatformHomePage}
+        />
+        <UnprotectedRoute
           path="/forgot-password"
           component={Pages.DefaultPage}
+        />
+
+        <UnprotectedRoute
+          path="/platform"
+          component={Pages.DefaultPlatformPage}
         />
         <Route component={NoMatchRoute} />
       </Switch>

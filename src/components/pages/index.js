@@ -1,5 +1,6 @@
 export { MarketingHome } from './MarketingHome';
 export { DefaultPage } from './DefaultPage';
+export { DefaultPlatformPage } from './DefaultPlatformPage';
 export { SignInPage } from './SignInPage';
 export { PricingPage } from './PricingPage';
 export { SignUpInitialPage } from './SignUpInitialPage';
@@ -8,3 +9,4 @@ export { SignUpPricingPage } from './SignUpPricingPage';
 export { SignUpPaymentPage } from './SignUpPaymentPage';
 export { SignUpBillingPage } from './SignUpBillingPage';
 export { SignUpConfirmPage } from './SignUpConfirmPage';
+export { PlatformHomePage } from './PlatformHomePage';
