@@ -79,14 +79,16 @@ export class SignInPageComponent extends PureComponent {
 
     api.request
       .post('authentication', body)
+      .preventDefaultSuccess()
       .success(() => {
+        this.notifier.success('Bienvenido a Sample Supply Chain');
         this.props.history.push('/platform-home');
       })
       .go();
   };
 
-  onCaptchaSuccess = () => {
-    this.setState({ signInEnabled: true });
+  onCaptchaChange = success => {
+    this.setState({ signInEnabled: success });
   };
 
   onInputChange = event => {
@@ -142,7 +144,7 @@ export class SignInPageComponent extends PureComponent {
               <ReCAPTCHA
                 className="recaptcha-wrapper"
                 sitekey="6Lf8LrgUAAAAALSADHJAG6aYkrUwlCUAHTY8ZZiY"
-                onChange={this.onCaptchaSuccess}
+                onChange={this.onCaptchaChange}
               />
               <Button
                 fullWidth
