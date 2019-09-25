@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { withStyles } from '@material-ui/core/styles';
+import { withSnackbar } from 'notistack';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { RouteLink } from '../atoms';
 import { PageLayout } from '../organisms';
+import { API } from '../../lib/xhr';
+import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 
 import './SignInPage.scss';
 
@@ -45,18 +48,54 @@ export class SignInPageComponent extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.notifier = new SnackbarVisitor(this.props);
+
     this.state = {
-      signInEnabled: false
+      signInEnabled: false,
+      username: '',
+      password: ''
     };
   }
+
+  onSignInConfirm = () => {
+    const { username: UserName, password: Password } = this.state;
+
+    if (!UserName) {
+      this.notifier.error('Ingrese su correo electrónico.');
+      return;
+    }
+
+    if (!Password) {
+      this.notifier.error('Ingrese su contraseña.');
+      return;
+    }
+
+    const body = {
+      UserName,
+      Password
+    };
+
+    const api = new API(this.notifier);
+
+    api.request
+      .post('authentication', body)
+      .success(() => {
+        this.props.history.push('/platform-home');
+      })
+      .go();
+  };
 
   onCaptchaSuccess = () => {
     this.setState({ signInEnabled: true });
   };
 
+  onInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     const { classes } = this.props;
-    const { signInEnabled } = this.state;
+    const { signInEnabled, username, password } = this.state;
 
     return (
       <PageLayout>
@@ -75,11 +114,13 @@ export class SignInPageComponent extends PureComponent {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="username"
                 label="Correo electronico"
-                name="email"
+                name="username"
                 autoComplete="email"
                 autoFocus
+                value={username}
+                onChange={this.onInputChange}
               />
               <TextField
                 variant="outlined"
@@ -91,6 +132,8 @@ export class SignInPageComponent extends PureComponent {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={this.onInputChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -102,12 +145,12 @@ export class SignInPageComponent extends PureComponent {
                 onChange={this.onCaptchaSuccess}
               />
               <Button
-                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
                 disabled={!signInEnabled}
+                onClick={this.onSignInConfirm}
               >
                 Autenticarse
               </Button>
@@ -131,4 +174,4 @@ export class SignInPageComponent extends PureComponent {
   }
 }
 
-export const SignInPage = withStyles(styles)(SignInPageComponent);
+export const SignInPage = withSnackbar(withStyles(styles)(SignInPageComponent));

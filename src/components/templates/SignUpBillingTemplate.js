@@ -127,7 +127,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                 {provinceItemsLoaded && (
                   <SimpleSelect
                     required
-                    name="province"
+                    name="billingProvince"
                     label="Provincia"
                     fullWidth
                     items={provinceItems}
