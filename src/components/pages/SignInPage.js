@@ -6,8 +6,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +14,7 @@ import { RouteLink } from '../atoms';
 import { PageLayout } from '../organisms';
 import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
+import { GlobalState } from '../../lib/GlobalState';
 
 import './SignInPage.scss';
 
@@ -80,7 +79,10 @@ export class SignInPageComponent extends PureComponent {
     api.request
       .post('authentication', body)
       .preventDefaultSuccess()
-      .success(() => {
+      .success(res => {
+        GlobalState.Authorizer.refreshAuthorizations(
+          res.body.Result.GrantedPermissions
+        );
         this.notifier.success('Bienvenido a Sample Supply Chain');
         this.props.history.push('/platform-home');
       })
@@ -136,10 +138,6 @@ export class SignInPageComponent extends PureComponent {
                 autoComplete="current-password"
                 value={password}
                 onChange={this.onInputChange}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Recordar mi cuenta"
               />
               <ReCAPTCHA
                 className="recaptcha-wrapper"

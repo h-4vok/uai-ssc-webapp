@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, Typography, Button } from '@material-ui/core';
 import { RouteLink } from '../atoms/RouteLink';
 import './ApplicationBar.styles.scss';
+import { Authorizer } from '../../lib/Authorizer';
 
 const defaultState = {
   anchorEl: null,
@@ -38,20 +39,30 @@ export class PlatformBar extends PureComponent {
     this.props.history.push(route);
   };
 
-  buildButton = (ariaControl, label, menuOpenVariableName) => (
-    <Button
-      aria-controls={ariaControl}
-      aria-haspopup="true"
-      onClick={event => this.handleMenuClick(event, menuOpenVariableName)}
-      className="menu-button"
-    >
-      {label}
-    </Button>
-  );
+  buildButton = (ariaControl, label, menuOpenVariableName, ...permissions) => {
+    if (Authorizer.hasOne(...permissions)) {
+      return (
+        <Button
+          aria-controls={ariaControl}
+          aria-haspopup="true"
+          onClick={event => this.handleMenuClick(event, menuOpenVariableName)}
+          className="menu-button"
+        >
+          {label}
+        </Button>
+      );
+    }
 
-  buildMenuItem = (route, label) => (
-    <MenuItem onClick={() => this.goTo(route)}>{label}</MenuItem>
-  );
+    return null;
+  };
+
+  buildMenuItem = (route, label, ...permissions) => {
+    if ((permissions && Authorizer.hasOne(...permissions)) || !permissions) {
+      return <MenuItem onClick={() => this.goTo(route)}>{label}</MenuItem>;
+    }
+
+    return null;
+  };
 
   render() {
     const {
@@ -76,7 +87,14 @@ export class PlatformBar extends PureComponent {
             {this.buildButton(
               'configuration-menu',
               'Configuración',
-              'configurationMenuOpen'
+              'configurationMenuOpen',
+              'SAMPLE_TYPE_MANAGEMENT',
+              'SAMPLE_TYPE_REPORT',
+              'SAMPLE_FUNCTION_REPORT',
+              'SAMPLE_FUNCTION_MANAGEMENT',
+              'LANGUAGES_MANAGEMENT',
+              'CLIENT_MANAGEMENT',
+              'CLIENT_BILLING_MANAGEMENT'
             )}
 
             <Menu
@@ -88,27 +106,45 @@ export class PlatformBar extends PureComponent {
             >
               {this.buildMenuItem(
                 '/platform/configuration/sample-type',
-                'Tipos de Muestra'
+                'Tipos de Muestra',
+                'SAMPLE_TYPE_MANAGEMENT',
+                'SAMPLE_TYPE_REPORT'
               )}
               {this.buildMenuItem(
                 '/platform/configuration/sample-type-parameter',
-                'Parámetros de Tipos de Muestra'
+                'Parámetros de Tipos de Muestra',
+                'SAMPLE_TYPE_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/platform/configuration/sample-function',
-                'Funciones de Muestra'
+                'Funciones de Muestra',
+                'SAMPLE_FUNCTION_REPORT',
+                'SAMPLE_FUNCTION_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/platform/configuration/language',
-                'Idiomas'
+                'Idiomas',
+                'LANGUAGES_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/platform/configuration/client-billing',
-                'Clientes y Facturación'
+                'Clientes y Facturación',
+                'CLIENT_MANAGEMENT'
               )}
             </Menu>
 
-            {this.buildButton('security-menu', 'Seguridad', 'securityMenuOpen')}
+            {this.buildButton(
+              'security-menu',
+              'Seguridad',
+              'securityMenuOpen',
+              'USERS_MANAGEMENT',
+              'USERS_REPORT',
+              'ROLES_MANAGEMENT',
+              'ROLES_REPORT',
+              'PLATFORM_ADMIN',
+              'PLATFORM_BACKUP',
+              'PLATFORM_ADMIN'
+            )}
 
             <Menu
               id="security-menu"
@@ -117,20 +153,41 @@ export class PlatformBar extends PureComponent {
               open={securityMenuOpen}
               onClose={this.handleClose}
             >
-              {this.buildMenuItem('/platform/security/user', 'Usuarios')}
-              {this.buildMenuItem('/platform/security/role', 'Roles')}
-              {this.buildMenuItem('/platform/security/log', 'Bitácora')}
-              {this.buildMenuItem('/platform/security/backup', 'Resguardos')}
+              {this.buildMenuItem(
+                '/platform/security/user',
+                'Usuarios',
+                'USERS_MANAGEMENT',
+                'USERS_REPORT'
+              )}
+              {this.buildMenuItem(
+                '/platform/security/role',
+                'Roles',
+                'ROLES_MANAGEMENT',
+                'ROLES_REPORT'
+              )}
+              {this.buildMenuItem(
+                '/platform/security/log',
+                'Bitácora',
+                'PLATFORM_ADMIN'
+              )}
+              {this.buildMenuItem(
+                '/platform/security/backup',
+                'Resguardos',
+                'PLATFORM_BACKUP'
+              )}
               {this.buildMenuItem(
                 '/platform/security/parameter',
-                'Parametrización'
+                'Parametrización',
+                'PLATFORM_ADMIN'
               )}
             </Menu>
 
             {this.buildButton(
               'inventory-menu',
               'Inventariado',
-              'inventoryMenuOpen'
+              'inventoryMenuOpen',
+              'PATIENT_MANAGEMENT',
+              'SAMPLE_MANAGEMENT'
             )}
 
             <Menu
@@ -140,14 +197,26 @@ export class PlatformBar extends PureComponent {
               open={inventoryMenuOpen}
               onClose={this.handleClose}
             >
-              {this.buildMenuItem('/platform/inventory/patient', 'Pacientes')}
-              {this.buildMenuItem('/platform/inventory/sample', 'Muestras')}
+              {this.buildMenuItem(
+                '/platform/inventory/patient',
+                'Pacientes',
+                'PATIENT_MANAGEMENT'
+              )}
+              {this.buildMenuItem(
+                '/platform/inventory/sample',
+                'Muestras',
+                'SAMPLE_MANAGEMENT'
+              )}
             </Menu>
 
             {this.buildButton(
               'management-menu',
               'Auto-Gestión',
-              'clientMenuOpen'
+              'clientMenuOpen',
+              'MEMBER_MANAGEMENT',
+              'MEMBER_REPORT',
+              'PAYMENT_METHOD_MANAGEMENT',
+              'CLIENT_BILLING_MANAGEMENT'
             )}
 
             <Menu
@@ -157,21 +226,35 @@ export class PlatformBar extends PureComponent {
               open={clientMenuOpen}
               onClose={this.handleClose}
             >
-              {this.buildMenuItem('/platform/management/member', 'Miembros')}
+              {this.buildMenuItem(
+                '/platform/management/member',
+                'Miembros',
+                'MEMBER_MANAGEMENT',
+                'MEMBER_REPORT'
+              )}
               {this.buildMenuItem(
                 '/platform/management/payment-type',
-                'Forma de Pago'
+                'Forma de Pago',
+                'PAYMENT_METHOD_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/platform/management/billing',
-                'Facturación'
+                'Facturación',
+                'CLIENT_BILLING_MANAGEMENT'
               )}
             </Menu>
 
             {this.buildButton(
               'work-order-menu',
               'Órdenes de Trabajo',
-              'workOrderMenuOpen'
+              'workOrderMenuOpen',
+              'WORK_ORDER_CREATE',
+              'WORK_ORDER_EXECUTE',
+              'WORK_ORDER_REPORT',
+              'RUN_EXECUTION_CANCEL',
+              'RUN_EXECUTION_PRIMARY',
+              'RUN_EXECUTION_QA',
+              'RUN_EXECUTION_QC'
             )}
 
             <Menu
@@ -183,11 +266,18 @@ export class PlatformBar extends PureComponent {
             >
               {this.buildMenuItem(
                 '/platform/work-order/work-order',
-                'Lotes de Ejecución'
+                'Lotes de Ejecución',
+                'WORK_ORDER_CREATE',
+                'WORK_ORDER_EXECUTE',
+                'WORK_ORDER_REPORT'
               )}
               {this.buildMenuItem(
                 '/platform/work-order/run',
-                'Ejecuciones de Ensayo'
+                'Ejecuciones de Ensayo',
+                'RUN_EXECUTION_CANCEL',
+                'RUN_EXECUTION_PRIMARY',
+                'RUN_EXECUTION_QA',
+                'RUN_EXECUTION_QC'
               )}
             </Menu>
           </Toolbar>

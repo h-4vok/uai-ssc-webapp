@@ -7,6 +7,10 @@ class SscAuthorizer {
 
   _sessionStorageKey = 'sscAuthorizationCache';
 
+  constructor() {
+    this.tryRefreshFromSessionStorage();
+  }
+
   clearAuthorizations() {
     this.storage.remove(this._sessionStorageKey);
     this._authorizationCache.length = 0;
@@ -29,9 +33,7 @@ class SscAuthorizer {
   refreshAuthorizations(authorizations) {
     this.clearAuthorizations();
 
-    authorizations.forEach(
-      item => (this._authorizationCache[item.Code] = item.Granted)
-    );
+    authorizations.forEach(item => (this._authorizationCache[item] = true));
 
     const jsonAuthorization = JSON.stringify(authorizations);
     this.storage.set(this._sessionStorageKey, jsonAuthorization);
@@ -63,7 +65,7 @@ class SscAuthorizer {
     for (let i = 0; i < permissions.length; i++) {
       const code = permissions[i];
 
-      hasOne = hasOne || !!this._authorizationCache[code];
+      hasOne = !!this._authorizationCache[code];
       if (hasOne) break;
     }
 

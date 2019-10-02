@@ -1,4 +1,5 @@
 export { UnprotectedRoute } from './UnprotectedRoute';
+export { AuthenticatedRoute } from './AuthenticatedRoute';
 export { ProtectedRoute } from './ProtectedRoute';
 export { NoMatchRoute } from './NoMatchRoute';
 export { ApplicationBar } from './ApplicationBar';

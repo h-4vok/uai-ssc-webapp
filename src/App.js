@@ -2,54 +2,39 @@ import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import * as Pages from './components/pages';
 import './App.scss';
-import { UnprotectedRoute, NoMatchRoute } from './components/molecules';
+import {
+  UnprotectedRoute,
+  AuthenticatedRoute,
+  ProtectedRoute,
+  NoMatchRoute
+} from './components/molecules';
+import {
+  unprotectedRoutes,
+  authenticatedRoutes,
+  protectedRoutes
+} from './App.content';
 
 export const App = () => (
   <Router>
     <div>
       <Switch>
         <UnprotectedRoute exact path="/" component={Pages.MarketingHome} />
-        <UnprotectedRoute path="/pricing" component={Pages.PricingPage} />
-        <UnprotectedRoute path="/ssc" component={Pages.DefaultPage} />
-        <UnprotectedRoute path="/about" component={Pages.DefaultPage} />
-        <UnprotectedRoute
-          path="/sign-up--initial"
-          component={Pages.SignUpInitialPage}
-        />
-        <UnprotectedRoute
-          path="/sign-up--company"
-          component={Pages.SignUpCompanyPage}
-        />
-        <UnprotectedRoute
-          path="/sign-up--pricing"
-          component={Pages.SignUpPricingPage}
-        />
-        <UnprotectedRoute
-          path="/sign-up--payment-data"
-          component={Pages.SignUpPaymentPage}
-        />
-        <UnprotectedRoute
-          path="/sign-up--billing"
-          component={Pages.SignUpBillingPage}
-        />
-        <UnprotectedRoute
-          path="/sign-up--confirm-pending"
-          component={Pages.SignUpConfirmPage}
-        />
-        <UnprotectedRoute path="/sign-in" component={Pages.SignInPage} />
-        <UnprotectedRoute
-          path="/platform-home"
-          component={Pages.PlatformHomePage}
-        />
-        <UnprotectedRoute
-          path="/forgot-password"
-          component={Pages.DefaultPage}
-        />
+        {unprotectedRoutes.map(route => (
+          <UnprotectedRoute path={route.path} component={route.component} />
+        ))}
 
-        <UnprotectedRoute
-          path="/platform"
-          component={Pages.DefaultPlatformPage}
-        />
+        {authenticatedRoutes.map(route => (
+          <AuthenticatedRoute path={route.path} component={route.component} />
+        ))}
+
+        {protectedRoutes.map(route => (
+          <ProtectedRoute
+            path={route.path}
+            component={route.component}
+            permission={route.permission}
+          />
+        ))}
+
         <Route component={NoMatchRoute} />
       </Switch>
     </div>
