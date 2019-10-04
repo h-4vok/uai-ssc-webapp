@@ -105,29 +105,29 @@ export class PlatformBar extends PureComponent {
               onClose={this.handleClose}
             >
               {this.buildMenuItem(
-                '/platform/configuration/sample-type',
+                '/configuration/sample-type',
                 'Tipos de Muestra',
                 'SAMPLE_TYPE_MANAGEMENT',
                 'SAMPLE_TYPE_REPORT'
               )}
               {this.buildMenuItem(
-                '/platform/configuration/sample-type-parameter',
+                '/configuration/sample-type-parameter',
                 'Parámetros de Tipos de Muestra',
                 'SAMPLE_TYPE_MANAGEMENT'
               )}
               {this.buildMenuItem(
-                '/platform/configuration/sample-function',
+                '/configuration/sample-function',
                 'Funciones de Muestra',
                 'SAMPLE_FUNCTION_REPORT',
                 'SAMPLE_FUNCTION_MANAGEMENT'
               )}
               {this.buildMenuItem(
-                '/platform/configuration/language',
+                '/configuration/language',
                 'Idiomas',
                 'LANGUAGES_MANAGEMENT'
               )}
               {this.buildMenuItem(
-                '/platform/configuration/client-billing',
+                '/configuration/client-billing',
                 'Clientes y Facturación',
                 'CLIENT_MANAGEMENT'
               )}
@@ -154,29 +154,29 @@ export class PlatformBar extends PureComponent {
               onClose={this.handleClose}
             >
               {this.buildMenuItem(
-                '/platform/security/user',
+                '/security/user',
                 'Usuarios',
                 'USERS_MANAGEMENT',
                 'USERS_REPORT'
               )}
               {this.buildMenuItem(
-                '/platform/security/role',
+                '/security/role',
                 'Roles',
                 'ROLES_MANAGEMENT',
                 'ROLES_REPORT'
               )}
               {this.buildMenuItem(
-                '/platform/security/log',
+                '/security/log',
                 'Bitácora',
                 'PLATFORM_ADMIN'
               )}
               {this.buildMenuItem(
-                '/platform/security/backup',
+                '/security/backup',
                 'Resguardos',
                 'PLATFORM_BACKUP'
               )}
               {this.buildMenuItem(
-                '/platform/security/parameter',
+                '/security/parameter',
                 'Parametrización',
                 'PLATFORM_ADMIN'
               )}
@@ -198,12 +198,12 @@ export class PlatformBar extends PureComponent {
               onClose={this.handleClose}
             >
               {this.buildMenuItem(
-                '/platform/inventory/patient',
+                '/inventory/patient',
                 'Pacientes',
                 'PATIENT_MANAGEMENT'
               )}
               {this.buildMenuItem(
-                '/platform/inventory/sample',
+                '/inventory/sample',
                 'Muestras',
                 'SAMPLE_MANAGEMENT'
               )}
@@ -227,18 +227,18 @@ export class PlatformBar extends PureComponent {
               onClose={this.handleClose}
             >
               {this.buildMenuItem(
-                '/platform/management/member',
+                '/management/member',
                 'Miembros',
                 'MEMBER_MANAGEMENT',
                 'MEMBER_REPORT'
               )}
               {this.buildMenuItem(
-                '/platform/management/payment-type',
+                '/management/payment-type',
                 'Forma de Pago',
                 'PAYMENT_METHOD_MANAGEMENT'
               )}
               {this.buildMenuItem(
-                '/platform/management/billing',
+                '/management/billing',
                 'Facturación',
                 'CLIENT_BILLING_MANAGEMENT'
               )}
@@ -265,14 +265,14 @@ export class PlatformBar extends PureComponent {
               onClose={this.handleClose}
             >
               {this.buildMenuItem(
-                '/platform/work-order/work-order',
+                '/work-order/work-order',
                 'Lotes de Ejecución',
                 'WORK_ORDER_CREATE',
                 'WORK_ORDER_EXECUTE',
                 'WORK_ORDER_REPORT'
               )}
               {this.buildMenuItem(
-                '/platform/work-order/run',
+                '/work-order/run',
                 'Ejecuciones de Ensayo',
                 'RUN_EXECUTION_CANCEL',
                 'RUN_EXECUTION_PRIMARY',

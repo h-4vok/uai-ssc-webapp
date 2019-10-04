@@ -83,6 +83,10 @@ export class SignInPageComponent extends PureComponent {
         GlobalState.Authorizer.refreshAuthorizations(
           res.body.Result.GrantedPermissions
         );
+
+        GlobalState.AspNetSession = res.body.Result.SetCookie;
+        document.cookie = GlobalState.AspNetSession;
+
         this.notifier.success('Bienvenido a Sample Supply Chain');
         this.props.history.push('/platform-home');
       })

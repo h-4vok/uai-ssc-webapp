@@ -10,3 +10,4 @@ export { SignUpPaymentPage } from './SignUpPaymentPage';
 export { SignUpBillingPage } from './SignUpBillingPage';
 export { SignUpConfirmPage } from './SignUpConfirmPage';
 export { PlatformHomePage } from './PlatformHomePage';
+export { ListRolesPage } from './ListRolesPage';

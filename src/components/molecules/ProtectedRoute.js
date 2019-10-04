@@ -13,6 +13,7 @@ export class ProtectedRoute extends PureComponent {
 
     return (
       <Route
+        exact
         {...props}
         render={componentProps =>
           isAuthorized ? <Component {...componentProps} /> : <Redirect to="/" />

@@ -5,7 +5,7 @@ const inProgressPlatformPage = Pages.DefaultPlatformPage;
 
 const buildRoute = (path, component) => ({ path: `/${path}`, component });
 const buildPlatformRoute = (path, component, permission) => ({
-  path: `/platform/${path}`,
+  path: `/${path}`,
   component,
   permission
 });
@@ -60,11 +60,7 @@ export const protectedRoutes = [
     inProgressPlatformPage,
     'USERS_MANAGEMENT'
   ),
-  buildPlatformRoute(
-    'security/role',
-    inProgressPlatformPage,
-    'ROLES_MANAGEMENT'
-  ),
+  buildPlatformRoute('security/role', Pages.ListRolesPage, 'ROLES_MANAGEMENT'),
   buildPlatformRoute('security/log', inProgressPlatformPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute(
     'security/backup',
