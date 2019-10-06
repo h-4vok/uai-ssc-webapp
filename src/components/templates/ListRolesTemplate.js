@@ -13,7 +13,6 @@ const styles = theme => ({
     textAlign: 'center'
   },
   paper: {
-    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -33,6 +32,30 @@ const styles = theme => ({
 });
 
 class ListRolesTemplateComponent extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      oneRowSelected: false,
+      multipleRowsSelected: false
+    };
+  }
+
+  componentDidMount() {
+    this.dataGrid.api.sizeColumnsToFit();
+
+    this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
+  }
+
+  onRowSelection = e => {
+    const selected = e.api.getSelectedRows();
+
+    this.setState({
+      oneRowSelected: selected.length === 1,
+      multipleRowsSelected: selected.length > 0
+    });
+  };
+
   isEnabledFormatter = params =>
     params.value ? 'Habilitado' : 'No Habilitado';
 
@@ -75,7 +98,8 @@ class ListRolesTemplateComponent extends PureComponent {
   ];
 
   render() {
-    const { items, classes, onRefresh } = this.props;
+    const { items, classes, onRefresh, onNewAction } = this.props;
+    const { oneRowSelected, multipleRowsSelected } = this.state;
 
     return (
       <Container component="main" maxWidth="xs">
@@ -89,13 +113,13 @@ class ListRolesTemplateComponent extends PureComponent {
                 className={classes.button}
                 onClick={onRefresh}
               >
-                Refrescar
+                Ejecutar
               </Button>
             </Box>
 
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={onNewAction}
               className={classes.button}
             >
               Nuevo
@@ -104,6 +128,7 @@ class ListRolesTemplateComponent extends PureComponent {
               variant="contained"
               onClick={onRefresh}
               className={classes.button}
+              disabled={!oneRowSelected}
             >
               Editar
             </Button>
@@ -111,6 +136,7 @@ class ListRolesTemplateComponent extends PureComponent {
               variant="contained"
               onClick={onRefresh}
               className={classes.button}
+              disabled={!multipleRowsSelected}
             >
               Habilitar
             </Button>
@@ -118,6 +144,7 @@ class ListRolesTemplateComponent extends PureComponent {
               variant="contained"
               onClick={onRefresh}
               className={classes.button}
+              disabled={!multipleRowsSelected}
             >
               Inhabilitar
             </Button>
@@ -125,8 +152,16 @@ class ListRolesTemplateComponent extends PureComponent {
               variant="contained"
               onClick={onRefresh}
               className={classes.button}
+              disabled={!multipleRowsSelected}
             >
               Eliminar
+            </Button>
+            <Button
+              variant="contained"
+              onClick={onRefresh}
+              className={classes.button}
+            >
+              Exportar
             </Button>
           </div>
 
@@ -135,6 +170,7 @@ class ListRolesTemplateComponent extends PureComponent {
             style={{ height: 500, width: 1024 }}
           >
             <AgGridReact
+              ref={c => (this.dataGrid = c)}
               rowSelection="multiple"
               columnDefs={this.buildGridDef()}
               rowData={items}

@@ -21,7 +21,8 @@
     "no-return-assign": 0,
     "no-plusplus": 0,
     "no-param-reassign": 0,
-    "compat/compat": "warn"
+    "compat/compat": "warn",
+    "react/no-string-refs": 0
   },
   "globals": {
     "window": true,

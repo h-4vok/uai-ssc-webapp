@@ -161,7 +161,7 @@ export class PlatformBar extends PureComponent {
               )}
               {this.buildMenuItem(
                 '/security/role',
-                'Roles',
+                'Gestión de Roles',
                 'ROLES_MANAGEMENT',
                 'ROLES_REPORT'
               )}

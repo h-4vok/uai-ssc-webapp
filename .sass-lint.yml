@@ -1,12 +1,12 @@
 options:
   formatter: stylish
 files:
-  include: "src/**/*.s+(a|c)ss"
+  include: 'src/**/*.s+(a|c)ss'
   ignore:
-    - "src/styles/sas-font-icon.scss"
-    - "src/app/components/molecules/radio-button/radio-button.component.scss"
-    - "src/app/components/atoms/check-box/check-box.component.scss"
-    - "src/styles/fonts.scss"
+    - 'src/styles/sas-font-icon.scss'
+    - 'src/app/components/molecules/radio-button/radio-button.component.scss'
+    - 'src/app/components/atoms/check-box/check-box.component.scss'
+    - 'src/styles/fonts.scss'
 rules:
   # Extends
   extends-before-mixins: 2
@@ -125,9 +125,9 @@ rules:
   url-quotes: 2
   variable-for-property:
     - 2
-    - "properties":
-        - "color"
-        - "background"
+    - 'properties':
+        - 'color'
+        - 'background'
   zero-unit: 2
 
   # Inner Spacing

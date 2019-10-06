@@ -34,12 +34,20 @@ class ListRolesPageComponent extends PureComponent {
       .go();
   }
 
+  onNewAction() {
+    this.props.history.push('/security/newRole');
+  }
+
   render() {
-    const { loaded, items } = this.state;
+    const { items } = this.state;
 
     return (
       <PlatformPageLayout>
-        <ListRolesTemplate items={items} onRefresh={() => this.onRefresh()} />
+        <ListRolesTemplate
+          items={items}
+          onRefresh={() => this.onRefresh()}
+          onNewAction={() => this.onNewAction()}
+        />
       </PlatformPageLayout>
     );
   }
