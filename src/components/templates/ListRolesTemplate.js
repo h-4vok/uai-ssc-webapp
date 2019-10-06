@@ -4,9 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import { ButtonBar } from '../molecules';
 
 const styles = theme => ({
   centerText: {
@@ -105,18 +105,15 @@ class ListRolesTemplateComponent extends PureComponent {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <div className={classes.buttonBar}>
-            <Box p={1}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={onRefresh}
-              >
-                Ejecutar
-              </Button>
-            </Box>
-
+          <ButtonBar>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              onClick={onRefresh}
+            >
+              Ejecutar
+            </Button>
             <Button
               variant="contained"
               onClick={onNewAction}
@@ -163,7 +160,7 @@ class ListRolesTemplateComponent extends PureComponent {
             >
               Exportar
             </Button>
-          </div>
+          </ButtonBar>
 
           <div
             className="ag-theme-material"

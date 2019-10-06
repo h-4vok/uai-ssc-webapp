@@ -8,3 +8,4 @@ export { MarketingCard } from './MarketingCard';
 export { PricingCard } from './PricingCard';
 export { SpinnerComponent } from './SpinnerComponent';
 export { PlatformBar } from './PlatformBar';
+export { ButtonBar } from './ButtonBar';
