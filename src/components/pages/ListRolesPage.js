@@ -35,7 +35,11 @@ class ListRolesPageComponent extends PureComponent {
   }
 
   onNewAction() {
-    this.props.history.push('/security/newRole');
+    this.props.history.push('/security/role/new');
+  }
+
+  onEditAction(id) {
+    this.props.history.push(`/security/role/${id}`);
   }
 
   render() {
@@ -47,6 +51,7 @@ class ListRolesPageComponent extends PureComponent {
           items={items}
           onRefresh={() => this.onRefresh()}
           onNewAction={() => this.onNewAction()}
+          onEditAction={id => this.onEditAction(id)}
         />
       </PlatformPageLayout>
     );

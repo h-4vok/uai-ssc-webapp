@@ -1,5 +1,6 @@
 /* eslint-disable complexity */
 import HttpVerbs from './HttpVerbs';
+import { GlobalState } from '../GlobalState';
 
 const checkIsSuccess = res => expected =>
   res && res.body && res.body.IsSuccess === expected;
@@ -49,8 +50,19 @@ export default class ApiResponseImplementor {
   };
 
   handleResponseError = (req, err, res) => {
+    const resultIsUnauthorized = () => res && res.status === 401;
+    const canUseGlobalHistory = () => !!GlobalState.History;
+
     if (req.allowsDefaultError) {
-      this.notifier.error();
+      if (resultIsUnauthorized()) {
+        if (canUseGlobalHistory()) {
+          GlobalState.History.push('/sign-in');
+        } else {
+          window.location.href = `http://${window.location.hostname}:${window.location.port}/#/sign-in`;
+        }
+      } else {
+        this.notifier.error();
+      }
     }
 
     req.callbacks.error.forEach(callback => callback(err, res));

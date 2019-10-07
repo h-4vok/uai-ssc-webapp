@@ -6,5 +6,6 @@ export const GlobalState = {
   SpinnerService: new SpinnerService(),
   Authorizer,
   AspNetSession: '',
-  Superagent: superagent.agent()
+  Superagent: superagent.agent(),
+  History: null
 };

@@ -60,7 +60,17 @@ export const protectedRoutes = [
     inProgressPlatformPage,
     'USERS_MANAGEMENT'
   ),
-  buildPlatformRoute('security/role', Pages.ListRolesPage, 'ROLES_MANAGEMENT'),
+  buildPlatformRoute(
+    'security/role/new',
+    Pages.EditRolePage,
+    'ROLES_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'security/role/:id',
+    Pages.EditRolePage,
+    'ROLES_MANAGEMENT'
+  ),
+  buildPlatformRoute('security/role', Pages.ListRolesPage, 'ROLES_REPORT'),
   buildPlatformRoute('security/log', inProgressPlatformPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute(
     'security/backup',

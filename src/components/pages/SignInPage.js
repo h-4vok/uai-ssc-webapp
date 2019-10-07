@@ -50,7 +50,7 @@ export class SignInPageComponent extends PureComponent {
     this.notifier = new SnackbarVisitor(this.props);
 
     this.state = {
-      signInEnabled: false,
+      signInEnabled: true,
       username: '',
       password: ''
     };
@@ -84,6 +84,7 @@ export class SignInPageComponent extends PureComponent {
           res.body.Result.GrantedPermissions
         );
 
+        GlobalState.History = this.props.history;
         GlobalState.AspNetSession = res.body.Result.SetCookie;
         document.cookie = GlobalState.AspNetSession;
 

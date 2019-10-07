@@ -97,8 +97,15 @@ class ListRolesTemplateComponent extends PureComponent {
     }
   ];
 
+  callEdit = onEditAction => {
+    const item = this.dataGrid.api.getSelectedRows()[0];
+    const id = item.Id;
+
+    onEditAction(id);
+  };
+
   render() {
-    const { items, classes, onRefresh, onNewAction } = this.props;
+    const { items, classes, onRefresh, onNewAction, onEditAction } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;
 
     return (
@@ -123,7 +130,7 @@ class ListRolesTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={() => this.callEdit(onEditAction)}
               className={classes.button}
               disabled={!oneRowSelected}
             >
