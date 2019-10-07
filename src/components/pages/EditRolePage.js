@@ -56,7 +56,7 @@ class EditRolePageComponent extends PureComponent {
 
   createModel = () => {
     this.api.request
-      .post('role`', this.state.model)
+      .post('role', this.state.model)
       .success(() => {
         this.props.history.push('/security/role');
       })

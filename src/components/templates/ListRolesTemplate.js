@@ -104,8 +104,24 @@ class ListRolesTemplateComponent extends PureComponent {
     onEditAction(id);
   };
 
+  callWithSelected = action => {
+    const items = this.dataGrid.api.getSelectedRows();
+
+    action(items, this.dataGrid.api);
+  };
+
   render() {
-    const { items, classes, onRefresh, onNewAction, onEditAction } = this.props;
+    const {
+      items,
+      classes,
+      onRefresh,
+      onNewAction,
+      onEditAction,
+      onEnableAction,
+      onDisableAction,
+      onDeleteAction,
+      onExportAction
+    } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;
 
     return (
@@ -138,7 +154,7 @@ class ListRolesTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={() => this.callWithSelected(onEnableAction)}
               className={classes.button}
               disabled={!multipleRowsSelected}
             >
@@ -146,7 +162,7 @@ class ListRolesTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={() => this.callWithSelected(onDisableAction)}
               className={classes.button}
               disabled={!multipleRowsSelected}
             >
@@ -154,7 +170,7 @@ class ListRolesTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={() => this.callWithSelected(onDeleteAction)}
               className={classes.button}
               disabled={!multipleRowsSelected}
             >
@@ -162,7 +178,7 @@ class ListRolesTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onRefresh}
+              onClick={onExportAction}
               className={classes.button}
             >
               Exportar

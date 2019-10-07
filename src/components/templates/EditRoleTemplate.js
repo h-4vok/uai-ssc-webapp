@@ -103,7 +103,7 @@ class EditRoleTemplateComponent extends PureComponent {
 
   render() {
     const { classes, permissions, onConfirm } = this.props;
-    const { Name, Permissions } = this.state;
+    const { Name } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">
