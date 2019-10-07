@@ -22,7 +22,8 @@
     "no-plusplus": 0,
     "no-param-reassign": 0,
     "compat/compat": "warn",
-    "react/no-string-refs": 0
+    "react/no-string-refs": 0,
+    "react/sort-comp": 0
   },
   "globals": {
     "window": true,

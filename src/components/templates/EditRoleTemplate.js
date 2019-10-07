@@ -31,7 +31,7 @@ class EditRoleTemplateComponent extends PureComponent {
 
     this.screenTitle = this.props.modelId ? 'Nuevo Rol' : 'Editar Rol';
 
-    if (this.props.model) {
+    if (this.isEditAction()) {
       const { Name, Permissions } = this.props.model;
 
       this.state = {
@@ -46,9 +46,14 @@ class EditRoleTemplateComponent extends PureComponent {
     }
   }
 
+  isEditAction() {
+    return this.props.model && this.props.model.Id;
+  }
+
   componentDidMount() {
     this.dataGrid.api.sizeColumnsToFit();
     this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
+    this.onGridReady();
   }
 
   onInputChange = event => {
@@ -59,6 +64,21 @@ class EditRoleTemplateComponent extends PureComponent {
   onRowSelection = e => {
     const selected = e.api.getSelectedRows();
     this.props.model.Permissions = selected;
+  };
+
+  onGridReady = () => {
+    if (!this.isEditAction()) return;
+
+    const isSelectedPermission = id =>
+      this.state.Permissions.some(
+        selectedPermission => selectedPermission.Id === id
+      );
+
+    this.dataGrid.api.forEachNode(node => {
+      if (isSelectedPermission(node.data.Id)) {
+        node.setSelected(true);
+      }
+    });
   };
 
   buildGridDef = () => [

@@ -55,6 +55,8 @@ export default class ApiResponseImplementor {
 
     if (req.allowsDefaultError) {
       if (resultIsUnauthorized()) {
+        this.notifier.error('Su sesión ha expirado.');
+
         if (canUseGlobalHistory()) {
           GlobalState.History.push('/sign-in');
         } else {

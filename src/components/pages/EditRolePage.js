@@ -46,21 +46,31 @@ class EditRolePageComponent extends PureComponent {
       .go();
   }
 
-  onConfirm() {
-    let route = 'role';
-    let verb = 'post';
-
+  onConfirm = () => {
     if (this.roleId) {
-      route = `role/${this.roleId}`;
-      verb = 'put';
+      this.updateModel();
+    } else {
+      this.createModel();
     }
+  };
 
-    this.api.request[verb](route, this.state.model)
+  createModel = () => {
+    this.api.request
+      .post('role`', this.state.model)
       .success(() => {
         this.props.history.push('/security/role');
       })
       .go();
-  }
+  };
+
+  updateModel = () => {
+    this.api.request
+      .put('role', this.state.model, this.roleId)
+      .success(() => {
+        this.props.history.push('/security/role');
+      })
+      .go();
+  };
 
   render() {
     const { model, permissions, allLoaded } = this.state;
