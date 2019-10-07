@@ -3,9 +3,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, Typography, Button } from '@material-ui/core';
+import { withSnackbar } from 'notistack';
 import { RouteLink } from '../atoms/RouteLink';
 import './ApplicationBar.styles.scss';
 import { Authorizer } from '../../lib/Authorizer';
+import { API } from '../../lib/xhr';
+import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
+import { GlobalState } from '../../lib/GlobalState';
 
 const defaultState = {
   anchorEl: null,
@@ -16,11 +20,14 @@ const defaultState = {
   workOrderMenuOpen: false
 };
 
-export class PlatformBar extends PureComponent {
+class PlatformBarComponent extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = defaultState;
+
+    this.notifier = new SnackbarVisitor(props);
+    this.api = new API(this.notifier);
   }
 
   handleMenuClick = (event, menuOpenVariableName) => {
@@ -63,6 +70,17 @@ export class PlatformBar extends PureComponent {
 
     return null;
   };
+
+  closeSession() {
+    this.api.request
+      .del('authentication', 0)
+      .preventDefaultSuccess()
+      .success(() => {
+        this.props.history.push('sign-in');
+        GlobalState.Authorizer.clearAuthorizations();
+      })
+      .go();
+  }
 
   render() {
     const {
@@ -280,9 +298,14 @@ export class PlatformBar extends PureComponent {
                 'RUN_EXECUTION_QC'
               )}
             </Menu>
+            <Button onClick={() => this.closeSession()} className="menu-button">
+              Cerrar Sesión
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
     );
   }
 }
+
+export const PlatformBar = withSnackbar(PlatformBarComponent);
