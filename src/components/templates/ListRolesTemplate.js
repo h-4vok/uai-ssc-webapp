@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ButtonBar } from '../molecules';
+import { GlobalState } from '../../lib/GlobalState';
 
 const styles = theme => ({
   centerText: {
@@ -137,45 +138,55 @@ class ListRolesTemplateComponent extends PureComponent {
             >
               Ejecutar
             </Button>
-            <Button
-              variant="contained"
-              onClick={onNewAction}
-              className={classes.button}
-            >
-              Nuevo
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callEdit(onEditAction)}
-              className={classes.button}
-              disabled={!oneRowSelected}
-            >
-              Editar
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callWithSelected(onEnableAction)}
-              className={classes.button}
-              disabled={!multipleRowsSelected}
-            >
-              Habilitar
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callWithSelected(onDisableAction)}
-              className={classes.button}
-              disabled={!multipleRowsSelected}
-            >
-              Inhabilitar
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callWithSelected(onDeleteAction)}
-              className={classes.button}
-              disabled={!multipleRowsSelected}
-            >
-              Eliminar
-            </Button>
+            {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
+              <Button
+                variant="contained"
+                onClick={onNewAction}
+                className={classes.button}
+              >
+                Nuevo
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
+              <Button
+                variant="contained"
+                onClick={() => this.callEdit(onEditAction)}
+                className={classes.button}
+                disabled={!oneRowSelected}
+              >
+                Editar
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
+              <Button
+                variant="contained"
+                onClick={() => this.callWithSelected(onEnableAction)}
+                className={classes.button}
+                disabled={!multipleRowsSelected}
+              >
+                Habilitar
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
+              <Button
+                variant="contained"
+                onClick={() => this.callWithSelected(onDisableAction)}
+                className={classes.button}
+                disabled={!multipleRowsSelected}
+              >
+                Inhabilitar
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
+              <Button
+                variant="contained"
+                onClick={() => this.callWithSelected(onDeleteAction)}
+                className={classes.button}
+                disabled={!multipleRowsSelected}
+              >
+                Eliminar
+              </Button>
+            )}
             <Button
               variant="contained"
               onClick={onExportAction}
