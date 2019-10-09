@@ -12,3 +12,4 @@ export { SignUpConfirmPage } from './SignUpConfirmPage';
 export { PlatformHomePage } from './PlatformHomePage';
 export { ListRolesPage } from './ListRolesPage';
 export { EditRolePage } from './EditRolePage';
+export { AboutUsPage } from './AboutUsPage';

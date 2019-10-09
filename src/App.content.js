@@ -13,7 +13,7 @@ const buildPlatformRoute = (path, component, permission) => ({
 export const unprotectedRoutes = [
   buildRoute('pricing', Pages.PricingPage),
   buildRoute('ssc', inProgressSitePage),
-  buildRoute('about', inProgressSitePage),
+  buildRoute('about', Pages.AboutUsPage),
   buildRoute('forgot-password', inProgressSitePage),
   buildRoute('sign-up--initial', Pages.SignUpInitialPage),
   buildRoute('sign-up--company', Pages.SignUpCompanyPage),

@@ -6,3 +6,4 @@ export { SignUpBillingTemplate } from './SignUpBillingTemplate';
 export { SignUpConfirmTemplate } from './SignUpConfirmTemplate';
 export { ListRolesTemplate } from './ListRolesTemplate';
 export { EditRoleTemplate } from './EditRoleTemplate';
+export { AboutUsTemplate } from './AboutUsTemplate';
