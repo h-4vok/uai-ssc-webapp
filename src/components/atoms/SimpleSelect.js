@@ -15,7 +15,15 @@ class SimpleSelectComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { classes, name, value, label, items = [], noEmpty } = this.props;
+    const {
+      classes,
+      name,
+      value,
+      label,
+      items = [],
+      noEmpty,
+      showLabel = true
+    } = this.props;
 
     this.classes = classes;
 
@@ -24,7 +32,8 @@ class SimpleSelectComponent extends PureComponent {
       label,
       value,
       items,
-      noEmpty
+      noEmpty,
+      showLabel
     };
   }
 
@@ -36,7 +45,9 @@ class SimpleSelectComponent extends PureComponent {
   render() {
     return (
       <FormControl {...this.props} className={this.classes.formControl}>
-        <InputLabel htmlFor={this.state.name}>{this.state.label}</InputLabel>
+        {this.state.showLabel && (
+          <InputLabel htmlFor={this.state.name}>{this.state.label}</InputLabel>
+        )}
         <Select
           value={this.state.value}
           onChange={this.handleChange}

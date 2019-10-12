@@ -6,7 +6,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import LanguageIcon from '@material-ui/icons/Language';
-import { RouteLink } from '../atoms/RouteLink';
+import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
 import { GlobalState } from '../../lib/GlobalState';
 import { LocalizationService } from '../../lib/LocalizationService';
@@ -75,6 +75,13 @@ class ApplicationBarComponent extends PureComponent {
                 <RouteLink link="">Sample Supply Chain</RouteLink>
               </Button>
             </Typography>
+
+            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+              <EnglishLanguageIcon />
+            </Button>
+            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+              <SpanishLanguageIcon />
+            </Button>
 
             <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
               -A

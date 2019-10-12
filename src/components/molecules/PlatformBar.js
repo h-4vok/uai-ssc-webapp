@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import { withSnackbar } from 'notistack';
-import { RouteLink } from '../atoms/RouteLink';
+import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
 import { Authorizer } from '../../lib/Authorizer';
 import { API } from '../../lib/xhr';
@@ -119,6 +119,13 @@ class PlatformBarComponent extends PureComponent {
                 <RouteLink link="">Sample Supply Chain</RouteLink>
               </Button>
             </Typography>
+
+            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+              <EnglishLanguageIcon />
+            </Button>
+            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+              <SpanishLanguageIcon />
+            </Button>
 
             <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
               -A
