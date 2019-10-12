@@ -34,12 +34,21 @@ class EditLanguagesPageComponent extends PureComponent {
       .go();
   }
 
+  onEditAction(id) {
+    this.props.history.push(`/configuration/language/${id}`);
+  }
+
   render() {
     const { languages, loaded } = this.state;
 
     return (
       <PlatformPageLayout>
-        {loaded && <EditLanguagesTemplate languages={languages} />}
+        {loaded && (
+          <EditLanguagesTemplate
+            languages={languages}
+            onEditAction={id => this.onEditAction(id)}
+          />
+        )}
       </PlatformPageLayout>
     );
   }

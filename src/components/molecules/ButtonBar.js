@@ -11,7 +11,12 @@ const styles = () => ({
 
 class ButtonBarComponent extends PureComponent {
   buildItems() {
-    const output = this.props.children.map(child => <Box p={1}>{child}</Box>);
+    let output = null;
+    if (Array.isArray(this.props.children)) {
+      output = this.props.children.map(child => <Box p={1}>{child}</Box>);
+    } else {
+      output = <Box p={1}>{this.props.children}</Box>;
+    }
 
     return output;
   }

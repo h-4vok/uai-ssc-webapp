@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import MenuIcon from '@material-ui/icons/Menu';
 import AppBar from '@material-ui/core/AppBar';
-import { Toolbar, Typography, Button } from '@material-ui/core';
+import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import { withSnackbar } from 'notistack';
 import { RouteLink } from '../atoms/RouteLink';
 import './ApplicationBar.styles.scss';
@@ -43,7 +44,11 @@ class PlatformBarComponent extends PureComponent {
 
   goTo = route => {
     this.handleClose();
-    this.props.history.push(route);
+    if (GlobalState.History) {
+      GlobalState.History.push(route);
+    } else {
+      window.location.href = `http://${window.location.hostname}:${window.location.port}/#${route}`;
+    }
   };
 
   buildButton = (ariaControl, label, menuOpenVariableName, ...permissions) => {
@@ -76,8 +81,13 @@ class PlatformBarComponent extends PureComponent {
       .del('authentication', 0)
       .preventDefaultSuccess()
       .success(() => {
-        this.props.history.push('sign-in');
         GlobalState.Authorizer.clearAuthorizations();
+
+        if (GlobalState.History) {
+          GlobalState.History.push('sign-in');
+        } else {
+          window.location.href = `http://${window.location.hostname}:${window.location.port}/#/sign-in`;
+        }
       })
       .go();
   }
@@ -96,11 +106,26 @@ class PlatformBarComponent extends PureComponent {
       <div className="application-bar">
         <AppBar position="fixed">
           <Toolbar>
+            <IconButton
+              edge="start"
+              className="application-bar-menu-button"
+              color="inherit"
+              aria-label="menu"
+            >
+              <MenuIcon />
+            </IconButton>
             <Typography variant="h6" className="application-bar-title">
               <Button size="large">
                 <RouteLink link="">Sample Supply Chain</RouteLink>
               </Button>
             </Typography>
+
+            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+              -A
+            </Button>
+            <Button onClick={() => GlobalState.AppComponent.increaseFontSize()}>
+              +A
+            </Button>
 
             {this.buildButton(
               'configuration-menu',

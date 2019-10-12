@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { SimpleSelect } from '../atoms';
+import { ButtonBar } from '../molecules';
 
 const styles = theme => ({
   paper: {
@@ -23,18 +24,25 @@ class EditLanguagesTemplateComponent extends PureComponent {
     this.languages = this.props.languages;
 
     this.state = {
-      selectedLanguage: null
+      selectedLanguage: null,
+      languageItems: this.buildLanguages(),
+      oneRowSelected: false
     };
   }
+
+  buildLanguages = () =>
+    this.languages.map(item => ({ value: item.Id, label: item.Name, item }));
 
   buildGridDef = () => [
     {
       headerName: 'Clave',
-      field: 'EntryKey',
+      field: 'Key',
       sortable: true,
       filter: true,
       checkboxSelection: true,
-      headerCheckboxSelection: false
+      headerCheckboxSelection: false,
+      maxWidth: 400,
+      width: 400
     },
     {
       headerName: 'Traducción',
@@ -45,17 +53,52 @@ class EditLanguagesTemplateComponent extends PureComponent {
   ];
 
   onSelectedLanguageChange = event => {
-    const selectedLanguage = event.target.value;
-    const languageEntries = selectedLanguage.Entries;
+    const selectedLanguageId = event.target.value;
+    const selectedLanguage = this.languages.find(
+      x => x.Id === selectedLanguageId
+    );
+
+    const languageEntries = selectedLanguage ? selectedLanguage.Entries : null;
+    this.setState(
+      {
+        selectedLanguage,
+        languageEntries
+      },
+      () => {
+        if (selectedLanguage) this.onGridRefresh();
+      }
+    );
+  };
+
+  onGridRefresh() {
+    this.dataGrid.api.sizeColumnsToFit();
+
+    this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
+  }
+
+  onRowSelection = e => {
+    const selected = e.api.getSelectedRows();
+
     this.setState({
-      selectedLanguage,
-      languageEntries
+      oneRowSelected: selected.length === 1
     });
   };
 
+  callEdit = onEditAction => {
+    const item = this.dataGrid.api.getSelectedRows()[0];
+    const id = item.Id;
+
+    onEditAction(id);
+  };
+
   render() {
-    const { classes, languages } = this.props;
-    const { selectedLanguage, languageEntries } = this.state;
+    const { classes, onEditAction } = this.props;
+    const {
+      selectedLanguage,
+      languageEntries,
+      languageItems,
+      oneRowSelected
+    } = this.state;
 
     return (
       <Container component="main" maxWidth="md">
@@ -65,10 +108,20 @@ class EditLanguagesTemplateComponent extends PureComponent {
             name="selectedLanguage"
             label="Idioma"
             fullWidth
-            items={languages}
+            items={languageItems}
             value={selectedLanguage}
             onChange={this.onSelectedLanguageChange}
           />
+          <ButtonBar>
+            <Button
+              variant="contained"
+              onClick={() => this.callEdit(onEditAction)}
+              className={classes.button}
+              disabled={!oneRowSelected}
+            >
+              Editar
+            </Button>
+          </ButtonBar>
         </div>
         <div className="ag-theme-material" style={{ height: 500, width: 1024 }}>
           {selectedLanguage && (

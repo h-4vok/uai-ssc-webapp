@@ -32,10 +32,13 @@ export default class ApiRequestFactory {
   };
 
   getById = (address, id = '') => {
-    address = this.setupRoute(address);
     address = this.concatId(address, id);
+    address = this.setupRoute(address);
 
-    return this.get(address);
+    const req = new ApiRequest(address);
+    this.setupReq(req, HttpVerbs.get);
+
+    return req;
   };
 
   buildRequest = (verb, address, body = null) => {

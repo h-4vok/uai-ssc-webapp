@@ -7,5 +7,8 @@ export const GlobalState = {
   Authorizer,
   AspNetSession: '',
   Superagent: superagent.agent(),
-  History: null
+  History: null,
+  SiteTheme: null,
+  AppComponent: null,
+  Dictionary: null
 };
