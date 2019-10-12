@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { Container, CssBaseline } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { SimpleSelect, SimpleTextField } from '../atoms';
 import { API } from '../../lib/xhr';
 
@@ -92,7 +92,6 @@ class SignUpBillingTemplateComponent extends PureComponent {
 
     return (
       <Container component="main" maxWidth="md">
-        <CssBaseline />
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
             Datos de Facturación

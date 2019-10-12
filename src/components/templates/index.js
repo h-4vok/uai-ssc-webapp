@@ -8,3 +8,4 @@ export { ListRolesTemplate } from './ListRolesTemplate';
 export { EditRoleTemplate } from './EditRoleTemplate';
 export { AboutUsTemplate } from './AboutUsTemplate';
 export { ListLanguagesTemplate } from './ListLanguagesTemplate';
+export { EditLanguageEntryTemplate } from './EditLanguageEntryTemplate';

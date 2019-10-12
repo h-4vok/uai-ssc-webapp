@@ -166,7 +166,7 @@ class PlatformBarComponent extends PureComponent {
               )}
               {this.buildMenuItem(
                 '/configuration/language',
-                'Idiomas',
+                'Gestión de Idiomas',
                 'LANGUAGES_MANAGEMENT'
               )}
               {this.buildMenuItem(

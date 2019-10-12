@@ -14,3 +14,4 @@ export { ListRolesPage } from './ListRolesPage';
 export { EditRolePage } from './EditRolePage';
 export { AboutUsPage } from './AboutUsPage';
 export { ListLanguagesPage } from './ListLanguagesPage';
+export { EditLanguageEntryPage } from './EditLanguageEntryPage';

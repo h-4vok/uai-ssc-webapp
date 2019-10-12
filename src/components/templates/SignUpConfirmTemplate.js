@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { SimpleTextField } from '../atoms';
@@ -47,7 +46,6 @@ class SignUpConfirmTemplateComponent extends PureComponent {
     return (
       <PageLayout>
         <Container component="main" maxWidth="xs">
-          <CssBaseline />
           <div className={classes.paper}>
             <Typography component="h1" variant="h5">
               Verificación por correo

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
 import * as Pages from './components/pages';
 import './App.scss';
 import {
@@ -56,8 +57,9 @@ export class App extends PureComponent {
 
     return (
       <Router>
-        <ThemeProvider theme={appTheme}>
-          <div>
+        <div>
+          <CssBaseline />
+          <ThemeProvider theme={appTheme}>
             <Switch>
               <UnprotectedRoute
                 exact
@@ -88,8 +90,8 @@ export class App extends PureComponent {
 
               <Route component={NoMatchRoute} />
             </Switch>
-          </div>
-        </ThemeProvider>
+          </ThemeProvider>
+        </div>
       </Router>
     );
   }

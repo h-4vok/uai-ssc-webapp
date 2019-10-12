@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -107,7 +106,6 @@ class EditRoleTemplateComponent extends PureComponent {
 
     return (
       <Container component="main" maxWidth="lg">
-        <CssBaseline />
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
             {this.screenTitle}

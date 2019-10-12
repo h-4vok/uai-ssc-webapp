@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -127,7 +126,6 @@ class ListRolesTemplateComponent extends PureComponent {
 
     return (
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <div className={classes.paper}>
           <ButtonBar>
             <Button
