@@ -7,4 +7,4 @@ export { SignUpConfirmTemplate } from './SignUpConfirmTemplate';
 export { ListRolesTemplate } from './ListRolesTemplate';
 export { EditRoleTemplate } from './EditRoleTemplate';
 export { AboutUsTemplate } from './AboutUsTemplate';
-export { EditLanguagesTemplate } from './EditLanguagesTemplate';
+export { ListLanguagesTemplate } from './ListLanguagesTemplate';

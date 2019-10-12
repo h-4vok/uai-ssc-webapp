@@ -47,7 +47,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'configuration/language',
-    Pages.EditLanguagesPage,
+    Pages.ListLanguagesPage,
     'LANGUAGES_MANAGEMENT'
   ),
   buildPlatformRoute(

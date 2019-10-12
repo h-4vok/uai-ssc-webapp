@@ -13,4 +13,4 @@ export { PlatformHomePage } from './PlatformHomePage';
 export { ListRolesPage } from './ListRolesPage';
 export { EditRolePage } from './EditRolePage';
 export { AboutUsPage } from './AboutUsPage';
-export { EditLanguagesPage } from './EditLanguagesPage';
+export { ListLanguagesPage } from './ListLanguagesPage';

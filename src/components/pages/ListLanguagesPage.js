@@ -3,9 +3,9 @@ import { withSnackbar } from 'notistack';
 import { PlatformPageLayout } from '../organisms';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
-import { EditLanguagesTemplate } from '../templates';
+import { ListLanguagesTemplate } from '../templates';
 
-class EditLanguagesPageComponent extends PureComponent {
+class ListLanguagesPageComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -44,7 +44,7 @@ class EditLanguagesPageComponent extends PureComponent {
     return (
       <PlatformPageLayout>
         {loaded && (
-          <EditLanguagesTemplate
+          <ListLanguagesTemplate
             languages={languages}
             onEditAction={id => this.onEditAction(id)}
           />
@@ -54,4 +54,4 @@ class EditLanguagesPageComponent extends PureComponent {
   }
 }
 
-export const EditLanguagesPage = withSnackbar(EditLanguagesPageComponent);
+export const ListLanguagesPage = withSnackbar(ListLanguagesPageComponent);

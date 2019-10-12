@@ -17,7 +17,7 @@ const styles = theme => ({
   }
 });
 
-class EditLanguagesTemplateComponent extends PureComponent {
+class ListLanguagesTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -66,6 +66,8 @@ class EditLanguagesTemplateComponent extends PureComponent {
       },
       () => {
         if (selectedLanguage) this.onGridRefresh();
+
+        this.setState({ oneRowSelected: false });
       }
     );
   };
@@ -138,6 +140,6 @@ class EditLanguagesTemplateComponent extends PureComponent {
   }
 }
 
-export const EditLanguagesTemplate = withStyles(styles)(
-  EditLanguagesTemplateComponent
+export const ListLanguagesTemplate = withStyles(styles)(
+  ListLanguagesTemplateComponent
 );
