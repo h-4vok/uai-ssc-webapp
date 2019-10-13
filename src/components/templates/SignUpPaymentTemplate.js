@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { SimpleTextField } from '../atoms';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -48,7 +49,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const {
       creditCardNumber,
       creditCardHolder,
@@ -60,7 +61,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
       <Container component="main" maxWidth="md">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            Datos de Tarjeta de Crédito
+            {i10n['sign-up--payment-data.page.title']}
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={3}>
@@ -69,7 +70,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
                   required
                   id="creditCardNumber"
                   name="creditCardNumber"
-                  label="Número de tarjeta"
+                  label={i10n['sign-up--payment-data.creditCardNumber']}
                   fullWidth
                   maxLength="19"
                   value={creditCardNumber}
@@ -81,7 +82,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
                   required
                   id="creditCardHolder"
                   name="creditCardHolder"
-                  label="Titular"
+                  label={i10n['sign-up--payment-data.creditCardHolder']}
                   fullWidth
                   maxLength="200"
                   value={creditCardHolder}
@@ -93,7 +94,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
                   required
                   id="creditCardCcv"
                   name="creditCardCcv"
-                  label="CCV"
+                  label={i10n['sign-up--payment-data.ccv']}
                   fullWidth
                   maxLength="4"
                   value={creditCardCcv}
@@ -105,7 +106,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
                   required
                   id="creditCardExpirationDate"
                   name="creditCardExpirationDate"
-                  label="Fecha de Expiración"
+                  label={i10n['sign-up--payment-data.expirationDate']}
                   fullWidth
                   maxLength="4"
                   value={creditCardExpirationDate}
@@ -120,7 +121,7 @@ class SignUpPaymentTemplateComponent extends PureComponent {
               className={classes.submit}
               onClick={onConfirm}
             >
-              Continuar
+              {i10n['sign-up--payment-data.continue']}
             </Button>
           </form>
         </div>
@@ -129,6 +130,6 @@ class SignUpPaymentTemplateComponent extends PureComponent {
   }
 }
 
-export const SignUpPaymentTemplate = withStyles(styles)(
-  SignUpPaymentTemplateComponent
+export const SignUpPaymentTemplate = withLocalization(
+  withStyles(styles)(SignUpPaymentTemplateComponent)
 );

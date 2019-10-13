@@ -74,4 +74,10 @@ export const defaultDictionary = {
   'sign-up--company.province': 'Provincia',
   'sign-up--company.street': 'Calle',
   'sign-up--company.streetNumber': 'Número',
+  'sign-up--payment-data.ccv': 'CCV',
+  'sign-up--payment-data.continue': 'Continuar',
+  'sign-up--payment-data.creditCardHolder': 'Titular como figura en la tarjeta',
+  'sign-up--payment-data.creditCardNumber': 'Número de tarjeta',
+  'sign-up--payment-data.expirationDate': 'Fecha de expiración (MMYY)',
+  'sign-up--payment-data.page.title': 'Datos de Tarjeta de Crédito',
 };
