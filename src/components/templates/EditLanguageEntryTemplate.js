@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -40,14 +41,14 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm, onCancel } = this.props;
+    const { classes, onConfirm, onCancel, i10n } = this.props;
     const { Key, Translation } = this.state;
 
     return (
       <Container component="main" maxWidth="md">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            Editar Clave de Diccionario
+            {i10n['configuration.editLanguageEntry.title']}
           </Typography>
         </div>
         <form className={classes.form} noValidate>
@@ -55,7 +56,7 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
             <Grid item xs={12}>
               <TextField
                 readonly
-                label="Clave"
+                label={i10n['configuration.editLanguageEntry.key']}
                 fullWidth
                 value={Key}
                 InputProps={{ readOnly: true }}
@@ -65,7 +66,7 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
                 maxLength="500"
                 id="Translation"
                 name="Translation"
-                label="Traducción"
+                label={i10n['configuration.editLanguageEntry.translation']}
                 fullWidth
                 multiline
                 rowsMax="6"
@@ -81,7 +82,7 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
                 className={classes.submit}
                 onClick={onConfirm}
               >
-                Confirmar
+                {i10n['configuration.editLanguageEntry.confirm']}
               </Button>
             </Grid>
             <Grid item xs={6}>
@@ -91,7 +92,7 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
                 className={classes.submit}
                 onClick={onCancel}
               >
-                Cancelar
+                {i10n['configuration.editLanguageEntry.cancel']}
               </Button>
             </Grid>
           </Grid>
@@ -101,6 +102,6 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
   }
 }
 
-export const EditLanguageEntryTemplate = withStyles(styles)(
-  EditLanguageEntryTemplateComponent
+export const EditLanguageEntryTemplate = withLocalization(
+  withStyles(styles)(EditLanguageEntryTemplateComponent)
 );
