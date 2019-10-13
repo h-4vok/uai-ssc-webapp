@@ -31,6 +31,25 @@ class PlatformBarComponent extends PureComponent {
     this.api = new API(this.notifier);
   }
 
+  changeLanguageTo = languageCode => {
+    this.api.request
+      .getById('systemLanguage', languageCode)
+      .preventDefaultError()
+      .preventDefaultFailure()
+      .preventDefaultSuccess()
+      .success(res => {
+        const entries = res.body.Result;
+        const dictionary = {};
+
+        entries.forEach(
+          ({ Key, Translation }) => (dictionary[Key] = Translation)
+        );
+
+        GlobalState.AppComponent.switchLanguage(dictionary);
+      })
+      .go();
+  };
+
   handleMenuClick = (event, menuOpenVariableName) => {
     this.setState({
       anchorEl: event.currentTarget,
@@ -120,10 +139,10 @@ class PlatformBarComponent extends PureComponent {
               </Button>
             </Typography>
 
-            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+            <Button onClick={() => this.changeLanguageTo(2)}>
               <EnglishLanguageIcon />
             </Button>
-            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+            <Button onClick={() => this.changeLanguageTo(1)}>
               <SpanishLanguageIcon />
             </Button>
 

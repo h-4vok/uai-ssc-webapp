@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react';
 import { withSnackbar } from 'notistack';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, IconButton, Typography, Button } from '@material-ui/core';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
-import LanguageIcon from '@material-ui/icons/Language';
 import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
 import withLocalization from '../../localization/withLocalization';
@@ -19,26 +16,7 @@ class ApplicationBarComponent extends PureComponent {
 
     this.notifier = new SnackbarVisitor(props);
     this.api = new API(this.notifier);
-
-    this.state = {
-      languageMenuOpen: false,
-      anchorEl: null
-    };
   }
-
-  handleClose = () => {
-    this.setState({
-      anchorEl: null,
-      languageMenuOpen: false
-    });
-  };
-
-  handleMenuClick = event => {
-    this.setState({
-      anchorEl: event.currentTarget,
-      languageMenuOpen: true
-    });
-  };
 
   changeLanguageTo = languageCode => {
     this.api.request
@@ -57,13 +35,10 @@ class ApplicationBarComponent extends PureComponent {
         GlobalState.AppComponent.switchLanguage(dictionary);
       })
       .go();
-
-    this.handleClose();
   };
 
   render() {
     const { i10n } = this.props;
-    const { languageMenuOpen, anchorEl } = this.state;
 
     return (
       <div className="application-bar">
@@ -110,29 +85,6 @@ class ApplicationBarComponent extends PureComponent {
             <Button variant="outlined">
               <RouteLink link="sign-in">Ingresar</RouteLink>
             </Button>
-            <Button
-              aria-controls="language-menu"
-              aria-haspopup="true"
-              onClick={event => this.handleMenuClick(event)}
-              className="menu-button"
-            >
-              <LanguageIcon />
-            </Button>
-
-            <Menu
-              id="language-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={languageMenuOpen}
-              onClose={this.handleClose}
-            >
-              <MenuItem onClick={() => this.changeLanguageTo('es')}>
-                Español
-              </MenuItem>
-              <MenuItem onClick={() => this.changeLanguageTo('en')}>
-                English
-              </MenuItem>
-            </Menu>
           </Toolbar>
         </AppBar>
       </div>
