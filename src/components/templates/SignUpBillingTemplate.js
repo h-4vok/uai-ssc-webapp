@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { SimpleSelect, SimpleTextField } from '../atoms';
 import { API } from '../../lib/xhr';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -76,7 +77,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const {
       billingCompanyName,
       billingCompanyIdentification,
@@ -94,7 +95,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
       <Container component="main" maxWidth="md">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            Datos de Facturación
+            {i10n['sign-up--billing.page.title']}
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={3}>
@@ -103,7 +104,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingCompanyName"
                   name="billingCompanyName"
-                  label="Denominación Fiscal"
+                  label={i10n['sign-up--billing.name']}
                   fullWidth
                   maxLength="200"
                   value={billingCompanyName}
@@ -115,7 +116,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingCompanyIdentification"
                   name="billingCompanyIdentification"
-                  label="Número de identificación fiscal"
+                  label={i10n['sign-up--billing.taxCode']}
                   fullWidth
                   maxLength="11"
                   value={billingCompanyIdentification}
@@ -127,7 +128,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   <SimpleSelect
                     required
                     name="billingProvince"
-                    label="Provincia"
+                    label={i10n['sign-up--billing.province']}
                     fullWidth
                     items={provinceItems}
                     value={billingProvince}
@@ -140,7 +141,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingCity"
                   name="billingCity"
-                  label="Ciudad"
+                  label={i10n['sign-up--billing.city']}
                   fullWidth
                   maxLength="200"
                   value={billingCity}
@@ -152,7 +153,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingStreet"
                   name="billingStreet"
-                  label="Calle"
+                  label={i10n['sign-up--billing.street']}
                   fullWidth
                   maxLength="500"
                   value={billingStreet}
@@ -164,7 +165,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingStreetNumber"
                   name="billingStreetNumber"
-                  label="Número"
+                  label={i10n['sign-up--billing.streetNumber']}
                   fullWidth
                   maxLength="35"
                   value={billingStreetNumber}
@@ -176,7 +177,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingDepartment"
                   name="billingDepartment"
-                  label="Departamento"
+                  label={i10n['sign-up--billing.department']}
                   fullWidth
                   maxLength="35"
                   value={billingDepartment}
@@ -188,7 +189,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
                   required
                   id="billingPostalCode"
                   name="billingPostalCode"
-                  label="Código Postal"
+                  label={i10n['sign-up--billing.postalCode']}
                   fullWidth
                   maxLength="35"
                   value={billingPostalCode}
@@ -203,7 +204,7 @@ class SignUpBillingTemplateComponent extends PureComponent {
               className={classes.submit}
               onClick={onConfirm}
             >
-              Continuar
+              {i10n['sign-up--billing.continue']}
             </Button>
           </form>
         </div>
@@ -212,6 +213,6 @@ class SignUpBillingTemplateComponent extends PureComponent {
   }
 }
 
-export const SignUpBillingTemplate = withStyles(styles)(
-  SignUpBillingTemplateComponent
+export const SignUpBillingTemplate = withLocalization(
+  withStyles(styles)(SignUpBillingTemplateComponent)
 );
