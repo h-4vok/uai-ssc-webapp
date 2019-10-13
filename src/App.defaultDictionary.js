@@ -1,5 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
-
 export const defaultDictionary = {
   'app.home.slogan':
     'La solución integral para la administración de muestras de tu laboratorio.',
@@ -188,5 +186,6 @@ export const defaultDictionary = {
   'validator.ui.string-max-length-spec':
     'El campo ${propLabel} no puede superar los ${maxLength} caracteres.',
   'validator.ui.string-min-length-spec':
-    'El campo ${propLabel} debe superar los ${minLength} caracteres.'
+    'El campo ${propLabel} debe superar los ${minLength} caracteres.',
+  'spinner.please-wait': 'Por favor espere...'
 };

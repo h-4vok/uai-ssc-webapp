@@ -26,7 +26,6 @@ export class SpinnerComponent extends PureComponent {
       <LoadingOverlay
         active={active}
         spinner
-        text="Por favor espere..."
         styles={{
           wrapper: {
             position: active ? 'fixed' : 'inherit',
