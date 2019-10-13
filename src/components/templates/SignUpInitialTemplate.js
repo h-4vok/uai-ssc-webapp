@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { RouteLink, PasswordRequirementsBox } from '../atoms';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   '@global': {
@@ -49,7 +50,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const { firstName, lastName, email } = this.state;
 
     return (
@@ -59,7 +60,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Registración
+            {i10n['sign-up--initial.page.title']}
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
@@ -71,7 +72,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
                   required
                   fullWidth
                   id="firstName"
-                  label="Nombre"
+                  label={i10n['sign-up--initial.name']}
                   autoFocus
                   value={firstName}
                   onChange={this.onInputChange}
@@ -83,7 +84,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
                   required
                   fullWidth
                   id="lastName"
-                  label="Apellido"
+                  label={i10n['sign-up--initial.lastName']}
                   name="lastName"
                   autoComplete="lname"
                   value={lastName}
@@ -96,7 +97,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
                   required
                   fullWidth
                   id="email"
-                  label="Correo electrónico"
+                  label={i10n['sign-up--initial.email']}
                   name="email"
                   autoComplete="email"
                   value={email}
@@ -109,7 +110,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
                   required
                   fullWidth
                   name="password"
-                  label="Contraseña"
+                  label={i10n['sign-up--initial.password']}
                   type="password"
                   id="password"
                   onChange={this.onInputChange}
@@ -121,7 +122,7 @@ export class SignUpInitialTemplateClass extends PureComponent {
                   required
                   fullWidth
                   name="password2"
-                  label="Repetir contraseña"
+                  label={i10n['sign-up--initial.repeatPassword']}
                   type="password"
                   id="password2"
                   onChange={this.onInputChange}
@@ -138,15 +139,8 @@ export class SignUpInitialTemplateClass extends PureComponent {
               className={classes.submit}
               onClick={onConfirm}
             >
-              Continuar
+              {i10n['sign-up--initial.continue']}
             </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <RouteLink link="sign-in" variant="body2">
-                  Ya posee una cuenta? Autentíquese.
-                </RouteLink>
-              </Grid>
-            </Grid>
           </form>
         </div>
       </Container>
@@ -154,6 +148,6 @@ export class SignUpInitialTemplateClass extends PureComponent {
   }
 }
 
-export const SignUpInitialTemplate = withStyles(styles)(
-  SignUpInitialTemplateClass
+export const SignUpInitialTemplate = withLocalization(
+  withStyles(styles)(SignUpInitialTemplateClass)
 );

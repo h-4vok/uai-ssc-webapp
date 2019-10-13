@@ -69,5 +69,22 @@ export const defaultDictionary = {
   'sign-in.login': 'Autenticarse',
   'sign-in.page.title': 'Autenticarse',
   'sign-in.password': 'Contraseña',
-  'sign-in.sign-up': 'Registrar nueva cuenta'
+  'sign-in.sign-up': 'Registrar nueva cuenta',
+  'sign-up--initial.continue': 'Continuar',
+  'sign-up--initial.email': 'Correo electrónico',
+  'sign-up--initial.lastName': 'Apellido',
+  'sign-up--initial.name': 'Nombre',
+  'sign-up--initial.page.title': 'Registración',
+  'sign-up--initial.password': 'Contraseña',
+  'sign-up--initial.password-strength.minChar':
+    'La contraseña debe tener al menos 8 caracteres',
+  'sign-up--initial.password-strength.oneLowerCaseChar':
+    'Debe utilizar al menos una letra minúscula',
+  'sign-up--initial.password-strength.oneNumber':
+    'Debe utilizar al menos un número',
+  'sign-up--initial.password-strength.oneSpecialSymbol':
+    'Debe utilizar un caractér especial de entre: (! @ + # $ ^ & *)',
+  'sign-up--initial.password-strength.oneUpperCaseChar':
+    'Debe utilizar al menos una letra mayúscula',
+  'sign-up--initial.repeatPassword': 'Repetir contraseña'
 };

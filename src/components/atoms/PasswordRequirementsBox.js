@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Done } from '@material-ui/icons';
+import withLocalization from '../../localization/withLocalization';
 
 const useStyles = makeStyles(theme => ({
   listRoot: {
@@ -15,16 +16,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const passwordRequirements = [
-  'La contraseña debe tener al menos 8 caracteres',
-  'Debe utilizar al menos un número',
-  'Debe utilizar al menos una letra minúscula',
-  'Debe utilizar al menos una letra mayúscula',
-  'Debe utilizar un caracter especial de entre: (! @ + # $ % ^ & *)'
-];
-
-export const PasswordRequirementsBox = () => {
+const PasswordRequirementsBoxComponent = ({ i10n }) => {
   const classes = useStyles();
+
+  const passwordRequirements = [
+    i10n['sign-up--initial.password-strength.minChar'],
+    i10n['sign-up--initial.password-strength.oneNumber'],
+    i10n['sign-up--initial.password-strength.oneLowerCaseChar'],
+    i10n['sign-up--initial.password-strength.oneUpperCaseChar'],
+    i10n['sign-up--initial.password-strength.oneSpecialSymbol']
+  ];
 
   return (
     <List component="nav" className={classes.listRoot}>
@@ -39,3 +40,7 @@ export const PasswordRequirementsBox = () => {
     </List>
   );
 };
+
+export const PasswordRequirementsBox = withLocalization(
+  PasswordRequirementsBoxComponent
+);
