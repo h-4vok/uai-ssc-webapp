@@ -2,49 +2,47 @@ import React from 'react';
 import { Typography, GridList, GridListTile } from '@material-ui/core';
 import { MarketingCard } from '../molecules';
 import { PageLayout, PricingChart } from '../organisms';
+import withLocalization from '../../localization/withLocalization';
 import './MarketingHome.scss';
 
-export const MarketingHome = () => (
+const MarketingHomeComponent = ({ i10n }) => (
   <PageLayout>
     <div className="marketing-home">
-      <Typography variant="h2">Sample Supply Chain</Typography>
-      <Typography variant="h4">
-        Your one stop shop for sample supply management in your lab.
-      </Typography>
+      <Typography variant="h2">{i10n['app.title']}</Typography>
+      <Typography variant="h4">{i10n['app.home.slogan']}</Typography>
 
       <GridList cols={2} className="marketing-home-grid-list">
         <GridListTile key="card1">
           <MarketingCard
-            upperText="Preparado para su negocio"
-            title="Gestión y Seguimiento de Muestras"
+            upperText={i10n['home.card.tracking.header']}
+            title={i10n['home.card.tracking.title']}
           >
-            Sea capaz de gestionar y seguir todas las muestras de sus depósitos
-            distribuídas en ubicaciones geográficas diferentes.
+            {i10n['home.card.tracking.subtitle']}
           </MarketingCard>
         </GridListTile>
 
         <GridListTile key="card2">
-          <MarketingCard upperText="No gaste en auditorías" title="Compliance">
-            Sea capaz de gestionar y seguir todas las muestras de sus depósitos
-            distribuídas en ubicaciones geográficas diferentes.
+          <MarketingCard
+            upperText={i10n['home.card.compliance.header']}
+            title={i10n['home.card.compliance.title']}
+          >
+            {i10n['home.card.compliance.subtitle']}
           </MarketingCard>
         </GridListTile>
         <GridListTile key="card3">
           <MarketingCard
-            upperText="Libertad para definir sus investigaciones"
-            title="Customización de Ensayos Clínicos"
+            upperText={i10n['home.card.custom-runs.header']}
+            title={i10n['home.card.custom-runs.title']}
           >
-            Con una plataforma capaz de configurarse para realizar los ensayos
-            clínicos de cualquier forma que usted y su equipo necesite.
+            {i10n['home.card.custom-runs.subtitle']}
           </MarketingCard>
         </GridListTile>
         <GridListTile key="card4">
           <MarketingCard
-            upperText="No pierda rastro de sus caros recursos"
-            title="Inventariado"
+            upperText={i10n['home.card.inventory.header']}
+            title={i10n['home.card.inventory.title']}
           >
-            Mantenga completo control de todas sus muestras automáticamente
-            seleccionar el mejor conjunto de las mismas para sus ensayos.
+            {i10n['home.card.inventory.subtitle']}
           </MarketingCard>
         </GridListTile>
       </GridList>
@@ -56,3 +54,5 @@ export const MarketingHome = () => (
     </div>
   </PageLayout>
 );
+
+export const MarketingHome = withLocalization(MarketingHomeComponent);

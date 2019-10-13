@@ -4,6 +4,7 @@ import { PricingCard } from '../molecules/PricingCard';
 import { SingleItemSessionStorage } from '../../lib/SingleItemSessionStorage';
 import { SignUpStorageKey } from '../../content/StorageKeys';
 import { SignUpDataModel } from '../../models';
+import withLocalization from '../../localization/withLocalization';
 
 const startNewSignUp = history => pricingPlan => {
   const model = new SignUpDataModel();
@@ -24,52 +25,34 @@ const continueSignUp = (history, model) => pricingPlan => {
   history.push('/sign-up--payment-data');
 };
 
-const pricingCards = [
-  {
-    title: 'Gratuito',
-    code: 'pricing-plan--free',
-    subheader: 'Para probar la plataforma',
-    price: 'USD 0',
-    billFrequency: '/mes',
-    planDescription: 'Suscripción gratuita para probar',
-    patientSamplesDescription: 'Hasta 1000 muestras de pacientes',
-    controlSamplesDescription: 'Hasta 1000 muestras de control',
-    userAccountsDescription: 'Hasta 5 cuentas de usuario',
-    runExecutionsDescription: 'Hasta 10 ensayos clinicos por mes',
-    signUpDescription: 'Probar la plataforma'
-  },
-  {
-    title: 'Premium',
-    code: 'pricing-plan--premium',
-    subheader: 'Para laboratorios pequeños y medianos',
-    price: 'USD 17.500',
-    billFrequency: '/mes',
-    planDescription: 'Suscripción mensual o anual (con descuento)',
-    patientSamplesDescription: 'Hasta 5000 muestras de pacientes por mes',
-    controlSamplesDescription: 'Hasta 5000 muestras de control por mes',
-    userAccountsDescription: 'Hasta 50 cuentas de usuario',
-    runExecutionsDescription: 'Sin límite de ensayos clínicos',
-    signUpDescription: 'Comenzar a operar',
-    buttonVariant: 'contained'
-  },
-  {
-    title: 'Corporativo',
-    code: 'pricing-plan--corporate',
-    subheader: 'La solución completa de SSC',
-    price: 'USD 50.000',
-    billFrequency: '/mes',
-    planDescription: 'Suscripción mensual o anual (con descuento)',
-    patientSamplesDescription: 'Sin límite de muestras de pacientes',
-    controlSamplesDescription: 'Sin límite de muestras de control',
-    userAccountsDescription: 'Sin límite de cuentas de usuario',
-    runExecutionsDescription: 'Sin límite de ensayos clínicos',
-    signUpDescription: 'Operatoria profesional'
-  }
-];
+class PricingChartComponent extends PureComponent {
+  buildOnePricingCard = (i10n, descriptor, buttonVariant = '') => ({
+    title: i10n[`pricing-plan.${descriptor}.title`],
+    code: descriptor,
+    subheader: i10n[`pricing-plan.${descriptor}.subheader`],
+    price: i10n[`pricing-plan.${descriptor}.price`],
+    billFrequency: i10n[`pricing-plan.${descriptor}.billFrequency`],
+    planDescription: i10n[`pricing-plan.${descriptor}.planDescription`],
+    patientSamplesDescription:
+      i10n[`pricing-plan.${descriptor}.patientSamplesDescription`],
+    controlSamplesDescription:
+      i10n[`pricing-plan.${descriptor}.controlSamplesDescription`],
+    userAccountsDescription:
+      i10n[`pricing-plan.${descriptor}.userAccountsDescription`],
+    runExecutionsDescription:
+      i10n[`pricing-plan.${descriptor}.runExecutionsDescription`],
+    signUpDescription: i10n[`pricing-plan.${descriptor}.signUpDescription`],
+    buttonVariant
+  });
 
-export class PricingChart extends PureComponent {
+  buildPricingCards = i10n => [
+    this.buildOnePricingCard(i10n, 'free'),
+    this.buildOnePricingCard(i10n, 'premium', 'contained'),
+    this.buildOnePricingCard(i10n, 'corporate')
+  ];
+
   render() {
-    const { history, model, isSignUp } = this.props;
+    const { history, model, isSignUp, i10n } = this.props;
 
     let onSelection = null;
     if (isSignUp) {
@@ -77,6 +60,8 @@ export class PricingChart extends PureComponent {
     } else {
       onSelection = code => startNewSignUp(history)(code);
     }
+
+    const pricingCards = this.buildPricingCards(i10n);
 
     return (
       <>
@@ -101,3 +86,5 @@ export class PricingChart extends PureComponent {
     );
   }
 }
+
+export const PricingChart = withLocalization(PricingChartComponent);

@@ -7,8 +7,9 @@ import {
   Typography
 } from '@material-ui/core';
 import { RouteLink } from '../atoms/RouteLink';
+import withLocalization from '../../localization/withLocalization';
 
-export const MarketingCard = props => (
+const MarketingCardComponent = props => (
   <Card>
     <CardContent>
       <Typography>{props.upperText}</Typography>
@@ -17,10 +18,12 @@ export const MarketingCard = props => (
     </CardContent>
     <CardActions>
       <Button size="small">
-        <RouteLink dark to="signup">
-          ¡Empiece Ahora!
+        <RouteLink dark to="signup--initial">
+          {props.i10n['home.card.all.start-now']}
         </RouteLink>
       </Button>
     </CardActions>
   </Card>
 );
+
+export const MarketingCard = withLocalization(MarketingCardComponent);
