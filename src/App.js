@@ -16,7 +16,9 @@ import {
   authenticatedRoutes,
   protectedRoutes
 } from './App.content';
+import { defaultDictionary } from './App.defaultDictionary';
 import { GlobalState } from './lib/GlobalState';
+import LocalizationContext from './localization/LocalizationContext';
 
 let siteFontSize = 12;
 
@@ -32,11 +34,30 @@ export class App extends PureComponent {
     super(props);
 
     this.state = {
-      appTheme: buildTheme()
+      appTheme: buildTheme(),
+      i10n: defaultDictionary
     };
 
     GlobalState.AppComponent = this;
   }
+
+  switchLanguage = dictionary => {
+    console.log(dictionary);
+    this.setState({ i10n: dictionary || defaultDictionary });
+  };
+
+  switchLanguageTest = () => {
+    const newDictionary = {
+      'app.home.slogan':
+        '[SUCCESS] La solución integral para la administración de muestras de tu laboratorio.',
+      'app.marketing.menu.about-us': '[SUCCESS]  Sobre Nosotros',
+      'app.marketing.menu.platform': '[SUCCESS] Ingresar',
+      'app.marketing.menu.pricing': '[SUCCESS] Precios',
+      'app.title': '[SUCCESS] SAMPLE SUPPLY CHAIN'
+    };
+
+    this.setState({ i10n: newDictionary });
+  };
 
   increaseFontSize = () => {
     if (siteFontSize >= 40) return;
@@ -53,44 +74,46 @@ export class App extends PureComponent {
   };
 
   render() {
-    const { appTheme } = this.state;
+    const { appTheme, i10n } = this.state;
 
     return (
       <Router>
         <div>
-          <CssBaseline />
-          <ThemeProvider theme={appTheme}>
-            <Switch>
-              <UnprotectedRoute
-                exact
-                path="/"
-                component={Pages.MarketingHome}
-              />
-              {unprotectedRoutes.map(route => (
+          <LocalizationContext.Provider value={i10n}>
+            <CssBaseline />
+            <ThemeProvider theme={appTheme}>
+              <Switch>
                 <UnprotectedRoute
-                  path={route.path}
-                  component={route.component}
+                  exact
+                  path="/"
+                  component={Pages.MarketingHome}
                 />
-              ))}
+                {unprotectedRoutes.map(route => (
+                  <UnprotectedRoute
+                    path={route.path}
+                    component={route.component}
+                  />
+                ))}
 
-              {authenticatedRoutes.map(route => (
-                <AuthenticatedRoute
-                  path={route.path}
-                  component={route.component}
-                />
-              ))}
+                {authenticatedRoutes.map(route => (
+                  <AuthenticatedRoute
+                    path={route.path}
+                    component={route.component}
+                  />
+                ))}
 
-              {protectedRoutes.map(route => (
-                <ProtectedRoute
-                  path={route.path}
-                  component={route.component}
-                  permission={route.permission}
-                />
-              ))}
+                {protectedRoutes.map(route => (
+                  <ProtectedRoute
+                    path={route.path}
+                    component={route.component}
+                    permission={route.permission}
+                  />
+                ))}
 
-              <Route component={NoMatchRoute} />
-            </Switch>
-          </ThemeProvider>
+                <Route component={NoMatchRoute} />
+              </Switch>
+            </ThemeProvider>
+          </LocalizationContext.Provider>
         </div>
       </Router>
     );

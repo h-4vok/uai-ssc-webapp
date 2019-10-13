@@ -8,8 +8,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LanguageIcon from '@material-ui/icons/Language';
 import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
+import withLocalization from '../../localization/withLocalization';
 import { GlobalState } from '../../lib/GlobalState';
-import { LocalizationService } from '../../lib/LocalizationService';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
 
@@ -47,7 +47,14 @@ class ApplicationBarComponent extends PureComponent {
       .preventDefaultFailure()
       .preventDefaultSuccess()
       .success(res => {
-        LocalizationService.switchDictionary(res.body.Result);
+        const entries = res.body.Result;
+        const dictionary = {};
+
+        entries.forEach(
+          ({ Key, Translation }) => (dictionary[Key] = Translation)
+        );
+
+        GlobalState.AppComponent.switchLanguage(dictionary);
       })
       .go();
 
@@ -55,6 +62,7 @@ class ApplicationBarComponent extends PureComponent {
   };
 
   render() {
+    const { i10n } = this.props;
     const { languageMenuOpen, anchorEl } = this.state;
 
     return (
@@ -72,14 +80,16 @@ class ApplicationBarComponent extends PureComponent {
 
             <Typography variant="h6" className="application-bar-title">
               <Button size="large">
-                <RouteLink link="">Sample Supply Chain</RouteLink>
+                <RouteLink link="">
+                  {i10n['app.title'] || 'SAMPLE SUPPLY CHAIN'}
+                </RouteLink>
               </Button>
             </Typography>
 
-            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+            <Button onClick={() => this.changeLanguageTo(2)}>
               <EnglishLanguageIcon />
             </Button>
-            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
+            <Button onClick={() => this.changeLanguageTo(1)}>
               <SpanishLanguageIcon />
             </Button>
 
@@ -90,7 +100,9 @@ class ApplicationBarComponent extends PureComponent {
               +A
             </Button>
             <Button>
-              <RouteLink link="pricing">Precios</RouteLink>
+              <RouteLink link="pricing">
+                {i10n['app.marketing.menu.pricing'] || 'Precios'}
+              </RouteLink>
             </Button>
             <Button>
               <RouteLink link="about">Sobre Nosotros</RouteLink>
@@ -128,4 +140,6 @@ class ApplicationBarComponent extends PureComponent {
   }
 }
 
-export const ApplicationBar = withSnackbar(ApplicationBarComponent);
+export const ApplicationBar = withLocalization(
+  withSnackbar(ApplicationBarComponent)
+);

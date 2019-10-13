@@ -12,7 +12,10 @@ class LocalizationServiceComponent {
 
   tryRefreshFromStorage() {
     const data = this.storage.get(this._sessionStorageKey);
-    if (!data) return;
+    if (!data) {
+      this.loadDefault();
+      return;
+    }
 
     const dictionary = JSON.parse(data);
 

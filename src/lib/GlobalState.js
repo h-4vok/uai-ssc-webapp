@@ -9,6 +9,5 @@ export const GlobalState = {
   Superagent: superagent.agent(),
   History: null,
   SiteTheme: null,
-  AppComponent: null,
-  Dictionary: null
+  AppComponent: null
 };
