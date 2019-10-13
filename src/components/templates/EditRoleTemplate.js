@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -27,8 +28,6 @@ const styles = theme => ({
 class EditRoleTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.screenTitle = this.props.modelId ? 'Nuevo Rol' : 'Editar Rol';
 
     if (this.isEditAction()) {
       const { Name, Permissions } = this.props.model;
@@ -80,35 +79,37 @@ class EditRoleTemplateComponent extends PureComponent {
     });
   };
 
-  buildGridDef = () => [
+  buildGridDef = i10n => [
     {
-      headerName: 'ID',
+      headerName: i10n['security.editRole.grid.id'],
       field: 'Id',
       checkboxSelection: true,
       headerCheckboxSelection: true,
       width: 200
     },
     {
-      headerName: 'Código',
+      headerName: i10n['security.editRole.grid.code'],
       field: 'Code',
       width: 400
     },
     {
-      headerName: 'Nombre',
+      headerName: i10n['security.editRole.grid.name'],
       field: 'Name',
       width: 600
     }
   ];
 
   render() {
-    const { classes, permissions, onConfirm } = this.props;
+    const { classes, permissions, onConfirm, i10n } = this.props;
     const { Name } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            {this.screenTitle}
+            {this.props.modelId
+              ? i10n['security.editRole.title.edit']
+              : i10n['security.editRole.title.new']}
           </Typography>
         </div>
         <form className={classes.form} noValidate>
@@ -119,7 +120,7 @@ class EditRoleTemplateComponent extends PureComponent {
                 maxLength="300"
                 id="Name"
                 name="Name"
-                label="Nombre del Rol"
+                label={i10n['security.editRole.name']}
                 fullWidth
                 value={Name}
                 onChange={this.onInputChange}
@@ -136,7 +137,7 @@ class EditRoleTemplateComponent extends PureComponent {
                   rowMultiSelectWithClick
                   rowDeselection
                   suppressHorizontalScroll
-                  columnDefs={this.buildGridDef()}
+                  columnDefs={this.buildGridDef(i10n)}
                   rowData={permissions}
                 />
               </div>
@@ -149,7 +150,7 @@ class EditRoleTemplateComponent extends PureComponent {
                 className={classes.submit}
                 onClick={onConfirm}
               >
-                Continuar
+                {i10n['security.editRole.confirm']}
               </Button>
             </Grid>
           </Grid>
@@ -159,4 +160,6 @@ class EditRoleTemplateComponent extends PureComponent {
   }
 }
 
-export const EditRoleTemplate = withStyles(styles)(EditRoleTemplateComponent);
+export const EditRoleTemplate = withLocalization(
+  withStyles(styles)(EditRoleTemplateComponent)
+);

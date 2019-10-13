@@ -161,5 +161,12 @@ export const defaultDictionary = {
   'security.listRoles.grid.quantityOfPermissions': '# de Permisos',
   'security.listRoles.grid.quantityOfUsers': '# de Usuarios',
   'security.listRoles.new': 'Nuevo',
-  'security.listRoles.refresh': 'Refrescar'
+  'security.listRoles.refresh': 'Refrescar',
+  'security.editRole.confirm': 'Confirmar',
+  'security.editRole.grid.code': 'Código',
+  'security.editRole.grid.id': 'Id',
+  'security.editRole.grid.name': 'Nombre',
+  'security.editRole.name': 'Nombre del Rol',
+  'security.editRole.title.edit': 'Editar Rol de Seguridad',
+  'security.editRole.title.new': 'Nuevo Rol de Seguridad'
 };
