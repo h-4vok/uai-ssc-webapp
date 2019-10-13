@@ -1,3 +1,5 @@
+/* eslint-disable no-template-curly-in-string */
+
 export const defaultDictionary = {
   'app.home.slogan':
     'La solución integral para la administración de muestras de tu laboratorio.',
@@ -173,5 +175,18 @@ export const defaultDictionary = {
   'about-us.contact': 'Contacto',
   'about-us.text':
     'Somos la plataforma de gestión de muestras clínicas y ensayos de investigación número uno del mercado. Nuestro compromiso constante con la calidad y con nuestros clientes nos diferencia en el mercado.',
-  'about-us.title': 'Sobre Nosotros'
+  'about-us.title': 'Sobre Nosotros',
+  'validator.ui.email-spec':
+    'El campo ${propLabel} no cumple con las reglas indicadas.',
+  'validator.ui.is-number-spec': 'El campo ${propLabel} debe ser numérico.',
+  'validator.ui.mandatory-selection-spec':
+    'El campo ${propLabel} es obligatorio.',
+  'validator.ui.mandatory-string-spec':
+    'El campo ${propLabel} no puede ser vacio.',
+  'validator.ui.password-strength-spec':
+    'El campo ${propLabel} no cumple con las reglas indicadas.',
+  'validator.ui.string-max-length-spec':
+    'El campo ${propLabel} no puede superar los ${maxLength} caracteres.',
+  'validator.ui.string-min-length-spec':
+    'El campo ${propLabel} debe superar los ${minLength} caracteres.'
 };

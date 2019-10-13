@@ -1,198 +1,341 @@
 import * as Specs from './specs';
 import { ValidatorVisitor } from './ValidatorVisitor';
+import { fromI10n } from '../lib/GlobalState';
 
 export class SignUpDataModelValidator extends ValidatorVisitor {
   validations = {
     firstName: [
-      Specs.MandatoryStringSpec(this.model, 'firstName', 'Nombre'),
-      Specs.StringMaxLengthSpec(this.model, 200, 'firstName', 'Nombre')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'firstName',
+        fromI10n('sign-up--initial.name')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'firstName',
+        fromI10n(['sign-up--initial.name'])
+      )
     ],
     lastName: [
-      Specs.MandatoryStringSpec(this.model, 'lastName', 'Apellido'),
-      Specs.StringMaxLengthSpec(this.model, 200, 'lastName', 'Apellido')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'lastName',
+        fromI10n('sign-up--initial.lastName')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'lastName',
+        fromI10n('sign-up--initial.lastName')
+      )
     ],
     email: [
-      Specs.MandatoryStringSpec(this.model, 'email', 'Correo electrónico'),
-      Specs.StringMinLengthSpec(this.model, 6, 'email', 'Correo electrónico'),
-      Specs.EmailSpec(this.model, 'email', 'Correo electrónico')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'email',
+        fromI10n('sign-up--initial.email')
+      ),
+      Specs.StringMinLengthSpec(
+        this.model,
+        6,
+        'email',
+        fromI10n('sign-up--initial.email')
+      ),
+      Specs.EmailSpec(this.model, 'email', fromI10n('sign-up--initial.email'))
     ],
     password: [
-      Specs.MandatoryStringSpec(this.model, 'password', 'Contraseña'),
+      Specs.MandatoryStringSpec(
+        this.model,
+        'password',
+        fromI10n('sign-up--initial.password')
+      ),
       Specs.SameStringSpec(
         this.model,
         'password',
         'password2',
         'Las contraseñas no coinciden.'
       ),
-      Specs.PasswordStrengthSpec(this.model, 'password', 'Contraseña')
+      Specs.PasswordStrengthSpec(
+        this.model,
+        'password',
+        fromI10n('sign-up--initial.password')
+      )
     ],
     password2: [
-      Specs.MandatoryStringSpec(this.model, 'password2', 'Contraseña')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'password2',
+        fromI10n('sign-up--initial.password')
+      )
     ],
     companyName: [
       Specs.MandatoryStringSpec(
         this.model,
         'companyName',
-        'Nombre de la empresa'
+        fromI10n('sign-up--company.name')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         200,
         'companyName',
-        'Nombre de la empresa'
+        fromI10n('sign-up--company.name')
       )
     ],
     province: [
-      Specs.MandatorySelectionSpec(this.model, 'province', 'Provincia')
+      Specs.MandatorySelectionSpec(
+        this.model,
+        'province',
+        fromI10n('sign-up--company.province')
+      )
     ],
     city: [
-      Specs.MandatoryStringSpec(this.model, 'city', 'Ciudad'),
-      Specs.StringMaxLengthSpec(this.model, 200, 'city', 'Ciudad')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'city',
+        fromI10n('sign-up--company.city')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'city',
+        fromI10n('sign-up--company.city')
+      )
     ],
     street: [
-      Specs.MandatoryStringSpec(this.model, 'street', 'Calle'),
-      Specs.StringMaxLengthSpec(this.model, 500, 'street', 'Calle')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'street',
+        fromI10n('sign-up--company.street')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        500,
+        'street',
+        fromI10n('sign-up--company.street')
+      )
     ],
     streetNumber: [
-      Specs.MandatoryStringSpec(this.model, 'streetNumber', 'Número'),
-      Specs.StringMaxLengthSpec(this.model, 35, 'streetNumber', 'Número')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'streetNumber',
+        fromI10n('sign-up--company.streetNumber')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'streetNumber',
+        fromI10n('sign-up--company.streetNumber')
+      )
     ],
     department: [
-      Specs.MandatoryStringSpec(this.model, 'department', 'Departamento'),
-      Specs.StringMaxLengthSpec(this.model, 35, 'department', 'Departamento')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'department',
+        fromI10n('sign-up--company.department')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'department',
+        fromI10n('sign-up--company.department')
+      )
     ],
     postalCode: [
-      Specs.MandatoryStringSpec(this.model, 'postalCode', 'Código Postal'),
-      Specs.StringMaxLengthSpec(this.model, 35, 'postalCode', 'Código Postal')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'postalCode',
+        fromI10n('sign-up--company.postalCode')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'postalCode',
+        fromI10n('sign-up--company.postalCode')
+      )
     ],
     creditCardNumber: [
       Specs.MandatoryStringSpec(
         this.model,
         'creditCardNumber',
-        'Número de tarjeta de crédito'
+        fromI10n('sign-up--payment-data.creditCardNumber')
       ),
       Specs.StringMinLengthSpec(
         this.model,
         16,
         'creditCardNumber',
-        'Número de tarjeta de crédito'
+        fromI10n('sign-up--payment-data.creditCardNumber')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         19,
         'creditCardNumber',
-        'Número de tarjeta de crédito'
+        fromI10n('sign-up--payment-data.creditCardNumber')
       ),
       Specs.IsNumberSpec(
         this.model,
         'creditCardNumber',
-        'Número de tarjeta de crédito'
+        fromI10n('sign-up--payment-data.creditCardNumber')
       )
     ],
     creditCardHolder: [
-      Specs.MandatoryStringSpec(this.model, 'creditCardHolder', 'Titular'),
-      Specs.StringMaxLengthSpec(this.model, 200, 'creditCardHolder', 'Titular')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'creditCardHolder',
+        fromI10n('sign-up--payment-data.creditCardHolder')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'creditCardHolder',
+        fromI10n('sign-up--payment-data.creditCardHolder')
+      )
     ],
     creditCardCcv: [
-      Specs.MandatoryStringSpec(this.model, 'creditCardCcv', 'CCV'),
-      Specs.StringMaxLengthSpec(this.model, 4, 'creditCardCcv', 'CCV'),
-      Specs.StringMinLengthSpec(this.model, 3, 'creditCardCcv', 'CCV')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'creditCardCcv',
+        fromI10n('sign-up--payment-data.ccv')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        4,
+        'creditCardCcv',
+        fromI10n('sign-up--payment-data.ccv')
+      ),
+      Specs.StringMinLengthSpec(
+        this.model,
+        3,
+        'creditCardCcv',
+        fromI10n('sign-up--payment-data.ccv')
+      )
     ],
     creditCardExpirationDate: [
       Specs.MandatoryStringSpec(
         this.model,
         'creditCardExpirationDate',
-        'Fecha de Expiración'
+        fromI10n('sign-up--payment-data.expirationDate')
       ),
       Specs.StringMinLengthSpec(
         this.model,
         4,
         'creditCardExpirationDate',
-        'Fecha de Expiración'
+        fromI10n('sign-up--payment-data.expirationDate')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         4,
         'creditCardExpirationDate',
-        'Fecha de Expiración'
+        fromI10n('sign-up--payment-data.expirationDate')
       )
     ],
     billingCompanyName: [
       Specs.MandatoryStringSpec(
         this.model,
         'billingCompanyName',
-        'Denominación Fiscal'
+        fromI10n('sign-up--billing.name')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         200,
         'billingCompanyNamme',
-        'Denominación Fiscal'
+        fromI10n('sign-up--billing.name')
       )
     ],
     billingCompanyIdentification: [
       Specs.MandatoryStringSpec(
         this.model,
         'billingCompanyIdentification',
-        'Número de identificación fiscal'
+        fromI10n('sign-up--billing.taxCode')
       ),
       Specs.StringMinLengthSpec(
         this.model,
         11,
         'billingCompanyIdentification',
-        'Número de identificación fiscal'
+        fromI10n('sign-up--billing.taxCode')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         11,
         'billingCompanyIdentification',
-        'Número de identificación fiscal'
+        fromI10n('sign-up--billing.taxCode')
       ),
       Specs.IsNumberSpec(
         this.model,
         'billingCompanyIdentification',
-        'Número de identificación fiscal'
+        fromI10n('sign-up--billing.taxCode')
       )
     ],
     billingProvince: [
-      Specs.MandatorySelectionSpec(this.model, 'billingProvince', 'Provincia')
+      Specs.MandatorySelectionSpec(
+        this.model,
+        'billingProvince',
+        fromI10n('sign-up--billing.province')
+      )
     ],
     billingCity: [
-      Specs.MandatoryStringSpec(this.model, 'billingCity', 'Ciudad'),
-      Specs.StringMaxLengthSpec(this.model, 200, 'billingCity', 'Ciudad')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingCity',
+        fromI10n('sign-up--billing.city')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        200,
+        'billingCity',
+        fromI10n('sign-up--billing.city')
+      )
     ],
     billingStreet: [
-      Specs.MandatoryStringSpec(this.model, 'billingStreet', 'Calle'),
-      Specs.StringMaxLengthSpec(this.model, 500, 'billingStreet', 'Calle')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingStreet',
+        fromI10n('sign-up--billing.street')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        500,
+        'billingStreet',
+        fromI10n('sign-up--billing.street')
+      )
     ],
     billingStreetNumber: [
-      Specs.MandatoryStringSpec(this.model, 'billingStreetNumber', 'Número'),
-      Specs.StringMaxLengthSpec(this.model, 35, 'billingStreetNumber', 'Número')
+      Specs.MandatoryStringSpec(
+        this.model,
+        'billingStreetNumber',
+        fromI10n('sign-up--billing.streetNumber')
+      ),
+      Specs.StringMaxLengthSpec(
+        this.model,
+        35,
+        'billingStreetNumber',
+        fromI10n('sign-up--billing.streetNumber')
+      )
     ],
     billingDepartment: [
       Specs.MandatoryStringSpec(
         this.model,
         'billingDepartment',
-        'Departamento'
+        fromI10n('sign-up--billing.department')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         35,
         'billingDepartment',
-        'Departamento'
+        fromI10n('sign-up--billing.department')
       )
     ],
     billingPostalCode: [
       Specs.MandatoryStringSpec(
         this.model,
         'billingPostalCode',
-        'Código Postal'
+        fromI10n('sign-up--billing.postalCode')
       ),
       Specs.StringMaxLengthSpec(
         this.model,
         35,
         'billingPostalCode',
-        'Código Postal'
+        fromI10n('sign-up--billing.postalCode')
       )
     ]
   };

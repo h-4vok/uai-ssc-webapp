@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
-import { SimpleSelect, RouteLink } from '../atoms';
+import { SimpleSelect } from '../atoms';
 import { API } from '../../lib/xhr';
 import withLocalization from '../../localization/withLocalization';
 

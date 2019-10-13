@@ -42,7 +42,6 @@ export class App extends PureComponent {
   }
 
   switchLanguage = dictionary => {
-    console.log(dictionary);
     this.setState({ i10n: dictionary || defaultDictionary });
   };
 

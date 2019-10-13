@@ -9,5 +9,9 @@ export const GlobalState = {
   Superagent: superagent.agent(),
   History: null,
   SiteTheme: null,
-  AppComponent: null
+  AppComponent: null,
+  getI10n: () => GlobalState.AppComponent.state.i10n,
+  fromI10n: key => GlobalState.getI10n()[key]
 };
+
+export const { fromI10n } = GlobalState;

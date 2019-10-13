@@ -121,7 +121,6 @@ class ListRolesTemplateComponent extends PureComponent {
       onEnableAction,
       onDisableAction,
       onDeleteAction,
-      onExportAction,
       i10n
     } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;

@@ -8,6 +8,7 @@
     "ag-grid-community": "^21.2.2",
     "ag-grid-react": "^21.2.2",
     "cross-env": "^5.2.0",
+    "es6-dynamic-template": "^2.0.0",
     "fontfaceobserver": "^2.0.13",
     "hoist-non-react-statics": "^3.3.0",
     "material-ui": "^0.20.2",
