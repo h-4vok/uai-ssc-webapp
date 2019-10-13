@@ -9,3 +9,4 @@ export { EditRoleTemplate } from './EditRoleTemplate';
 export { AboutUsTemplate } from './AboutUsTemplate';
 export { ListLanguagesTemplate } from './ListLanguagesTemplate';
 export { EditLanguageEntryTemplate } from './EditLanguageEntryTemplate';
+export { TermsOfServiceTemplate } from './TermsOfServiceTemplate';

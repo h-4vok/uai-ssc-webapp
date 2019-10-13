@@ -1,3 +1,5 @@
+/* eslint-disable no-template-curly-in-string */
+
 export const defaultDictionary = {
   'app.home.slogan':
     'La solución integral para la administración de muestras de tu laboratorio.',
@@ -187,5 +189,21 @@ export const defaultDictionary = {
     'El campo ${propLabel} no puede superar los ${maxLength} caracteres.',
   'validator.ui.string-min-length-spec':
     'El campo ${propLabel} debe superar los ${minLength} caracteres.',
-  'spinner.please-wait': 'Por favor espere...'
+  'spinner.please-wait': 'Por favor espere...',
+  'tos.text-01.title': '1. LA RESPONSABILIDAD',
+  'tos.text-01.txt': 'Lorem Ipsum',
+  'tos.text-02.title': '2. SITIOS ENLAZADOS',
+  'tos.text-02.txt': 'Lorem Ipsum',
+  'tos.text-03.title': '3. POLÍTICA DE PRIVACIDAD',
+  'tos.text-03.txt': 'Lorem Ipsum',
+  'tos.text-04.title': '4. TERMINACIÓN DEL ACCESO',
+  'tos.text-04.txt': 'Lorem Ipsum',
+  'tos.text-05.title': '5. VIOLACIONES DEL SISTEMA O BASES DE DATOS',
+  'tos.text-05.txt': 'Lorem Ipsum',
+  'tos.text-06.title': '6. JURISDICCIÓN',
+  'tos.text-06.txt': 'Lorem Ipsum',
+  'tos.text-intro':
+    'Esta Web pertenece a la Empresa HAVOK INTERNATIONAL S.R.L. (en adelante LA EMPRESA) y su acceso y utilización está sujeta a la aceptación y cumplimiento de los términos y condiciones que se exponen a continuación:',
+  'tos.title': 'Términos y Condiciones de uso de Sample Supply Chain',
+  'app.marketing.menu.tos': 'Términos y Servicios'
 };
