@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper, Link } from '@material-ui/core';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -21,7 +22,7 @@ const styles = theme => ({
 
 class AboutUsTemplateComponent extends PureComponent {
   render() {
-    const { classes } = this.props;
+    const { classes, i10n } = this.props;
 
     return (
       <Container component="main" maxWidth="md">
@@ -29,24 +30,17 @@ class AboutUsTemplateComponent extends PureComponent {
           <div>
             <Paper className={classes.paperRoot}>
               <Typography variant="h1" component="h3">
-                Sobre Nosotros
+                {i10n['about-us.title']}
               </Typography>
-              <Typography component="p">
-                Somos la plataforma de gestión de muestras clínicas y ensayos de
-                investigación número uno del mercado. Nuestro compromiso
-                constante con la calidad y con nuestros clientes nos diferencia
-                en el mercado.
-              </Typography>
+              <Typography component="p">{i10n['about-us.text']}</Typography>
             </Paper>
           </div>
           <div>
             <Paper className={classes.paperRoot}>
               <Typography variant="h3" component="h3">
-                Contacto
+                {i10n['about-us.contact']}
               </Typography>
-              <Typography component="p">
-                Av. Paseo Colón 524, 1er Piso
-              </Typography>
+              <Typography component="p">{i10n['about-us.address']}</Typography>
               <Typography component="p">4317-2839 / 3849 / 3888</Typography>
               <Typography component="p">
                 <Link href="mailto:info@ssc.com.ar">info@ssc.com.ar</Link>
@@ -59,4 +53,6 @@ class AboutUsTemplateComponent extends PureComponent {
   }
 }
 
-export const AboutUsTemplate = withStyles(styles)(AboutUsTemplateComponent);
+export const AboutUsTemplate = withLocalization(
+  withStyles(styles)(AboutUsTemplateComponent)
+);

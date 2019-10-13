@@ -168,5 +168,10 @@ export const defaultDictionary = {
   'security.editRole.grid.name': 'Nombre',
   'security.editRole.name': 'Nombre del Rol',
   'security.editRole.title.edit': 'Editar Rol de Seguridad',
-  'security.editRole.title.new': 'Nuevo Rol de Seguridad'
+  'security.editRole.title.new': 'Nuevo Rol de Seguridad',
+  'about-us.address': 'Av. Paseo Colón 524, 1er Piso',
+  'about-us.contact': 'Contacto',
+  'about-us.text':
+    'Somos la plataforma de gestión de muestras clínicas y ensayos de investigación número uno del mercado. Nuestro compromiso constante con la calidad y con nuestros clientes nos diferencia en el mercado.',
+  'about-us.title': 'Sobre Nosotros'
 };
