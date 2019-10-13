@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { SimpleSelect, RouteLink } from '../atoms';
 import { API } from '../../lib/xhr';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -75,7 +76,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const {
       companyName,
       province,
@@ -92,7 +93,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
       <Container component="main" maxWidth="md">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            Datos de la compañía
+            {i10n['sign-up--company.page.title']}
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={3}>
@@ -101,7 +102,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="companyName"
                   name="companyName"
-                  label="Nombre de la empresa"
+                  label={i10n['sign-up--company.name']}
                   fullWidth
                   maxLength="200"
                   value={companyName}
@@ -113,7 +114,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   <SimpleSelect
                     required
                     name="province"
-                    label="Provincia"
+                    label={i10n['sign-up--company.province']}
                     fullWidth
                     items={provinceItems}
                     value={province}
@@ -126,7 +127,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="city"
                   name="city"
-                  label="Ciudad"
+                  label={i10n['sign-up--company.city']}
                   fullWidth
                   maxLength="200"
                   value={city}
@@ -138,7 +139,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="street"
                   name="street"
-                  label="Calle"
+                  label={i10n['sign-up--company.street']}
                   fullWidth
                   maxLength="500"
                   value={street}
@@ -150,7 +151,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="streetNumber"
                   name="streetNumber"
-                  label="Número"
+                  label={i10n['sign-up--company.streetNumber']}
                   fullWidth
                   maxLength="35"
                   value={streetNumber}
@@ -162,7 +163,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="department"
                   name="department"
-                  label="Departamento"
+                  label={i10n['sign-up--company.department']}
                   fullWidth
                   maxLength="35"
                   value={department}
@@ -174,7 +175,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   required
                   id="postalCode"
                   name="postalCode"
-                  label="Código Postal"
+                  label={i10n['sign-up--company.postalCode']}
                   fullWidth
                   inputProps={{ maxLength: 35 }}
                   value={postalCode}
@@ -189,15 +190,8 @@ class SignUpCompanyTemplateComponent extends PureComponent {
               className={classes.submit}
               onClick={onConfirm}
             >
-              Continuar
+              {i10n['sign-up--company.continue']}
             </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <RouteLink link="sign-in" variant="body2">
-                  Ya posee una cuenta? Autentíquese.
-                </RouteLink>
-              </Grid>
-            </Grid>
           </form>
         </div>
       </Container>
@@ -205,6 +199,6 @@ class SignUpCompanyTemplateComponent extends PureComponent {
   }
 }
 
-export const SignUpCompanyTemplate = withStyles(styles)(
-  SignUpCompanyTemplateComponent
+export const SignUpCompanyTemplate = withLocalization(
+  withStyles(styles)(SignUpCompanyTemplateComponent)
 );
