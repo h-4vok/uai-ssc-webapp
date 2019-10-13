@@ -14,6 +14,7 @@ import { PageLayout } from '../organisms';
 import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { GlobalState } from '../../lib/GlobalState';
+import withLocalization from '../../localization/withLocalization';
 
 import './SignInPage.scss';
 
@@ -42,7 +43,7 @@ const styles = theme => ({
   }
 });
 
-export class SignInPageComponent extends PureComponent {
+class SignInPageComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -102,7 +103,7 @@ export class SignInPageComponent extends PureComponent {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, i10n } = this.props;
     const { signInEnabled, username, password } = this.state;
 
     return (
@@ -113,7 +114,7 @@ export class SignInPageComponent extends PureComponent {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              {i10n['sign-in.page.title']}
             </Typography>
             <form className={classes.form} noValidate>
               <TextField
@@ -122,7 +123,7 @@ export class SignInPageComponent extends PureComponent {
                 required
                 fullWidth
                 id="username"
-                label="Correo electronico"
+                label={i10n['sign-in.email']}
                 name="username"
                 autoComplete="email"
                 autoFocus
@@ -135,7 +136,7 @@ export class SignInPageComponent extends PureComponent {
                 required
                 fullWidth
                 name="password"
-                label="Contraseña"
+                label={i10n['sign-in.password']}
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -155,17 +156,17 @@ export class SignInPageComponent extends PureComponent {
                 disabled={!signInEnabled}
                 onClick={this.onSignInConfirm}
               >
-                Autenticarse
+                {i10n['sign-in.login']}
               </Button>
               <Grid container>
                 <Grid item xs>
                   <RouteLink blue link="forgot-password" variant="body2">
-                    Olvidé mi contraseña
+                    {i10n['sign-in.forgot-password']}
                   </RouteLink>
                 </Grid>
                 <Grid item>
                   <RouteLink blue link="sign-up--initial" variant="body2">
-                    {'Registrar nueva cuenta'}
+                    {i10n['sign-in.sign-up']}
                   </RouteLink>
                 </Grid>
               </Grid>
@@ -177,4 +178,6 @@ export class SignInPageComponent extends PureComponent {
   }
 }
 
-export const SignInPage = withSnackbar(withStyles(styles)(SignInPageComponent));
+export const SignInPage = withLocalization(
+  withSnackbar(withStyles(styles)(SignInPageComponent))
+);

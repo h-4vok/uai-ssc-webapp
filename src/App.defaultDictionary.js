@@ -63,5 +63,11 @@ export const defaultDictionary = {
   'pricing-plan.premium.signUpDescription': 'Comenzar a operar',
   'pricing-plan.premium.subheader': 'Para laboratorios pequeños y medianos',
   'pricing-plan.premium.title': 'Premium',
-  'pricing-plan.premium.userAccountsDescription': 'Hasta 50 cuentas de usuario'
+  'pricing-plan.premium.userAccountsDescription': 'Hasta 50 cuentas de usuario',
+  'sign-in.email': 'Correo electrónico',
+  'sign-in.forgot-password': 'Olvidé mi contraseña',
+  'sign-in.login': 'Autenticarse',
+  'sign-in.page.title': 'Autenticarse',
+  'sign-in.password': 'Contraseña',
+  'sign-in.sign-up': 'Registrar nueva cuenta'
 };
