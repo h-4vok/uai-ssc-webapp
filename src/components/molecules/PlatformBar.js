@@ -11,6 +11,7 @@ import { Authorizer } from '../../lib/Authorizer';
 import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { GlobalState } from '../../lib/GlobalState';
+import withLocalization from '../../localization/withLocalization';
 
 const defaultState = {
   anchorEl: null,
@@ -121,6 +122,8 @@ class PlatformBarComponent extends PureComponent {
       workOrderMenuOpen
     } = this.state;
 
+    const { i10n } = this.props;
+
     return (
       <div className="application-bar">
         <AppBar position="fixed">
@@ -135,7 +138,7 @@ class PlatformBarComponent extends PureComponent {
             </IconButton>
             <Typography variant="h6" className="application-bar-title">
               <Button size="large">
-                <RouteLink link="">Sample Supply Chain</RouteLink>
+                <RouteLink link="">{i10n['app.title']}</RouteLink>
               </Button>
             </Typography>
 
@@ -155,7 +158,7 @@ class PlatformBarComponent extends PureComponent {
 
             {this.buildButton(
               'configuration-menu',
-              'Configuración',
+              i10n['menu.platform.configuration-menu'],
               'configurationMenuOpen',
               'SAMPLE_TYPE_MANAGEMENT',
               'SAMPLE_TYPE_REPORT',
@@ -175,36 +178,36 @@ class PlatformBarComponent extends PureComponent {
             >
               {this.buildMenuItem(
                 '/configuration/sample-type',
-                'Tipos de Muestra',
+                i10n['menu.platform.configuration.sample-type'],
                 'SAMPLE_TYPE_MANAGEMENT',
                 'SAMPLE_TYPE_REPORT'
               )}
               {this.buildMenuItem(
                 '/configuration/sample-type-parameter',
-                'Parámetros de Tipos de Muestra',
+                i10n['menu.platform.configuration.sample-type-parameter'],
                 'SAMPLE_TYPE_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/configuration/sample-function',
-                'Funciones de Muestra',
+                i10n['menu.platform.configuration.sample-function'],
                 'SAMPLE_FUNCTION_REPORT',
                 'SAMPLE_FUNCTION_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/configuration/language',
-                'Gestión de Idiomas',
+                i10n['menu.platform.configuration.language'],
                 'LANGUAGES_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/configuration/client-billing',
-                'Clientes y Facturación',
+                i10n['menu.platform.configuration.clients-and-billing'],
                 'CLIENT_MANAGEMENT'
               )}
             </Menu>
 
             {this.buildButton(
               'security-menu',
-              'Seguridad',
+              i10n['menu.platform.security-menu'],
               'securityMenuOpen',
               'USERS_MANAGEMENT',
               'USERS_REPORT',
@@ -224,36 +227,36 @@ class PlatformBarComponent extends PureComponent {
             >
               {this.buildMenuItem(
                 '/security/user',
-                'Usuarios',
+                i10n['menu.platform.security.user'],
                 'USERS_MANAGEMENT',
                 'USERS_REPORT'
               )}
               {this.buildMenuItem(
                 '/security/role',
-                'Gestión de Roles',
+                i10n['menu.platform.security.role'],
                 'ROLES_MANAGEMENT',
                 'ROLES_REPORT'
               )}
               {this.buildMenuItem(
                 '/security/log',
-                'Bitácora',
+                i10n['menu.platform.security.logging'],
                 'PLATFORM_ADMIN'
               )}
               {this.buildMenuItem(
                 '/security/backup',
-                'Resguardos',
+                i10n['menu.platform.security.backup'],
                 'PLATFORM_BACKUP'
               )}
               {this.buildMenuItem(
                 '/security/parameter',
-                'Parametrización',
+                i10n['menu.platform.security.parameters'],
                 'PLATFORM_ADMIN'
               )}
             </Menu>
 
             {this.buildButton(
               'inventory-menu',
-              'Inventariado',
+              i10n['menu.platform.inventory-menu'],
               'inventoryMenuOpen',
               'PATIENT_MANAGEMENT',
               'SAMPLE_MANAGEMENT'
@@ -268,19 +271,19 @@ class PlatformBarComponent extends PureComponent {
             >
               {this.buildMenuItem(
                 '/inventory/patient',
-                'Pacientes',
+                i10n['menu.platform.inventory.patient'],
                 'PATIENT_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/inventory/sample',
-                'Muestras',
+                i10n['menu.platform.inventory.sample'],
                 'SAMPLE_MANAGEMENT'
               )}
             </Menu>
 
             {this.buildButton(
               'management-menu',
-              'Auto-Gestión',
+              i10n['menu.platform.management-menu'],
               'clientMenuOpen',
               'MEMBER_MANAGEMENT',
               'MEMBER_REPORT',
@@ -297,25 +300,25 @@ class PlatformBarComponent extends PureComponent {
             >
               {this.buildMenuItem(
                 '/management/member',
-                'Miembros',
+                i10n['menu.platform.management.members'],
                 'MEMBER_MANAGEMENT',
                 'MEMBER_REPORT'
               )}
               {this.buildMenuItem(
                 '/management/payment-type',
-                'Forma de Pago',
+                i10n['menu.platform.management.payment-type'],
                 'PAYMENT_METHOD_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/management/billing',
-                'Facturación',
+                i10n['menu.platform.management.billing'],
                 'CLIENT_BILLING_MANAGEMENT'
               )}
             </Menu>
 
             {this.buildButton(
               'work-order-menu',
-              'Órdenes de Trabajo',
+              i10n['menu.platform.work-order-menu'],
               'workOrderMenuOpen',
               'WORK_ORDER_CREATE',
               'WORK_ORDER_EXECUTE',
@@ -335,14 +338,14 @@ class PlatformBarComponent extends PureComponent {
             >
               {this.buildMenuItem(
                 '/work-order/work-order',
-                'Lotes de Ejecución',
+                i10n['menu.platform.work-order.batches'],
                 'WORK_ORDER_CREATE',
                 'WORK_ORDER_EXECUTE',
                 'WORK_ORDER_REPORT'
               )}
               {this.buildMenuItem(
                 '/work-order/run',
-                'Ejecuciones de Ensayo',
+                i10n['menu.platform.work-order.runs'],
                 'RUN_EXECUTION_CANCEL',
                 'RUN_EXECUTION_PRIMARY',
                 'RUN_EXECUTION_QA',
@@ -350,7 +353,7 @@ class PlatformBarComponent extends PureComponent {
               )}
             </Menu>
             <Button onClick={() => this.closeSession()} className="menu-button">
-              Cerrar Sesión
+              {i10n['menu.platform.sign-out']}
             </Button>
           </Toolbar>
         </AppBar>
@@ -359,4 +362,4 @@ class PlatformBarComponent extends PureComponent {
   }
 }
 
-export const PlatformBar = withSnackbar(PlatformBarComponent);
+export const PlatformBar = withLocalization(withSnackbar(PlatformBarComponent));
