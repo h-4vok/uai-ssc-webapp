@@ -7,6 +7,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { SimpleSelect } from '../atoms';
 import { ButtonBar } from '../molecules';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   paper: {
@@ -33,24 +34,26 @@ class ListLanguagesTemplateComponent extends PureComponent {
   buildLanguages = () =>
     this.languages.map(item => ({ value: item.Id, label: item.Name, item }));
 
-  buildGridDef = () => [
-    {
-      headerName: 'Clave',
-      field: 'Key',
-      sortable: true,
-      filter: true,
-      checkboxSelection: true,
-      headerCheckboxSelection: false,
-      maxWidth: 400,
-      width: 400
-    },
-    {
-      headerName: 'Traducción',
-      field: 'Translation',
-      sortable: true,
-      filter: true
-    }
-  ];
+  buildGridDef = i10n => {
+    return [
+      {
+        headerName: i10n['configuration.language.grid.key'],
+        field: 'Key',
+        sortable: true,
+        filter: true,
+        checkboxSelection: true,
+        headerCheckboxSelection: false,
+        maxWidth: 400,
+        width: 400
+      },
+      {
+        headerName: i10n['configuration.language.grid.translation'],
+        field: 'Translation',
+        sortable: true,
+        filter: true
+      }
+    ];
+  };
 
   onSelectedLanguageChange = event => {
     const selectedLanguageId = event.target.value;
@@ -76,6 +79,9 @@ class ListLanguagesTemplateComponent extends PureComponent {
     this.dataGrid.api.sizeColumnsToFit();
 
     this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
+    this.dataGrid.api.addEventListener('gridColumnsChanged', () =>
+      this.dataGrid.api.sizeColumnsToFit()
+    );
   }
 
   onRowSelection = e => {
@@ -94,7 +100,7 @@ class ListLanguagesTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onEditAction } = this.props;
+    const { classes, onEditAction, i10n } = this.props;
     const {
       selectedLanguage,
       languageEntries,
@@ -108,7 +114,7 @@ class ListLanguagesTemplateComponent extends PureComponent {
           <SimpleSelect
             required
             name="selectedLanguage"
-            label="Idioma"
+            label={i10n['configuration.language.language']}
             fullWidth
             items={languageItems}
             value={selectedLanguage}
@@ -121,7 +127,7 @@ class ListLanguagesTemplateComponent extends PureComponent {
               className={classes.button}
               disabled={!oneRowSelected}
             >
-              Editar
+              {i10n['configuration.language.edit']}
             </Button>
           </ButtonBar>
         </div>
@@ -130,7 +136,7 @@ class ListLanguagesTemplateComponent extends PureComponent {
             <AgGridReact
               ref={c => (this.dataGrid = c)}
               rowSelection="single"
-              columnDefs={this.buildGridDef()}
+              columnDefs={this.buildGridDef(i10n)}
               rowData={languageEntries}
             />
           )}
@@ -140,6 +146,6 @@ class ListLanguagesTemplateComponent extends PureComponent {
   }
 }
 
-export const ListLanguagesTemplate = withStyles(styles)(
-  ListLanguagesTemplateComponent
+export const ListLanguagesTemplate = withLocalization(
+  withStyles(styles)(ListLanguagesTemplateComponent)
 );

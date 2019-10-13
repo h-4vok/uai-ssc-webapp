@@ -19,7 +19,6 @@ class SimpleSelectComponent extends PureComponent {
       classes,
       name,
       value,
-      label,
       items = [],
       noEmpty,
       showLabel = true
@@ -29,7 +28,6 @@ class SimpleSelectComponent extends PureComponent {
 
     this.state = {
       name,
-      label,
       value,
       items,
       noEmpty,
@@ -46,7 +44,7 @@ class SimpleSelectComponent extends PureComponent {
     return (
       <FormControl {...this.props} className={this.classes.formControl}>
         {this.state.showLabel && (
-          <InputLabel htmlFor={this.state.name}>{this.state.label}</InputLabel>
+          <InputLabel htmlFor={this.state.name}>{this.props.label}</InputLabel>
         )}
         <Select
           value={this.state.value}

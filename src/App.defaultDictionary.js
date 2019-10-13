@@ -140,5 +140,9 @@ export const defaultDictionary = {
   'menu.platform.sign-out': 'Cerrar Sesión',
   'menu.platform.work-order-menu': 'Órdenes de Trabajo',
   'menu.platform.work-order.batches': 'Lotes de Ejecución',
-  'menu.platform.work-order.runs': 'Ejecuciones de Ensayo'
+  'menu.platform.work-order.runs': 'Ejecuciones de Ensayo',
+  'configuration.language.edit': 'Editar',
+  'configuration.language.grid.key': 'Clave',
+  'configuration.language.grid.translation': 'Traducción',
+  'configuration.language.language': 'Seleccionar el Idioma'
 };
