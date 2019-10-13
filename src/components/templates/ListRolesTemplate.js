@@ -7,6 +7,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ButtonBar } from '../molecules';
 import { GlobalState } from '../../lib/GlobalState';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   centerText: {
@@ -59,9 +60,9 @@ class ListRolesTemplateComponent extends PureComponent {
   isEnabledFormatter = params =>
     params.value ? 'Habilitado' : 'No Habilitado';
 
-  buildGridDef = () => [
+  buildGridDef = i10n => [
     {
-      headerName: 'ID',
+      headerName: i10n['security.listRoles.grid.id'],
       field: 'Id',
       sortable: true,
       filter: true,
@@ -69,27 +70,27 @@ class ListRolesTemplateComponent extends PureComponent {
       headerCheckboxSelection: true
     },
     {
-      headerName: 'Nombre',
+      headerName: i10n['security.listRoles.grid.name'],
       field: 'Name',
       sortable: true,
       filter: true
     },
     {
-      headerName: '# de Usuarios',
+      headerName: i10n['security.listRoles.grid.quantityOfUsers'],
       field: 'QuantityOfUsers',
       sortable: true,
       filter: true,
       cellStyle: { textAlign: 'center' }
     },
     {
-      headerName: '# de Permisos',
+      headerName: i10n['security.listRoles.grid.quantityOfPermissions'],
       field: 'QuantityOfPermissions',
       sortable: true,
       filter: true,
       cellStyle: { textAlign: 'center' }
     },
     {
-      headerName: 'Habilitado',
+      headerName: i10n['security.listRoles.grid.isEnabled'],
       field: 'IsEnabled',
       sortable: true,
       filter: true,
@@ -120,7 +121,8 @@ class ListRolesTemplateComponent extends PureComponent {
       onEnableAction,
       onDisableAction,
       onDeleteAction,
-      onExportAction
+      onExportAction,
+      i10n
     } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;
 
@@ -134,7 +136,7 @@ class ListRolesTemplateComponent extends PureComponent {
               className={classes.button}
               onClick={onRefresh}
             >
-              Ejecutar
+              {i10n['security.listRoles.refresh']}
             </Button>
             {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
               <Button
@@ -142,7 +144,7 @@ class ListRolesTemplateComponent extends PureComponent {
                 onClick={onNewAction}
                 className={classes.button}
               >
-                Nuevo
+                {i10n['security.listRoles.new']}
               </Button>
             )}
             {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
@@ -152,7 +154,7 @@ class ListRolesTemplateComponent extends PureComponent {
                 className={classes.button}
                 disabled={!oneRowSelected}
               >
-                Editar
+                {i10n['security.listRoles.edit']}
               </Button>
             )}
             {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
@@ -162,7 +164,7 @@ class ListRolesTemplateComponent extends PureComponent {
                 className={classes.button}
                 disabled={!multipleRowsSelected}
               >
-                Habilitar
+                {i10n['security.listRoles.enable']}
               </Button>
             )}
             {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
@@ -172,7 +174,7 @@ class ListRolesTemplateComponent extends PureComponent {
                 className={classes.button}
                 disabled={!multipleRowsSelected}
               >
-                Inhabilitar
+                {i10n['security.listRoles.disable']}
               </Button>
             )}
             {GlobalState.Authorizer.has('ROLES_MANAGEMENT') && (
@@ -182,16 +184,16 @@ class ListRolesTemplateComponent extends PureComponent {
                 className={classes.button}
                 disabled={!multipleRowsSelected}
               >
-                Eliminar
+                {i10n['security.listRoles.delete']}
               </Button>
             )}
-            <Button
+            {/* <Button
               variant="contained"
               onClick={onExportAction}
               className={classes.button}
             >
-              Exportar
-            </Button>
+              {i10n['security.listRoles.export']}
+            </Button> */}
           </ButtonBar>
 
           <div
@@ -201,7 +203,7 @@ class ListRolesTemplateComponent extends PureComponent {
             <AgGridReact
               ref={c => (this.dataGrid = c)}
               rowSelection="multiple"
-              columnDefs={this.buildGridDef()}
+              columnDefs={this.buildGridDef(i10n)}
               rowData={items}
             />
           </div>
@@ -211,4 +213,6 @@ class ListRolesTemplateComponent extends PureComponent {
   }
 }
 
-export const ListRolesTemplate = withStyles(styles)(ListRolesTemplateComponent);
+export const ListRolesTemplate = withLocalization(
+  withStyles(styles)(ListRolesTemplateComponent)
+);
