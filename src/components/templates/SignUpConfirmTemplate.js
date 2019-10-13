@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { SimpleTextField } from '../atoms';
 import { PageLayout } from '../organisms';
+import withLocalization from '../../localization/withLocalization';
 
 const styles = theme => ({
   '@global': {
@@ -40,7 +41,7 @@ class SignUpConfirmTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const { verificationCode } = this.state;
 
     return (
@@ -48,12 +49,10 @@ class SignUpConfirmTemplateComponent extends PureComponent {
         <Container component="main" maxWidth="xs">
           <div className={classes.paper}>
             <Typography component="h1" variant="h5">
-              Verificación por correo
+              {i10n['sign-up--confirm-pending.page.title']}
             </Typography>
             <Typography variant="span">
-              Hemos enviado por correo electrónico un código de verificación.
-              Utilice el link del correo o coloque el código aquí para finalizar
-              su registro.
+              {i10n['sign-up--confirm-pending.page.subtitle']}
             </Typography>
             <form className={classes.form} noValidate>
               <SimpleTextField
@@ -62,7 +61,7 @@ class SignUpConfirmTemplateComponent extends PureComponent {
                 required
                 fullWidth
                 id="verificationCode"
-                label="Código de Verificación"
+                label={i10n['sign-up--confirm-pending.verificationCode']}
                 name="verificationCode"
                 autoFocus
                 maxLength="6"
@@ -76,7 +75,7 @@ class SignUpConfirmTemplateComponent extends PureComponent {
                 className={classes.submit}
                 onClick={onConfirm}
               >
-                Verificar
+                {i10n['sign-up--confirm-pending.validate']}
               </Button>
             </form>
           </div>
@@ -86,6 +85,6 @@ class SignUpConfirmTemplateComponent extends PureComponent {
   }
 }
 
-export const SignUpConfirmTemplate = withStyles(styles)(
-  SignUpConfirmTemplateComponent
+export const SignUpConfirmTemplate = withLocalization(
+  withStyles(styles)(SignUpConfirmTemplateComponent)
 );
