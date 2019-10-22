@@ -1,5 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
-
 export const defaultDictionary = {
   'app.home.slogan':
     'La solución integral para la administración de muestras de tu laboratorio.',
@@ -205,5 +203,20 @@ export const defaultDictionary = {
   'tos.text-intro':
     'Esta Web pertenece a la Empresa HAVOK INTERNATIONAL S.R.L. (en adelante LA EMPRESA) y su acceso y utilización está sujeta a la aceptación y cumplimiento de los términos y condiciones que se exponen a continuación:',
   'tos.title': 'Términos y Condiciones de uso de Sample Supply Chain',
-  'app.marketing.menu.tos': 'Términos y Servicios'
+  'app.marketing.menu.tos': 'Términos y Servicios',
+  'security.role.field.name': 'Nombre',
+  'security.role.field.permissions': 'Permisos',
+  'validator.api.date-format':
+    'El campo {0} no tiene el formato de fecha esperado "{1}".',
+  'validator.api.is-number': 'El campo {0} no es un número válido.',
+  'validator.api.list-not-empty':
+    'Debe seleccionar al menos un elemento para el campo {0}.',
+  'validator.api.mandatory-dropdown-selection': 'El campo {0} es obligatorio.',
+  'validator.api.mandatory-string': 'El campo {0} es obligatorio.',
+  'validator.api.max-string-length': 'El campo {0} supera los {1} caracteres.',
+  'validator.api.min-string-length':
+    'El campo {0} debe tener al menos {1} caracteres.',
+  'validator.api.not-null': 'El campo {0} no puede ser vacío.',
+  'validator.api.valid-email-address':
+    'El campo {0} no es un correo electrónico válido.'
 };
