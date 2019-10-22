@@ -28,7 +28,7 @@ const continueSignUp = (history, model) => pricingPlan => {
 class PricingChartComponent extends PureComponent {
   buildOnePricingCard = (i10n, descriptor, buttonVariant = '') => ({
     title: i10n[`pricing-plan.${descriptor}.title`],
-    code: descriptor,
+    code: `pricing-plan--${descriptor}`,
     subheader: i10n[`pricing-plan.${descriptor}.subheader`],
     price: i10n[`pricing-plan.${descriptor}.price`],
     billFrequency: i10n[`pricing-plan.${descriptor}.billFrequency`],

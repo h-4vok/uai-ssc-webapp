@@ -7,9 +7,17 @@ export const buildInitialSignUpBody = model => {
     firstName: FirstName,
     lastName: LastName,
     email: UserName,
-    password: Password
+    password: Password,
+    IncomingHost = `${window.location.hostname}:${window.location.port}`
   } = model;
-  const output = { FirstName, LastName, UserName, Password, Step: 'Initial' };
+  const output = {
+    IncomingHost,
+    FirstName,
+    LastName,
+    UserName,
+    Password,
+    Step: 'Initial'
+  };
 
   return output;
 };
@@ -62,6 +70,8 @@ export const buildCreditCardSignUpBody = model => {
 export const buildBillingSignUpBody = model => {
   const {
     email: UserName,
+    firstName: FirstName,
+    IncomingHost = `${window.location.hostname}:${window.location.port}`,
     billingCompanyName: BillingCompanyName,
     billingCompanyIdentification: BillingCompanyIdentification,
     billingProvince: BillingProvinceId,
@@ -74,6 +84,8 @@ export const buildBillingSignUpBody = model => {
 
   const output = {
     UserName,
+    FirstName,
+    IncomingHost,
     BillingCompanyName,
     BillingCompanyIdentification,
     BillingProvinceId,

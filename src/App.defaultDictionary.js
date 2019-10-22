@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const defaultDictionary = {
   'app.home.slogan':
     'La solución integral para la administración de muestras de tu laboratorio.',
