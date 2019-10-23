@@ -35,27 +35,39 @@ class TermsOfServiceTemplateComponent extends PureComponent {
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-01.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-01.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-01.txt'].replace('\\n', '\n\n')}
+              </Typography>
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-02.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-02.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-02.txt'].replace('\\n', '\n\n')}
+              </Typography>
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-03.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-03.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-03.txt'].replace('\\n', '\n\n')}
+              </Typography>
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-04.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-04.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-04.txt'].replace('\\n', '\n\n')}
+              </Typography>
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-05.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-05.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-05.txt'].replace('\\n', '\n\n')}
+              </Typography>
               <Typography component="p" className={classes.tosTitle}>
                 {i10n['tos.text-06.title']}
               </Typography>
-              <Typography component="p">{i10n['tos.text-06.txt']}</Typography>
+              <Typography component="p">
+                {i10n['tos.text-06.txt'].replace('\\n', '\n\n')}
+              </Typography>
             </Paper>
           </div>
         </div>
