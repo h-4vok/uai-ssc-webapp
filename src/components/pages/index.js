@@ -18,3 +18,4 @@ export { EditLanguageEntryPage } from './EditLanguageEntryPage';
 export { TermsOfServicePage } from './TermsOfServicePage';
 export { SignUpVerifyPage } from './SignUpVerifyPage';
 export { ForgotPasswordPage } from './ForgotPasswordPage';
+export { RecoverPasswordPage } from './RecoverPasswordPage';

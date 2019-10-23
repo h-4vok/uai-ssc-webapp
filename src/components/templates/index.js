@@ -11,3 +11,4 @@ export { ListLanguagesTemplate } from './ListLanguagesTemplate';
 export { EditLanguageEntryTemplate } from './EditLanguageEntryTemplate';
 export { TermsOfServiceTemplate } from './TermsOfServiceTemplate';
 export { ForgotPasswordTemplate } from './ForgotPasswordTemplate';
+export { RecoverPasswordTemplate } from './RecoverPasswordTemplate';
