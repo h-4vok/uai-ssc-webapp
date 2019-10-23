@@ -219,5 +219,9 @@ export const defaultDictionary = {
     'El campo {0} debe tener al menos {1} caracteres.',
   'validator.api.not-null': 'El campo {0} no puede ser vacío.',
   'validator.api.valid-email-address':
-    'El campo {0} no es un correo electrónico válido.'
+    'El campo {0} no es un correo electrónico válido.',
+  'email.verification-email.subject': 'Verifique su cuenta de SSC',
+  'validator.ui.sign-up--verify-failed': 'No se pudo verificar la cuenta.',
+  'validator.ui.sign-up--verify-success':
+    'Su cuenta ha sido verificada. Puede ahora ingresar a la plataforma Sample Supply Chain.'
 };

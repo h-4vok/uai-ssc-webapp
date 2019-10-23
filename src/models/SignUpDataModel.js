@@ -103,6 +103,7 @@ export const buildBillingSignUpBody = model => {
 export const buildFullSignUpBody = model => {
   const {
     verificationCode: VerificationCode,
+    IncomingHost = `${window.location.hostname}:${window.location.port}`,
 
     firstName: FirstName,
     lastName: LastName,
@@ -137,6 +138,7 @@ export const buildFullSignUpBody = model => {
 
   const output = {
     VerificationCode,
+    IncomingHost,
 
     User: {
       UserName,

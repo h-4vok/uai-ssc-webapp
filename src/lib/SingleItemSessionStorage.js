@@ -1,11 +1,11 @@
-import { SessionStorage } from './SessionStorage';
+import { LocalStorage } from './LocalStorage';
 
 export class SingleItemSessionStorage {
   constructor(key) {
     this.key = key;
   }
 
-  storage = new SessionStorage();
+  storage = new LocalStorage();
 
   get = () => this.storage.get(this.key);
 
