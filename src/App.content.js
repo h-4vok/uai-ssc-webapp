@@ -15,7 +15,7 @@ export const unprotectedRoutes = [
   buildRoute('ssc', inProgressSitePage),
   buildRoute('about', Pages.AboutUsPage),
   buildRoute('tos', Pages.TermsOfServicePage),
-  buildRoute('forgot-password', inProgressSitePage),
+  buildRoute('forgot-password', Pages.ForgotPasswordPage),
   buildRoute('sign-up--initial', Pages.SignUpInitialPage),
   buildRoute('sign-up--company', Pages.SignUpCompanyPage),
   buildRoute('sign-up--pricing', Pages.SignUpPricingPage),
