@@ -245,5 +245,23 @@ export const defaultDictionary = {
     'La contraseña ha sido cambiada con éxito.',
   'forgot-password.token-invalid':
     'No se pudo validar su pedido de blanquear la contraseña. Por favor, vuelva a intentarlo.',
-  'recover-password.page.title': 'Recupere su contraseña'
+  'recover-password.page.title': 'Recupere su contraseña',
+  'security.listUsers.grid.id': 'Id',
+  'security.listUsers.grid.clientName': 'Cliente',
+  'security.listUsers.grid.userName': 'Account',
+  'security.listUsers.grid.isDisabled': 'Disabled',
+  'security.listUsers.grid.isBlocked': 'Blocked',
+  'security.listUsers.grid.countOfRoles': '# of Roles',
+  'security.listUsers.grid.countOfPermissions': '# of Permissions',
+  'security.listUsers.grid.isPlatformAdmin': 'Is Admin',
+  'security.listUsers.isDisabled.true': 'Disabled',
+  'security.listUsers.isDisabled.false': 'Enabled',
+  'security.listUsers.isBlocked.true': 'Blocked',
+  'security.listUsers.isAdmin.true': 'Yes',
+  'security.listUsers.refresh': 'Execute',
+  'security.listUsers.new': 'New',
+  'security.listUsers.edit': 'Edit',
+  'security.listUsers.enable': 'Enable',
+  'security.listUsers.disable': 'Disable',
+  'security.listUsers.delete': 'Delete'
 };
