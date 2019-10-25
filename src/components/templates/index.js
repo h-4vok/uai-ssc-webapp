@@ -13,3 +13,4 @@ export { TermsOfServiceTemplate } from './TermsOfServiceTemplate';
 export { ForgotPasswordTemplate } from './ForgotPasswordTemplate';
 export { RecoverPasswordTemplate } from './RecoverPasswordTemplate';
 export { ListPlatformUsersTemplate } from './ListPlatformUsersTemplate';
+export { EditUserTemplate } from './EditUserTemplate';

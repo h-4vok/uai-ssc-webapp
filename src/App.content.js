@@ -65,12 +65,12 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'security/user/new',
-    inProgressPlatformPage,
+    Pages.EditUserPage,
     'USERS_MANAGEMENT'
   ),
   buildPlatformRoute(
     'security/user/:id',
-    inProgressPlatformPage,
+    Pages.EditUserPage,
     'USERS_MANAGEMENT'
   ),
   buildPlatformRoute(

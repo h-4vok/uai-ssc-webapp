@@ -88,7 +88,7 @@ class SignInPageComponent extends PureComponent {
         GlobalState.AspNetSession = res.body.Result.SetCookie;
         document.cookie = GlobalState.AspNetSession;
 
-        this.notifier.success('Bienvenido a Sample Supply Chain');
+        this.notifier.success(this.props.i10n['welcome-text']);
         this.props.history.push('/platform-home');
       })
       .go();
