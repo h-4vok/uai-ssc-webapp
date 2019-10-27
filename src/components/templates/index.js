@@ -16,3 +16,5 @@ export { ListPlatformUsersTemplate } from './ListPlatformUsersTemplate';
 export { EditUserTemplate } from './EditUserTemplate';
 export { ListLogsTemplate } from './ListLogsTemplate';
 export { ReadLogTemplate } from './ReadLogTemplate';
+export { ContactUsTemplate } from './ContactUsTemplate';
+export { PrivacyPolicyTemplate } from './PrivacyPolicyTemplate';

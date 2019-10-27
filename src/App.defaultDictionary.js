@@ -287,5 +287,25 @@ export const defaultDictionary = {
   'security.read-log.date': 'Fechad el Evento',
   'security.read-log.user': 'Usuario',
   'security.read-log.client-id': 'Id del Cliente',
-  'security.read-log.message': 'Mensaje'
+  'security.read-log.message': 'Mensaje',
+  'contact-us.title': 'Contactate con nosotros',
+  'contact-us.text':
+    'A continuación te mostramos las formas de contacto con Sample Supply Chain.',
+  'app.marketing.menu.contact-us': 'Contacto',
+  'privacy-policy.title': 'Políticas de Privacidad y Seguridad',
+  'privacy-policy.text-intro':
+    'En cumplimiento con lo establecido por la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental le informamos nuestra política de privacidad y manejo de datos personales y hacemos el siguiente compromiso:',
+  'privacy-policy.text-01.txt':
+    'Reunimos información de carácter no personal, como el tipo de explorador, sistema operativo y página Web visitadas, con el objeto de contribuir a la administración de nuestros sitios Web.',
+  'privacy-policy.text-02.txt':
+    'Utilizamos cookies y otras tecnologías de Internet para administrar nuestro sitio Web y nuestros programas de correo electrónico, pero no para reunir o almacenar información personal.',
+  'privacy-policy.text-03.txt':
+    'Los datos que le solicitamos en los formularios de contacto, red social o cualquier tipo de formulario colocado dentro de nuestro Sitio Web únicamente serán utilizados para  poder establecer contacto con usted en relación a su petición o comentario.',
+  'privacy-policy.text-04.txt':
+    'Los datos que ingrese en cualquiera de los formularios dentro del Sitio Web no serán difundidos, distribuidos o comercializados.',
+  'privacy-policy.text-05.txt':
+    'En caso de que desee ser removido de nuestra base de datos podrá, en cualquier momento, solicitar la baja de la información mediante correo electrónico a admin@ssc.com, o por escrito a la siguiente dirección: Av. Paseo Colón 524, Capital Federal, Argentina.',
+  'privacy-policy.text-06.txt':
+    'Su petición o comentario puede ser incluido dentro de los informes estadísticos que se elaboren para el seguimiento de avances institucionales del Gobierno Federal. No obstante, dichos informes serán meramente estadísticos y no incluirán información que permita identificarle en lo individual. ',
+  'app.marketing.menu.privacy-policy': 'Políticas de Privacidad'
 };
