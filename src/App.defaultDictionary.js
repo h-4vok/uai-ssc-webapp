@@ -272,5 +272,14 @@ export const defaultDictionary = {
   'security.editUser.title.new': 'Nuevo Usuario',
   'security.editUser.confirm': 'Confirmar',
   'model.user.clientCompany': 'Cliente',
-  'welcome-text': 'Bienvenido a Sample Supply Chain'
+  'welcome-text': 'Bienvenido a Sample Supply Chain',
+  'event-type.info': 'Información',
+  'event-type.error': 'Error',
+  'security.listLogs.grid.id': 'Id',
+  'security.listLogs.grid.createddate': 'Fecha de Registro',
+  'security.listLogs.grid.user': 'Usuario',
+  'security.listLogs.grid.event-type': 'Tipo de Evento',
+  'security.listLogs.grid.message': 'Mensaje',
+  'security.listLogs.refresh': 'Refrescar',
+  'security.listLogs.read': 'Consultar'
 };
