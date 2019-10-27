@@ -100,17 +100,10 @@ class ListLogsTemplateComponent extends PureComponent {
     }
   ];
 
-  callEdit = onEditAction => {
+  callRead = onAction => {
     const item = this.dataGrid.api.getSelectedRows()[0];
-    const id = item.Id;
 
-    onEditAction(id);
-  };
-
-  callWithSelected = action => {
-    const items = this.dataGrid.api.getSelectedRows();
-
-    action(items, this.dataGrid.api);
+    onAction(item.Id);
   };
 
   render() {
@@ -132,7 +125,7 @@ class ListLogsTemplateComponent extends PureComponent {
             {GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
               <Button
                 variant="contained"
-                onClick={onReadAction}
+                onClick={() => this.callRead(onReadAction)}
                 className={classes.button}
                 disabled={!oneRowSelected}
               >
