@@ -22,3 +22,4 @@ export { RecoverPasswordPage } from './RecoverPasswordPage';
 export { ListPlatformUsersPage } from './ListPlatformUsersPage';
 export { EditUserPage } from './EditUserPage';
 export { ListLogsPage } from './ListLogsPage';
+export { ReadLogPage } from './ReadLogPage';

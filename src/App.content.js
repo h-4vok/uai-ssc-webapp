@@ -89,6 +89,7 @@ export const protectedRoutes = [
     'ROLES_MANAGEMENT'
   ),
   buildPlatformRoute('security/role', Pages.ListRolesPage, 'ROLES_REPORT'),
+  buildPlatformRoute('security/log/:id', Pages.ReadLogPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute('security/log', Pages.ListLogsPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute(
     'security/backup',

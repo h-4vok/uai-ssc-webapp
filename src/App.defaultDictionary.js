@@ -281,5 +281,11 @@ export const defaultDictionary = {
   'security.listLogs.grid.event-type': 'Tipo de Evento',
   'security.listLogs.grid.message': 'Mensaje',
   'security.listLogs.refresh': 'Refrescar',
-  'security.listLogs.read': 'Consultar'
+  'security.listLogs.read': 'Consultar',
+  'security.read-log.title': 'Registro de Bitácora',
+  'security.read-log.event-type-description': 'Tipo de Evento',
+  'security.read-log.date': 'Fechad el Evento',
+  'security.read-log.user': 'Usuario',
+  'security.read-log.client-id': 'Id del Cliente',
+  'security.read-log.message': 'Mensaje'
 };

@@ -15,3 +15,4 @@ export { RecoverPasswordTemplate } from './RecoverPasswordTemplate';
 export { ListPlatformUsersTemplate } from './ListPlatformUsersTemplate';
 export { EditUserTemplate } from './EditUserTemplate';
 export { ListLogsTemplate } from './ListLogsTemplate';
+export { ReadLogTemplate } from './ReadLogTemplate';
