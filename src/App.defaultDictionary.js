@@ -333,5 +333,10 @@ export const defaultDictionary = {
     'El rango mínimo debe ser igual o menor al rango máximo.',
   '"sample-parameter-type.validation.code-exists':
     'El código del parámetro ya existe.',
-  'menu.platform.configuration.unit-of-measure': 'Gestionar Unidades de Medida'
+  'menu.platform.configuration.unit-of-measure': 'Gestionar Unidades de Medida',
+  'configuration.editUnitOfMeasure.title.new': 'Nueva Unidad de Medida',
+  'global.confirm': 'Confirmar',
+  'unit-of-measure.validation.code-not-unique':
+    'El código ingresado ya existe.',
+  'global.isenabled': 'Habilitado'
 };

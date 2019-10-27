@@ -42,12 +42,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'configuration/unit-of-measure/new',
-    inProgressPlatformPage,
-    'UNIT_OF_MEASURE_MANAGEMENT'
-  ),
-  buildPlatformRoute(
-    'configuration/unit-of-measure/:id',
-    inProgressPlatformPage,
+    Pages.EditUnitOfMeasurePage,
     'UNIT_OF_MEASURE_MANAGEMENT'
   ),
   buildPlatformRoute(

@@ -59,7 +59,7 @@ class ListUnitOfMeasuresTemplateComponent extends PureComponent {
 
   isEnabledFormatter = (params, i10n) =>
     params.value
-      ? 'global.is-enabled.enabled'
+      ? i10n['global.is-enabled.enabled']
       : i10n['global.is-enabled.disabled'];
 
   descriptionFormatter = (params, i10n) =>
@@ -82,13 +82,13 @@ class ListUnitOfMeasuresTemplateComponent extends PureComponent {
     },
     {
       headerName: i10n['global.description'],
-      field: 'Id',
+      field: 'Code',
       sortable: true,
       filter: true,
       valueFormatter: params => this.descriptionFormatter(params, i10n)
     },
     {
-      headerName: i10n['security.model.sample-parameter-type.isEnabled'],
+      headerName: i10n['global.isenabled'],
       field: 'IsEnabled',
       sortable: true,
       filter: true,

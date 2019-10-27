@@ -117,7 +117,7 @@ class EditRoleTemplateComponent extends PureComponent {
             <Grid item xs={12}>
               <TextField
                 required
-                maxLength="300"
+                inputProps={{ maxLength: 300 }}
                 id="Name"
                 name="Name"
                 label={i10n['security.editRole.name']}

@@ -104,7 +104,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   name="companyName"
                   label={i10n['sign-up--company.name']}
                   fullWidth
-                  maxLength="200"
+                  inputProps={{ maxLength: 200 }}
                   value={companyName}
                   onChange={this.onInputChange}
                 />
@@ -129,7 +129,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   name="city"
                   label={i10n['sign-up--company.city']}
                   fullWidth
-                  maxLength="200"
+                  inputProps={{ maxLength: 200 }}
                   value={city}
                   onChange={this.onInputChange}
                 />
@@ -141,7 +141,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   name="street"
                   label={i10n['sign-up--company.street']}
                   fullWidth
-                  maxLength="500"
+                  inputProps={{ maxLength: 500 }}
                   value={street}
                   onChange={this.onInputChange}
                 />
@@ -153,7 +153,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   name="streetNumber"
                   label={i10n['sign-up--company.streetNumber']}
                   fullWidth
-                  maxLength="35"
+                  inputProps={{ maxLength: 35 }}
                   value={streetNumber}
                   onChange={this.onInputChange}
                 />
@@ -165,7 +165,7 @@ class SignUpCompanyTemplateComponent extends PureComponent {
                   name="department"
                   label={i10n['sign-up--company.department']}
                   fullWidth
-                  maxLength="35"
+                  inputProps={{ maxLength: 35 }}
                   value={department}
                   onChange={this.onInputChange}
                 />

@@ -22,3 +22,4 @@ export {
   ListSampleParameterTypesTemplate
 } from './ListSampleParameterTypesTemplate';
 export { ListUnitOfMeasuresTemplate } from './ListUnitOfMeasuresTemplate';
+export { EditUnitOfMeasureTemplate } from './EditUnitOfMeasureTemplate';

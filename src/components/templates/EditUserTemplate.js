@@ -128,7 +128,7 @@ class EditUserTemplateComponent extends PureComponent {
             <Grid item xs={12}>
               <TextField
                 required
-                maxLength="300"
+                inputProps={{ maxLength: 300 }}
                 id="UserName"
                 name="UserName"
                 label={i10n['model.user.username']}

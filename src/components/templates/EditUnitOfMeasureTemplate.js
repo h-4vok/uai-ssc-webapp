@@ -22,16 +22,15 @@ const styles = theme => ({
   }
 });
 
-class EditLanguageEntryTemplateComponent extends PureComponent {
+class EditUnitOfMeasureTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { model } = this.props;
-    const { Key, Translation } = model;
+    const { Code, DefaultDescription } = this.props.model;
 
     this.state = {
-      Key,
-      Translation
+      Code,
+      DefaultDescription
     };
   }
 
@@ -41,40 +40,43 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { classes, onConfirm, onCancel, i10n } = this.props;
-    const { Key, Translation } = this.state;
+    const { classes, onConfirm, i10n } = this.props;
+    const { Code, DefaultDescription } = this.state;
 
     return (
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="lg">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            {i10n['configuration.editLanguageEntry.title']}
+            {i10n['configuration.editUnitOfMeasure.title.new']}
           </Typography>
         </div>
         <form className={classes.form} noValidate>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                readonly
-                label={i10n['configuration.editLanguageEntry.key']}
-                fullWidth
-                value={Key}
-                InputProps={{ readOnly: true }}
-              />
+            <Grid item xs={6}>
               <TextField
                 required
-                inputProps={{ maxLength: 500 }}
-                id="Translation"
-                name="Translation"
-                label={i10n['configuration.editLanguageEntry.translation']}
+                inputProps={{ maxLength: 10 }}
+                id="Code"
+                name="Code"
+                label={i10n['global.code']}
                 fullWidth
-                multiline
-                rowsMax="6"
-                value={Translation}
+                value={Code}
                 onChange={this.onInputChange}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
+              <TextField
+                required
+                inputProps={{ maxLength: 300 }}
+                id="DefaultDescription"
+                name="DefaultDescription"
+                label={i10n['global.description']}
+                fullWidth
+                value={DefaultDescription}
+                onChange={this.onInputChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
               <Button
                 fullWidth
                 variant="contained"
@@ -82,17 +84,7 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
                 className={classes.submit}
                 onClick={onConfirm}
               >
-                {i10n['configuration.editLanguageEntry.confirm']}
-              </Button>
-            </Grid>
-            <Grid item xs={6}>
-              <Button
-                fullWidth
-                variant="contained"
-                className={classes.submit}
-                onClick={onCancel}
-              >
-                {i10n['configuration.editLanguageEntry.cancel']}
+                {i10n['global.confirm']}
               </Button>
             </Grid>
           </Grid>
@@ -102,6 +94,6 @@ class EditLanguageEntryTemplateComponent extends PureComponent {
   }
 }
 
-export const EditLanguageEntryTemplate = withLocalization(
-  withStyles(styles)(EditLanguageEntryTemplateComponent)
+export const EditUnitOfMeasureTemplate = withLocalization(
+  withStyles(styles)(EditUnitOfMeasureTemplateComponent)
 );
