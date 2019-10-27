@@ -307,5 +307,24 @@ export const defaultDictionary = {
     'En caso de que desee ser removido de nuestra base de datos podrá, en cualquier momento, solicitar la baja de la información mediante correo electrónico a admin@ssc.com, o por escrito a la siguiente dirección: Av. Paseo Colón 524, Capital Federal, Argentina.',
   'privacy-policy.text-06.txt':
     'Su petición o comentario puede ser incluido dentro de los informes estadísticos que se elaboren para el seguimiento de avances institucionales del Gobierno Federal. No obstante, dichos informes serán meramente estadísticos y no incluirán información que permita identificarle en lo individual. ',
-  'app.marketing.menu.privacy-policy': 'Políticas de Privacidad'
+  'app.marketing.menu.privacy-policy': 'Políticas de Privacidad',
+  'global.is-enabled.enabled': 'Habilitado',
+  'global.is-enabled.disabled': 'Deshabilitado',
+  'global.id': 'Id',
+  'global.code': 'Código',
+  'global.description': 'Descripción',
+  'security.model.sample-parameter-type.data-type-name': 'Tipo de Dato',
+  'security.model.sample-parameter-type.minimum-range': 'Rango Mínimo',
+  'security.model.sample-parameter-type.maximum-range': 'Rango Máximo',
+  'security.model.sample-parameter-type.decimal-digits': 'Cant. de Decimales',
+  'security.model.sample-parameter-type.updated-date': 'Fecha de actualización',
+  'security.model.sample-parameter-type.updated-by': 'Actualizado por',
+  'security.model.sample-parameter-type.isEnabled': '¿Habilitado?',
+  'global.action.refresh': 'Refrescar',
+  'global.action.new': 'Nuevo',
+  'global.action.edit': 'Editar',
+  'global.action.enable': 'Habilitar',
+  'global.action.disable': 'Deshabilitar',
+  'global.action.delete': 'Eliminar',
+  'global.action.export': 'Exportar'
 };

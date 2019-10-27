@@ -162,6 +162,7 @@ class PlatformBarComponent extends PureComponent {
               'configurationMenuOpen',
               'SAMPLE_TYPE_MANAGEMENT',
               'SAMPLE_TYPE_REPORT',
+              'SAMPLE_TYPE_PARAMETERS_MANAGEMENT',
               'SAMPLE_FUNCTION_REPORT',
               'SAMPLE_FUNCTION_MANAGEMENT',
               'LANGUAGES_MANAGEMENT',
@@ -185,7 +186,7 @@ class PlatformBarComponent extends PureComponent {
               {this.buildMenuItem(
                 '/configuration/sample-type-parameter',
                 i10n['menu.platform.configuration.sample-type-parameter'],
-                'SAMPLE_TYPE_MANAGEMENT'
+                'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/configuration/sample-function',

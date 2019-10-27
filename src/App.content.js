@@ -41,9 +41,19 @@ export const protectedRoutes = [
     'SAMPLE_TYPE_REPORT'
   ),
   buildPlatformRoute(
-    'configuration/sample-type-parameter',
+    'configuration/sample-type-parameter/new',
     inProgressPlatformPage,
-    'SAMPLE_TYPE_MANAGEMENT'
+    'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'configuration/sample-type-parameter/:id',
+    inProgressPlatformPage,
+    'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'configuration/sample-type-parameter',
+    Pages.ListSampleParameterTypesPage,
+    'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
   ),
   buildPlatformRoute(
     'configuration/sample-function',

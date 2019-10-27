@@ -25,3 +25,4 @@ export { ListLogsPage } from './ListLogsPage';
 export { ReadLogPage } from './ReadLogPage';
 export { ContactUsPage } from './ContactUsPage';
 export { PrivacyPolicyPage } from './PrivacyPolicyPage';
+export { ListSampleParameterTypesPage } from './ListSampleParameterTypesPage';

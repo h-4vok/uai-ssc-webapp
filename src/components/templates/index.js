@@ -18,3 +18,6 @@ export { ListLogsTemplate } from './ListLogsTemplate';
 export { ReadLogTemplate } from './ReadLogTemplate';
 export { ContactUsTemplate } from './ContactUsTemplate';
 export { PrivacyPolicyTemplate } from './PrivacyPolicyTemplate';
+export {
+  ListSampleParameterTypesTemplate
+} from './ListSampleParameterTypesTemplate';
