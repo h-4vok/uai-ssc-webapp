@@ -326,5 +326,11 @@ export const defaultDictionary = {
   'global.action.enable': 'Habilitar',
   'global.action.disable': 'Deshabilitar',
   'global.action.delete': 'Eliminar',
-  'global.action.export': 'Exportar'
+  'global.action.export': 'Exportar',
+  'sample-parameter-type.validation.invalid-decimal':
+    'La cantidad de decimales debe ser mayor a cero.',
+  'sample-parameter-type.validation.invalid-ranges':
+    'El rango mínimo debe ser igual o menor al rango máximo.',
+  '"sample-parameter-type.validation.code-exists':
+    'El código del parámetro ya existe.'
 };
