@@ -160,6 +160,7 @@ class PlatformBarComponent extends PureComponent {
               'configuration-menu',
               i10n['menu.platform.configuration-menu'],
               'configurationMenuOpen',
+              'UNIT_OF_MEASURE_MANAGEMENT',
               'SAMPLE_TYPE_MANAGEMENT',
               'SAMPLE_TYPE_REPORT',
               'SAMPLE_TYPE_PARAMETERS_MANAGEMENT',
@@ -177,6 +178,12 @@ class PlatformBarComponent extends PureComponent {
               open={configurationMenuOpen}
               onClose={this.handleClose}
             >
+              {this.buildMenuItem(
+                '/configuration/unit-of-measure',
+                i10n['menu.platform.configuration.unit-of-measure'],
+                'UNIT_OF_MEASURE_MANAGEMENT',
+                'UNIT_OF_MEASURE_MANAGEMENT'
+              )}
               {this.buildMenuItem(
                 '/configuration/sample-type',
                 i10n['menu.platform.configuration.sample-type'],

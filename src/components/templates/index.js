@@ -21,3 +21,4 @@ export { PrivacyPolicyTemplate } from './PrivacyPolicyTemplate';
 export {
   ListSampleParameterTypesTemplate
 } from './ListSampleParameterTypesTemplate';
+export { ListUnitOfMeasuresTemplate } from './ListUnitOfMeasuresTemplate';
