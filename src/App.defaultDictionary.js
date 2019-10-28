@@ -351,5 +351,15 @@ export const defaultDictionary = {
   'model.unit-of-measure': 'Unidad de Medida',
   'validator.api.mandatory-decimal': 'El campo "{0}" es requerido.',
   'sample-function.exists': 'El código indicado ya existe.',
-  'sample-function.forbidden-code': 'El código no puede ser X, S o C'
+  'sample-function.forbidden-code': 'El código no puede ser X, S o C',
+  'configuration.sample-function.title.edit': 'Editar Función de Muestra',
+  'configuration.sample-function.title.new': 'Nueva Función de Muestra',
+  'global.name': 'Nombre',
+  'model.patient.patient-type': 'Tipo de Paciente',
+  'model.patient.client-company': 'Cliente',
+  'model.patient.invalid-delete':
+    'Error al intentar eliminar el paciente indicado.',
+  'model.patient.available-samples': '# de Muestras Disponibles',
+  'model.patient.used-samples': '# de Muestras Utilizables',
+  'model.patient.total-samples': '# de Muestras Total'
 };

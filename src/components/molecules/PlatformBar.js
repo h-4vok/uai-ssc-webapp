@@ -266,7 +266,7 @@ class PlatformBarComponent extends PureComponent {
               'inventory-menu',
               i10n['menu.platform.inventory-menu'],
               'inventoryMenuOpen',
-              'PATIENT_MANAGEMENT',
+              'PATIENTS_MANAGEMENT',
               'SAMPLE_MANAGEMENT'
             )}
 
@@ -280,7 +280,7 @@ class PlatformBarComponent extends PureComponent {
               {this.buildMenuItem(
                 '/inventory/patient',
                 i10n['menu.platform.inventory.patient'],
-                'PATIENT_MANAGEMENT'
+                'PATIENTS_MANAGEMENT'
               )}
               {this.buildMenuItem(
                 '/inventory/sample',

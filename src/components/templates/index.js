@@ -28,3 +28,4 @@ export {
 } from './EditSampleTypeParameterTemplate';
 export { ListSampleFunctionsTemplate } from './ListSampleFunctionsTemplate';
 export { EditSampleFunctionTemplate } from './EditSampleFunctionTemplate';
+export { ListPatientsTemplate } from './ListPatientsTemplate';

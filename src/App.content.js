@@ -134,8 +134,18 @@ export const protectedRoutes = [
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
-    'inventory/patient',
+    'inventory/patient/new',
     inProgressPlatformPage,
+    'PATIENTS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'inventory/patient/:id',
+    inProgressPlatformPage,
+    'PATIENTS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'inventory/patient',
+    Pages.ListPatientsPage,
     'PATIENTS_MANAGEMENT'
   ),
   buildPlatformRoute(
