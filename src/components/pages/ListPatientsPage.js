@@ -56,7 +56,7 @@ class ListPatientsPageComponent extends PureComponent {
   onDeleteConfirm = items => {
     items.forEach(item => {
       this.api.request
-        .del('role', item.Id)
+        .del(apiRoute, item.Id)
         .success(() => this.onRefresh())
         .go();
     });

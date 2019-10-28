@@ -135,12 +135,12 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'inventory/patient/new',
-    inProgressPlatformPage,
+    Pages.EditPatientPage,
     'PATIENTS_MANAGEMENT'
   ),
   buildPlatformRoute(
     'inventory/patient/:id',
-    inProgressPlatformPage,
+    Pages.EditPatientPage,
     'PATIENTS_MANAGEMENT'
   ),
   buildPlatformRoute(

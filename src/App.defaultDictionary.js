@@ -361,5 +361,8 @@ export const defaultDictionary = {
     'Error al intentar eliminar el paciente indicado.',
   'model.patient.available-samples': '# de Muestras Disponibles',
   'model.patient.used-samples': '# de Muestras Utilizables',
-  'model.patient.total-samples': '# de Muestras Total'
+  'model.patient.total-samples': '# de Muestras Total',
+  'inventory.patient.title.edit': 'Editar Paciente',
+  'inventory.patient.title.new': 'Nuevo Paciente',
+  'model.patient-type': 'Tipo de Paciente'
 };
