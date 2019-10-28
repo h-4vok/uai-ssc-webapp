@@ -26,3 +26,4 @@ export { EditUnitOfMeasureTemplate } from './EditUnitOfMeasureTemplate';
 export {
   EditSampleTypeParameterTemplate
 } from './EditSampleTypeParameterTemplate';
+export { ListSampleFunctionsTemplate } from './ListSampleFunctionsTemplate';

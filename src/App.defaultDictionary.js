@@ -350,4 +350,6 @@ export const defaultDictionary = {
   'model.sample-type-parameter.maximum-range': 'Rango Máximo',
   'model.unit-of-measure': 'Unidad de Medida',
   'validator.api.mandatory-decimal': 'El campo "{0}" es requerido.',
+  'sample-function.exists': 'El código indicado ya existe.',
+  'sample-function.forbidden-code': 'El código no puede ser X, S o C'
 };
