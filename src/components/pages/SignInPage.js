@@ -50,7 +50,7 @@ class SignInPageComponent extends PureComponent {
     this.notifier = new SnackbarVisitor(this.props);
 
     this.state = {
-      signInEnabled: false,
+      signInEnabled: true,
       username: '',
       password: ''
     };

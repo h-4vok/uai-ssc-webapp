@@ -1,5 +1,6 @@
 /* eslint-disable */
 export const defaultDictionary = {
+  'configuration.unit-of-measure.description[ml]': 'mililitros',
   'about-us.address': 'Av. Paseo Colón 524, 1er Piso',
   'about-us.contact': 'Contacto',
   'about-us.text':
@@ -338,5 +339,15 @@ export const defaultDictionary = {
   'global.confirm': 'Confirmar',
   'unit-of-measure.validation.code-not-unique':
     'El código ingresado ya existe.',
-  'global.isenabled': 'Habilitado'
+  'global.isenabled': 'Habilitado',
+  'configuration.sample-type-parameter.title.edit':
+    'Editar Tipo de Parámetro de Muestra',
+  'configuration.sample-type-parameter.title.new':
+    'Nuevo Tipo de Parámetro de Muestra',
+  'model.parameter-data-type': 'Tipo de Dato',
+  'model.sample-type-parameter.decimal-digits': 'Cant. de Dígitos Decimales',
+  'model.sample-type-parameter.minimum-range': 'Rango Mínimo',
+  'model.sample-type-parameter.maximum-range': 'Rango Máximo',
+  'model.unit-of-measure': 'Unidad de Medida',
+  'validator.api.mandatory-decimal': 'El campo "{0}" es requerido.',
 };

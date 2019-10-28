@@ -59,7 +59,7 @@ class ListSampleParameterTypesTemplateComponent extends PureComponent {
 
   isEnabledFormatter = (params, i10n) =>
     params.value
-      ? 'global.is-enabled.enabled'
+      ? i10n['global.is-enabled.enabled']
       : i10n['global.is-enabled.disabled'];
 
   descriptionFormatter = (params, i10n) =>

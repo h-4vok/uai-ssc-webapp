@@ -6,6 +6,10 @@ import { API } from '../../lib/xhr';
 import { ConfirmDialog } from '../molecules';
 import { ListSampleParameterTypesTemplate } from '../templates';
 
+const apiRoute = 'sampleparametertype';
+const getEditRoute = (id = 'new') =>
+  `/configuration/sample-type-parameter/${id}`;
+
 class ListSampleParameterTypesPageComponent extends PureComponent {
   constructor(props) {
     super(props);
@@ -27,7 +31,7 @@ class ListSampleParameterTypesPageComponent extends PureComponent {
 
   onRefresh() {
     this.api.request
-      .get(`sampleParameterType`)
+      .get(apiRoute)
       .success(res => {
         this.setState({
           items: res.body.Result
@@ -37,11 +41,11 @@ class ListSampleParameterTypesPageComponent extends PureComponent {
   }
 
   onNewAction() {
-    this.props.history.push('/security/sample-parameter-type/new');
+    this.props.history.push(getEditRoute());
   }
 
   onEditAction(id) {
-    this.props.history.push(`/security/sample-parameter-type/${id}`);
+    this.props.history.push(getEditRoute(id));
   }
 
   onEnableAction(selectedItems, dataGridApi) {
@@ -81,7 +85,7 @@ class ListSampleParameterTypesPageComponent extends PureComponent {
     };
 
     this.api.request
-      .patch('sampleparametertype', body, 0)
+      .patch(apiRoute, body, 0)
       .success(() => {
         this.state.dataGridApi.deselectAll();
         this.onRefresh();
@@ -96,7 +100,7 @@ class ListSampleParameterTypesPageComponent extends PureComponent {
   onDeleteConfirm = items => {
     items.forEach(item => {
       this.api.request
-        .del('sampleparametertype', item.Id)
+        .del(apiRoute, item.Id)
         .success(() => this.onRefresh())
         .go();
     });

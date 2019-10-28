@@ -28,3 +28,4 @@ export { PrivacyPolicyPage } from './PrivacyPolicyPage';
 export { ListSampleParameterTypesPage } from './ListSampleParameterTypesPage';
 export { ListUnitOfMeasuresPage } from './ListUnitOfMeasuresPage';
 export { EditUnitOfMeasurePage } from './EditUnitOfMeasurePage';
+export { EditSampleTypeParameterPage } from './EditSampleTypeParameterPage';

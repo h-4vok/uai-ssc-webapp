@@ -52,12 +52,12 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'configuration/sample-type-parameter/new',
-    inProgressPlatformPage,
+    Pages.EditSampleTypeParameterPage,
     'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
   ),
   buildPlatformRoute(
     'configuration/sample-type-parameter/:id',
-    inProgressPlatformPage,
+    Pages.EditSampleTypeParameterPage,
     'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
   ),
   buildPlatformRoute(
