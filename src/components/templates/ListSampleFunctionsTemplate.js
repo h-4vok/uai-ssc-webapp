@@ -64,9 +64,6 @@ class ListSampleFunctionsTemplateComponent extends PureComponent {
       ? i10n['global.is-enabled.enabled']
       : i10n['global.is-enabled.disabled'];
 
-  descriptionFormatter = (params, i10n) =>
-    i10n[`security.sample-function.description[${params.value}]`];
-
   buildGridDef = i10n => [
     {
       headerName: i10n['global.id'],
@@ -84,10 +81,9 @@ class ListSampleFunctionsTemplateComponent extends PureComponent {
     },
     {
       headerName: i10n['global.description'],
-      field: 'Code',
+      field: 'Name',
       sortable: true,
-      filter: true,
-      valueFormatter: params => this.descriptionFormatter(params, i10n)
+      filter: true
     },
     {
       headerName: i10n['global.isenabled'],

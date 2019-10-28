@@ -30,3 +30,4 @@ export { ListUnitOfMeasuresPage } from './ListUnitOfMeasuresPage';
 export { EditUnitOfMeasurePage } from './EditUnitOfMeasurePage';
 export { EditSampleTypeParameterPage } from './EditSampleTypeParameterPage';
 export { ListSampleFunctionsPage } from './ListSampleFunctionsPage';
+export { EditSampleFunctionPage } from './EditSampleFunctionPage';

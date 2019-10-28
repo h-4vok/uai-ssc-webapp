@@ -27,3 +27,4 @@ export {
   EditSampleTypeParameterTemplate
 } from './EditSampleTypeParameterTemplate';
 export { ListSampleFunctionsTemplate } from './ListSampleFunctionsTemplate';
+export { EditSampleFunctionTemplate } from './EditSampleFunctionTemplate';

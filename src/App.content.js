@@ -67,12 +67,12 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'configuration/sample-function/new',
-    inProgressPlatformPage,
+    Pages.EditSampleFunctionPage,
     'SAMPLE_FUNCTION_MANAGEMENT'
   ),
   buildPlatformRoute(
     'configuration/sample-function/:id',
-    inProgressPlatformPage,
+    Pages.EditSampleFunctionPage,
     'SAMPLE_FUNCTION_MANAGEMENT'
   ),
   buildPlatformRoute(
