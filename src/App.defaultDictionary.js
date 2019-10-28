@@ -364,5 +364,11 @@ export const defaultDictionary = {
   'model.patient.total-samples': '# de Muestras Total',
   'inventory.patient.title.edit': 'Editar Paciente',
   'inventory.patient.title.new': 'Nuevo Paciente',
-  'model.patient-type': 'Tipo de Paciente'
+  'model.patient-type': 'Tipo de Paciente',
+  'sample-type.validation.exists':
+    'Ya existe un tipo de muestra con este código.',
+  'sample-type.validation.used':
+    'Una o más muestras utilizan el tipo de muestra seleccionado.',
+  'global.last-update': 'Última Actualización',
+  'global.last-update-by': 'Actualización por'
 };

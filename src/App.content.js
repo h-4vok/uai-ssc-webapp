@@ -36,8 +36,18 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
-    'configuration/sample-type',
+    'configuration/sample-type/new',
     inProgressPlatformPage,
+    'SAMPLE_TYPE_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'configuration/sample-type/:id',
+    inProgressPlatformPage,
+    'SAMPLE_TYPE_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'configuration/sample-type',
+    Pages.ListSampleTypePage,
     'SAMPLE_TYPE_REPORT'
   ),
   buildPlatformRoute(

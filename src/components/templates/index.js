@@ -30,3 +30,4 @@ export { ListSampleFunctionsTemplate } from './ListSampleFunctionsTemplate';
 export { EditSampleFunctionTemplate } from './EditSampleFunctionTemplate';
 export { ListPatientsTemplate } from './ListPatientsTemplate';
 export { EditPatientTemplate } from './EditPatientTemplate';
+export { ListSampleTypeTemplate } from './ListSampleTypeTemplate';

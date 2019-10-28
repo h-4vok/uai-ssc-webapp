@@ -33,3 +33,4 @@ export { ListSampleFunctionsPage } from './ListSampleFunctionsPage';
 export { EditSampleFunctionPage } from './EditSampleFunctionPage';
 export { ListPatientsPage } from './ListPatientsPage';
 export { EditPatientPage } from './EditPatientPage';
+export { ListSampleTypePage } from './ListSampleTypePage';
