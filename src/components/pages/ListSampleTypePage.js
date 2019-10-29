@@ -56,7 +56,7 @@ class ListSampleTypePageComponent extends PureComponent {
   onDeleteConfirm = items => {
     items.forEach(item => {
       this.api.request
-        .del(apiRoute, item.Id)
+        .del(apiRoute, item.SampleTypeId)
         .success(() => this.onRefresh())
         .go();
     });

@@ -62,7 +62,7 @@ class ListSampleTypeTemplateComponent extends PureComponent {
   buildGridDef = i10n => [
     {
       headerName: i10n['global.id'],
-      field: 'Id',
+      field: 'SampleTypeId',
       sortable: true,
       filter: true,
       checkboxSelection: true,
@@ -90,7 +90,7 @@ class ListSampleTypeTemplateComponent extends PureComponent {
 
   callEdit = onEditAction => {
     const item = this.dataGrid.api.getSelectedRows()[0];
-    const id = item.Id;
+    const id = item.SampleTypeId;
 
     onEditAction(id);
   };
