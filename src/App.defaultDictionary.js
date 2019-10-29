@@ -370,5 +370,22 @@ export const defaultDictionary = {
   'sample-type.validation.used':
     'Una o más muestras utilizan el tipo de muestra seleccionado.',
   'global.last-update': 'Última Actualización',
-  'global.last-update-by': 'Actualización por'
+  'global.last-update-by': 'Actualización por',
+  'configuration.sample-type-parameter.description[PESO_ESPECIFICO]':
+    'Peso Especifico',
+  'configuration.sample-type-parameter.description[OTRO]': 'Otro',
+  'menu.platform.account-menu': 'Mi Cuenta',
+  'menu.platform.account.change-password': 'Cambio de contraseña',
+  'configuration.sample-type.title.new': 'Nuevo Tipo de Muestra',
+  'account.change-password.page.title': 'Cambio de Contraseña',
+  'change-password.currentPassword': 'Contraseña Actual',
+  'change-password.password1': 'Ingrese una nueva contraseña',
+  'change-password.password2': 'Repita la nueva contraseña',
+  'change-password.success': 'Su contraseña ha sido actualizada con éxito.',
+  'change-password.validation.password-no-match':
+    'La contraseña actual no coincide. Vuelva a intentarlo.',
+  'change-password.validation.empty-passwords': 'Debe llenar todos los campos.',
+  'change-password.validation.new-password-no-match':
+    'Las contraseñas no coinciden.',
+  'email.password-changed.subject': 'SSC - Su contraseña ha sido actualizada'
 };

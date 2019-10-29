@@ -60,7 +60,7 @@ class SscAuthorizer {
   }
 
   hasOne(...permissions) {
-    let hasOne = false;
+    let hasOne = false || permissions.length === 0;
 
     for (let i = 0; i < permissions.length; i++) {
       const code = permissions[i];

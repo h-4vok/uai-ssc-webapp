@@ -19,7 +19,8 @@ const defaultState = {
   securityMenuOpen: false,
   inventoryMenuOpen: false,
   clientMenuOpen: false,
-  workOrderMenuOpen: false
+  workOrderMenuOpen: false,
+  accountMenuOpen: false
 };
 
 class PlatformBarComponent extends PureComponent {
@@ -119,7 +120,8 @@ class PlatformBarComponent extends PureComponent {
       securityMenuOpen,
       inventoryMenuOpen,
       clientMenuOpen,
-      workOrderMenuOpen
+      workOrderMenuOpen,
+      accountMenuOpen
     } = this.state;
 
     const { i10n } = this.props;
@@ -360,9 +362,28 @@ class PlatformBarComponent extends PureComponent {
                 'RUN_EXECUTION_QC'
               )}
             </Menu>
-            <Button onClick={() => this.closeSession()} className="menu-button">
-              {i10n['menu.platform.sign-out']}
-            </Button>
+
+            {this.buildButton(
+              'work-order-menu',
+              i10n['menu.platform.account-menu'],
+              'accountMenuOpen'
+            )}
+
+            <Menu
+              id="account-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={accountMenuOpen}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={() => this.closeSession()}>
+                {i10n['menu.platform.sign-out']}
+              </MenuItem>
+              {this.buildMenuItem(
+                '/account/change-password',
+                i10n['menu.platform.account.change-password']
+              )}
+            </Menu>
           </Toolbar>
         </AppBar>
       </div>
