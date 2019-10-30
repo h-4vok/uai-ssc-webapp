@@ -11,3 +11,4 @@ export { PlatformBar } from './PlatformBar';
 export { ButtonBar } from './ButtonBar';
 export { MessageDialog } from './MessageDialog';
 export { ConfirmDialog } from './ConfirmDialog';
+export { ProductCard } from './ProductCard';

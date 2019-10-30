@@ -387,5 +387,22 @@ export const defaultDictionary = {
   'change-password.validation.empty-passwords': 'Debe llenar todos los campos.',
   'change-password.validation.new-password-no-match':
     'Las contraseñas no coinciden.',
-  'email.password-changed.subject': 'SSC - Su contraseña ha sido actualizada'
+  'email.password-changed.subject': 'SSC - Su contraseña ha sido actualizada',
+  'product-search.page.title': 'Catálogo de Servicios',
+  'product-search.page.open-filters': 'Abrir Filtros',
+  'product-search.page.name-filter': 'Filtrar por nombre',
+  'product-search.page.rating-filter': 'Mínimo de rating',
+  'product-search.page.price-range-filter': 'Rango de precios',
+  'product-search.page.apply-filter': 'Aplicar filtros',
+  'app.marketing.menu.catalog': 'Catálogo',
+  'product-card.patient-sample-limit': 'Hasta ${value} muestras de pacientes.',
+  'product-card.patient-sample-unlimited':
+    'Sin límite de muestras de pacientes.',
+  'product-card.control-sample-limit': 'Hasta ${value} muestras de control.',
+  'product-card.control-sample-unlimited': 'Sin límite de muestras de control.',
+  'product-card.run-limit': 'Hasta ${value} ensayos clínicos al mes.',
+  'product-card.run-unlimited': 'Sin límite de ensayos clínicos.',
+  'product-card.user-limit': 'Hasta ${value} cuentas de usuario.',
+  'product-card.no-user-limit': 'Sin límite de cuentas de usuario.',
+  'global.compare': 'Comparar'
 };

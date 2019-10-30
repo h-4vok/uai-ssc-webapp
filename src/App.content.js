@@ -26,7 +26,8 @@ export const unprotectedRoutes = [
   buildRoute('sign-up--confirm-pending', Pages.SignUpConfirmPage),
   buildRoute('sign-up--verify/:username/:code', Pages.SignUpVerifyPage),
   buildRoute('sign-in', Pages.SignInPage),
-  buildRoute('recover-password/:token/:username', Pages.RecoverPasswordPage)
+  buildRoute('recover-password/:token/:username', Pages.RecoverPasswordPage),
+  buildRoute('service-catalog', Pages.ProductSearchPage)
 ];
 
 export const authenticatedRoutes = [
