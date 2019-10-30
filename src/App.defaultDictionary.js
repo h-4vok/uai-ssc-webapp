@@ -418,5 +418,18 @@ export const defaultDictionary = {
   'product-compare.grid.row.price': 'Precio',
   'global.no-limit': 'Sin Límite',
   'global.remove-compare': 'Remover',
-  'product-search.page.open-compare': 'Abrir Comparación'
+  'product-search.page.open-compare': 'Abrir Comparación',
+  'app.marketing.menu.faq': 'FAQ',
+  'faq.what-is-ssc.header': 'Qué es Sample Supply Chain',
+  'faq.what-is-ssc.subheader': 'Conoce nuestro servicio',
+  'faq.what-is-ssc.details':
+    'Sample Supply Chain, o abreviando SSC, es una plataforma digital de control y administración de ensayos clínicos. Creada con la necesidad de ayudar a las organizaciones de investigación por contrato, SSC trae una revolucionaria forma de administrar sus estudios a la vez que logra disminuir sus costos operativos y tecnológicos.',
+  'faq.how-to-operate.details':
+    'Para operar con la plataforma primero debe crear su cuenta. Ingrese a la opción "Ingresar" y luego registre una nueva cuenta. La plataforma ofrece distintos planes de servicio, incluído un plan gratuito con limitaciones que puede utilizar para usar la plataforma de forma legal y gratuita y poder entender qué es lo que ofrecemos.',
+  'faq.how-to-operate.header': '¿Cómo empezar a operar?',
+  'faq.how-to-operate.subheader': 'Inicie su trabajo hoy mismo',
+  'faq.diff-samples.header': '¿Qué tipos de muestra maneja SSC?',
+  'faq.diff-samples.subheader': 'Conozca sobre nuestra división',
+  'faq.diff-samples.details':
+    'Conocemos su organización y su negocio. No todas las muestras son iguales ni provienen del mismo origen. Nuestra plataforma correctamente divide entre muestras de pacientes y muestras de control. Usted tendrá completo control para tipificar sus muestras con diferentes tipos de funciones clínicas, y además podrá tipificar a sus pacientes con la tipificación que prefiera.'
 };

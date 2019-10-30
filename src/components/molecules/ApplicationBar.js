@@ -90,6 +90,11 @@ class ApplicationBarComponent extends PureComponent {
               </RouteLink>
             </Button>
             <Button>
+              <RouteLink link="faq">
+                {i10n['app.marketing.menu.faq'] || 'FAQ'}
+              </RouteLink>
+            </Button>
+            <Button>
               <RouteLink link="contact-us">
                 {i10n['app.marketing.menu.contact-us']}
               </RouteLink>

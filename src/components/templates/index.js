@@ -35,3 +35,4 @@ export { EditSampleTypeTemplate } from './EditSampleTypeTemplate';
 export { ChangePasswordTemplate } from './ChangePasswordTemplate';
 export { ProductSearchTemplate } from './ProductSearchTemplate';
 export { ProductCompareTemplate } from './ProductCompareTemplate';
+export { FaqsTemplate } from './FaqsTemplate';
