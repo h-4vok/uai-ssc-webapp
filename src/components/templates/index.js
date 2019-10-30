@@ -34,3 +34,4 @@ export { ListSampleTypeTemplate } from './ListSampleTypeTemplate';
 export { EditSampleTypeTemplate } from './EditSampleTypeTemplate';
 export { ChangePasswordTemplate } from './ChangePasswordTemplate';
 export { ProductSearchTemplate } from './ProductSearchTemplate';
+export { ProductCompareTemplate } from './ProductCompareTemplate';

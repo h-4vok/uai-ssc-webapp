@@ -12,3 +12,4 @@ export { ButtonBar } from './ButtonBar';
 export { MessageDialog } from './MessageDialog';
 export { ConfirmDialog } from './ConfirmDialog';
 export { ProductCard } from './ProductCard';
+export { CustomContentDialog } from './CustomContentDialog';

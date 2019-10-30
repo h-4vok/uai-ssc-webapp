@@ -26,7 +26,9 @@ class ProductCardComponent extends PureComponent {
       ControlSampleLimit,
       ClinicRehearsalLimit,
       UserLimit,
-      onSelection
+      onRemoveSelection,
+      onSelection,
+      isSelected
     } = this.props;
 
     return (
@@ -97,11 +99,17 @@ class ProductCardComponent extends PureComponent {
         <CardActions>
           <Button
             fullWidth
-            variant="outlined"
+            variant={isSelected ? 'outlined' : 'contained'}
             color="primary"
-            onClick={() => onSelection({ ...this.props })}
+            onClick={() =>
+              isSelected
+                ? onRemoveSelection({ ...this.props })
+                : onSelection({ ...this.props })
+            }
           >
-            {i10n['global.compare']}
+            {isSelected
+              ? i10n['global.remove-compare']
+              : i10n['global.compare']}
           </Button>
         </CardActions>
       </Card>

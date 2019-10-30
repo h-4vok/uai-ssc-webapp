@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import withLocalization from '../../localization/withLocalization';
 import { SimpleTextField } from '../atoms';
-import { ProductCard } from '../molecules';
+import { ProductCard, ButtonBar } from '../molecules';
 
 const styles = theme => ({
   header: {
@@ -74,7 +74,17 @@ class ProductSearchTemplateComponent extends PureComponent {
   priceSliderTextFormatter = value => `U$D ${value}`;
 
   render() {
-    const { items, onFilter, classes, i10n, onSelection } = this.props;
+    const {
+      items,
+      onFilter,
+      classes,
+      i10n,
+      onSelection,
+      onRemoveSelection,
+      onOpenCompare,
+      compareEnabled,
+      selectedCompareItems
+    } = this.props;
     const { priceRange, nameAlike, minRating, filtersOpen } = this.state;
 
     return (
@@ -89,13 +99,23 @@ class ProductSearchTemplateComponent extends PureComponent {
         </div>
 
         <Box mb={3}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => this.toggleFilters(true)}
-          >
-            {i10n['product-search.page.open-filters']}
-          </Button>
+          <ButtonBar>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => this.toggleFilters(true)}
+            >
+              {i10n['product-search.page.open-filters']}
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={!compareEnabled}
+              onClick={onOpenCompare}
+            >
+              {i10n['product-search.page.open-compare']}
+            </Button>
+          </ButtonBar>
         </Box>
 
         <Drawer
@@ -183,7 +203,14 @@ class ProductSearchTemplateComponent extends PureComponent {
               {items.map(value => (
                 <Grid key={value} item>
                   <Paper className={classes.paper}>
-                    <ProductCard {...value} onSelection={onSelection} />
+                    <ProductCard
+                      {...value}
+                      onSelection={onSelection}
+                      onRemoveSelection={onRemoveSelection}
+                      isSelected={selectedCompareItems.some(
+                        x => x.Id === value.Id
+                      )}
+                    />
                   </Paper>
                 </Grid>
               ))}

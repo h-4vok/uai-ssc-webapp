@@ -404,5 +404,19 @@ export const defaultDictionary = {
   'product-card.run-unlimited': 'Sin límite de ensayos clínicos.',
   'product-card.user-limit': 'Hasta ${value} cuentas de usuario.',
   'product-card.no-user-limit': 'Sin límite de cuentas de usuario.',
-  'global.compare': 'Comparar'
+  'global.compare': 'Comparar',
+  'global.close': 'Cerrar',
+  'global.yes': 'Sí',
+  'global.no': 'No',
+  'global.free': 'Gratis',
+  'product-compare.grid.row.user-limit': 'Límite de Usuarios',
+  'product-compare.grid.row.patient-sample-limit':
+    'Límite de Muestras de Pacientes',
+  'product-compare.grid.row.control-sample-limit':
+    'Límite de Muestras de Control',
+  'product-compare.grid.row.run-limit': 'Límite de Ensayos Clínicos',
+  'product-compare.grid.row.price': 'Precio',
+  'global.no-limit': 'Sin Límite',
+  'global.remove-compare': 'Remover',
+  'product-search.page.open-compare': 'Abrir Comparación'
 };

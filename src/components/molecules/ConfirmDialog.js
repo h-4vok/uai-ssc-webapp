@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Button from '@material-ui/core/Button';
 import { MessageDialog } from './MessageDialog';
+import { fromI10n } from '../../lib/GlobalState';
 
 export class ConfirmDialog extends PureComponent {
   render() {
@@ -20,10 +21,10 @@ export class ConfirmDialog extends PureComponent {
         message={message}
       >
         <Button onClick={onConfirm} color="primary">
-          Sí
+          {fromI10n('global.yes')}
         </Button>
         <Button onClick={onClose} color="primary">
-          No
+          {fromI10n('global.no')}
         </Button>
       </MessageDialog>
     );
