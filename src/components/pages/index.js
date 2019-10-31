@@ -38,3 +38,4 @@ export { EditSampleTypePage } from './EditSampleTypePage';
 export { ChangePasswordPage } from './ChangePasswordPage';
 export { ProductSearchPage } from './ProductSearchPage';
 export { FaqsPage } from './FaqsPage';
+export { ListBackupsPage } from './ListBackupsPage';

@@ -431,5 +431,12 @@ export const defaultDictionary = {
   'faq.diff-samples.header': '¿Qué tipos de muestra maneja SSC?',
   'faq.diff-samples.subheader': 'Conozca sobre nuestra división',
   'faq.diff-samples.details':
-    'Conocemos su organización y su negocio. No todas las muestras son iguales ni provienen del mismo origen. Nuestra plataforma correctamente divide entre muestras de pacientes y muestras de control. Usted tendrá completo control para tipificar sus muestras con diferentes tipos de funciones clínicas, y además podrá tipificar a sus pacientes con la tipificación que prefiera.'
+    'Conocemos su organización y su negocio. No todas las muestras son iguales ni provienen del mismo origen. Nuestra plataforma correctamente divide entre muestras de pacientes y muestras de control. Usted tendrá completo control para tipificar sus muestras con diferentes tipos de funciones clínicas, y además podrá tipificar a sus pacientes con la tipificación que prefiera.',
+  'backup.backup-success': 'El resguardo se ha realizado exitosamente.',
+  'backup.restore-success': 'La base de datos se ha restaurado exitosamente.',
+  'backup.filepath': 'Ubicación',
+  'backup.date': 'Fecha de Resguardo',
+  'backup.createdby': 'Realizado por',
+  'backup.doBackup': 'Generar Resguardo',
+  'backup.doRestore': 'Restaurar un resguardo'
 };

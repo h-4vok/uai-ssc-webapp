@@ -36,3 +36,4 @@ export { ChangePasswordTemplate } from './ChangePasswordTemplate';
 export { ProductSearchTemplate } from './ProductSearchTemplate';
 export { ProductCompareTemplate } from './ProductCompareTemplate';
 export { FaqsTemplate } from './FaqsTemplate';
+export { ListBackupsTemplate } from './ListBackupsTemplate';

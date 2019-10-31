@@ -138,7 +138,7 @@ export const protectedRoutes = [
   buildPlatformRoute('security/log', Pages.ListLogsPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute(
     'security/backup',
-    inProgressPlatformPage,
+    Pages.ListBackupsPage,
     'PLATFORM_BACKUP'
   ),
   buildPlatformRoute(
