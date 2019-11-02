@@ -52,6 +52,8 @@ class ProductSearchPageComponent extends PureComponent {
     });
   };
 
+  onViewDetails = code => this.props.history.push(`/service-catalog/${code}`);
+
   openCompare = () => this.setState({ compareDialogOpen: true });
 
   closeCompare = () => this.setState({ compareDialogOpen: false });
@@ -72,6 +74,7 @@ class ProductSearchPageComponent extends PureComponent {
             items={items}
             onFilter={filters => this.reload(filters)}
             onSelection={item => this.onSelection(selectedCompareItems, item)}
+            onViewDetails={code => this.onViewDetails(code)}
             onRemoveSelection={item =>
               this.onRemoveSelection(selectedCompareItems, item)
             }

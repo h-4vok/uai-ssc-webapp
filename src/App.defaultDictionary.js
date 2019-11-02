@@ -371,12 +371,10 @@ export const defaultDictionary = {
     'Una o más muestras utilizan el tipo de muestra seleccionado.',
   'global.last-update': 'Última Actualización',
   'global.last-update-by': 'Actualización por',
-  'configuration.sample-type-parameter.description[PESO_ESPECIFICO]':
-    'Peso Especifico',
-  'configuration.sample-type-parameter.description[OTRO]': 'Otro',
+  'configuration.sample-type.title.edit': 'Editar Tipo de Muestra',
+  'configuration.sample-type.title.new': 'Nuevo Tipo de Muestra',
   'menu.platform.account-menu': 'Mi Cuenta',
   'menu.platform.account.change-password': 'Cambio de contraseña',
-  'configuration.sample-type.title.new': 'Nuevo Tipo de Muestra',
   'account.change-password.page.title': 'Cambio de Contraseña',
   'change-password.currentPassword': 'Contraseña Actual',
   'change-password.password1': 'Ingrese una nueva contraseña',
@@ -408,7 +406,6 @@ export const defaultDictionary = {
   'global.close': 'Cerrar',
   'global.yes': 'Sí',
   'global.no': 'No',
-  'global.free': 'Gratis',
   'product-compare.grid.row.user-limit': 'Límite de Usuarios',
   'product-compare.grid.row.patient-sample-limit':
     'Límite de Muestras de Pacientes',
@@ -416,6 +413,7 @@ export const defaultDictionary = {
     'Límite de Muestras de Control',
   'product-compare.grid.row.run-limit': 'Límite de Ensayos Clínicos',
   'product-compare.grid.row.price': 'Precio',
+  'global.free': 'Gratis',
   'global.no-limit': 'Sin Límite',
   'global.remove-compare': 'Remover',
   'product-search.page.open-compare': 'Abrir Comparación',
@@ -438,5 +436,14 @@ export const defaultDictionary = {
   'backup.date': 'Fecha de Resguardo',
   'backup.createdby': 'Realizado por',
   'backup.doBackup': 'Generar Resguardo',
-  'backup.doRestore': 'Restaurar un resguardo'
+  'backup.doRestore': 'Restaurar un resguardo',
+  'global.view-details': 'Ver Detalle',
+  'product-detail.average.rating': 'Valoración Promedio',
+  'menu.platform.account.leave-comment': 'Comentar tu experiencia',
+  'leave-comment.title': 'Deje su comentario sobre nuestro servicio:',
+  'leave-comment.comment': 'Describa su experiencia con la plataforma',
+  'leave-comment.already-done':
+    'Continuaremos mejorando nuestro servicio para usted.',
+  'leave-comment.already-done-title': '¡Muchas gracias por su comentario!',
+  'product-compare.grid.row.rating': 'Valoración'
 };

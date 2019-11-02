@@ -27,6 +27,7 @@ class ProductCardComponent extends PureComponent {
       ClinicRehearsalLimit,
       UserLimit,
       onRemoveSelection,
+      onViewDetails,
       onSelection,
       isSelected
     } = this.props;
@@ -110,6 +111,14 @@ class ProductCardComponent extends PureComponent {
             {isSelected
               ? i10n['global.remove-compare']
               : i10n['global.compare']}
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={() => onViewDetails(this.props.Code)}
+          >
+            {i10n['global.view-details']}
           </Button>
         </CardActions>
       </Card>

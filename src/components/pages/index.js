@@ -39,3 +39,5 @@ export { ChangePasswordPage } from './ChangePasswordPage';
 export { ProductSearchPage } from './ProductSearchPage';
 export { FaqsPage } from './FaqsPage';
 export { ListBackupsPage } from './ListBackupsPage';
+export { ProductDetailPage } from './ProductDetailPage';
+export { LeaveCommentPage } from './LeaveCommentPage';

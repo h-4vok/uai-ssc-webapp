@@ -37,3 +37,8 @@ export { ProductSearchTemplate } from './ProductSearchTemplate';
 export { ProductCompareTemplate } from './ProductCompareTemplate';
 export { FaqsTemplate } from './FaqsTemplate';
 export { ListBackupsTemplate } from './ListBackupsTemplate';
+export { ProductDetailTemplate } from './ProductDetailTemplate';
+export { LeaveCommentTemplate } from './LeaveCommentTemplate';
+export {
+  LeaveCommentUnavailableTemplate
+} from './LeaveCommentUnavailableTemplate';

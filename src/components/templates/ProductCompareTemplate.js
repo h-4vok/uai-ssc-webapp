@@ -27,7 +27,8 @@ class ProductCompareTemplateComponent extends PureComponent {
       ['product-compare.grid.row.patient-sample-limit', 'PatientSampleLimit'],
       ['product-compare.grid.row.control-sample-limit', 'ControlSampleLimit'],
       ['product-compare.grid.row.run-limit', 'ClinicRehearsalLimit'],
-      ['product-compare.grid.row.price', 'Price']
+      ['product-compare.grid.row.price', 'Price'],
+      ['product-compare.grid.row.rating', 'AverageRating']
     ];
 
     metadata.forEach(meta =>

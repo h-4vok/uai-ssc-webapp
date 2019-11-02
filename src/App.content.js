@@ -27,6 +27,7 @@ export const unprotectedRoutes = [
   buildRoute('sign-up--verify/:username/:code', Pages.SignUpVerifyPage),
   buildRoute('sign-in', Pages.SignInPage),
   buildRoute('recover-password/:token/:username', Pages.RecoverPasswordPage),
+  buildRoute('service-catalog/:code', Pages.ProductDetailPage),
   buildRoute('service-catalog', Pages.ProductSearchPage),
   buildRoute('faq', Pages.FaqsPage)
 ];
@@ -34,7 +35,8 @@ export const unprotectedRoutes = [
 export const authenticatedRoutes = [
   buildRoute('platform-home', Pages.PlatformHomePage),
   buildRoute('platform', inProgressPlatformPage),
-  buildRoute('account/change-password', Pages.ChangePasswordPage)
+  buildRoute('account/change-password', Pages.ChangePasswordPage),
+  buildRoute('account/leave-comment', Pages.LeaveCommentPage)
 ];
 
 export const protectedRoutes = [

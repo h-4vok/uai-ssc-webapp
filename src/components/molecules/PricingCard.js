@@ -46,14 +46,16 @@ export const PricingCard = props => (
       </ul>
     </CardContent>
     <CardActions>
-      <Button
-        fullWidth
-        variant={props.buttonVariant || 'outlined'}
-        color="primary"
-        onClick={() => props.onSelection()}
-      >
-        {props.signUpDescription}
-      </Button>
+      {!props.noSelection && (
+        <Button
+          fullWidth
+          variant={props.buttonVariant || 'outlined'}
+          color="primary"
+          onClick={() => props.onSelection()}
+        >
+          {props.signUpDescription}
+        </Button>
+      )}
     </CardActions>
   </Card>
 );

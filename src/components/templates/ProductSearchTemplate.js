@@ -83,7 +83,8 @@ class ProductSearchTemplateComponent extends PureComponent {
       onRemoveSelection,
       onOpenCompare,
       compareEnabled,
-      selectedCompareItems
+      selectedCompareItems,
+      onViewDetails
     } = this.props;
     const { priceRange, nameAlike, minRating, filtersOpen } = this.state;
 
@@ -206,6 +207,7 @@ class ProductSearchTemplateComponent extends PureComponent {
                     <ProductCard
                       {...value}
                       onSelection={onSelection}
+                      onViewDetails={onViewDetails}
                       onRemoveSelection={onRemoveSelection}
                       isSelected={selectedCompareItems.some(
                         x => x.Id === value.Id
