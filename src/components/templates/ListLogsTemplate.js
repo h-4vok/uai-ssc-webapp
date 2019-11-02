@@ -69,8 +69,7 @@ class ListLogsTemplateComponent extends PureComponent {
       field: 'Id',
       sortable: true,
       filter: true,
-      checkboxSelection: true,
-      headerCheckboxSelection: true
+      checkboxSelection: true
     },
     {
       headerName: i10n['security.listLogs.grid.createddate'],
