@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MenuIcon from '@material-ui/icons/Menu';
 import AppBar from '@material-ui/core/AppBar';
-import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import { Toolbar, Typography, Button } from '@material-ui/core';
 import { withSnackbar } from 'notistack';
 import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';

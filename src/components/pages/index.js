@@ -41,3 +41,4 @@ export { FaqsPage } from './FaqsPage';
 export { ListBackupsPage } from './ListBackupsPage';
 export { ProductDetailPage } from './ProductDetailPage';
 export { LeaveCommentPage } from './LeaveCommentPage';
+export { ListPlatformMenuPage } from './ListPlatformMenuPage';
