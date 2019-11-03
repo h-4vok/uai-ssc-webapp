@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import { withSnackbar } from 'notistack';
+import { Container } from '@material-ui/core';
 import { ProductSearchTemplate, ProductCompareTemplate } from '../templates';
 import { PageLayout } from '../organisms';
 import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import withLocalization from '../../localization/withLocalization';
-import { CustomContentDialog } from '../molecules';
+import { CustomContentDialog, AdRotator } from '../molecules';
+import './ProductSearchPage.scss';
 
 class ProductSearchPageComponent extends PureComponent {
   constructor(props) {
@@ -69,6 +71,9 @@ class ProductSearchPageComponent extends PureComponent {
 
     return (
       <PageLayout>
+        <Container main maxWidth="md" className="ad-rotator-container">
+          <AdRotator />
+        </Container>
         {allLoaded && (
           <ProductSearchTemplate
             items={items}
