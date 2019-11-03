@@ -18,7 +18,9 @@ import {
 } from './App.content';
 import { defaultDictionary } from './App.defaultDictionary';
 import { GlobalState } from './lib/GlobalState';
+import { MenuStorage } from './securedMenu/MenuStorage';
 import LocalizationContext from './localization/LocalizationContext';
+import SecuredMenuContext from './securedMenu/SecuredMenuContext';
 
 let siteFontSize = 12;
 
@@ -35,10 +37,17 @@ export class App extends PureComponent {
 
     this.state = {
       appTheme: buildTheme(),
-      i10n: defaultDictionary
+      i10n: defaultDictionary,
+      securedMenu: null
     };
 
     GlobalState.AppComponent = this;
+  }
+
+  componentDidMount() {
+    if (this.state.securedMenu === null) {
+      MenuStorage.tryRefresh();
+    }
   }
 
   switchLanguage = dictionary => {
@@ -72,46 +81,50 @@ export class App extends PureComponent {
     this.setState({ appTheme: buildTheme() });
   };
 
+  refreshSecuredMenu = securedMenu => this.setState({ securedMenu });
+
   render() {
-    const { appTheme, i10n } = this.state;
+    const { appTheme, i10n, securedMenu } = this.state;
 
     return (
       <Router>
         <div>
           <LocalizationContext.Provider value={i10n}>
-            <CssBaseline />
-            <ThemeProvider theme={appTheme}>
-              <Switch>
-                <UnprotectedRoute
-                  exact
-                  path="/"
-                  component={Pages.MarketingHome}
-                />
-                {unprotectedRoutes.map(route => (
+            <SecuredMenuContext.Provider value={securedMenu}>
+              <CssBaseline />
+              <ThemeProvider theme={appTheme}>
+                <Switch>
                   <UnprotectedRoute
-                    path={route.path}
-                    component={route.component}
+                    exact
+                    path="/"
+                    component={Pages.MarketingHome}
                   />
-                ))}
+                  {unprotectedRoutes.map(route => (
+                    <UnprotectedRoute
+                      path={route.path}
+                      component={route.component}
+                    />
+                  ))}
 
-                {authenticatedRoutes.map(route => (
-                  <AuthenticatedRoute
-                    path={route.path}
-                    component={route.component}
-                  />
-                ))}
+                  {authenticatedRoutes.map(route => (
+                    <AuthenticatedRoute
+                      path={route.path}
+                      component={route.component}
+                    />
+                  ))}
 
-                {protectedRoutes.map(route => (
-                  <ProtectedRoute
-                    path={route.path}
-                    component={route.component}
-                    permission={route.permission}
-                  />
-                ))}
+                  {protectedRoutes.map(route => (
+                    <ProtectedRoute
+                      path={route.path}
+                      component={route.component}
+                      permission={route.permission}
+                    />
+                  ))}
 
-                <Route component={NoMatchRoute} />
-              </Switch>
-            </ThemeProvider>
+                  <Route component={NoMatchRoute} />
+                </Switch>
+              </ThemeProvider>
+            </SecuredMenuContext.Provider>
           </LocalizationContext.Provider>
         </div>
       </Router>

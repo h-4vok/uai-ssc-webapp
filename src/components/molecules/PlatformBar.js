@@ -12,14 +12,10 @@ import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { GlobalState } from '../../lib/GlobalState';
 import withLocalization from '../../localization/withLocalization';
+import withSecuredMenu from '../../securedMenu/withSecuredMenu';
 
 const defaultState = {
   anchorEl: null,
-  configurationMenuOpen: false,
-  securityMenuOpen: false,
-  inventoryMenuOpen: false,
-  clientMenuOpen: false,
-  workOrderMenuOpen: false,
   accountMenuOpen: false
 };
 
@@ -28,10 +24,36 @@ class PlatformBarComponent extends PureComponent {
     super(props);
 
     this.state = defaultState;
+    this.openVariableNames = [];
+
+    // Create the variable state variables for dynamic menus
+    if (this.props.securedMenu) {
+      this.props.securedMenu.forEach(({ Code }) => {
+        const openVariableName = `${Code}-open`;
+        this.openVariableNames.push(openVariableName);
+      });
+
+      this.state = {
+        ...this.state,
+        ...this.openVariableNames.map(name => ({ [name]: false }))
+      };
+    }
 
     this.notifier = new SnackbarVisitor(props);
     this.api = new API(this.notifier);
   }
+
+  setDefaultState = () => {
+    const newState = {
+      ...defaultState
+    };
+
+    this.openVariableNames.forEach(name => (newState[name] = false));
+
+    console.log({ newState });
+
+    this.setState(newState);
+  };
 
   changeLanguageTo = languageCode => {
     this.api.request
@@ -60,7 +82,7 @@ class PlatformBarComponent extends PureComponent {
   };
 
   handleClose = () => {
-    this.setState(defaultState);
+    this.setDefaultState();
   };
 
   goTo = route => {
@@ -113,34 +135,65 @@ class PlatformBarComponent extends PureComponent {
       .go();
   }
 
-  render() {
-    const {
-      anchorEl,
-      configurationMenuOpen,
-      securityMenuOpen,
-      inventoryMenuOpen,
-      clientMenuOpen,
-      workOrderMenuOpen,
-      accountMenuOpen
-    } = this.state;
+  renderMenu = data => {
+    if (!data) return null;
 
-    const { i10n } = this.props;
+    const output = [];
+
+    data.forEach(menu => {
+      const openVariableName = `${menu.Code}-open`;
+      this.openVariableNames.push(openVariableName);
+
+      const menuButton = this.buildButton(
+        menu.Code,
+        this.props.i10n[menu.TranslationKey],
+        openVariableName
+      );
+
+      output.push(menuButton);
+
+      const menuComponent = (
+        <Menu
+          id={menu.Code}
+          anchorEl={this.state.anchorEl}
+          keepMounted
+          open={this.state[openVariableName]}
+          onClose={this.handleClose}
+        >
+          {menu.Items.map(menuItem =>
+            this.buildMenuItem(
+              menuItem.RelativeRoute,
+              this.props.i10n[menuItem.TranslationKey]
+            )
+          )}
+        </Menu>
+      );
+
+      output.push(menuComponent);
+    });
+
+    return output;
+  };
+
+  render() {
+    const { anchorEl, accountMenuOpen } = this.state;
+    const { i10n, securedMenu } = this.props;
 
     return (
       <div className="application-bar">
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton
+            {/* <IconButton
               edge="start"
               className="application-bar-menu-button"
               color="inherit"
               aria-label="menu"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <Typography variant="h6" className="application-bar-title">
               <Button size="large">
-                <RouteLink link="">{i10n['app.title']}</RouteLink>
+                <RouteLink link="platform-home">{i10n['app.title']}</RouteLink>
               </Button>
             </Typography>
 
@@ -158,210 +211,7 @@ class PlatformBarComponent extends PureComponent {
               +A
             </Button>
 
-            {this.buildButton(
-              'configuration-menu',
-              i10n['menu.platform.configuration-menu'],
-              'configurationMenuOpen',
-              'UNIT_OF_MEASURE_MANAGEMENT',
-              'SAMPLE_TYPE_MANAGEMENT',
-              'SAMPLE_TYPE_REPORT',
-              'SAMPLE_TYPE_PARAMETERS_MANAGEMENT',
-              'SAMPLE_FUNCTION_REPORT',
-              'SAMPLE_FUNCTION_MANAGEMENT',
-              'LANGUAGES_MANAGEMENT',
-              'CLIENT_MANAGEMENT',
-              'CLIENT_BILLING_MANAGEMENT'
-            )}
-
-            <Menu
-              id="configuration-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={configurationMenuOpen}
-              onClose={this.handleClose}
-            >
-              {this.buildMenuItem(
-                '/configuration/unit-of-measure',
-                i10n['menu.platform.configuration.unit-of-measure'],
-                'UNIT_OF_MEASURE_MANAGEMENT',
-                'UNIT_OF_MEASURE_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/configuration/sample-type',
-                i10n['menu.platform.configuration.sample-type'],
-                'SAMPLE_TYPE_MANAGEMENT',
-                'SAMPLE_TYPE_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/configuration/sample-type-parameter',
-                i10n['menu.platform.configuration.sample-type-parameter'],
-                'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/configuration/sample-function',
-                i10n['menu.platform.configuration.sample-function'],
-                'SAMPLE_FUNCTION_REPORT',
-                'SAMPLE_FUNCTION_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/configuration/language',
-                i10n['menu.platform.configuration.language'],
-                'LANGUAGES_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/configuration/client-billing',
-                i10n['menu.platform.configuration.clients-and-billing'],
-                'CLIENT_MANAGEMENT'
-              )}
-            </Menu>
-
-            {this.buildButton(
-              'security-menu',
-              i10n['menu.platform.security-menu'],
-              'securityMenuOpen',
-              'USERS_MANAGEMENT',
-              'USERS_REPORT',
-              'ROLES_MANAGEMENT',
-              'ROLES_REPORT',
-              'PLATFORM_ADMIN',
-              'PLATFORM_BACKUP',
-              'PLATFORM_ADMIN'
-            )}
-
-            <Menu
-              id="security-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={securityMenuOpen}
-              onClose={this.handleClose}
-            >
-              {this.buildMenuItem(
-                '/security/user',
-                i10n['menu.platform.security.user'],
-                'USERS_MANAGEMENT',
-                'USERS_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/security/role',
-                i10n['menu.platform.security.role'],
-                'ROLES_MANAGEMENT',
-                'ROLES_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/security/log',
-                i10n['menu.platform.security.logging'],
-                'PLATFORM_ADMIN'
-              )}
-              {this.buildMenuItem(
-                '/security/backup',
-                i10n['menu.platform.security.backup'],
-                'PLATFORM_BACKUP'
-              )}
-              {this.buildMenuItem(
-                '/security/parameter',
-                i10n['menu.platform.security.parameters'],
-                'PLATFORM_ADMIN'
-              )}
-            </Menu>
-
-            {this.buildButton(
-              'inventory-menu',
-              i10n['menu.platform.inventory-menu'],
-              'inventoryMenuOpen',
-              'PATIENTS_MANAGEMENT',
-              'SAMPLE_MANAGEMENT'
-            )}
-
-            <Menu
-              id="inventory-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={inventoryMenuOpen}
-              onClose={this.handleClose}
-            >
-              {this.buildMenuItem(
-                '/inventory/patient',
-                i10n['menu.platform.inventory.patient'],
-                'PATIENTS_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/inventory/sample',
-                i10n['menu.platform.inventory.sample'],
-                'SAMPLE_MANAGEMENT'
-              )}
-            </Menu>
-
-            {this.buildButton(
-              'management-menu',
-              i10n['menu.platform.management-menu'],
-              'clientMenuOpen',
-              'MEMBER_MANAGEMENT',
-              'MEMBER_REPORT',
-              'PAYMENT_METHOD_MANAGEMENT',
-              'CLIENT_BILLING_MANAGEMENT'
-            )}
-
-            <Menu
-              id="management-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={clientMenuOpen}
-              onClose={this.handleClose}
-            >
-              {this.buildMenuItem(
-                '/management/member',
-                i10n['menu.platform.management.members'],
-                'MEMBER_MANAGEMENT',
-                'MEMBER_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/management/payment-type',
-                i10n['menu.platform.management.payment-type'],
-                'PAYMENT_METHOD_MANAGEMENT'
-              )}
-              {this.buildMenuItem(
-                '/management/billing',
-                i10n['menu.platform.management.billing'],
-                'CLIENT_BILLING_MANAGEMENT'
-              )}
-            </Menu>
-
-            {this.buildButton(
-              'work-order-menu',
-              i10n['menu.platform.work-order-menu'],
-              'workOrderMenuOpen',
-              'WORK_ORDER_CREATE',
-              'WORK_ORDER_EXECUTE',
-              'WORK_ORDER_REPORT',
-              'RUN_EXECUTION_CANCEL',
-              'RUN_EXECUTION_PRIMARY',
-              'RUN_EXECUTION_QA',
-              'RUN_EXECUTION_QC'
-            )}
-
-            <Menu
-              id="work-order-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={workOrderMenuOpen}
-              onClose={this.handleClose}
-            >
-              {this.buildMenuItem(
-                '/work-order/work-order',
-                i10n['menu.platform.work-order.batches'],
-                'WORK_ORDER_CREATE',
-                'WORK_ORDER_EXECUTE',
-                'WORK_ORDER_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/work-order/run',
-                i10n['menu.platform.work-order.runs'],
-                'RUN_EXECUTION_CANCEL',
-                'RUN_EXECUTION_PRIMARY',
-                'RUN_EXECUTION_QA',
-                'RUN_EXECUTION_QC'
-              )}
-            </Menu>
+            {this.renderMenu(securedMenu)}
 
             {this.buildButton(
               'work-order-menu',
@@ -412,4 +262,6 @@ class PlatformBarComponent extends PureComponent {
   }
 }
 
-export const PlatformBar = withLocalization(withSnackbar(PlatformBarComponent));
+export const PlatformBar = withLocalization(
+  withSecuredMenu(withSnackbar(PlatformBarComponent))
+);

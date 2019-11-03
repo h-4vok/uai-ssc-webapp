@@ -445,5 +445,6 @@ export const defaultDictionary = {
   'leave-comment.already-done':
     'Continuaremos mejorando nuestro servicio para usted.',
   'leave-comment.already-done-title': '¡Muchas gracias por su comentario!',
-  'product-compare.grid.row.rating': 'Valoración'
+  'product-compare.grid.row.rating': 'Valoración',
+  'menu.platform.configuration.platform-menu': 'Navegación de Plataforma'
 };

@@ -17,6 +17,7 @@ import { GlobalState } from '../../lib/GlobalState';
 import withLocalization from '../../localization/withLocalization';
 
 import './SignInPage.scss';
+import { MenuStorage } from '../../securedMenu/MenuStorage';
 
 const styles = theme => ({
   '@global': {
@@ -87,6 +88,9 @@ class SignInPageComponent extends PureComponent {
         GlobalState.History = this.props.history;
         GlobalState.AspNetSession = res.body.Result.SetCookie;
         document.cookie = GlobalState.AspNetSession;
+
+        GlobalState.AppComponent.refreshSecuredMenu(res.body.Result.Menues);
+        MenuStorage.save(res.body.Result.Menues);
 
         this.notifier.success(this.props.i10n['welcome-text']);
         this.props.history.push('/platform-home');

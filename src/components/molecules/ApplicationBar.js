@@ -44,14 +44,14 @@ class ApplicationBarComponent extends PureComponent {
       <div className="application-bar">
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton
+            {/* <IconButton
               edge="start"
               className="application-bar-menu-button"
               color="inherit"
               aria-label="menu"
-            >
+            > 
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
 
             <Typography variant="h6" className="application-bar-title">
               <Button size="large">
