@@ -42,12 +42,12 @@ export const authenticatedRoutes = [
 export const protectedRoutes = [
   buildPlatformRoute(
     'configuration/platform-menu/new',
-    inProgressPlatformPage,
+    Pages.EditPlatformMenuPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
     'configuration/platform-menu/:id',
-    inProgressPlatformPage,
+    Pages.EditPlatformMenuPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(

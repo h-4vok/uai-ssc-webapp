@@ -43,3 +43,4 @@ export {
   LeaveCommentUnavailableTemplate
 } from './LeaveCommentUnavailableTemplate';
 export { ListPlatformMenuTemplate } from './ListPlatformMenuTemplate';
+export { EditPlatformMenuTemplate } from './EditPlatformMenuTemplate';

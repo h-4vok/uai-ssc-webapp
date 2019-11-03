@@ -446,5 +446,11 @@ export const defaultDictionary = {
     'Continuaremos mejorando nuestro servicio para usted.',
   'leave-comment.already-done-title': '¡Muchas gracias por su comentario!',
   'product-compare.grid.row.rating': 'Valoración',
-  'menu.platform.configuration.platform-menu': 'Navegación de Plataforma'
+  'menu.platform.configuration.platform-menu': 'Navegación de Plataforma',
+  'platform-menu.translation-key': 'Clave de Traducción',
+  'platform-menu.menu-order': 'Orden en el Menú',
+  'configuration.platform-menu.title.edit': 'Editar Menú de Plataforma',
+  'configuration.platform-menu.title.new': 'Nuevo Menú de Plataforma',
+  'platform-menu-item.menu-order': 'Orden en el Menú',
+  'platform-menu-item.relative-route': 'Ruta Relativa'
 };
