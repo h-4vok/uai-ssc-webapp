@@ -18,7 +18,7 @@ export function CustomContentDialog(props) {
       <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>
       <DialogContent>{props.children}</DialogContent>
       <DialogActions>
-        <Button onClick={props.onCloseClick} color="primary">
+        <Button onClick={props.onConfirm} color="primary">
           {fromI10n('global.close')}
         </Button>
       </DialogActions>

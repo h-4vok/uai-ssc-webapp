@@ -10,6 +10,7 @@ import { AgGridReact } from 'ag-grid-react';
 import withLocalization from '../../localization/withLocalization';
 import { SimpleTextField, SimpleSelect } from '../atoms';
 import { ButtonBar } from '../molecules';
+import { EditPlatformMenuDialogTemplate } from './EditPlatformMenuDialogTemplate';
 
 const styles = theme => ({
   paper: {
@@ -34,7 +35,7 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { Code, TranslationKey, MenuOrder, Items } = this.props.model;
+    const { Code, TranslationKey, MenuOrder = 0, Items } = this.props.model;
 
     this.state = {
       Code,
@@ -43,7 +44,10 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
       Items: this.isEditAction() ? [...Items] : [],
       oneRowSelected: false,
       multipleRowsSelected: false,
-      translationKeys: this.buildTranslationKeys(this.props.translationKeys)
+      translationKeys: this.buildTranslationKeys(this.props.translationKeys),
+      dialogOpen: false,
+      currentMenuItem: null,
+      isDialogEdit: false
     };
   }
 
@@ -57,6 +61,8 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
   onInputChange = event => {
     this.props.model[event.target.name] = event.target.value;
     this.setState({ [event.target.name]: event.target.value });
+
+    console.log({ model: this.props.model });
   };
 
   componentDidMount() {
@@ -80,10 +86,6 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
       checkboxSelection: true
     },
     {
-      headerName: i10n['global.code'],
-      field: 'Code'
-    },
-    {
       headerName: i10n['platform-menu-item.menu-order'],
       field: 'MenuOrder'
     },
@@ -93,11 +95,62 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
     }
   ];
 
-  onNewItem() {}
+  onNewItem = () => {
+    const newItem = {
+      MenuOrder: this.state.Items.length + 1,
+      TranslationKey: null,
+      RelativeRoute: '/'
+    };
 
-  onEditItem() {}
+    this.setState({
+      dialogOpen: true,
+      currentMenuItem: newItem,
+      isDialogEdit: false
+    });
+  };
 
-  onDeleteItem() {}
+  onEditItem = () => {
+    const selectedItem = this.dataGrid.api.getSelectedRows()[0];
+
+    this.setState({
+      dialogOpen: true,
+      currentMenuItem: selectedItem,
+      isDialogEdit: true
+    });
+  };
+
+  onDeleteItem = () => {
+    const selected = this.dataGrid.api.getSelectedRows();
+
+    this.setState(prevState => ({
+      Items: prevState.Items.filter(
+        item => !selected.some(selectedItem => selectedItem === item)
+      )
+    }));
+  };
+
+  onCloseMenuItem = () => {
+    this.setState({
+      dialogOpen: false
+    });
+  };
+
+  onConfirmMenuItem = () => {
+    this.setState(
+      prevState => ({
+        dialogOpen: false,
+        Items: prevState.isDialogEdit
+          ? [...prevState.Items]
+          : [...prevState.Items, prevState.currentMenuItem]
+      }),
+      () => this.dataGrid.api.redrawRows()
+    );
+  };
+
+  onConfirm(callback) {
+    this.props.model.Items = this.state.Items;
+    callback();
+  }
 
   render() {
     const { classes, onConfirm, i10n, permissions } = this.props;
@@ -108,7 +161,9 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
       Items,
       translationKeys,
       oneRowSelected,
-      multipleRowsSelected
+      multipleRowsSelected,
+      currentMenuItem,
+      dialogOpen
     } = this.state;
 
     return (
@@ -212,13 +267,23 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={onConfirm}
+                onClick={() => this.onConfirm(onConfirm)}
               >
                 {i10n['global.confirm']}
               </Button>
             </Grid>
           </Grid>
         </form>
+        <EditPlatformMenuDialogTemplate
+          open={dialogOpen}
+          maxWidth="lg"
+          fullWidth
+          onConfirm={this.onConfirmMenuItem}
+          onCloseClick={this.onCloseMenuItem}
+          permissions={permissions}
+          translationKeys={translationKeys}
+          model={currentMenuItem}
+        />
       </Container>
     );
   }

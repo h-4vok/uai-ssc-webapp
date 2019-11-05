@@ -1,5 +1,6 @@
 const open = tag => `<${tag}>`;
 const close = tag => `</${tag}>`;
+const openClose = tag => `<${tag} />`;
 
 const escapeValue = valueToEscape => {
   if (typeof value !== 'string') return valueToEscape;
@@ -43,8 +44,8 @@ export function buildPlatformMenuXml(items) {
   items.forEach(item => {
     add('Item');
 
-    valueNode('Id', item.Id);
-    valueNode('MenuOrder', item.MenuOrder);
+    valueNode('Id', item.Id || 0);
+    valueNode('MenuOrder', item.MenuOrder || 0);
     valueNode('RelativeRoute', item.RelativeRoute);
     valueNode('TranslationKey', item.TranslationKey);
 

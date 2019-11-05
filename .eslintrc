@@ -23,7 +23,8 @@
     "no-param-reassign": 0,
     "compat/compat": "warn",
     "react/no-string-refs": 0,
-    "react/sort-comp": 0
+    "react/sort-comp": 0,
+    "radix": 0
   },
   "globals": {
     "window": true,

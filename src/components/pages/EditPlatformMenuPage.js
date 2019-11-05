@@ -88,36 +88,13 @@ class EditPlatformMenuPageComponent extends PureComponent {
   };
 
   buildBody = () => {
-    const test = [
-      {
-        Id: 10,
-        MenuOrder: 1,
-        RelativeRoute: '/something',
-        TranslationKey: 'something else',
-        RequiredPermissions: [
-          { Id: 1, Code: 'permission1' },
-          { Id: 2, Code: 'permission2' }
-        ]
-      },
-      {
-        Id: 11,
-        MenuOrder: 2,
-        RelativeRoute: '/something2',
-        TranslationKey: 'something else2',
-        RequiredPermissions: [
-          { Id: 1, Code: 'permission3' },
-          { Id: 2, Code: 'permission4' }
-        ]
-      }
-    ];
+    console.log({ model: this.state.model });
+    console.log({ xml: buildPlatformMenuXml(this.state.model.Items) });
 
     const body = {
       PlatformMenu: this.state.model,
-      XmlSerializedItems: buildPlatformMenuXml(test),
-      XmlSerializedItems2: buildPlatformMenuXml(this.state.model.Items)
+      XmlSerializedItems: buildPlatformMenuXml(this.state.model.Items)
     };
-
-    console.log({ body });
 
     return body;
   };
