@@ -1,6 +1,5 @@
 const open = tag => `<${tag}>`;
 const close = tag => `</${tag}>`;
-const openClose = tag => `<${tag} />`;
 
 const escapeValue = valueToEscape => {
   if (typeof value !== 'string') return valueToEscape;

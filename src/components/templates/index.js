@@ -47,3 +47,4 @@ export { EditPlatformMenuTemplate } from './EditPlatformMenuTemplate';
 export {
   EditPlatformMenuDialogTemplate
 } from './EditPlatformMenuDialogTemplate';
+export { SearchBackOfficeTemplate } from './SearchBackOfficeTemplate';
