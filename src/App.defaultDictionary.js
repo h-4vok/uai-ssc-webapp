@@ -64,6 +64,7 @@ export const defaultDictionary = {
   'menu.platform.management.billing': 'Facturación',
   'menu.platform.management.members': 'Usuarios Miembro',
   'menu.platform.management.payment-type': 'Formas de Pago',
+  'menu.platform.marketing-menu': 'Investigación de Marketing',
   'menu.platform.security-menu': 'Seguridad',
   'menu.platform.security.backup': 'Resguardos',
   'menu.platform.security.logging': 'Bitácora',
@@ -466,5 +467,11 @@ export const defaultDictionary = {
     'El ítem debe depender de al menos un permiso de la plataforma.',
   'platform-menu-item.grid.page-title': 'Página de la plataforma',
   'search-back-office.search-term-input': 'Indique su criterio de búsqueda',
-  'global.search': 'Buscar'
+  'global.search': 'Buscar',
+  'menu.platform.marketing.feedback-form': 'Gestión de Fichas de Opinión',
+  'feedback-form.is-current.true': 'ACTUAL',
+  'feedback-form.is-current.false': 'No',
+  'global.created-date': 'Fecha de Creación',
+  'feedback-form.is-current': 'Es la actual',
+  'feedback-form.action.set-is-current': 'Convertir en Actual'
 };

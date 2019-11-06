@@ -48,3 +48,4 @@ export {
   EditPlatformMenuDialogTemplate
 } from './EditPlatformMenuDialogTemplate';
 export { SearchBackOfficeTemplate } from './SearchBackOfficeTemplate';
+export { ListFeedbackFormTemplate } from './ListFeedbackFormTemplate';
