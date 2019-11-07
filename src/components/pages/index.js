@@ -45,3 +45,4 @@ export { ListPlatformMenuPage } from './ListPlatformMenuPage';
 export { EditPlatformMenuPage } from './EditPlatformMenuPage';
 export { SearchBackOfficePage } from './SearchBackOfficePage';
 export { ListFeedbackFormPage } from './ListFeedbackFormPage';
+export { EditFeedbackFormPage } from './EditFeedbackFormPage';

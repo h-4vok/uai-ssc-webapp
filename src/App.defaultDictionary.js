@@ -473,5 +473,16 @@ export const defaultDictionary = {
   'feedback-form.is-current.false': 'No',
   'global.created-date': 'Fecha de Creación',
   'feedback-form.is-current': 'Es la actual',
-  'feedback-form.action.set-is-current': 'Convertir en Actual'
+  'feedback-form.action.set-is-current': 'Convertir en Actual',
+  'marketing.feedback-form.title.new': 'Nueva Ficha de Opinión',
+  'feedback-form-question.question': 'Especifique el enunciado de la pregunta',
+  'feedback-form-question.validation.question':
+    'Debe especificar una pregunta.',
+  'feedback-form-question.validation.choices':
+    'Debe tener al menos 2 opciones.',
+  'feedback-form-question.edit.title': 'Pregunta de Ficha de Opinión',
+  'feedback-form-question-choice.choice-title': 'Opción',
+  'feedback-form-question.validation.empty-choice':
+    'Una o más opciones están vacías.',
+  'feedback-form-question.grid.question': 'Enunciado'
 };

@@ -8,9 +8,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { AgGridReact } from 'ag-grid-react';
 import withLocalization from '../../localization/withLocalization';
-import { SimpleTextField, SimpleSelect } from '../atoms';
 import { ButtonBar } from '../molecules';
-import { EditPlatformMenuDialogTemplate } from './EditPlatformMenuDialogTemplate';
+import { EditFeedbackFormQuestionDialogTemplate } from '.';
 
 const styles = theme => ({
   paper: {
@@ -24,44 +23,22 @@ const styles = theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
-  },
-  button: {
-    margin: theme.spacing(3, 0, 2),
-    minWidth: 100
   }
 });
 
-class EditPlatformMenuTemplateComponent extends PureComponent {
+class EditFeedbackFormTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { Code, TranslationKey, MenuOrder = 0, Items } = this.props.model;
-
     this.state = {
-      Code,
-      TranslationKey,
-      MenuOrder,
-      Items: this.isEditAction() ? [...Items] : [],
+      Questions: [],
       oneRowSelected: false,
       multipleRowsSelected: false,
-      translationKeys: this.buildTranslationKeys(this.props.translationKeys),
       dialogOpen: false,
-      currentMenuItem: null,
+      currentItem: null,
       isDialogEdit: false
     };
   }
-
-  buildTranslationKeys = items =>
-    items.map(item => ({ value: item, label: item }));
-
-  isEditAction() {
-    return this.props.model && this.props.model.Id;
-  }
-
-  onInputChange = event => {
-    this.props.model[event.target.name] = event.target.value;
-    this.setState({ [event.target.name]: event.target.value });
-  };
 
   componentDidMount() {
     this.dataGrid.api.sizeColumnsToFit();
@@ -81,28 +58,25 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
     {
       headerName: i10n['global.id'],
       field: 'Id',
-      checkboxSelection: true
+      checkboxSelection: true,
+      suppressSizeToFit: false,
+      width: 50
     },
     {
-      headerName: i10n['platform-menu-item.menu-order'],
-      field: 'MenuOrder'
-    },
-    {
-      headerName: i10n['platform-menu-item.relative-route'],
-      field: 'RelativeRoute'
+      headerName: i10n['feedback-form-question.question'],
+      field: 'Question'
     }
   ];
 
   onNewItem = () => {
     const newItem = {
-      MenuOrder: this.state.Items.length + 1,
-      TranslationKey: null,
-      RelativeRoute: '/'
+      Question: '',
+      Choices: []
     };
 
     this.setState({
       dialogOpen: true,
-      currentMenuItem: newItem,
+      currentItem: newItem,
       isDialogEdit: false
     });
   };
@@ -112,7 +86,7 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
 
     this.setState({
       dialogOpen: true,
-      currentMenuItem: selectedItem,
+      currentItem: selectedItem,
       isDialogEdit: true
     });
   };
@@ -121,7 +95,7 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
     const selected = this.dataGrid.api.getSelectedRows();
 
     this.setState(prevState => ({
-      Items: prevState.Items.filter(
+      Questions: prevState.Questions.filter(
         item => !selected.some(selectedItem => selectedItem === item)
       )
     }));
@@ -133,34 +107,30 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
     });
   };
 
-  onConfirmMenuItem = () => {
+  onConfirmItem = () => {
     this.setState(
       prevState => ({
         dialogOpen: false,
-        Items: prevState.isDialogEdit
-          ? [...prevState.Items]
-          : [...prevState.Items, prevState.currentMenuItem]
+        Questions: prevState.isDialogEdit
+          ? [...prevState.Questions]
+          : [...prevState.Questions, prevState.currentItem]
       }),
       () => this.dataGrid.api.redrawRows()
     );
   };
 
   onConfirm(callback) {
-    this.props.model.Items = this.state.Items;
+    this.props.model.Questions = this.state.Questions;
     callback();
   }
 
   render() {
-    const { classes, onConfirm, i10n, permissions } = this.props;
+    const { classes, onConfirm, i10n } = this.props;
     const {
-      Code,
-      TranslationKey,
-      MenuOrder,
-      Items,
-      translationKeys,
       oneRowSelected,
       multipleRowsSelected,
-      currentMenuItem,
+      Questions,
+      currentItem,
       dialogOpen
     } = this.state;
 
@@ -168,51 +138,11 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
       <Container component="main" maxWidth="lg">
         <div className={classes.paper}>
           <Typography variant="h6" gutterBottom>
-            {this.props.modelId
-              ? i10n['configuration.platform-menu.title.edit']
-              : i10n['configuration.platform-menu.title.new']}
+            {i10n['marketing.feedback-form.title.new']}
           </Typography>
         </div>
         <form className={classes.form} noValidate>
           <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <SimpleTextField
-                required
-                maxLength="100"
-                id="Code"
-                name="Code"
-                label={i10n['global.code']}
-                fullWidth
-                value={Code}
-                onChange={this.onInputChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <SimpleTextField
-                required
-                id="MenuOrder"
-                name="MenuOrder"
-                type="number"
-                inputProps={{ min: 0, max: 100 }}
-                label={i10n['platform-menu.menu-order']}
-                fullWidth
-                value={MenuOrder}
-                onChange={this.onInputChange}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <SimpleSelect
-                required
-                name="TranslationKey"
-                label={i10n['platform-menu.translation-key']}
-                fullWidth
-                items={translationKeys}
-                value={TranslationKey}
-                onChange={this.onInputChange}
-              />
-            </Grid>
-
             <Grid item xs={12}>
               <ButtonBar>
                 <Button
@@ -254,7 +184,7 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
                   rowSelection="single"
                   suppressHorizontalScroll
                   columnDefs={this.buildGridDef(i10n)}
-                  rowData={Items}
+                  rowData={Questions}
                 />
               </div>
             </Grid>
@@ -272,21 +202,19 @@ class EditPlatformMenuTemplateComponent extends PureComponent {
             </Grid>
           </Grid>
         </form>
-        <EditPlatformMenuDialogTemplate
+        <EditFeedbackFormQuestionDialogTemplate
           open={dialogOpen}
           maxWidth="lg"
           fullWidth
-          onConfirm={this.onConfirmMenuItem}
+          onConfirm={this.onConfirmItem}
           onCloseClick={this.onCloseMenuItem}
-          permissions={permissions}
-          translationKeys={translationKeys}
-          model={currentMenuItem}
+          model={currentItem}
         />
       </Container>
     );
   }
 }
 
-export const EditPlatformMenuTemplate = withLocalization(
-  withStyles(styles)(EditPlatformMenuTemplateComponent)
+export const EditFeedbackFormTemplate = withLocalization(
+  withStyles(styles)(EditFeedbackFormTemplateComponent)
 );

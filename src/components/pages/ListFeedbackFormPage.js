@@ -88,7 +88,7 @@ class ListFeedbackFormPageComponent extends PureComponent {
           items={items}
           onRefresh={() => this.onRefresh()}
           onNewAction={() => this.onNewAction()}
-          OnSettingIsCurrentAction={(selectedItems, gridApi) =>
+          onSettingIsCurrentAction={(selectedItems, gridApi) =>
             this.onSettingIsCurrentAction(selectedItems, gridApi)
           }
         />
@@ -101,6 +101,4 @@ class ListFeedbackFormPageComponent extends PureComponent {
     );
   }
 }
-export const ListFeedbackFormPage = withSnackbar(
-  ListFeedbackFormPageComponent
-);
+export const ListFeedbackFormPage = withSnackbar(ListFeedbackFormPageComponent);

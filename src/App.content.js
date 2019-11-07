@@ -42,8 +42,8 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
-    'configuration/platform-menu/new',
-    inProgressPlatformPage,
+    'marketing/feedback-form/new',
+    Pages.EditFeedbackFormPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
