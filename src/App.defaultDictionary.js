@@ -484,5 +484,11 @@ export const defaultDictionary = {
   'feedback-form-question-choice.choice-title': 'Opción',
   'feedback-form-question.validation.empty-choice':
     'Una o más opciones están vacías.',
-  'feedback-form-question.grid.question': 'Enunciado'
+  'feedback-form-question.grid.question': 'Enunciado',
+  'submitted-feedback-form.page.title': 'Bienvenido a Sample Supply Chain',
+  'submitted-feedback-form.page.subtitle':
+    'Por favor tómese unos segundos para opinar sobre la experiencia y seguridad del proceso de registración.',
+  'submitted-feedback-form.validation.choice-null':
+    'Una o más preguntas no han sido respondidas.',
+  'submitted-feedback-form.thank-you': 'Muchas Gracias!'
 };

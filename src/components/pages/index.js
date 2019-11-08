@@ -46,3 +46,4 @@ export { EditPlatformMenuPage } from './EditPlatformMenuPage';
 export { SearchBackOfficePage } from './SearchBackOfficePage';
 export { ListFeedbackFormPage } from './ListFeedbackFormPage';
 export { EditFeedbackFormPage } from './EditFeedbackFormPage';
+export { DoFeedbackFormPage } from './DoFeedbackFormPage';

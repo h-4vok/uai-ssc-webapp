@@ -53,3 +53,4 @@ export { EditFeedbackFormTemplate } from './EditFeedbackFormTemplate';
 export {
   EditFeedbackFormQuestionDialogTemplate
 } from './EditFeedbackFormQuestionDialogTemplate';
+export { DoFeedbackFormTemplate } from './DoFeedbackFormTemplate';
