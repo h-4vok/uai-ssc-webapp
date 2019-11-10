@@ -3,7 +3,6 @@ import {
   Typography,
   GridList,
   GridListTile,
-  Grid,
   Container
 } from '@material-ui/core';
 import { MarketingCard } from '../molecules';

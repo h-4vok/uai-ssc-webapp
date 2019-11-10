@@ -17,3 +17,4 @@ export { AdRotator } from './AdRotator';
 export { FeedbackFormChoices } from './FeedbackFormChoices';
 export { FeedbackFormQuestion } from './FeedbackFormQuestion';
 export { SurveyOption } from './SurveyOption';
+export { SurveyResults } from './SurveyResults';

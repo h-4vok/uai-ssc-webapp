@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { SurveyOption } from '../molecules';
 import { fromI10n } from '../../lib/GlobalState';
 
