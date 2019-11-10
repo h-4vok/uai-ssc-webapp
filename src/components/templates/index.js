@@ -55,3 +55,4 @@ export {
 } from './EditFeedbackFormQuestionDialogTemplate';
 export { DoFeedbackFormTemplate } from './DoFeedbackFormTemplate';
 export { ListSurveyFormsTemplate } from './ListSurveyFormsTemplate';
+export { EditSurveyFormTemplate } from './EditSurveyFormTemplate';

@@ -492,5 +492,11 @@ export const defaultDictionary = {
     'Una o más preguntas no han sido respondidas.',
   'submitted-feedback-form.thank-you': 'Muchas Gracias!',
   'survey-form.question-title': 'Pregunta de Encuesta',
-  'menu.platform.marketing.survey-form': 'Encuestas'
+  'menu.platform.marketing.survey-form': 'Encuestas',
+  'marketing.survey-form.title.edit': 'Editar Encuesta',
+  'marketing.survey-form.title.new': 'Nueva Encuesta',
+  'survey-choice.choice-title': 'Opción',
+  'survey-form.choices': 'Opciones',
+  'survey-form.choices.choice-title-empty': 'Una o más opciones están vacías.',
+  'survey-form.expiration-date': 'Fecha de Expiración'
 };

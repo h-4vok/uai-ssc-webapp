@@ -78,6 +78,12 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
       filter: true
     },
     {
+      headerName: i10n['survey-form.expiration-date'],
+      field: 'ExpirationDate',
+      sortable: true,
+      filter: true
+    },
+    {
       headerName: i10n['global.isenabled'],
       field: 'IsEnabled',
       sortable: true,
