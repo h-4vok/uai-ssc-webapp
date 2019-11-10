@@ -51,3 +51,4 @@ export { ListSurveyFormsPage } from './ListSurveyFormsPage';
 export { EditSurveyFormPage } from './EditSurveyFormPage';
 export { SurveyResultsPage } from './SurveyResultsPage';
 export { ViewSurveyResultsPage } from './ViewSurveyResultsPage';
+export { CompareSurveyResultsPage } from './CompareSurveyResultsPage';

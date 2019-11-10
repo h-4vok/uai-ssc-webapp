@@ -50,7 +50,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'marketing/survey-form/compare/:id1/:id2',
-    inProgressPlatformPage,
+    Pages.CompareSurveyResultsPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
