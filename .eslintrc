@@ -24,7 +24,8 @@
     "compat/compat": "warn",
     "react/no-string-refs": 0,
     "react/sort-comp": 0,
-    "radix": 0
+    "radix": 0,
+    "react/no-array-index-key": 0
   },
   "globals": {
     "window": true,

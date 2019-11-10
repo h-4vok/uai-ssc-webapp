@@ -39,7 +39,8 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
     super(props);
 
     this.state = {
-      oneRowSelected: false
+      oneRowSelected: false,
+      twoRowsSelected: false
     };
   }
 
@@ -53,7 +54,8 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
     const selected = e.api.getSelectedRows();
 
     this.setState({
-      oneRowSelected: selected.length === 1
+      oneRowSelected: selected.length === 1,
+      twoRowsSelected: selected.length === 2
     });
   };
 
@@ -68,7 +70,8 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
       field: 'Id',
       sortable: true,
       filter: true,
-      checkboxSelection: true
+      checkboxSelection: true,
+      headerCheckboxSelection: true
     },
     {
       headerName: i10n['global.created-date'],
@@ -91,6 +94,13 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
     action(items, this.dataGrid.api);
   };
 
+  callWithSingleSelected = callback => {
+    const item = this.dataGrid.api.getSelectedRows()[0];
+    const id = item.Id;
+
+    callback(id);
+  };
+
   render() {
     const {
       items,
@@ -98,9 +108,11 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
       onRefresh,
       onNewAction,
       onSettingIsCurrentAction,
+      onViewResultsAction,
+      onCompareResultsAction,
       i10n
     } = this.props;
-    const { oneRowSelected } = this.state;
+    const { oneRowSelected, twoRowsSelected } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">
@@ -133,6 +145,22 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
                 {i10n['feedback-form.action.set-is-current']}
               </Button>
             )}
+            <Button
+              variant="contained"
+              onClick={() => this.callWithSingleSelected(onViewResultsAction)}
+              className={classes.button}
+              disabled={!oneRowSelected}
+            >
+              {i10n['global.action.view-results']}
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => this.callWithSelected(onCompareResultsAction)}
+              className={classes.button}
+              disabled={!twoRowsSelected}
+            >
+              {i10n['global.action.compare-results']}
+            </Button>
           </ButtonBar>
 
           <div
@@ -141,7 +169,7 @@ class ListFeedbackFormTemplateComponent extends PureComponent {
           >
             <AgGridReact
               ref={c => (this.dataGrid = c)}
-              rowSelection="single"
+              rowSelection="multiple"
               columnDefs={this.buildGridDef(i10n)}
               rowData={items}
             />

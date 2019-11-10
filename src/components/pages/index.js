@@ -52,3 +52,4 @@ export { EditSurveyFormPage } from './EditSurveyFormPage';
 export { SurveyResultsPage } from './SurveyResultsPage';
 export { ViewSurveyResultsPage } from './ViewSurveyResultsPage';
 export { CompareSurveyResultsPage } from './CompareSurveyResultsPage';
+export { ViewFeedbackFormResultsPage } from './ViewFeedbackFormResultsPage';

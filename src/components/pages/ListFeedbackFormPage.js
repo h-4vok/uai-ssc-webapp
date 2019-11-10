@@ -7,7 +7,8 @@ import { ConfirmDialog } from '../molecules';
 import { ListFeedbackFormTemplate } from '../templates';
 
 const apiRoute = 'feedbackform';
-const getEditRoute = (id = 'new') => `/marketing/feedback-form/${id}`;
+const pageroute = '/marketing/feedback-form';
+const getEditRoute = (id = 'new') => `${pageroute}/${id}`;
 
 class ListFeedbackFormPageComponent extends PureComponent {
   constructor(props) {
@@ -79,6 +80,14 @@ class ListFeedbackFormPageComponent extends PureComponent {
     this.setState({ dialogOpen: false });
   };
 
+  onViewResultsAction = id =>
+    this.props.history.push(`${pageroute}/results/${id}`);
+
+  onCompareResultsAction = items =>
+    this.props.history.push(
+      `${pageroute}/compare/${items[0].Id}/${items[1].Id}`
+    );
+
   render() {
     const { items, dialogOpen } = this.state;
 
@@ -91,6 +100,8 @@ class ListFeedbackFormPageComponent extends PureComponent {
           onSettingIsCurrentAction={(selectedItems, gridApi) =>
             this.onSettingIsCurrentAction(selectedItems, gridApi)
           }
+          onViewResultsAction={this.onViewResultsAction}
+          onCompareResultsAction={this.onCompareResultsAction}
         />
         <ConfirmDialog
           open={dialogOpen}

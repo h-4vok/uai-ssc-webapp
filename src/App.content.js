@@ -64,6 +64,16 @@ export const protectedRoutes = [
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
+    'marketing/feedback-form/results/:id',
+    Pages.ViewFeedbackFormResultsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'marketing/feedback-form/compare/:id1/:id2',
+    inProgressPlatformPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'marketing/feedback-form/new',
     Pages.EditFeedbackFormPage,
     'PLATFORM_ADMIN'

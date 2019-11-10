@@ -506,5 +506,6 @@ export const defaultDictionary = {
   'global.action.view-results': 'Ver Resultados',
   'global.percentage': 'Porcentaje',
   'global.count': 'Cantidad',
-  'survey-results.compare.page.title': 'Comparar Encuestas'
+  'survey-results.compare.page.title': 'Comparar Encuestas',
+  'feedback-form-results.page.title': 'Resultados de Ficha de opinión'
 };
