@@ -29,7 +29,8 @@ export const unprotectedRoutes = [
   buildRoute('recover-password/:token/:username', Pages.RecoverPasswordPage),
   buildRoute('service-catalog/:code', Pages.ProductDetailPage),
   buildRoute('service-catalog', Pages.ProductSearchPage),
-  buildRoute('faq', Pages.FaqsPage)
+  buildRoute('faq', Pages.FaqsPage),
+  buildRoute('survey-results/:id', inProgressSitePage)
 ];
 
 export const authenticatedRoutes = [

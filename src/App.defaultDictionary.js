@@ -498,5 +498,7 @@ export const defaultDictionary = {
   'survey-choice.choice-title': 'Opción',
   'survey-form.choices': 'Opciones',
   'survey-form.choices.choice-title-empty': 'Una o más opciones están vacías.',
-  'survey-form.expiration-date': 'Fecha de Expiración'
+  'survey-form.expiration-date': 'Fecha de Expiración',
+  'survey-form.choices.need-more-than-one': 'Debe haber al menos dos opciones.',
+  'survey-submission.hello': '¡Danos tu opinión!'
 };

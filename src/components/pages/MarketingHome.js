@@ -1,11 +1,17 @@
 import React from 'react';
-import { Typography, GridList, GridListTile } from '@material-ui/core';
+import {
+  Typography,
+  GridList,
+  GridListTile,
+  Grid,
+  Container
+} from '@material-ui/core';
 import { MarketingCard } from '../molecules';
-import { PageLayout, PricingChart } from '../organisms';
+import { PageLayout, RandomSurveyPresenter } from '../organisms';
 import withLocalization from '../../localization/withLocalization';
 import './MarketingHome.scss';
 
-const MarketingHomeComponent = ({ i10n }) => (
+const MarketingHomeComponent = ({ i10n, history }) => (
   <PageLayout>
     <div className="marketing-home">
       <Typography variant="h2">{i10n['app.title']}</Typography>
@@ -47,11 +53,16 @@ const MarketingHomeComponent = ({ i10n }) => (
         </GridListTile>
       </GridList>
 
-      <PricingChart className="pricing-chart" />
       <div style={{ visibility: 'hidden', display: 'none' }}>
         {process.env.REACT_APP_API_PREFIX}
       </div>
     </div>
+
+    <Container maxWidth="md">
+      <RandomSurveyPresenter
+        onSubmission={id => history.push(`/survey-results/${id}`)}
+      />
+    </Container>
   </PageLayout>
 );
 

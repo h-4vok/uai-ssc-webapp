@@ -32,13 +32,21 @@ class EditSurveyFormTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { QuestionTitle, Choices, ExpirationDate } = this.props.model;
+    const {
+      QuestionTitle,
+      Choices,
+      ExpirationDate = new Date()
+    } = this.props.model;
 
     this.state = {
       QuestionTitle,
       Choices,
       ExpirationDate
     };
+
+    if (!this.props.model.ExpirationDate) {
+      this.props.model.ExpirationDate = new Date();
+    }
   }
 
   isEditAction() {

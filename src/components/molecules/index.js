@@ -16,3 +16,4 @@ export { CustomContentDialog } from './CustomContentDialog';
 export { AdRotator } from './AdRotator';
 export { FeedbackFormChoices } from './FeedbackFormChoices';
 export { FeedbackFormQuestion } from './FeedbackFormQuestion';
+export { SurveyOption } from './SurveyOption';
