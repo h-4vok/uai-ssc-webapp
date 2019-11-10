@@ -50,3 +50,4 @@ export { DoFeedbackFormPage } from './DoFeedbackFormPage';
 export { ListSurveyFormsPage } from './ListSurveyFormsPage';
 export { EditSurveyFormPage } from './EditSurveyFormPage';
 export { SurveyResultsPage } from './SurveyResultsPage';
+export { ViewSurveyResultsPage } from './ViewSurveyResultsPage';

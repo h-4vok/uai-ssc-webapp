@@ -44,6 +44,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'marketing/survey-form/results/:id',
+    Pages.ViewSurveyResultsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'marketing/survey-form/compare/:id1/:id2',
+    inProgressPlatformPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'marketing/survey-form/new',
     Pages.EditSurveyFormPage,
     'PLATFORM_ADMIN'

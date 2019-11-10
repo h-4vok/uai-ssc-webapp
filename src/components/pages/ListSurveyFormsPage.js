@@ -42,6 +42,14 @@ class ListSurveyFormsPageComponent extends PureComponent {
     this.props.history.push(`${pageroute}/new`);
   }
 
+  onViewResultsAction = id =>
+    this.props.history.push(`${pageroute}/results/${id}`);
+
+  onCompareResultsAction = items =>
+    this.props.history.push(
+      `${pageroute}/compare/${items[0].Id}/${items[1].Id}`
+    );
+
   onEnableAction(selectedItems, dataGridApi) {
     this.setState({
       dialogOpen: true,
@@ -104,6 +112,8 @@ class ListSurveyFormsPageComponent extends PureComponent {
             onDisableAction={(selectedItems, gridApi) =>
               this.onDisableAction(selectedItems, gridApi)
             }
+            onViewResultsAction={this.onViewResultsAction}
+            onCompareResultsAction={this.onCompareResultsAction}
           />
         )}
         <ConfirmDialog

@@ -3,7 +3,7 @@ import { withSnackbar } from 'notistack';
 import { Typography, Container } from '@material-ui/core';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
-import { PlatformPageLayout } from '../organisms';
+import { PageLayout } from '../organisms';
 import { SurveyResults } from '../molecules';
 import withLocalization from '../../localization/withLocalization';
 
@@ -39,7 +39,8 @@ class SurveyResultsPageComponent extends PureComponent {
       .go();
   };
 
-  mapResults = results => results.map(r => ({ label: r.Label, y: r.Data }));
+  mapResults = results =>
+    results.map(r => ({ label: r.Label, y: r.Percentage }));
 
   componentDidMount() {
     this.loadSurvey();
@@ -50,7 +51,7 @@ class SurveyResultsPageComponent extends PureComponent {
     const { surveyTitle, data } = this.state;
 
     return (
-      <PlatformPageLayout>
+      <PageLayout>
         <Container component="main" maxWidth="md">
           <Typography variant="h4">
             {i10n['survey-results.page.title']}
@@ -63,7 +64,7 @@ class SurveyResultsPageComponent extends PureComponent {
             />
           )}
         </Container>
-      </PlatformPageLayout>
+      </PageLayout>
     );
   }
 }

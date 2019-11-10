@@ -39,6 +39,8 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
     super(props);
 
     this.state = {
+      oneRowSelected: false,
+      twoRowsSelected: false,
       multipleRowsSelected: false
     };
   }
@@ -53,6 +55,8 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
     const selected = e.api.getSelectedRows();
 
     this.setState({
+      oneRowSelected: selected.length === 1,
+      twoRowsSelected: selected.length === 2,
       multipleRowsSelected: selected.length > 0
     });
   };
@@ -92,6 +96,13 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
     }
   ];
 
+  callWithSingleSelected = callback => {
+    const item = this.dataGrid.api.getSelectedRows()[0];
+    const id = item.Id;
+
+    callback(id);
+  };
+
   callWithSelected = action => {
     const items = this.dataGrid.api.getSelectedRows();
 
@@ -106,9 +117,15 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
       onNewAction,
       onEnableAction,
       onDisableAction,
+      onViewResultsAction,
+      onCompareResultsAction,
       i10n
     } = this.props;
-    const { multipleRowsSelected } = this.state;
+    const {
+      oneRowSelected,
+      twoRowsSelected,
+      multipleRowsSelected
+    } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">
@@ -151,6 +168,22 @@ class ListSurveyFormsTemplateComponent extends PureComponent {
                 {i10n['global.action.disable']}
               </Button>
             )}
+            <Button
+              variant="contained"
+              onClick={() => this.callWithSingleSelected(onViewResultsAction)}
+              className={classes.button}
+              disabled={!oneRowSelected}
+            >
+              {i10n['global.action.view-results']}
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => this.callWithSelected(onCompareResultsAction)}
+              className={classes.button}
+              disabled={!twoRowsSelected}
+            >
+              {i10n['global.action.compare-results']}
+            </Button>
           </ButtonBar>
 
           <div
