@@ -47,3 +47,4 @@ export { SearchBackOfficePage } from './SearchBackOfficePage';
 export { ListFeedbackFormPage } from './ListFeedbackFormPage';
 export { EditFeedbackFormPage } from './EditFeedbackFormPage';
 export { DoFeedbackFormPage } from './DoFeedbackFormPage';
+export { ListSurveyFormsPage } from './ListSurveyFormsPage';

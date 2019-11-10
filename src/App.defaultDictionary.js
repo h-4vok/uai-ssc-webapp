@@ -490,5 +490,7 @@ export const defaultDictionary = {
     'Por favor tómese unos segundos para opinar sobre la experiencia y seguridad del proceso de registración.',
   'submitted-feedback-form.validation.choice-null':
     'Una o más preguntas no han sido respondidas.',
-  'submitted-feedback-form.thank-you': 'Muchas Gracias!'
+  'submitted-feedback-form.thank-you': 'Muchas Gracias!',
+  'survey-form.question-title': 'Pregunta de Encuesta',
+  'menu.platform.marketing.survey-form': 'Encuestas'
 };
