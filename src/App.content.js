@@ -30,7 +30,8 @@ export const unprotectedRoutes = [
   buildRoute('service-catalog/:code', Pages.ProductDetailPage),
   buildRoute('service-catalog', Pages.ProductSearchPage),
   buildRoute('faq', Pages.FaqsPage),
-  buildRoute('survey-results/:id', Pages.SurveyResultsPage)
+  buildRoute('survey-results/:id', Pages.SurveyResultsPage),
+  buildRoute('blog', Pages.BlogPage)
 ];
 
 export const authenticatedRoutes = [

@@ -515,5 +515,9 @@ export const defaultDictionary = {
   'site-news.author': 'Autor',
   'site-news.title': 'Título',
   'site-news.content': 'Contenido',
-  'site-news.publication-date': 'Fecha de Publicación'
+  'site-news.publication-date': 'Fecha de Publicación',
+  'app.marketing.menu.blog': 'Blog',
+  'blog.page.title': 'Noticias de SSC',
+  'blog.article-by': 'Escrito por ',
+  'blog.go-to-subscribe': 'Suscribirse a nuestro Newsletter'
 };
