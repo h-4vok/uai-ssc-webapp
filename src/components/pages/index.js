@@ -59,3 +59,4 @@ export { EditSiteNewsArticlesPage } from './EditSiteNewsArticlesPage';
 export { BlogPage } from './BlogPage';
 export { SendNewsletterPage } from './SendNewsletterPage';
 export { SubscribeToNewsletterPage } from './SubscribeToNewsletterPage';
+export { UnsubscribeToNewsletterPage } from './UnsubscribeToNewsletterPage';

@@ -32,7 +32,8 @@ export const unprotectedRoutes = [
   buildRoute('faq', Pages.FaqsPage),
   buildRoute('survey-results/:id', Pages.SurveyResultsPage),
   buildRoute('blog', Pages.BlogPage),
-  buildRoute('newsletter/subscribe', Pages.SubscribeToNewsletterPage)
+  buildRoute('newsletter/subscribe', Pages.SubscribeToNewsletterPage),
+  buildRoute('newsletter/unsubscribe/:token', Pages.UnsubscribeToNewsletterPage)
 ];
 
 export const authenticatedRoutes = [
