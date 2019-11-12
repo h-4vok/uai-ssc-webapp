@@ -519,5 +519,11 @@ export const defaultDictionary = {
   'app.marketing.menu.blog': 'Blog',
   'blog.page.title': 'Noticias de SSC',
   'blog.article-by': 'Escrito por ',
-  'blog.go-to-subscribe': 'Suscribirse a nuestro Newsletter'
+  'blog.go-to-subscribe': 'Suscribirse a nuestro Newsletter',
+  'send-newsletter.page.title': 'Enviar Newsletter',
+  'send-newsletter.page.subtitle':
+    'Ingrese las fechas entre las cuales se tomarán las noticias a enviar en el newsletter.',
+  'send-newsletter.date-from': 'Fecha desde',
+  'send-newsletter.date-to': 'Fecha hasta',
+  'menu.platform.marketing.newsletter.new': 'Enviar Newsletter'
 };
