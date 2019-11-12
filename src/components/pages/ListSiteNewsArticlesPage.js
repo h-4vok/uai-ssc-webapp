@@ -19,8 +19,7 @@ class ListSiteNewsArticlesPageComponent extends PureComponent {
     this.state = {
       items: [],
       dialogOpen: false,
-      dialogAfterAction: null,
-      dataGridApi: null
+      dialogAfterAction: null
     };
   }
 
@@ -47,6 +46,13 @@ class ListSiteNewsArticlesPageComponent extends PureComponent {
     this.props.history.push(getEditRoute(id));
   }
 
+  onDeleteAction(selectedItems) {
+    this.setState({
+      dialogOpen: true,
+      dialogAfterAction: () => this.onDeleteConfirm(selectedItems)
+    });
+  }
+
   onDeleteConfirm = items => {
     items.forEach(item => {
       this.api.request
@@ -71,9 +77,7 @@ class ListSiteNewsArticlesPageComponent extends PureComponent {
           onRefresh={() => this.onRefresh()}
           onNewAction={() => this.onNewAction()}
           onEditAction={id => this.onEditAction(id)}
-          onDeleteAction={(selectedItems, gridApi) =>
-            this.onDeleteAction(selectedItems, gridApi)
-          }
+          onDeleteAction={selectedItems => this.onDeleteAction(selectedItems)}
         />
         <ConfirmDialog
           open={dialogOpen}

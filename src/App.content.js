@@ -44,6 +44,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'marketing/site-news/new',
+    Pages.EditSiteNewsArticlesPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'marketing/site-news/:id',
+    Pages.EditSiteNewsArticlesPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
     'marketing/site-news',
     Pages.ListSiteNewsArticlesPage,
     'NEWS_MANAGEMENT'

@@ -55,3 +55,4 @@ export { CompareSurveyResultsPage } from './CompareSurveyResultsPage';
 export { ViewFeedbackFormResultsPage } from './ViewFeedbackFormResultsPage';
 export { CompareFeedbackFormsPage } from './CompareFeedbackFormsPage';
 export { ListSiteNewsArticlesPage } from './ListSiteNewsArticlesPage';
+export { EditSiteNewsArticlesPage } from './EditSiteNewsArticlesPage';

@@ -70,7 +70,7 @@ class ListSiteNewsArticlesTemplateComponent extends PureComponent {
     },
     {
       headerName: i10n['site-news-article.title'],
-      field: 'Name',
+      field: 'Title',
       sortable: true,
       filter: true
     },

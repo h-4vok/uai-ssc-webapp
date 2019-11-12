@@ -511,5 +511,9 @@ export const defaultDictionary = {
   'menu.platform.marketing.site-news': 'Gestión de Noticias',
   'site-news-article.title': 'Título',
   'site-news-article.author': 'Autor',
-  'site-news-article.publication-date': 'Fecha de Publicación'
+  'site-news-article.publication-date': 'Fecha de Publicación',
+  'site-news.author': 'Autor',
+  'site-news.title': 'Título',
+  'site-news.content': 'Contenido',
+  'site-news.publication-date': 'Fecha de Publicación'
 };
