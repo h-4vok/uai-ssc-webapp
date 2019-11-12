@@ -525,5 +525,11 @@ export const defaultDictionary = {
     'Ingrese las fechas entre las cuales se tomarán las noticias a enviar en el newsletter.',
   'send-newsletter.date-from': 'Fecha desde',
   'send-newsletter.date-to': 'Fecha hasta',
-  'menu.platform.marketing.newsletter.new': 'Enviar Newsletter'
+  'menu.platform.marketing.newsletter.new': 'Enviar Newsletter',
+  'subscribe-newsletter.title': 'Suscribirse al Newsletter',
+  'subscribe-newsletter.subttitle':
+    'Indique su e-mail para empezar a recibir el newsletter de SSC.',
+  'subscribe-newsletter.email': 'Su correo electrónico',
+  'subscribe-newsletter.success': 'Se ha suscrito al newsletter!',
+  'subscribe-newsletter.email-exists': 'Ya se encuentra suscripto.'
 };

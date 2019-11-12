@@ -121,7 +121,17 @@ class PlatformBarComponent extends PureComponent {
     this.api.request
       .del('authentication', 0)
       .preventDefaultSuccess()
+      .preventDefaultError()
       .success(() => {
+        GlobalState.Authorizer.clearAuthorizations();
+
+        if (GlobalState.History) {
+          GlobalState.History.push('/sign-in');
+        } else {
+          window.location.href = `http://${window.location.hostname}:${window.location.port}/#/sign-in`;
+        }
+      })
+      .error(() => {
         GlobalState.Authorizer.clearAuthorizations();
 
         if (GlobalState.History) {

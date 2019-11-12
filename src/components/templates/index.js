@@ -60,3 +60,4 @@ export { ListSiteNewsArticlesTemplate } from './ListSiteNewsArticlesTemplate';
 export { EditSiteNewsArticlesTemplate } from './EditSiteNewsArticlesTemplate';
 export { BlogTemplate } from './BlogTemplate';
 export { SendNewsletterTemplate } from './SendNewsletterTemplate';
+export { SubscribeToNewsletterTemplate } from './SubscribeToNewsletterTemplate';
