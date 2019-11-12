@@ -54,7 +54,7 @@ export const defaultDictionary = {
   'menu.platform.configuration.clients-and-billing': 'Clientes y Facturación',
   'menu.platform.configuration.language': 'Gestión de Idiomas',
   'menu.platform.configuration.sample-function': 'Funciones de Muestra',
-  'menu.platform.configuration.sample-type': 'Tipos de Muestra',
+  'menu.platform.configuration.sample-type': 'Gestión de Tipos de Muestra',
   'menu.platform.configuration.sample-type-parameter':
     'Parámetros de tipos de muestra',
   'menu.platform.inventory-menu': 'Inventario',
@@ -492,7 +492,7 @@ export const defaultDictionary = {
     'Una o más preguntas no han sido respondidas.',
   'submitted-feedback-form.thank-you': 'Muchas Gracias!',
   'survey-form.question-title': 'Pregunta de Encuesta',
-  'menu.platform.marketing.survey-form': 'Encuestas',
+  'menu.platform.marketing.survey-form': 'Gestión de Encuestas',
   'marketing.survey-form.title.edit': 'Editar Encuesta',
   'marketing.survey-form.title.new': 'Nueva Encuesta',
   'survey-choice.choice-title': 'Opción',
@@ -507,5 +507,9 @@ export const defaultDictionary = {
   'global.percentage': 'Porcentaje',
   'global.count': 'Cantidad',
   'survey-results.compare.page.title': 'Comparar Encuestas',
-  'feedback-form-results.page.title': 'Resultados de Ficha de opinión'
+  'feedback-form-results.page.title': 'Resultados de Ficha de opinión',
+  'menu.platform.marketing.site-news': 'Gestión de Noticias',
+  'site-news-article.title': 'Título',
+  'site-news-article.author': 'Autor',
+  'site-news-article.publication-date': 'Fecha de Publicación'
 };

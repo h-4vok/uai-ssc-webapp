@@ -44,6 +44,11 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'marketing/site-news',
+    Pages.ListSiteNewsArticlesPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
     'marketing/survey-form/results/:id',
     Pages.ViewSurveyResultsPage,
     'PLATFORM_ADMIN'
@@ -70,7 +75,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'marketing/feedback-form/compare/:id1/:id2',
-    inProgressPlatformPage,
+    Pages.CompareFeedbackFormsPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
