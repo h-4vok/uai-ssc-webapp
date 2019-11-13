@@ -63,3 +63,4 @@ export { SendNewsletterTemplate } from './SendNewsletterTemplate';
 export { SubscribeToNewsletterTemplate } from './SubscribeToNewsletterTemplate';
 export { ListMyTicketsTemplate } from './ListMyTicketsTemplate';
 export { StartSupportTicketTemplate } from './StartSupportTicketTemplate';
+export { ListSupportTicketsTemplate } from './ListSupportTicketsTemplate';

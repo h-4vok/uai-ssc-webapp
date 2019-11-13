@@ -49,6 +49,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'support/support-ticket/reply',
+    inProgressPlatformPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'support/support-ticket',
+    Pages.ListSupportTicketsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'marketing/newsletter/new',
     Pages.SendNewsletterPage,
     'NEWS_MANAGEMENT'

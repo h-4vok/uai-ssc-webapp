@@ -7,7 +7,6 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ButtonBar } from '../molecules';
 import withLocalization from '../../localization/withLocalization';
-import { GlobalState } from '../../lib/GlobalState';
 
 const styles = theme => ({
   centerText: {
@@ -32,7 +31,7 @@ const styles = theme => ({
   }
 });
 
-class ListMyTicketsTemplateComponent extends PureComponent {
+class ListSupportTicketsTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -105,9 +104,8 @@ class ListMyTicketsTemplateComponent extends PureComponent {
       items,
       classes,
       onRefresh,
-      onNewAction,
       onReplyAction,
-      onCancelAction,
+      onCloseAction,
       i10n
     } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;
@@ -134,18 +132,11 @@ class ListMyTicketsTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onNewAction}
-              className={classes.button}
-            >
-              {i10n['global.action.new']}
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callWithSelected(onCancelAction)}
+              onClick={() => this.callWithSelected(onCloseAction)}
               className={classes.button}
               disabled={!multipleRowsSelected}
             >
-              {i10n['global.action.cancel']}
+              {i10n['global.action.close']}
             </Button>
           </ButtonBar>
 
@@ -166,6 +157,6 @@ class ListMyTicketsTemplateComponent extends PureComponent {
   }
 }
 
-export const ListMyTicketsTemplate = withLocalization(
-  withStyles(styles)(ListMyTicketsTemplateComponent)
+export const ListSupportTicketsTemplate = withLocalization(
+  withStyles(styles)(ListSupportTicketsTemplateComponent)
 );

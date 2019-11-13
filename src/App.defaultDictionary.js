@@ -552,5 +552,8 @@ export const defaultDictionary = {
   'support-ticket.action.reply': 'Responder',
   'start-support-ticket.page.title': 'Nuevo Ticket a Soporte',
   'support-ticket.validation.cannot-reply-closed-or-cancelled':
-    'No se puede responder un ticket que está cerrado o cancelado.'
+    'No se puede responder un ticket que está cerrado o cancelado.',
+  'global.action.close': 'Cerrar',
+  'menu.platform.support-menu': 'Soporte',
+  'menu.platform.support.support-ticket': 'Gestionar Tickets'
 };
