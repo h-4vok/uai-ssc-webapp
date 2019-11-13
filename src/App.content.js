@@ -51,7 +51,7 @@ export const authenticatedRoutes = [
 export const protectedRoutes = [
   buildPlatformRoute(
     'support/chat-conversation/:id/reply',
-    inProgressPlatformPage,
+    Pages.ReplyChatConversationPage,
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(

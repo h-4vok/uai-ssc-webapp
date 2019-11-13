@@ -65,7 +65,6 @@ class ChatDrawerComponent extends PureComponent {
         open={chatOpen}
         onClose={() => toggleChatOpen(false)}
       >
-        {/* <div style={{ width: 500, padding: 10, paddingTop: 40 }}> */}
         <Container maxWidth="sm">
           <Box ml={3} mr={3} mt={1} mb={1}>
             <Typography>{i10n['chat-drawer.tip']}</Typography>
@@ -76,8 +75,6 @@ class ChatDrawerComponent extends PureComponent {
             onConfirmReply={this.onChatReply}
           />
         </Container>
-
-        {/* </div> */}
       </Drawer>
     );
   }
