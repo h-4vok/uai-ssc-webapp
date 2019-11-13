@@ -127,6 +127,7 @@ class PlatformBarComponent extends PureComponent {
       .preventDefaultError()
       .success(() => {
         GlobalState.Authorizer.clearAuthorizations();
+        GlobalState.UserSessionService.setUserId(null);
 
         if (GlobalState.History) {
           GlobalState.History.push('/sign-in');

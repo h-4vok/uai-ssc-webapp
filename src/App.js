@@ -22,6 +22,7 @@ import { MenuStorage } from './securedMenu/MenuStorage';
 import LocalizationContext from './localization/LocalizationContext';
 import SecuredMenuContext from './securedMenu/SecuredMenuContext';
 import ChatMessagingContext from './lib/ChatMessagingContext';
+import { refreshChat } from './lib/refreshChat';
 
 let siteFontSize = 12;
 
@@ -50,9 +51,17 @@ export class App extends PureComponent {
     if (this.state.securedMenu === null) {
       MenuStorage.tryRefresh();
     }
+
+    if (GlobalState.UserSessionService.getUserId()) {
+      this.startChatRefresh();
+    }
   }
 
-  updateChatConversation = (chatConversation, callback) =>
+  startChatRefresh = () => {
+    window.setInterval(() => refreshChat(), 3000);
+  };
+
+  updateChatConversation = (chatConversation, callback = () => {}) =>
     this.setState({ chatConversation }, callback);
 
   switchLanguage = dictionary => {

@@ -93,6 +93,8 @@ class SignInPageComponent extends PureComponent {
         GlobalState.UserSessionService.setUserId(res.body.Result.UserId);
         MenuStorage.save(res.body.Result.Menues);
 
+        GlobalState.AppComponent.startChatRefresh();
+
         this.notifier.success(this.props.i10n['welcome-text']);
         this.props.history.push('/platform-home');
       })
