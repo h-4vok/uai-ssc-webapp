@@ -2,15 +2,8 @@ import React, { PureComponent } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AppBar from '@material-ui/core/AppBar';
-import {
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  Badge,
-  Drawer
-} from '@material-ui/core';
-import { Search, Chat } from '@material-ui/icons';
+import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 import { withSnackbar } from 'notistack';
 import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
@@ -20,14 +13,13 @@ import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { GlobalState } from '../../lib/GlobalState';
 import withLocalization from '../../localization/withLocalization';
 import withSecuredMenu from '../../securedMenu/withSecuredMenu';
-import { ReplySupportTicketTemplate } from '../templates';
+import { ChatDrawer } from './ChatDrawer';
+import { ChatBarToggler } from './ChatBarToggler';
 
 const defaultState = {
   anchorEl: null,
   accountMenuOpen: false,
-  chatOpen: false,
-  reply: {},
-  conversation: { Messages: [] }
+  chatOpen: false
 };
 
 class PlatformBarComponent extends PureComponent {
@@ -196,78 +188,24 @@ class PlatformBarComponent extends PureComponent {
 
   toggleChatOpen = chatOpen => this.setState({ chatOpen });
 
-  setConversation = chatMessages => {
-    this.setState(
-      { conversation: { Messages: chatMessages } },
-      this.scrollChatboxDown
-    );
-  };
-
-  scrollChatboxDown = () => {
-    const chatboxDiv = document.getElementById('chatbox');
-    chatboxDiv.scrollTop = chatboxDiv.scrollHeight;
-  };
-
-  onChatReply = () => {
-    const body = {
-      Content: this.state.reply.Content
-    };
-
-    this.api.request
-      .put('platformchat', body, GlobalState.UserSessionService.getUserId())
-      .preventSpinner()
-      .preventDefaultSuccess()
-      .success(res => {
-        this.setConversation(res.body.Result);
-        this.setState({ reply: {} });
-      })
-      .go();
-  };
-
   render() {
-    const {
-      anchorEl,
-      accountMenuOpen,
-      chatOpen,
-      reply,
-      conversation
-    } = this.state;
+    const { anchorEl, accountMenuOpen, chatOpen } = this.state;
     const { i10n, securedMenu } = this.props;
-    const conversationBadgeCount = conversation.Messages.length;
 
     return (
       <>
-        <Drawer
-          anchor="left"
-          open={chatOpen}
-          onClose={() => this.toggleChatOpen(false)}
-        >
-          <div style={{ width: 500, padding: 10, paddingTop: 40 }}>
-            <ReplySupportTicketTemplate
-              conversation={conversation}
-              reply={reply}
-              onConfirmReply={this.onChatReply}
-            />
-          </div>
-        </Drawer>
+        {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
+          <ChatDrawer
+            chatOpen={chatOpen}
+            toggleChatOpen={this.toggleChatOpen}
+            onChatReply={this.onChatReply}
+          />
+        )}
         <div className="application-bar">
           <AppBar position="fixed">
             <Toolbar>
               {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
-                <IconButton
-                  edge="start"
-                  className="application-bar-menu-button"
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={() => this.toggleChatOpen(true)}
-                >
-                  <Badge
-                    badgeContent={conversationBadgeCount}
-                    color="secondary"
-                  >
-                    <Chat />
-                  </Badge>
-                </IconButton>
+                <ChatBarToggler toggleChatOpen={this.toggleChatOpen} />
               )}
               <IconButton
                 edge="start"

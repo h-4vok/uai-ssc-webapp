@@ -20,3 +20,5 @@ export { SurveyOption } from './SurveyOption';
 export { SurveyResults } from './SurveyResults';
 export { SurveyResultsGrid } from './SurveyResultsGrid';
 export { ChatBox } from './ChatBox';
+export { ChatBarToggler } from './ChatBarToggler';
+export { ChatDrawer } from './ChatDrawer';

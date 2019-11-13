@@ -555,5 +555,7 @@ export const defaultDictionary = {
     'No se puede responder un ticket que está cerrado o cancelado.',
   'global.action.close': 'Cerrar',
   'menu.platform.support-menu': 'Soporte',
-  'menu.platform.support.support-ticket': 'Gestionar Tickets'
+  'menu.platform.support.support-ticket': 'Gestionar Tickets',
+  'chat-drawer.tip':
+    'Puede comunicarse y hablar con nuestro soporte en vivo. Envíe un mensaje en instantes un especialista se comunicará con usted.'
 };

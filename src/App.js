@@ -21,6 +21,7 @@ import { GlobalState } from './lib/GlobalState';
 import { MenuStorage } from './securedMenu/MenuStorage';
 import LocalizationContext from './localization/LocalizationContext';
 import SecuredMenuContext from './securedMenu/SecuredMenuContext';
+import ChatMessagingContext from './lib/ChatMessagingContext';
 
 let siteFontSize = 12;
 
@@ -38,7 +39,8 @@ export class App extends PureComponent {
     this.state = {
       appTheme: buildTheme(),
       i10n: defaultDictionary,
-      securedMenu: null
+      securedMenu: null,
+      chatConversation: { Messages: [] }
     };
 
     GlobalState.AppComponent = this;
@@ -49,6 +51,9 @@ export class App extends PureComponent {
       MenuStorage.tryRefresh();
     }
   }
+
+  updateChatConversation = (chatConversation, callback) =>
+    this.setState({ chatConversation }, callback);
 
   switchLanguage = dictionary => {
     this.setState({ i10n: dictionary || defaultDictionary });
@@ -71,46 +76,48 @@ export class App extends PureComponent {
   refreshSecuredMenu = securedMenu => this.setState({ securedMenu });
 
   render() {
-    const { appTheme, i10n, securedMenu } = this.state;
+    const { appTheme, i10n, securedMenu, chatConversation } = this.state;
 
     return (
       <Router>
         <div>
           <LocalizationContext.Provider value={i10n}>
             <SecuredMenuContext.Provider value={securedMenu}>
-              <CssBaseline />
-              <ThemeProvider theme={appTheme}>
-                <Switch>
-                  <UnprotectedRoute
-                    exact
-                    path="/"
-                    component={Pages.MarketingHome}
-                  />
-                  {unprotectedRoutes.map(route => (
+              <ChatMessagingContext.Provider value={chatConversation}>
+                <CssBaseline />
+                <ThemeProvider theme={appTheme}>
+                  <Switch>
                     <UnprotectedRoute
-                      path={route.path}
-                      component={route.component}
+                      exact
+                      path="/"
+                      component={Pages.MarketingHome}
                     />
-                  ))}
+                    {unprotectedRoutes.map(route => (
+                      <UnprotectedRoute
+                        path={route.path}
+                        component={route.component}
+                      />
+                    ))}
 
-                  {authenticatedRoutes.map(route => (
-                    <AuthenticatedRoute
-                      path={route.path}
-                      component={route.component}
-                    />
-                  ))}
+                    {authenticatedRoutes.map(route => (
+                      <AuthenticatedRoute
+                        path={route.path}
+                        component={route.component}
+                      />
+                    ))}
 
-                  {protectedRoutes.map(route => (
-                    <ProtectedRoute
-                      path={route.path}
-                      component={route.component}
-                      permission={route.permission}
-                    />
-                  ))}
+                    {protectedRoutes.map(route => (
+                      <ProtectedRoute
+                        path={route.path}
+                        component={route.component}
+                        permission={route.permission}
+                      />
+                    ))}
 
-                  <Route component={NoMatchRoute} />
-                </Switch>
-              </ThemeProvider>
+                    <Route component={NoMatchRoute} />
+                  </Switch>
+                </ThemeProvider>
+              </ChatMessagingContext.Provider>
             </SecuredMenuContext.Provider>
           </LocalizationContext.Provider>
         </div>
