@@ -243,6 +243,27 @@ class PlatformBarComponent extends PureComponent {
                 i10n['menu.platform.account.change-password']
               )}
               {this.buildMenuItem(
+                '/platform/support-ticket',
+                i10n['menu.platform.management.tickets'],
+                'MEMBER_MANAGEMENT',
+                'MEMBER_REPORT',
+                'PATIENTS_MANAGEMENT',
+                'PAYMENT_METHOD_MANAGEMENT',
+                'RUN_EXECUTION_CANCEL',
+                'RUN_EXECUTION_PRIMARY',
+                'RUN_EXECUTION_QA',
+                'RUN_EXECUTION_QC',
+                'SAMPLE_FUNCTION_MANAGEMENT',
+                'SAMPLE_FUNCTION_REPORT',
+                'SAMPLE_MANAGEMENT',
+                'SAMPLE_TYPE_MANAGEMENT',
+                'SAMPLE_TYPE_REPORT',
+                'USERS_INVITE',
+                'WORK_ORDER_CREATE',
+                'WORK_ORDER_EXECUTE',
+                'WORK_ORDER_REPORT'
+              )}
+              {this.buildMenuItem(
                 '/account/leave-comment',
                 i10n['menu.platform.account.leave-comment'],
                 'MEMBER_MANAGEMENT',

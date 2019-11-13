@@ -38,11 +38,12 @@ export const unprotectedRoutes = [
 
 export const authenticatedRoutes = [
   buildRoute('platform-home', Pages.PlatformHomePage),
-  buildRoute('platform', inProgressPlatformPage),
+  buildRoute('platform/support-ticket', Pages.ListMyTicketsPage),
   buildRoute('account/change-password', Pages.ChangePasswordPage),
   buildRoute('account/leave-comment', Pages.LeaveCommentPage),
   buildRoute('platform-search', Pages.SearchBackOfficePage),
-  buildRoute('do-feedback-form', Pages.DoFeedbackFormPage)
+  buildRoute('do-feedback-form', Pages.DoFeedbackFormPage),
+  buildRoute('platform', inProgressPlatformPage)
 ];
 
 export const protectedRoutes = [
