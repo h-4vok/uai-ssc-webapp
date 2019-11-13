@@ -52,7 +52,10 @@ export class App extends PureComponent {
       MenuStorage.tryRefresh();
     }
 
-    if (GlobalState.UserSessionService.getUserId()) {
+    if (
+      !GlobalState.Authorizer.has('PLATFORM_ADMIN') &&
+      GlobalState.UserSessionService.getUserId()
+    ) {
       this.startChatRefresh();
     }
   }
