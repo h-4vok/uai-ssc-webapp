@@ -64,3 +64,4 @@ export { ListMyTicketsPage } from './ListMyTicketsPage';
 export { StartSupportTicketPage } from './StartSupportTicketPage';
 export { ListSupportTicketsPage } from './ListSupportTicketsPage';
 export { ReplySupportTicketPage } from './ReplySupportTicketPage';
+export { ListChatConversationsPage } from './ListChatConversationsPage';

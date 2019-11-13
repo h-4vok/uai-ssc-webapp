@@ -50,6 +50,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'support/chat-conversation/:id/reply',
+    inProgressPlatformPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'support/chat-conversation',
+    Pages.ListChatConversationsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'support/support-ticket/:id/reply',
     Pages.ReplySupportTicketPage,
     'PLATFORM_ADMIN'

@@ -557,5 +557,11 @@ export const defaultDictionary = {
   'menu.platform.support-menu': 'Soporte',
   'menu.platform.support.support-ticket': 'Gestionar Tickets',
   'chat-drawer.tip':
-    'Puede comunicarse y hablar con nuestro soporte en vivo. Envíe un mensaje en instantes un especialista se comunicará con usted.'
+    'Puede comunicarse y hablar con nuestro soporte en vivo. Envíe un mensaje en instantes un especialista se comunicará con usted.',
+  'platform-chat.grid.user-id': 'Id de Usuario',
+  'platform-chat.grid.user-name': 'Cuenta',
+  'platform-chat.grid.pending-count': 'Mensajes Pendientes',
+  'platform-chat.grid.needs-reply': 'Necesita Contestación',
+  'platform-chat.action.reply': 'Contestar',
+  'menu.platform.support.chat-conversation': 'Mensajería de Chat'
 };
