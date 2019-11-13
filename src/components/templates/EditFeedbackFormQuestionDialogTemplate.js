@@ -17,7 +17,6 @@ class EditFeedbackFormQuestionDialogTemplateComponent extends PureComponent {
   }
 
   validateModelAndConfirm = () => {
-    console.log({ model: this.props.model });
     const { Question, Choices } = this.props.model;
     const { i10n } = this.props;
 

@@ -54,19 +54,6 @@ export class App extends PureComponent {
     this.setState({ i10n: dictionary || defaultDictionary });
   };
 
-  switchLanguageTest = () => {
-    const newDictionary = {
-      'app.home.slogan':
-        '[SUCCESS] La solución integral para la administración de muestras de tu laboratorio.',
-      'app.marketing.menu.about-us': '[SUCCESS]  Sobre Nosotros',
-      'app.marketing.menu.platform': '[SUCCESS] Ingresar',
-      'app.marketing.menu.pricing': '[SUCCESS] Precios',
-      'app.title': '[SUCCESS] SAMPLE SUPPLY CHAIN'
-    };
-
-    this.setState({ i10n: newDictionary });
-  };
-
   increaseFontSize = () => {
     if (siteFontSize >= 40) return;
 

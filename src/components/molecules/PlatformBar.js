@@ -2,8 +2,15 @@ import React, { PureComponent } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AppBar from '@material-ui/core/AppBar';
-import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+import {
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Badge,
+  Drawer
+} from '@material-ui/core';
+import { Search, Chat } from '@material-ui/icons';
 import { withSnackbar } from 'notistack';
 import { RouteLink, EnglishLanguageIcon, SpanishLanguageIcon } from '../atoms';
 import './ApplicationBar.styles.scss';
@@ -13,10 +20,14 @@ import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { GlobalState } from '../../lib/GlobalState';
 import withLocalization from '../../localization/withLocalization';
 import withSecuredMenu from '../../securedMenu/withSecuredMenu';
+import { ReplySupportTicketTemplate } from '../templates';
 
 const defaultState = {
   anchorEl: null,
-  accountMenuOpen: false
+  accountMenuOpen: false,
+  chatOpen: false,
+  reply: {},
+  conversation: { Messages: [] }
 };
 
 class PlatformBarComponent extends PureComponent {
@@ -183,111 +194,185 @@ class PlatformBarComponent extends PureComponent {
     return output;
   };
 
+  toggleChatOpen = chatOpen => this.setState({ chatOpen });
+
+  setConversation = chatMessages => {
+    this.setState(
+      { conversation: { Messages: chatMessages } },
+      this.scrollChatboxDown
+    );
+  };
+
+  scrollChatboxDown = () => {
+    const chatboxDiv = document.getElementById('chatbox');
+    chatboxDiv.scrollTop = chatboxDiv.scrollHeight;
+  };
+
+  onChatReply = () => {
+    const body = {
+      Content: this.state.reply.Content
+    };
+
+    this.api.request
+      .put('platformchat', body, GlobalState.UserSessionService.getUserId())
+      .preventSpinner()
+      .preventDefaultSuccess()
+      .success(res => {
+        this.setConversation(res.body.Result);
+        this.setState({ reply: {} });
+      })
+      .go();
+  };
+
   render() {
-    const { anchorEl, accountMenuOpen } = this.state;
+    const {
+      anchorEl,
+      accountMenuOpen,
+      chatOpen,
+      reply,
+      conversation
+    } = this.state;
     const { i10n, securedMenu } = this.props;
+    const conversationBadgeCount = conversation.Messages.length;
 
     return (
-      <div className="application-bar">
-        <AppBar position="fixed">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className="application-bar-menu-button"
-              color="inherit"
-              aria-label="menu"
-              onClick={() => this.goTo('/platform-search')}
-            >
-              <Search />
-            </IconButton>
-            <Typography variant="h6" className="application-bar-title">
-              <Button size="large">
-                <RouteLink link="platform-home">{i10n['app.title']}</RouteLink>
+      <>
+        <Drawer
+          anchor="left"
+          open={chatOpen}
+          onClose={() => this.toggleChatOpen(false)}
+        >
+          <div style={{ width: 500, padding: 10, paddingTop: 40 }}>
+            <ReplySupportTicketTemplate
+              conversation={conversation}
+              reply={reply}
+              onConfirmReply={this.onChatReply}
+            />
+          </div>
+        </Drawer>
+        <div className="application-bar">
+          <AppBar position="fixed">
+            <Toolbar>
+              {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
+                <IconButton
+                  edge="start"
+                  className="application-bar-menu-button"
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={() => this.toggleChatOpen(true)}
+                >
+                  <Badge
+                    badgeContent={conversationBadgeCount}
+                    color="secondary"
+                  >
+                    <Chat />
+                  </Badge>
+                </IconButton>
+              )}
+              <IconButton
+                edge="start"
+                className="application-bar-menu-button"
+                color="inherit"
+                aria-label="menu"
+                onClick={() => this.goTo('/platform-search')}
+              >
+                <Search />
+              </IconButton>
+              <Typography variant="h6" className="application-bar-title">
+                <Button size="large">
+                  <RouteLink link="platform-home">
+                    {i10n['app.title']}
+                  </RouteLink>
+                </Button>
+              </Typography>
+
+              <Button onClick={() => this.changeLanguageTo(2)}>
+                <EnglishLanguageIcon />
               </Button>
-            </Typography>
+              <Button onClick={() => this.changeLanguageTo(1)}>
+                <SpanishLanguageIcon />
+              </Button>
 
-            <Button onClick={() => this.changeLanguageTo(2)}>
-              <EnglishLanguageIcon />
-            </Button>
-            <Button onClick={() => this.changeLanguageTo(1)}>
-              <SpanishLanguageIcon />
-            </Button>
+              <Button
+                onClick={() => GlobalState.AppComponent.decreaseFontSize()}
+              >
+                -A
+              </Button>
+              <Button
+                onClick={() => GlobalState.AppComponent.increaseFontSize()}
+              >
+                +A
+              </Button>
 
-            <Button onClick={() => GlobalState.AppComponent.decreaseFontSize()}>
-              -A
-            </Button>
-            <Button onClick={() => GlobalState.AppComponent.increaseFontSize()}>
-              +A
-            </Button>
+              {this.renderMenu(securedMenu)}
 
-            {this.renderMenu(securedMenu)}
-
-            {this.buildButton(
-              'work-order-menu',
-              i10n['menu.platform.account-menu'],
-              'accountMenuOpen'
-            )}
-
-            <Menu
-              id="account-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={accountMenuOpen}
-              onClose={this.handleClose}
-            >
-              <MenuItem onClick={() => this.closeSession()}>
-                {i10n['menu.platform.sign-out']}
-              </MenuItem>
-              {this.buildMenuItem(
-                '/account/change-password',
-                i10n['menu.platform.account.change-password']
+              {this.buildButton(
+                'work-order-menu',
+                i10n['menu.platform.account-menu'],
+                'accountMenuOpen'
               )}
-              {this.buildMenuItem(
-                '/platform/support-ticket',
-                i10n['menu.platform.management.tickets'],
-                'MEMBER_MANAGEMENT',
-                'MEMBER_REPORT',
-                'PATIENTS_MANAGEMENT',
-                'PAYMENT_METHOD_MANAGEMENT',
-                'RUN_EXECUTION_CANCEL',
-                'RUN_EXECUTION_PRIMARY',
-                'RUN_EXECUTION_QA',
-                'RUN_EXECUTION_QC',
-                'SAMPLE_FUNCTION_MANAGEMENT',
-                'SAMPLE_FUNCTION_REPORT',
-                'SAMPLE_MANAGEMENT',
-                'SAMPLE_TYPE_MANAGEMENT',
-                'SAMPLE_TYPE_REPORT',
-                'USERS_INVITE',
-                'WORK_ORDER_CREATE',
-                'WORK_ORDER_EXECUTE',
-                'WORK_ORDER_REPORT'
-              )}
-              {this.buildMenuItem(
-                '/account/leave-comment',
-                i10n['menu.platform.account.leave-comment'],
-                'MEMBER_MANAGEMENT',
-                'MEMBER_REPORT',
-                'PATIENTS_MANAGEMENT',
-                'PAYMENT_METHOD_MANAGEMENT',
-                'RUN_EXECUTION_CANCEL',
-                'RUN_EXECUTION_PRIMARY',
-                'RUN_EXECUTION_QA',
-                'RUN_EXECUTION_QC',
-                'SAMPLE_FUNCTION_MANAGEMENT',
-                'SAMPLE_FUNCTION_REPORT',
-                'SAMPLE_MANAGEMENT',
-                'SAMPLE_TYPE_MANAGEMENT',
-                'SAMPLE_TYPE_REPORT',
-                'USERS_INVITE',
-                'WORK_ORDER_CREATE',
-                'WORK_ORDER_EXECUTE',
-                'WORK_ORDER_REPORT'
-              )}
-            </Menu>
-          </Toolbar>
-        </AppBar>
-      </div>
+
+              <Menu
+                id="account-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={accountMenuOpen}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={() => this.closeSession()}>
+                  {i10n['menu.platform.sign-out']}
+                </MenuItem>
+                {this.buildMenuItem(
+                  '/account/change-password',
+                  i10n['menu.platform.account.change-password']
+                )}
+                {this.buildMenuItem(
+                  '/platform/support-ticket',
+                  i10n['menu.platform.management.tickets'],
+                  'MEMBER_MANAGEMENT',
+                  'MEMBER_REPORT',
+                  'PATIENTS_MANAGEMENT',
+                  'PAYMENT_METHOD_MANAGEMENT',
+                  'RUN_EXECUTION_CANCEL',
+                  'RUN_EXECUTION_PRIMARY',
+                  'RUN_EXECUTION_QA',
+                  'RUN_EXECUTION_QC',
+                  'SAMPLE_FUNCTION_MANAGEMENT',
+                  'SAMPLE_FUNCTION_REPORT',
+                  'SAMPLE_MANAGEMENT',
+                  'SAMPLE_TYPE_MANAGEMENT',
+                  'SAMPLE_TYPE_REPORT',
+                  'USERS_INVITE',
+                  'WORK_ORDER_CREATE',
+                  'WORK_ORDER_EXECUTE',
+                  'WORK_ORDER_REPORT'
+                )}
+                {this.buildMenuItem(
+                  '/account/leave-comment',
+                  i10n['menu.platform.account.leave-comment'],
+                  'MEMBER_MANAGEMENT',
+                  'MEMBER_REPORT',
+                  'PATIENTS_MANAGEMENT',
+                  'PAYMENT_METHOD_MANAGEMENT',
+                  'RUN_EXECUTION_CANCEL',
+                  'RUN_EXECUTION_PRIMARY',
+                  'RUN_EXECUTION_QA',
+                  'RUN_EXECUTION_QC',
+                  'SAMPLE_FUNCTION_MANAGEMENT',
+                  'SAMPLE_FUNCTION_REPORT',
+                  'SAMPLE_MANAGEMENT',
+                  'SAMPLE_TYPE_MANAGEMENT',
+                  'SAMPLE_TYPE_REPORT',
+                  'USERS_INVITE',
+                  'WORK_ORDER_CREATE',
+                  'WORK_ORDER_EXECUTE',
+                  'WORK_ORDER_REPORT'
+                )}
+              </Menu>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </>
     );
   }
 }

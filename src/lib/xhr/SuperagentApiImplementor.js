@@ -16,7 +16,7 @@ export default class SuperagentApiImplementor extends Apiimplementor {
   }
 
   execute = req => {
-    GlobalState.SpinnerService.up();
+    if (req.allowsSpinner) GlobalState.SpinnerService.up();
 
     super.execute(req);
 
@@ -31,7 +31,7 @@ export default class SuperagentApiImplementor extends Apiimplementor {
       .query(req.queries)
       .end((err, res) => {
         this.responseImplementor.handleResponse(req, err, res);
-        GlobalState.SpinnerService.down();
+        if (req.allowsSpinner) GlobalState.SpinnerService.down();
       });
   };
 

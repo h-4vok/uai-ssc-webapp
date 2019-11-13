@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Container, Typography, Button } from '@material-ui/core';
+import { Container, Button } from '@material-ui/core';
 import withLocalization from '../../localization/withLocalization';
 import { SimpleTextField } from '../atoms';
 import { ChatBox } from '../molecules';
@@ -24,11 +24,16 @@ class ReplySupportTicketTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { i10n, conversation, onConfirmReply } = this.props;
+    const {
+      i10n,
+      conversation,
+      onConfirmReply,
+      containerMaxWidth = 'md'
+    } = this.props;
     const { Content } = this.state;
 
     return (
-      <Container maxWidth="md">
+      <Container maxWidth={containerMaxWidth}>
         <ChatBox id="chatbox" conversation={conversation} />
         <SimpleTextField
           required

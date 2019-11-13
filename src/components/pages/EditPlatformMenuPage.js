@@ -88,9 +88,6 @@ class EditPlatformMenuPageComponent extends PureComponent {
   };
 
   buildBody = () => {
-    console.log({ model: this.state.model });
-    console.log({ xml: buildPlatformMenuXml(this.state.model.Items) });
-
     const body = {
       PlatformMenu: this.state.model,
       XmlSerializedItems: buildPlatformMenuXml(this.state.model.Items)

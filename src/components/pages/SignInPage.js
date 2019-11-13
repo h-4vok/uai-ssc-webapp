@@ -90,6 +90,7 @@ class SignInPageComponent extends PureComponent {
         document.cookie = GlobalState.AspNetSession;
 
         GlobalState.AppComponent.refreshSecuredMenu(res.body.Result.Menues);
+        GlobalState.UserSessionService.setUserId(res.body.Result.UserId);
         MenuStorage.save(res.body.Result.Menues);
 
         this.notifier.success(this.props.i10n['welcome-text']);

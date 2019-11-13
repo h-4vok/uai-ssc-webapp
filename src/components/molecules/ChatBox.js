@@ -23,8 +23,6 @@ const buildBubbles = conversation => {
       message: message.Content
     };
 
-    console.log({ bubbleProps });
-
     return <ChatConversationBubble {...bubbleProps} />;
   });
 

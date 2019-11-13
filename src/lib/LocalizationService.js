@@ -24,7 +24,7 @@ class LocalizationServiceComponent {
 
   switchDictionary(dictionary) {
     this.storage.set(this._sessionStorageKey, dictionary);
-    console.log({ dictionary });
+
     window.location.reload();
   }
 }

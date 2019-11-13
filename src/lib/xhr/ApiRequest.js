@@ -17,6 +17,8 @@ export default class ApiRequest {
 
   allowsDefaultError = true;
 
+  allowsSpinner = true;
+
   callbacks = {
     success: [],
     failure: [],
@@ -60,6 +62,11 @@ export default class ApiRequest {
 
   preventDefaultError = () => {
     this.allowsDefaultError = false;
+    return this;
+  };
+
+  preventSpinner = () => {
+    this.allowsSpinner = false;
     return this;
   };
 

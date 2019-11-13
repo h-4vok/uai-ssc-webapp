@@ -153,8 +153,6 @@ class ListPlatformUsersTemplateComponent extends PureComponent {
     } = this.props;
     const { oneRowSelected, multipleRowsSelected } = this.state;
 
-    console.log({ i10n });
-
     return (
       <Container component="main" maxWidth="lg">
         <div className={classes.paper}>
