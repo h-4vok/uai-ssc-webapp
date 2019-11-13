@@ -19,3 +19,4 @@ export { FeedbackFormQuestion } from './FeedbackFormQuestion';
 export { SurveyOption } from './SurveyOption';
 export { SurveyResults } from './SurveyResults';
 export { SurveyResultsGrid } from './SurveyResultsGrid';
+export { ChatBox } from './ChatBox';

@@ -6,3 +6,4 @@ export { SimpleSelect } from './SimpleSelect';
 export { SimpleTextField } from './SimpleTextField';
 export { EnglishLanguageIcon } from './EnglishLanguageIcon';
 export { SpanishLanguageIcon } from './SpanishLanguageIcon';
+export { ChatConversationBubble } from './ChatConversationBubble';

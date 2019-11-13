@@ -63,3 +63,4 @@ export { UnsubscribeToNewsletterPage } from './UnsubscribeToNewsletterPage';
 export { ListMyTicketsPage } from './ListMyTicketsPage';
 export { StartSupportTicketPage } from './StartSupportTicketPage';
 export { ListSupportTicketsPage } from './ListSupportTicketsPage';
+export { ReplySupportTicketPage } from './ReplySupportTicketPage';

@@ -7,7 +7,6 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ButtonBar } from '../molecules';
 import withLocalization from '../../localization/withLocalization';
-import { GlobalState } from '../../lib/GlobalState';
 
 const styles = theme => ({
   centerText: {

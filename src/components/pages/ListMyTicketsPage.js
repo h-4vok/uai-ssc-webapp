@@ -49,7 +49,7 @@ class ListMyTicketsPageComponent extends PureComponent {
       return;
     }
 
-    this.props.history.push(`/${apiroute}/${id}/reply`);
+    this.props.history.push(`/platform/support-ticket/${id}/reply`);
   };
 
   onConfirmDialog = () => {
