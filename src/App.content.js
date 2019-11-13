@@ -38,6 +38,7 @@ export const unprotectedRoutes = [
 
 export const authenticatedRoutes = [
   buildRoute('platform-home', Pages.PlatformHomePage),
+  buildRoute('platform/support-ticket/start', Pages.StartSupportTicketPage),
   buildRoute('platform/support-ticket', Pages.ListMyTicketsPage),
   buildRoute('account/change-password', Pages.ChangePasswordPage),
   buildRoute('account/leave-comment', Pages.LeaveCommentPage),

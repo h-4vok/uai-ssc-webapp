@@ -5,6 +5,7 @@ import { API } from '../../lib/xhr';
 import { PlatformPageLayout } from '../organisms';
 import { ListMyTicketsTemplate } from '../templates';
 import { ConfirmDialog } from '../molecules';
+import withLocalization from '../../localization/withLocalization';
 
 const apiroute = 'supportticket';
 
@@ -24,10 +25,7 @@ class ListMyTicketsPageComponent extends PureComponent {
   }
 
   componentDidMount() {
-    this.api.request
-      .get(`${apiroute}?onlyMine=true`)
-      .success(res => this.setState({ items: res.body.Result }))
-      .go();
+    this.onRefresh();
   }
 
   onRefresh = () => {
@@ -41,7 +39,16 @@ class ListMyTicketsPageComponent extends PureComponent {
     this.props.history.push(`/platform/support-ticket/start`);
   };
 
-  onReplyAction = id => {
+  onReplyAction = (id, item) => {
+    if (item.Status.Code === 'CANCELLED' || item.Status.Code === 'CLOSED') {
+      this.notifier.warning(
+        this.props.i10n[
+          'support-ticket.validation.cannot-reply-closed-or-cancelled'
+        ]
+      );
+      return;
+    }
+
     this.props.history.push(`/${apiroute}/${id}/reply`);
   };
 
@@ -103,4 +110,6 @@ class ListMyTicketsPageComponent extends PureComponent {
   }
 }
 
-export const ListMyTicketsPage = withSnackbar(ListMyTicketsPageComponent);
+export const ListMyTicketsPage = withLocalization(
+  withSnackbar(ListMyTicketsPageComponent)
+);

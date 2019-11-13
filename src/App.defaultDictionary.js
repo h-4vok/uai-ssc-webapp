@@ -549,5 +549,8 @@ export const defaultDictionary = {
   'support-ticket.model.content': 'Mensaje',
   'menu.platform.management.tickets': 'Mensajería a Soporte',
   'global.action.cancel': 'Cancelar',
-  'support-ticket.action.reply': 'Responder'
+  'support-ticket.action.reply': 'Responder',
+  'start-support-ticket.page.title': 'Nuevo Ticket a Soporte',
+  'support-ticket.validation.cannot-reply-closed-or-cancelled':
+    'No se puede responder un ticket que está cerrado o cancelado.'
 };

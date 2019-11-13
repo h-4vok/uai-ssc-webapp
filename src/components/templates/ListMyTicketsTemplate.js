@@ -7,6 +7,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ButtonBar } from '../molecules';
 import withLocalization from '../../localization/withLocalization';
+import { GlobalState } from '../../lib/GlobalState';
 
 const styles = theme => ({
   centerText: {
@@ -86,11 +87,11 @@ class ListMyTicketsTemplateComponent extends PureComponent {
     }
   ];
 
-  callEdit = onEditAction => {
+  callWithOneItem = action => {
     const item = this.dataGrid.api.getSelectedRows()[0];
     const id = item.Id;
 
-    onEditAction(id);
+    action(id, item);
   };
 
   callWithSelected = action => {
@@ -125,27 +126,31 @@ class ListMyTicketsTemplateComponent extends PureComponent {
             </Button>
             <Button
               variant="contained"
-              onClick={onNewAction}
-              className={classes.button}
-            >
-              {i10n['global.action.new']}
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callEdit(onReplyAction)}
+              onClick={() => this.callWithOneItem(onReplyAction)}
               className={classes.button}
               disabled={!oneRowSelected}
             >
               {i10n['support-ticket.action.reply']}
             </Button>
-            <Button
-              variant="contained"
-              onClick={() => this.callWithSelected(onCancelAction)}
-              className={classes.button}
-              disabled={!multipleRowsSelected}
-            >
-              {i10n['global.action.cancel']}
-            </Button>
+            {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
+              <Button
+                variant="contained"
+                onClick={onNewAction}
+                className={classes.button}
+              >
+                {i10n['global.action.new']}
+              </Button>
+            )}
+            {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
+              <Button
+                variant="contained"
+                onClick={() => this.callWithSelected(onCancelAction)}
+                className={classes.button}
+                disabled={!multipleRowsSelected}
+              >
+                {i10n['global.action.cancel']}
+              </Button>
+            )}
           </ButtonBar>
 
           <div
