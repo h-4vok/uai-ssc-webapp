@@ -572,5 +572,7 @@ export const defaultDictionary = {
   'client-company.model.selected-payment-type': 'Método de Pago',
   'client-company.model.last-bill-expiration-date':
     'Vencimiento Última Factura',
-  'client-company.model.balance-status-description': 'Estado de Cuenta'
+  'client-company.model.balance-status-description': 'Estado de Cuenta',
+  'sign-in.validation.client-disabled':
+    'El acceso se encuentra bloqueado. Contacte a un administrador.'
 };
