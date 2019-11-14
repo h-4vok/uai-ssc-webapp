@@ -66,3 +66,4 @@ export { ListSupportTicketsPage } from './ListSupportTicketsPage';
 export { ReplySupportTicketPage } from './ReplySupportTicketPage';
 export { ListChatConversationsPage } from './ListChatConversationsPage';
 export { ReplyChatConversationPage } from './ReplyChatConversationPage';
+export { ListClientsPage } from './ListClientsPage';

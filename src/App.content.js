@@ -210,8 +210,8 @@ export const protectedRoutes = [
     'LANGUAGES_MANAGEMENT'
   ),
   buildPlatformRoute(
-    'configuration/client-billing',
-    inProgressPlatformPage,
+  'configuration/client-billing',
+    Pages.ListClientsPage,
     'CLIENT_MANAGEMENT'
   ),
   buildPlatformRoute(

@@ -563,5 +563,14 @@ export const defaultDictionary = {
   'platform-chat.grid.pending-count': 'Mensajes Pendientes',
   'platform-chat.grid.needs-reply': 'Necesita Contestación',
   'platform-chat.action.reply': 'Contestar',
-  'menu.platform.support.chat-conversation': 'Mensajería de Chat'
+  'menu.platform.support.chat-conversation': 'Mensajería de Chat',
+  'client-management.action.view-transactions': 'Ver Transacciones',
+  'client-management.action.view-status': 'Ver Estado de Cuenta',
+  'client-company.model.legal-name': 'Razón Social',
+  'client-company.model.tax-code': 'CUIT',
+  'client-company.model.selected-plan-description': 'Plan de Servicio',
+  'client-company.model.selected-payment-type': 'Método de Pago',
+  'client-company.model.last-bill-expiration-date':
+    'Vencimiento Última Factura',
+  'client-company.model.balance-status-description': 'Estado de Cuenta'
 };

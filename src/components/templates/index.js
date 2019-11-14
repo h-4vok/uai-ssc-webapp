@@ -66,3 +66,4 @@ export { StartSupportTicketTemplate } from './StartSupportTicketTemplate';
 export { ListSupportTicketsTemplate } from './ListSupportTicketsTemplate';
 export { ReplySupportTicketTemplate } from './ReplySupportTicketTemplate';
 export { ListChatConversationsTemplate } from './ListChatConversationsTemplate';
+export { ListClientsTemplate } from './ListClientsTemplate';

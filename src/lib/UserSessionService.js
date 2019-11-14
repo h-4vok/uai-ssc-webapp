@@ -3,7 +3,7 @@ import { SessionStorage } from './SessionStorage';
 class UserSessionServiceComponent {
   storage = new SessionStorage();
 
-  _cache = {};
+  _cache = { MyUserId: null };
 
   _sessionStorageKey = 'sscUserSession';
 
@@ -13,7 +13,7 @@ class UserSessionServiceComponent {
 
   clear() {
     this.storage.remove(this._sessionStorageKey);
-    this._cache = {};
+    this._cache = { MyUserId: null };
   }
 
   tryRefreshFromSessionStorage() {
@@ -31,18 +31,20 @@ class UserSessionServiceComponent {
     this.storage.set(this._sessionStorageKey, json);
   }
 
-  setUserId(id) {
+  setUserId = id => {
     const newData = {
       ...this._cache,
       MyUserId: id
     };
 
     this.refresh(newData);
-  }
+  };
 
-  getUserId() {
+  getUserId = () => {
+    if (!this._cache || !this._cache.MyUserId) return null;
+
     return this._cache.MyUserId;
-  }
+  };
 }
 
 export const UserSessionService = new UserSessionServiceComponent();
