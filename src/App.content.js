@@ -210,7 +210,7 @@ export const protectedRoutes = [
     'LANGUAGES_MANAGEMENT'
   ),
   buildPlatformRoute(
-  'configuration/client-billing',
+    'configuration/client-billing',
     Pages.ListClientsPage,
     'CLIENT_MANAGEMENT'
   ),
@@ -242,6 +242,11 @@ export const protectedRoutes = [
   buildPlatformRoute('security/role', Pages.ListRolesPage, 'ROLES_REPORT'),
   buildPlatformRoute('security/log/:id', Pages.ReadLogPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute('security/log', Pages.ListLogsPage, 'PLATFORM_ADMIN'),
+  buildPlatformRoute(
+    'security/backup/new',
+    Pages.NewBackupPage,
+    'PLATFORM_BACKUP'
+  ),
   buildPlatformRoute(
     'security/backup',
     Pages.ListBackupsPage,

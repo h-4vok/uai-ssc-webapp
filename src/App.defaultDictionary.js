@@ -437,7 +437,7 @@ export const defaultDictionary = {
   'backup.date': 'Fecha de Resguardo',
   'backup.createdby': 'Realizado por',
   'backup.doBackup': 'Generar Resguardo',
-  'backup.doRestore': 'Restaurar un resguardo',
+  'backup.doRestore': 'Restaurar el resguardo seleccionado',
   'global.view-details': 'Ver Detalle',
   'product-detail.average.rating': 'Valoración Promedio',
   'menu.platform.account.leave-comment': 'Comentar tu experiencia',
@@ -574,5 +574,11 @@ export const defaultDictionary = {
     'Vencimiento Última Factura',
   'client-company.model.balance-status-description': 'Estado de Cuenta',
   'sign-in.validation.client-disabled':
-    'El acceso se encuentra bloqueado. Contacte a un administrador.'
+    'El acceso se encuentra bloqueado. Contacte a un administrador.',
+  'backup.invalid-path': 'El formato del path es inválido.',
+  'backup.dir-not-exists': 'El directorio no existe.',
+  'backup.file-exists':
+    'El archivo ya existe. Por seguridad, no se pueden reemplazar archivos existentes con nuevos resguardos.',
+  'file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp',
+  'backup.file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp'
 };

@@ -4,6 +4,8 @@ import { Container, Grid, Box, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import withLocalization from '../../localization/withLocalization';
 import { PricingCard } from '../molecules';
+import { manualTimezoneFix } from '../../lib/manualTimezoneFix';
+import { displayDateTimeFormat } from '../../lib/displayDateTimeFormat';
 
 const styles = theme => ({
   boldParagraph: {
@@ -104,7 +106,9 @@ class ProductDetailTemplateComponent extends PureComponent {
               <Typography className={classes.boldParagraph}>
                 {item.CommentBy}
               </Typography>
-              <Typography>{item.CreatedDate}</Typography>
+              <Typography>
+                {displayDateTimeFormat(manualTimezoneFix(item.CreatedDate))}
+              </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography className={classes.commentParagraph}>

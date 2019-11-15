@@ -1,9 +1,6 @@
 import { API } from './xhr';
 import { GlobalState } from './GlobalState';
 
-const pendingCountReducer = (accumulator, currentItem) =>
-  accumulator + currentItem.PendingCount;
-
 export function refreshAdminChat() {
   const api = new API();
 

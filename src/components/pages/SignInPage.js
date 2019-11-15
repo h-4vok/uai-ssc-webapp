@@ -49,9 +49,9 @@ class SignInPageComponent extends PureComponent {
     super(props);
 
     this.notifier = new SnackbarVisitor(this.props);
-
+    console.log({ value: process.env.REACT_APP_CAPTCHA_INITIAL_VALUE });
     this.state = {
-      signInEnabled: true,
+      signInEnabled: process.env.REACT_APP_CAPTCHA_INITIAL_VALUE,
       username: '',
       password: ''
     };

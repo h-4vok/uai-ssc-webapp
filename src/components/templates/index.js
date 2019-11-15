@@ -67,3 +67,4 @@ export { ListSupportTicketsTemplate } from './ListSupportTicketsTemplate';
 export { ReplySupportTicketTemplate } from './ReplySupportTicketTemplate';
 export { ListChatConversationsTemplate } from './ListChatConversationsTemplate';
 export { ListClientsTemplate } from './ListClientsTemplate';
+export { NewBackupTemplate } from './NewBackupTemplate';

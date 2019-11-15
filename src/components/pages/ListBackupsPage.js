@@ -27,7 +27,7 @@ class ListBackupsPageComponent extends PureComponent {
     this.onRefresh();
   }
 
-  onRefresh() {
+  onRefresh = () => {
     this.api.request
       .get(apiRoute)
       .success(res => {
@@ -36,11 +36,17 @@ class ListBackupsPageComponent extends PureComponent {
         });
       })
       .go();
-  }
+  };
 
   onBackupConfirm = () => {
+    // primero levantar el dialog
+
+    // que elija el usuario un path con archivo
+
+    // y ahora si, llamamos a la api con eso
+
     this.api.request
-      .post(apiRoute, {})
+      .post(apiRoute, { FilePath: '' })
       .preventDefaultSuccess()
       .success(() => {
         this.notifier.success(this.props.i10n['backup.backup-success']);
@@ -61,20 +67,17 @@ class ListBackupsPageComponent extends PureComponent {
       .go();
   };
 
-  onBackupAction() {
-    this.setState({
-      dialogOpen: true,
-      dialogAfterAction: () => this.onBackupConfirm()
-    });
-  }
+  onBackupAction = () => {
+    this.props.history.push('/security/backup/new');
+  };
 
-  onRestoreAction(id, dataGridApi) {
+  onRestoreAction = (id, dataGridApi) => {
     this.setState({
       dialogOpen: true,
       dialogAfterAction: () => this.onRestoreConfirm(id),
       dataGridApi
     });
-  }
+  };
 
   onConfirmDialog = () => {
     this.state.dialogAfterAction();
@@ -88,9 +91,9 @@ class ListBackupsPageComponent extends PureComponent {
       <PlatformPageLayout>
         <ListBackupsTemplate
           items={items}
-          onRefresh={() => this.onRefresh()}
-          onBackupAction={() => this.onBackupAction()}
-          onRestoreAction={(id, gridApi) => this.onRestoreAction(id, gridApi)}
+          onRefresh={this.onRefresh}
+          onBackupAction={this.onBackupAction}
+          onRestoreAction={this.onRestoreAction}
         />
         <ConfirmDialog
           open={dialogOpen}

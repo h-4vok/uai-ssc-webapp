@@ -116,6 +116,7 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
             <Grid item xs={12}>
               <SimpleTextField
                 required
+                variant="outlined"
                 maxLength="8000"
                 id="Content"
                 name="Content"

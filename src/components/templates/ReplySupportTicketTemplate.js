@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Container, Button } from '@material-ui/core';
+import { Container, Button, Box } from '@material-ui/core';
 import withLocalization from '../../localization/withLocalization';
 import { SimpleTextField } from '../atoms';
 import { ChatBox } from '../molecules';
@@ -35,19 +35,22 @@ class ReplySupportTicketTemplateComponent extends PureComponent {
     return (
       <Container maxWidth={containerMaxWidth}>
         <ChatBox id="chatbox" conversation={conversation} />
-        <SimpleTextField
-          required
-          maxLength="8000"
-          id="Content"
-          name="Content"
-          label={i10n['support-ticket.model.content']}
-          fullWidth
-          value={Content}
-          onChange={this.onInputChange}
-          multiline
-          rows="3"
-          rowsMax="3"
-        />
+        <Box mt={1} mb={1}>
+          <SimpleTextField
+            required
+            maxLength="8000"
+            id="Content"
+            name="Content"
+            variant="outlined"
+            label={i10n['support-ticket.model.content']}
+            fullWidth
+            value={Content}
+            onChange={this.onInputChange}
+            multiline
+            rows="3"
+            rowsMax="3"
+          />
+        </Box>
         <Button
           fullWidth
           variant="contained"
