@@ -14,11 +14,11 @@ class ReplySupportTicketTemplateComponent extends PureComponent {
   }
 
   onInputChange = evt => {
+    this.props.reply[evt.target.name] = evt.target.value;
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
   cleanAndReply = callback => {
-    this.props.reply.Content = this.state.Content;
     this.setState({ Content: '' });
     callback();
   };

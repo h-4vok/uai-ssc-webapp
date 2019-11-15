@@ -15,7 +15,7 @@ class ChatDrawerComponent extends PureComponent {
     this.notifier = new SnackbarVisitor(this.props);
     this.api = new API(this.notifier);
 
-    this.state = { reply: {} };
+    this.state = { reply: { Content: '' } };
   }
 
   componentDidMount() {
@@ -50,6 +50,7 @@ class ChatDrawerComponent extends PureComponent {
       .preventDefaultSuccess()
       .success(res => {
         this.setConversation(res.body.Result);
+        this.setState({ reply: { Content: '' } });
       })
       .go();
   };

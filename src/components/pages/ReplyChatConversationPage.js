@@ -23,6 +23,7 @@ class ReplyChatConversationPageComponent extends PureComponent {
   }
 
   componentDidMount() {
+    this.loadModel();
     this.intervalId = window.setInterval(this.loadModel, 3000);
   }
 

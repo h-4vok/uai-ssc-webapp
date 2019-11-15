@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,6 +16,7 @@ import withLocalization from '../../localization/withLocalization';
 import withSecuredMenu from '../../securedMenu/withSecuredMenu';
 import { ChatDrawer } from './ChatDrawer';
 import { ChatBarToggler } from './ChatBarToggler';
+import { AdminChatNotifier } from './AdminChatNotifier';
 
 const defaultState = {
   anchorEl: null,
@@ -208,6 +210,13 @@ class PlatformBarComponent extends PureComponent {
               {!GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
                 <ChatBarToggler toggleChatOpen={this.toggleChatOpen} />
               )}
+              {GlobalState.Authorizer.has('PLATFORM_ADMIN') && (
+                <AdminChatNotifier
+                  onClick={() =>
+                    this.props.history.push('/support/chat-conversation')
+                  }
+                />
+              )}
               <IconButton
                 edge="start"
                 className="application-bar-menu-button"
@@ -265,7 +274,7 @@ class PlatformBarComponent extends PureComponent {
                   '/account/change-password',
                   i10n['menu.platform.account.change-password']
                 )}
-                {this.buildMenuItem(
+                {/* {this.buildMenuItem(
                   '/platform/support-ticket',
                   i10n['menu.platform.management.tickets'],
                   'MEMBER_MANAGEMENT',
@@ -285,7 +294,7 @@ class PlatformBarComponent extends PureComponent {
                   'WORK_ORDER_CREATE',
                   'WORK_ORDER_EXECUTE',
                   'WORK_ORDER_REPORT'
-                )}
+                )} */}
                 {this.buildMenuItem(
                   '/account/leave-comment',
                   i10n['menu.platform.account.leave-comment'],
@@ -316,6 +325,6 @@ class PlatformBarComponent extends PureComponent {
   }
 }
 
-export const PlatformBar = withLocalization(
-  withSecuredMenu(withSnackbar(PlatformBarComponent))
+export const PlatformBar = withRouter(
+  withLocalization(withSecuredMenu(withSnackbar(PlatformBarComponent)))
 );

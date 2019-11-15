@@ -22,3 +22,4 @@ export { SurveyResultsGrid } from './SurveyResultsGrid';
 export { ChatBox } from './ChatBox';
 export { ChatBarToggler } from './ChatBarToggler';
 export { ChatDrawer } from './ChatDrawer';
+export { AdminChatNotifier } from './AdminChatNotifier';

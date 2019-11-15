@@ -23,6 +23,8 @@ import LocalizationContext from './localization/LocalizationContext';
 import SecuredMenuContext from './securedMenu/SecuredMenuContext';
 import ChatMessagingContext from './lib/ChatMessagingContext';
 import { refreshChat } from './lib/refreshChat';
+import { refreshAdminChat } from './lib/refreshAdminChat';
+import AdminChatMessagingContext from './lib/AdminChatMessagingContext';
 
 let siteFontSize = 12;
 
@@ -41,7 +43,8 @@ export class App extends PureComponent {
       appTheme: buildTheme(),
       i10n: defaultDictionary,
       securedMenu: null,
-      chatConversation: { Messages: [] }
+      chatConversation: { Messages: [] },
+      adminPendingChatCount: null
     };
 
     GlobalState.AppComponent = this;
@@ -52,20 +55,27 @@ export class App extends PureComponent {
       MenuStorage.tryRefresh();
     }
 
-    if (
-      !GlobalState.Authorizer.has('PLATFORM_ADMIN') &&
-      GlobalState.UserSessionService.getUserId()
-    ) {
-      this.startChatRefresh();
-    }
+    this.startCorrespondingChatRefresh();
   }
 
-  startChatRefresh = () => {
-    window.setInterval(() => refreshChat(), 3000);
+  startCorrespondingChatRefresh = () => {
+    const isLogged = !!GlobalState.UserSessionService.getUserId();
+    if (!isLogged) return;
+
+    const isAdmin = GlobalState.Authorizer.has('PLATFORM_ADMIN');
+
+    if (isAdmin) {
+      window.setInterval(() => refreshAdminChat(), 3000);
+    } else {
+      window.setInterval(() => refreshChat(), 3000);
+    }
   };
 
   updateChatConversation = (chatConversation, callback = () => {}) =>
     this.setState({ chatConversation }, callback);
+
+  updateAdminChatNotifications = adminPendingChatCount =>
+    this.setState({ adminPendingChatCount });
 
   switchLanguage = dictionary => {
     this.setState({ i10n: dictionary || defaultDictionary });
@@ -88,48 +98,56 @@ export class App extends PureComponent {
   refreshSecuredMenu = securedMenu => this.setState({ securedMenu });
 
   render() {
-    const { appTheme, i10n, securedMenu, chatConversation } = this.state;
+    const {
+      appTheme,
+      i10n,
+      securedMenu,
+      chatConversation,
+      adminPendingChatCount
+    } = this.state;
 
     return (
       <Router>
         <div>
           <LocalizationContext.Provider value={i10n}>
             <SecuredMenuContext.Provider value={securedMenu}>
-              <ChatMessagingContext.Provider value={chatConversation}>
-                <CssBaseline />
-                <ThemeProvider theme={appTheme}>
-                  <Switch>
-                    <UnprotectedRoute
-                      exact
-                      path="/"
-                      component={Pages.MarketingHome}
-                    />
-                    {unprotectedRoutes.map(route => (
+              <AdminChatMessagingContext.Provider value={adminPendingChatCount}>
+                <ChatMessagingContext.Provider value={chatConversation}>
+                  <CssBaseline />
+                  <ThemeProvider theme={appTheme}>
+                    <Switch>
                       <UnprotectedRoute
-                        path={route.path}
-                        component={route.component}
+                        exact
+                        path="/"
+                        component={Pages.MarketingHome}
                       />
-                    ))}
+                      {unprotectedRoutes.map(route => (
+                        <UnprotectedRoute
+                          path={route.path}
+                          component={route.component}
+                        />
+                      ))}
 
-                    {authenticatedRoutes.map(route => (
-                      <AuthenticatedRoute
-                        path={route.path}
-                        component={route.component}
-                      />
-                    ))}
+                      {authenticatedRoutes.map(route => (
+                        <AuthenticatedRoute
+                          path={route.path}
+                          component={route.component}
+                        />
+                      ))}
 
-                    {protectedRoutes.map(route => (
-                      <ProtectedRoute
-                        path={route.path}
-                        component={route.component}
-                        permission={route.permission}
-                      />
-                    ))}
+                      {protectedRoutes.map(route => (
+                        <ProtectedRoute
+                          path={route.path}
+                          component={route.component}
+                          permission={route.permission}
+                        />
+                      ))}
 
-                    <Route component={NoMatchRoute} />
-                  </Switch>
-                </ThemeProvider>
-              </ChatMessagingContext.Provider>
+                      <Route component={NoMatchRoute} />
+                    </Switch>
+                  </ThemeProvider>
+                </ChatMessagingContext.Provider>
+              </AdminChatMessagingContext.Provider>
             </SecuredMenuContext.Provider>
           </LocalizationContext.Provider>
         </div>
