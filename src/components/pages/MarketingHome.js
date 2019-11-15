@@ -58,9 +58,7 @@ const MarketingHomeComponent = ({ i10n, history }) => (
     </div>
 
     <Container maxWidth="md">
-      <RandomSurveyPresenter
-        onSubmission={id => history.push(`/survey-results/${id}`)}
-      />
+      <RandomSurveyPresenter />
     </Container>
   </PageLayout>
 );

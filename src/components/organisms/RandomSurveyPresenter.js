@@ -3,6 +3,7 @@ import { withSnackbar } from 'notistack';
 import { API } from '../../lib/xhr';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { SurveySubmission } from './SurveySubmission';
+import { SurveyResults } from '../molecules';
 
 class RandomSurveyPresenterComponent extends PureComponent {
   constructor(props) {
@@ -12,7 +13,9 @@ class RandomSurveyPresenterComponent extends PureComponent {
     this.api = new API(this.notifier);
 
     this.state = {
-      currentSurvey: null
+      currentSurvey: null,
+      showSurvey: false,
+      surveyData: null
     };
   }
 
@@ -26,12 +29,38 @@ class RandomSurveyPresenterComponent extends PureComponent {
 
         if (list && list.length) {
           this.setState({
-            currentSurvey: list[0]
+            currentSurvey: list[0],
+            showSurvey: true
           });
         }
       })
       .go();
   }
+
+  loadResults = () => {
+    this.api.request
+      .getById('submittedsurvey', this.state.currentSurvey.Id)
+      .success(res =>
+        this.setState({
+          surveyData: this.mapResults(res.body.Result),
+          showSurvey: false
+        })
+      )
+      .success(() => {
+        window.setTimeout(
+          () => window.scrollTo(0, document.body.scrollHeight),
+          1000
+        );
+      })
+      .go();
+  };
+
+  mapResults = results =>
+    results.map(r => ({ label: r.Label, y: r.Percentage }));
+
+  showResults = () => {
+    this.loadResults();
+  };
 
   onChoiceClick = choice => {
     const body = {
@@ -41,21 +70,31 @@ class RandomSurveyPresenterComponent extends PureComponent {
 
     this.api.request
       .post('submittedsurvey', body)
-      .success(() => this.props.onSubmission(this.state.currentSurvey.Id))
+      .preventDefaultSuccess()
+      .success(this.showResults)
       .go();
   };
 
   render() {
-    const { currentSurvey } = this.state;
+    const { showSurvey, currentSurvey, surveyData } = this.state;
 
     return (
-      currentSurvey && (
-        <SurveySubmission
-          title={currentSurvey.QuestionTitle}
-          choices={currentSurvey.Choices}
-          onClick={this.onChoiceClick}
-        />
-      )
+      <>
+        {showSurvey && (
+          <SurveySubmission
+            title={currentSurvey.QuestionTitle}
+            choices={currentSurvey.Choices}
+            onClick={this.onChoiceClick}
+          />
+        )}
+        {surveyData && (
+          <SurveyResults
+            containerId="survey-container-home"
+            title={currentSurvey.QuestionTitle}
+            data={surveyData}
+          />
+        )}
+      </>
     );
   }
 }

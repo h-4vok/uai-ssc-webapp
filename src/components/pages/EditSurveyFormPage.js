@@ -17,7 +17,12 @@ class EditSurveyFormPageComponent extends PureComponent {
     this.api = new API(this.notifier);
 
     this.state = {
-      model: { Id: null, QuestionTitle: '', Choices: [] },
+      model: {
+        Id: null,
+        QuestionTitle: '',
+        Choices: [],
+        ExpirationDate: new Date()
+      },
       allLoaded: false
     };
   }
@@ -43,6 +48,7 @@ class EditSurveyFormPageComponent extends PureComponent {
   }
 
   onConfirm = () => {
+    console.log({ model: this.state.model });
     if (this.modelId) {
       this.updateModel();
     } else {

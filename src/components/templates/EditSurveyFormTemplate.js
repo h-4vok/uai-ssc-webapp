@@ -35,7 +35,7 @@ class EditSurveyFormTemplateComponent extends PureComponent {
     const {
       QuestionTitle,
       Choices,
-      ExpirationDate = new Date()
+      ExpirationDate
     } = this.props.model;
 
     this.state = {
@@ -43,10 +43,6 @@ class EditSurveyFormTemplateComponent extends PureComponent {
       Choices,
       ExpirationDate
     };
-
-    if (!this.props.model.ExpirationDate) {
-      this.props.model.ExpirationDate = new Date();
-    }
   }
 
   isEditAction() {

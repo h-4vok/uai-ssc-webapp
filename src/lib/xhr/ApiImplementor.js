@@ -19,9 +19,9 @@ export default class ApiImplementor {
     console.log(`Executing API request - ${req.identity}`);
     this.logSeparator();
     this.logValue('verb', req.verb);
-    this.logValue('headers', { headers: req.headers });
+    console.log({ headers: req.headers });
     this.logValue('address', req.address);
-    this.logValue('body', req.body);
+    console.log({ body: req.body });
     this.logValue('allowsDefaultSuccess', req.allowsDefaultSuccess);
     this.logValue('allowsDefaultFailure', req.allowsDefaultFailure);
     this.logValue('allowsDefaultError', req.allowsDefaultError);
