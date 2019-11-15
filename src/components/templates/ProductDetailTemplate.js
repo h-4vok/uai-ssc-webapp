@@ -61,28 +61,30 @@ class ProductDetailTemplateComponent extends PureComponent {
           </Grid>
           <Grid item xs={2} />
         </Grid>
-        <Grid container>
-          <Grid item xs={12}>
-            <Box mt={2}>
-              <Grid container>
-                <Grid item xs={3}>
-                  {i10n['product-detail.average.rating']}
+        {!!model.Comments.length && (
+          <Grid container>
+            <Grid item xs={12}>
+              <Box mt={2}>
+                <Grid container>
+                  <Grid item xs={3}>
+                    {i10n['product-detail.average.rating']}
+                  </Grid>
+                  <Grid
+                    container
+                    item
+                    xs={9}
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                  >
+                    <Typography variant="h5">{model.AverageRating}</Typography>
+                    <Rating value={model.AverageRating} readOnly />
+                  </Grid>
                 </Grid>
-                <Grid
-                  container
-                  item
-                  xs={9}
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="center"
-                >
-                  <Typography variant="h5">{model.AverageRating}</Typography>
-                  <Rating value={model.AverageRating} readOnly />
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
         <Grid>
           <Box mt={3} />
         </Grid>
