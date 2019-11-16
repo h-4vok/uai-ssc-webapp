@@ -1,4 +1,7 @@
 import React, { PureComponent } from 'react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import { AgGridReact } from 'ag-grid-react';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
@@ -31,18 +34,31 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { Author, Title, Content, PublicationDate } = this.props.model;
+    const {
+      Author,
+      Title,
+      Content,
+      PublicationDate,
+      Categories
+    } = this.props.model;
 
     this.state = {
       Author,
       Title,
       Content,
-      PublicationDate
+      PublicationDate,
+      Categories
     };
   }
 
   isEditAction() {
     return this.props.model && this.props.model.Id;
+  }
+
+  componentDidMount() {
+    this.dataGrid.api.sizeColumnsToFit();
+    this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
+    this.onGridReady();
   }
 
   onInputChange = event => {
@@ -60,8 +76,37 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
     this.props.onFileSelected(File);
   };
 
+  onRowSelection = e => {
+    const selected = e.api.getSelectedRows();
+    this.props.model.Categories = selected;
+  };
+
+  onGridReady = () => {
+    if (!this.isEditAction()) return;
+
+    const isSelectedItem = id =>
+      this.state.Categories.some(
+        selectedCategory => selectedCategory.Id === id
+      );
+
+    this.dataGrid.api.forEachNode(node => {
+      if (isSelectedItem(node.data.Id)) {
+        node.setSelected(true);
+      }
+    });
+  };
+
+  buildGridDef = i10n => [
+    {
+      headerName: i10n['global.description'],
+      field: 'Description',
+      checkboxSelection: true,
+      headerCheckboxSelection: true
+    }
+  ];
+
   render() {
-    const { classes, onConfirm, i10n } = this.props;
+    const { classes, onConfirm, i10n, categories } = this.props;
     const { Author, Title, Content, PublicationDate } = this.state;
 
     return (
@@ -132,6 +177,23 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
             </Grid>
 
             <Grid item xs={12}>
+              <div
+                className="ag-theme-material"
+                style={{ height: 200, width: 'auto' }}
+              >
+                <AgGridReact
+                  ref={c => (this.dataGrid = c)}
+                  rowSelection="multiple"
+                  rowMultiSelectWithClick
+                  rowDeselection
+                  suppressHorizontalScroll
+                  columnDefs={this.buildGridDef(i10n)}
+                  rowData={categories}
+                />
+              </div>
+            </Grid>
+
+            <Grid item xs={12}>
               <SimpleTextField
                 required
                 variant="outlined"
@@ -143,7 +205,7 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
                 value={Content}
                 onChange={this.onInputChange}
                 multiline
-                rows="20"
+                rows="10"
                 rowsMax="40"
               />
             </Grid>

@@ -18,10 +18,22 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
     this.api = new API(this.notifier);
 
     this.state = {
-      model: { PublicationDate: new Date() },
-      allLoaded: false
+      model: { PublicationDate: new Date(), Categories: [] },
+      categories: null,
+      modelLoaded: false
     };
   }
+
+  loadCategories = () => {
+    this.api.request
+      .get('sitenewscategory')
+      .success(res => {
+        this.setState({
+          categories: res.body.Result
+        });
+      })
+      .go();
+  };
 
   loadModel = () => {
     this.api.request
@@ -29,17 +41,19 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
       .success(res => {
         this.setState({
           model: res.body.Result,
-          allLoaded: true
+          modelLoaded: true
         });
       })
       .go();
   };
 
   componentDidMount() {
+    this.loadCategories();
+
     if (this.modelId) {
       this.loadModel();
     } else {
-      this.setState({ allLoaded: true });
+      this.setState({ modelLoaded: true });
     }
   }
 
@@ -93,14 +107,15 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
   };
 
   render() {
-    const { model, allLoaded } = this.state;
+    const { model, modelLoaded, categories } = this.state;
 
     return (
       <PlatformPageLayout>
-        {allLoaded && (
+        {modelLoaded && categories && (
           <EditSiteNewsArticlesTemplate
             modelId={this.modelId}
             model={model}
+            categories={categories}
             onFileSelected={this.onFileSelected}
             onConfirm={this.onConfirm}
           />

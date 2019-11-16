@@ -592,5 +592,8 @@ export const defaultDictionary = {
     'El registro se encuentra en uso. No puede eliminarse.',
   'menu.platform.marketing.site-news-category': 'Categorías de Noticias',
   'marketing.site-news-category.title.edit': 'Editar Categoría de Noticia',
-  'marketing.site-news-category.title.new': 'Nueva Categoría de Noticia'
+  'marketing.site-news-category.title.new': 'Nueva Categoría de Noticia',
+  'site-news.category': 'Categorías',
+  'newsletter.invalid-date-range':
+    'El rango de fechas seleccionado es inválido.'
 };
