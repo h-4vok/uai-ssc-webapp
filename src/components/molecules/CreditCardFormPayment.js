@@ -47,6 +47,28 @@ export function CreditCardFormPayment(props) {
   const [isSavedCard, setIsSavedCard] = React.useState(false);
   const [focused, setFocused] = React.useState('');
 
+  const cleanAll = () => {
+    setCreditCard(0);
+    setNumber('');
+    setCcv('');
+    setExpirationDate('');
+    setHolder('');
+    setSaveCard(false);
+  };
+
+  const buildCardObject = () => ({
+    Id: creditCard,
+    Number: number,
+    Owner: holder,
+    CCV: ccv,
+    ExpirationDateMMYY: expirationDate
+  });
+
+  const getSelectedCardObject = () => ({
+    ...props.creditCards.find(c => c.value == creditCard).CreditCard,
+    CCV: ccv
+  });
+
   const handleChecked = evt => setSaveCard(evt.target.checked);
   const handleCardSelect = evt => {
     const { value } = evt.target;
@@ -73,10 +95,12 @@ export function CreditCardFormPayment(props) {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={1}>
-        {creditCardIcons[creditCardIcon]}
-      </Grid>
-      <Grid item xs={11}>
+      {isSavedCard && (
+        <Grid item xs={1}>
+          {creditCardIcons[creditCardIcon]}
+        </Grid>
+      )}
+      <Grid item xs={isSavedCard ? 11 : 12}>
         <SimpleSelect
           noEmpty
           label={fromI10n('payment.credit-card-select')}
@@ -163,7 +187,16 @@ export function CreditCardFormPayment(props) {
       )}
 
       <Grid item xs={12}>
-        <Button color="primary" variant="contained" onClick={props.onConfirm}>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() =>
+            props.onConfirm(
+              isSavedCard ? getSelectedCardObject() : buildCardObject(),
+              cleanAll
+            )
+          }
+        >
           {fromI10n('global.select')}
         </Button>
       </Grid>

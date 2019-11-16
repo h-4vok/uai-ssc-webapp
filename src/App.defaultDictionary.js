@@ -612,5 +612,19 @@ export const defaultDictionary = {
   'payment.credit-card-holder': 'Titular',
   'payment.save-credit-card': 'Guardar tarjeta de crédito',
   'payment.new-credit-card': 'Nueva Tarjeta',
-  'global.selected': 'Seleccionado'
+  'global.selected': 'Seleccionado',
+  'payment.credit-card.validation.invalid-number':
+    'El número de tarjeta de crédito es inválido o no existe.',
+  'payment.credit-card.validation.process-error':
+    'Un error ha ocurrido procesando su pago. Por favor vuelva a intentarlo más tarde.',
+  'payment.credit-card.validation.declined':
+    'La tarjeta de crédito que ha ingresado ha sido rechazada. Por favor, intente pagar con otra tarjeta de crédito o contacte a su emisor.',
+  'payment.credit-card.validation.data-mismatch':
+    'Uno o varios datos no coinciden o no son válidos con la tarjeta ingresadas.',
+  'payment.credit-card.validation.expired':
+    'Ha ingresado una fecha de expiración que ya ha caducado. Por favor, intente con otra tarjeta de crédito o corrija el campo.',
+  'payment.credit-card.validation.ccv-empty': 'El campo CCV no es válido.',
+  'payment.credit-card.number': 'Número de Tarjeta de Crédito',
+  'payment.credit-card.validation.date-invalid-format':
+    'Formato de fecha debe ser MMYY.'
 };

@@ -37,7 +37,7 @@ class PlatformHomePageComponent extends PureComponent {
         });
 
         if (GlobalState.Authorizer.has('PLATFORM_ADMIN')) {
-          //
+          this.props.history.push('/support/chat-conversation');
         } else {
           this.props.history.push('/client-landing');
         }

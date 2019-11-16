@@ -49,10 +49,16 @@ class BuyMorePageComponent extends PureComponent {
       .go();
   };
 
-  onCreditCardConfirm = newCard => {
-    this.setState(prevState => ({
-      paymentMethods: [...prevState.paymentMethods, newCard]
-    }));
+  onCreditCardConfirm = (newCard, callback) => {
+    this.api.request
+      .post('clientmanagement/validateCreditCard', newCard)
+      .success(() => {
+        this.setState(prevState => ({
+          paymentMethods: [...prevState.paymentMethods, newCard]
+        }));
+      })
+      .success(callback)
+      .go();
   };
 
   render() {

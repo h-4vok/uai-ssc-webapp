@@ -1,4 +1,7 @@
-const amex = n => (n.startsWith('34') || n.startsWith('37') ? 'amex' : null);
+const amex = n => {
+  const firstTwo = parseInt(n.substring(0, 2));
+  return firstTwo >= 34 && firstTwo <= 37 ? 'amex' : null;
+};
 const mastercard = n => {
   const firstTwo = parseInt(n.substring(0, 2));
   const firstFour = parseInt(n.substring(0, 4));
