@@ -65,7 +65,7 @@ export function CreditCardFormPayment(props) {
   });
 
   const getSelectedCardObject = () => ({
-    ...props.creditCards.find(c => c.value == creditCard).CreditCard,
+    ...props.creditCards.find(c => c.value === creditCard).CreditCard,
     CCV: ccv
   });
 
