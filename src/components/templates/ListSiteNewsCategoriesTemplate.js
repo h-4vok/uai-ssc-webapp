@@ -66,11 +66,12 @@ class ListSiteNewsCategoriesTemplateComponent extends PureComponent {
       sortable: true,
       filter: true,
       checkboxSelection: true,
-      headerCheckboxSelection: true
+      headerCheckboxSelection: true,
+      width: 50
     },
     {
       headerName: i10n['global.description'],
-      field: 'Name',
+      field: 'Description',
       sortable: true,
       filter: true
     }

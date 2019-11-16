@@ -70,3 +70,4 @@ export { ListClientsPage } from './ListClientsPage';
 export { NewBackupPage } from './NewBackupPage';
 export { DoRestoreFromPage } from './DoRestoreFromPage';
 export { ListSiteNewsCategoriesPage } from './ListSiteNewsCategoriesPage';
+export { EditSiteNewsCategoryPage } from './EditSiteNewsCategoryPage';

@@ -76,12 +76,12 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'marketing/site-news-category/new',
-    inProgressPlatformPage,
+    Pages.EditSiteNewsCategoryPage,
     'NEWS_MANAGEMENT'
   ),
   buildPlatformRoute(
     'marketing/site-news-category/:id',
-    inProgressPlatformPage,
+    Pages.EditSiteNewsCategoryPage,
     'NEWS_MANAGEMENT'
   ),
   buildPlatformRoute(

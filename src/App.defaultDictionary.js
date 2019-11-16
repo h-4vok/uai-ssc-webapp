@@ -590,5 +590,7 @@ export const defaultDictionary = {
     'Debe seleccionar una imagen de portada.',
   'global.cannot-delete-in-use':
     'El registro se encuentra en uso. No puede eliminarse.',
-  'menu.platform.marketing.site-news-category': 'Categorías de Noticias'
+  'menu.platform.marketing.site-news-category': 'Categorías de Noticias',
+  'marketing.site-news-category.title.edit': 'Editar Categoría de Noticia',
+  'marketing.site-news-category.title.new': 'Nueva Categoría de Noticia'
 };

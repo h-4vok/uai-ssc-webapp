@@ -72,3 +72,4 @@ export { DoRestoreFromTemplate } from './DoRestoreFromTemplate';
 export {
   ListSiteNewsCategoriesTemplate
 } from './ListSiteNewsCategoriesTemplate';
+export { EditSiteNewsCategoryTemplate } from './EditSiteNewsCategoryTemplate';
