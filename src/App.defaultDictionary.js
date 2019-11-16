@@ -580,5 +580,10 @@ export const defaultDictionary = {
   'backup.file-exists':
     'El archivo ya existe. Por seguridad, no se pueden reemplazar archivos existentes con nuevos resguardos.',
   'file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp',
-  'backup.file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp'
+  'backup.file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp',
+  'backup.doRestoreFrom': 'Restaurar desde',
+  'restore.invalid-file':
+    'El archivo de backup ingresado es inválido o no está correctamente formateado.',
+  'restore.from.tip':
+    'Seleccione y suba un archivo de BKP para hacer la restauración de base de datos.'
 };

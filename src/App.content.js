@@ -243,6 +243,11 @@ export const protectedRoutes = [
   buildPlatformRoute('security/log/:id', Pages.ReadLogPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute('security/log', Pages.ListLogsPage, 'PLATFORM_ADMIN'),
   buildPlatformRoute(
+    'security/restore/from',
+    Pages.DoRestoreFromPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'security/backup/new',
     Pages.NewBackupPage,
     'PLATFORM_BACKUP'

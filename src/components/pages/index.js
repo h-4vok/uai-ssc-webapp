@@ -68,3 +68,4 @@ export { ListChatConversationsPage } from './ListChatConversationsPage';
 export { ReplyChatConversationPage } from './ReplyChatConversationPage';
 export { ListClientsPage } from './ListClientsPage';
 export { NewBackupPage } from './NewBackupPage';
+export { DoRestoreFromPage } from './DoRestoreFromPage';

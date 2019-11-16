@@ -68,3 +68,4 @@ export { ReplySupportTicketTemplate } from './ReplySupportTicketTemplate';
 export { ListChatConversationsTemplate } from './ListChatConversationsTemplate';
 export { ListClientsTemplate } from './ListClientsTemplate';
 export { NewBackupTemplate } from './NewBackupTemplate';
+export { DoRestoreFromTemplate } from './DoRestoreFromTemplate';

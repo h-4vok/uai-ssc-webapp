@@ -97,6 +97,7 @@ class ListBackupsTemplateComponent extends PureComponent {
       onRefresh,
       onBackupAction,
       onRestoreAction,
+      onRestoreFromAction,
       i10n
     } = this.props;
     const { oneRowSelected } = this.state;
@@ -130,6 +131,15 @@ class ListBackupsTemplateComponent extends PureComponent {
                 disabled={!oneRowSelected}
               >
                 {i10n['backup.doRestore']}
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('PLATFORM_RESTORE') && (
+              <Button
+                variant="contained"
+                onClick={onRestoreFromAction}
+                className={classes.button}
+              >
+                {i10n['backup.doRestoreFrom']}
               </Button>
             )}
           </ButtonBar>

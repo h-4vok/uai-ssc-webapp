@@ -79,6 +79,8 @@ class ListBackupsPageComponent extends PureComponent {
     });
   };
 
+  onRestoreFromAction = () => this.props.history.push('/security/restore/from');
+
   onConfirmDialog = () => {
     this.state.dialogAfterAction();
     this.setState({ dialogOpen: false });
@@ -94,6 +96,7 @@ class ListBackupsPageComponent extends PureComponent {
           onRefresh={this.onRefresh}
           onBackupAction={this.onBackupAction}
           onRestoreAction={this.onRestoreAction}
+          onRestoreFromAction={this.onRestoreFromAction}
         />
         <ConfirmDialog
           open={dialogOpen}
