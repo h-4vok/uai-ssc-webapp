@@ -14,29 +14,49 @@ class SendNewsletterPageComponent extends PureComponent {
     this.notifier = new SnackbarVisitor(this.props);
     this.api = new API(this.notifier);
 
-    let sevenDaysAgo = new Date();
+    const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    console.log(sevenDaysAgo);
 
     this.state = {
       model: {
         DateFrom: sevenDaysAgo,
         DateTo: new Date(),
+        Categories: [],
         IncomingHost: `${window.location.hostname}:${window.location.port}`
-      }
+      },
+      categories: null
     };
   }
+
+  componentDidMount() {
+    this.loadCategories();
+  }
+
+  loadCategories = () => {
+    this.api.request
+      .get('sitenewscategory')
+      .success(({ body: { Result: categories } }) =>
+        this.setState({ categories })
+      )
+      .go();
+  };
 
   onConfirm = () => {
     this.api.request.post(apiroute, this.state.model).go();
   };
 
   render() {
-    const { model } = this.state;
+    const { model, categories } = this.state;
 
     return (
       <PlatformPageLayout>
-        <SendNewsletterTemplate model={model} onConfirm={this.onConfirm} />
+        {categories && (
+          <SendNewsletterTemplate
+            categories={categories}
+            model={model}
+            onConfirm={this.onConfirm}
+          />
+        )}
       </PlatformPageLayout>
     );
   }

@@ -45,7 +45,8 @@ export const authenticatedRoutes = [
   buildRoute('account/leave-comment', Pages.LeaveCommentPage),
   buildRoute('platform-search', Pages.SearchBackOfficePage),
   buildRoute('do-feedback-form', Pages.DoFeedbackFormPage),
-  buildRoute('platform', inProgressPlatformPage)
+  buildRoute('platform', inProgressPlatformPage),
+  buildRoute('client-landing', Pages.ClientLandingPage)
 ];
 
 export const protectedRoutes = [

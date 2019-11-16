@@ -595,5 +595,9 @@ export const defaultDictionary = {
   'marketing.site-news-category.title.new': 'Nueva Categoría de Noticia',
   'site-news.category': 'Categorías',
   'newsletter.invalid-date-range':
-    'El rango de fechas seleccionado es inválido.'
+    'El rango de fechas seleccionado es inválido.',
+  'client-landing.your-plan': 'Tu plan:',
+  'client-landing.action.manage': 'Gestionar',
+  'client-landing.expiration-date': 'Plan válido hasta:',
+  'client-landing.action.buy': 'Comprar'
 };

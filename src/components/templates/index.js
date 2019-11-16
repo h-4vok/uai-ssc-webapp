@@ -73,3 +73,4 @@ export {
   ListSiteNewsCategoriesTemplate
 } from './ListSiteNewsCategoriesTemplate';
 export { EditSiteNewsCategoryTemplate } from './EditSiteNewsCategoryTemplate';
+export { ClientLandingTemplate } from './ClientLandingTemplate';

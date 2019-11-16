@@ -3,6 +3,7 @@ import { withSnackbar } from 'notistack';
 import { PlatformPageLayout } from '../organisms';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
+import { GlobalState } from '../../lib/GlobalState';
 
 class PlatformHomePageComponent extends PureComponent {
   constructor(props) {
@@ -34,6 +35,12 @@ class PlatformHomePageComponent extends PureComponent {
         this.setState({
           allLoaded: true
         });
+
+        if (GlobalState.Authorizer.has('PLATFORM_ADMIN')) {
+          //
+        } else {
+          this.props.history.push('/client-landing');
+        }
       })
       .go();
   }
