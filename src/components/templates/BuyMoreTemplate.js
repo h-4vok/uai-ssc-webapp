@@ -30,7 +30,8 @@ class BuyMoreTemplateComponent extends PureComponent {
       prices,
       i10n,
       onCreditCardConfirm,
-      creditCards
+      creditCards,
+      establishedPaymentMethods
     } = this.props;
     const { selectedPrice, selectedCard } = this.state;
 
@@ -78,6 +79,9 @@ class BuyMoreTemplateComponent extends PureComponent {
             />
           )}
         </Grid>
+        {establishedPaymentMethods && !!establishedPaymentMethods.length && (
+          <div>{JSON.stringify(establishedPaymentMethods)}</div>
+        )}
       </Container>
     );
   }

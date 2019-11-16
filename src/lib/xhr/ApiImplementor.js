@@ -15,21 +15,23 @@ export default class ApiImplementor {
   execute(req) {
     req.identity = uuidv4();
 
-    this.logSeparator();
-    console.log(`Executing API request - ${req.identity}`);
-    this.logSeparator();
-    this.logValue('verb', req.verb);
-    console.log({ headers: req.headers });
-    this.logValue('address', req.address);
-    console.log({ body: req.body });
-    this.logValue('allowsDefaultSuccess', req.allowsDefaultSuccess);
-    this.logValue('allowsDefaultFailure', req.allowsDefaultFailure);
-    this.logValue('allowsDefaultError', req.allowsDefaultError);
-    this.logValue('success callbacks #', req.callbacks.success.length);
-    this.logValue('failure callbacks #', req.callbacks.failure.length);
-    this.logValue('error callbacks #', req.callbacks.error.length);
-    console.log('');
-    this.logSeparator();
-    console.log('');
+    // if (!process.env.REACT_APP_DEBUG_API) return;
+
+    // this.logSeparator();
+    // console.log(`Executing API request - ${req.identity}`);
+    // this.logSeparator();
+    // this.logValue('verb', req.verb);
+    // console.log({ headers: req.headers });
+    // this.logValue('address', req.address);
+    // console.log({ body: req.body });
+    // this.logValue('allowsDefaultSuccess', req.allowsDefaultSuccess);
+    // this.logValue('allowsDefaultFailure', req.allowsDefaultFailure);
+    // this.logValue('allowsDefaultError', req.allowsDefaultError);
+    // this.logValue('success callbacks #', req.callbacks.success.length);
+    // this.logValue('failure callbacks #', req.callbacks.failure.length);
+    // this.logValue('error callbacks #', req.callbacks.error.length);
+    // console.log('');
+    // this.logSeparator();
+    // console.log('');
   }
 }

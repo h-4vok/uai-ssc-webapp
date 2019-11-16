@@ -15,7 +15,8 @@ class BuyMorePageComponent extends PureComponent {
     this.state = {
       model: null,
       prices: null,
-      creditCards: null
+      creditCards: null,
+      paymentMethods: []
     };
   }
 
@@ -48,8 +49,14 @@ class BuyMorePageComponent extends PureComponent {
       .go();
   };
 
+  onCreditCardConfirm = newCard => {
+    this.setState(prevState => ({
+      paymentMethods: [...prevState.paymentMethods, newCard]
+    }));
+  };
+
   render() {
-    const { model, prices, creditCards } = this.state;
+    const { model, prices, creditCards, paymentMethods } = this.state;
 
     return (
       <PlatformPageLayout>
@@ -58,6 +65,8 @@ class BuyMorePageComponent extends PureComponent {
             model={model}
             creditCards={creditCards}
             prices={prices}
+            onCreditCardConfirm={this.onCreditCardConfirm}
+            establishedPaymentMethods={paymentMethods}
           />
         )}
       </PlatformPageLayout>

@@ -22,6 +22,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.9.0",
     "react-app-polyfill": "^1.0.2",
+    "react-credit-cards": "^0.8.0",
     "react-dom": "^16.9.0",
     "react-flexbox-grid": "^2.1.2",
     "react-google-recaptcha": "^2.0.0-rc.1",
@@ -34,6 +35,7 @@
     "react-svg": "^10.0.22",
     "react-text-mask": "^5.4.3",
     "run-s": "0.0.0",
+    "styled-components": "^4.4.1",
     "superagent": "^5.1.0",
     "uuid": "^3.3.3"
   },

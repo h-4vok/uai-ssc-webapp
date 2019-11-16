@@ -9,3 +9,8 @@ export { SpanishLanguageIcon } from './SpanishLanguageIcon';
 export { ChatConversationBubble } from './ChatConversationBubble';
 export { MaskedTextInput } from './MaskedTextInput';
 export { FormControlCheckbox } from './FormControlCheckbox';
+export { CreditCardGenericIcon } from './CreditCardGenericIcon';
+export { CreditCardVisaIcon } from './CreditCardVisaIcon';
+export { CreditCardAmexIcon } from './CreditCardAmexIcon';
+export { CreditCardMasterCardIcon } from './CreditCardMasterCardIcon';
+export { CreditCardShowoff } from './CreditCardShowoff';

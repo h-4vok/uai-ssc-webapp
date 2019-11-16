@@ -25,9 +25,7 @@ function TabPanel(props) {
       aria-labelledby={`scrollable-force-tab-${index}`}
       {...other}
     >
-      <Box p={3} height={400}>
-        {children}
-      </Box>
+      <Box p={3}>{children}</Box>
     </Typography>
   );
 }
