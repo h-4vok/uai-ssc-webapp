@@ -23,3 +23,5 @@ export { ChatBox } from './ChatBox';
 export { ChatBarToggler } from './ChatBarToggler';
 export { ChatDrawer } from './ChatDrawer';
 export { AdminChatNotifier } from './AdminChatNotifier';
+export { PriceSelectionCard } from './PriceSelectionCard';
+export { CreditCardFormPayment } from './CreditCardFormPayment';

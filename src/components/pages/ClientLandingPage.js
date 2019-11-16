@@ -23,7 +23,7 @@ class ClientLandingPageComponent extends PureComponent {
 
   loadClientData = () => {
     this.api.request
-      .get('clientlanding')
+      .get('clientmanagement')
       .success(({ body: { Result: model } }) => this.setState({ model }))
       .go();
   };

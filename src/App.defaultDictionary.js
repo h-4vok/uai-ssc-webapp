@@ -599,5 +599,18 @@ export const defaultDictionary = {
   'client-landing.your-plan': 'Tu plan:',
   'client-landing.action.manage': 'Gestionar',
   'client-landing.expiration-date': 'Plan válido hasta:',
-  'client-landing.action.buy': 'Comprar'
+  'client-landing.action.buy': 'Comprar',
+  'global.select': 'Seleccionar',
+  'buy-more.months': 'Extender Un mes',
+  'buy-more.years': 'Extender Un Año',
+  'payment-methods.tab.credit-card': 'Tarjeta de Crédito',
+  'payment-methods.tab.credit-note': 'Nota de Crédito',
+  'payment.credit-card-select': 'Tarjeta de Crédito Guardada',
+  'payment.credit-card-number': 'Número de Tarjeta de Crédito',
+  'payment.credit-card-ccv': 'Código CCV',
+  'payment.credit-card-expiration': 'Fecha de Expiración (Formato MM/YY)',
+  'payment.credit-card-holder': 'Titular',
+  'payment.save-credit-card': 'Guardar tarjeta de crédito',
+  'payment.new-credit-card': 'Nueva Tarjeta',
+  'global.selected': 'Seleccionado'
 };

@@ -7,3 +7,5 @@ export { SimpleTextField } from './SimpleTextField';
 export { EnglishLanguageIcon } from './EnglishLanguageIcon';
 export { SpanishLanguageIcon } from './SpanishLanguageIcon';
 export { ChatConversationBubble } from './ChatConversationBubble';
+export { MaskedTextInput } from './MaskedTextInput';
+export { FormControlCheckbox } from './FormControlCheckbox';
