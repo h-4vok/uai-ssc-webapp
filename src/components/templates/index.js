@@ -69,3 +69,6 @@ export { ListChatConversationsTemplate } from './ListChatConversationsTemplate';
 export { ListClientsTemplate } from './ListClientsTemplate';
 export { NewBackupTemplate } from './NewBackupTemplate';
 export { DoRestoreFromTemplate } from './DoRestoreFromTemplate';
+export {
+  ListSiteNewsCategoriesTemplate
+} from './ListSiteNewsCategoriesTemplate';

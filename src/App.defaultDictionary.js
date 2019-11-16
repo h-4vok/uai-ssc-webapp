@@ -579,7 +579,6 @@ export const defaultDictionary = {
   'backup.dir-not-exists': 'El directorio no existe.',
   'backup.file-exists':
     'El archivo ya existe. Por seguridad, no se pueden reemplazar archivos existentes con nuevos resguardos.',
-  'file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp',
   'backup.file-must-end-with-bkp': 'El archivo debe tener la extensión .bkp',
   'backup.doRestoreFrom': 'Restaurar desde',
   'restore.invalid-file':
@@ -588,5 +587,8 @@ export const defaultDictionary = {
     'Seleccione y suba un archivo de BKP para hacer la restauración de base de datos.',
   'site-news.thumbnail-image': 'Seleccione una imagen de portada',
   'site-news.validation.missing-thumbnail':
-    'Debe seleccionar una imagen de portada.'
+    'Debe seleccionar una imagen de portada.',
+  'global.cannot-delete-in-use':
+    'El registro se encuentra en uso. No puede eliminarse.',
+  'menu.platform.marketing.site-news-category': 'Categorías de Noticias'
 };

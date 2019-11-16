@@ -75,6 +75,21 @@ export const protectedRoutes = [
     'NEWS_MANAGEMENT'
   ),
   buildPlatformRoute(
+    'marketing/site-news-category/new',
+    inProgressPlatformPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'marketing/site-news-category/:id',
+    inProgressPlatformPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
+    'marketing/site-news-category',
+    Pages.ListSiteNewsCategoriesPage,
+    'NEWS_MANAGEMENT'
+  ),
+  buildPlatformRoute(
     'marketing/site-news/new',
     Pages.EditSiteNewsArticlesPage,
     'NEWS_MANAGEMENT'
