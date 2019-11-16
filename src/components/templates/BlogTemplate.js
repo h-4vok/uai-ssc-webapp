@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid, Button } from '@material-ui/core';
 import { fromI10n } from '../../lib/GlobalState';
+import { Divider } from 'material-ui';
 
 const useStyles = makeStyles(() => ({
   publicationDate: {
@@ -43,6 +44,13 @@ export const BlogTemplate = ({ news, onSubscribeConfirm }) => {
         {news.map(article => (
           <>
             <Grid item xs={12}>
+              <img
+                style={{ width: '700px' }}
+                src={`${process.env.REACT_APP_WEBAPI_ROOT}${article.ThumbnailRelativePath}`}
+                alt="img"
+              />
+            </Grid>
+            <Grid item xs={12}>
               <Typography className={classes.articleTitle}>
                 {article.Title}
               </Typography>
@@ -71,6 +79,7 @@ export const BlogTemplate = ({ news, onSubscribeConfirm }) => {
                 rows="1"
               /> */}
             </Grid>
+            <hr />
           </>
         ))}
       </Grid>

@@ -585,5 +585,8 @@ export const defaultDictionary = {
   'restore.invalid-file':
     'El archivo de backup ingresado es inválido o no está correctamente formateado.',
   'restore.from.tip':
-    'Seleccione y suba un archivo de BKP para hacer la restauración de base de datos.'
+    'Seleccione y suba un archivo de BKP para hacer la restauración de base de datos.',
+  'site-news.thumbnail-image': 'Seleccione una imagen de portada',
+  'site-news.validation.missing-thumbnail':
+    'Debe seleccionar una imagen de portada.'
 };

@@ -4,6 +4,7 @@ import { PlatformPageLayout } from '../organisms';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
 import { EditSiteNewsArticlesTemplate } from '../templates';
+import withLocalization from '../../localization/withLocalization';
 
 const apiRoute = 'sitenews';
 const fallbackRoute = '/marketing/site-news';
@@ -46,15 +47,38 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
     if (this.modelId) {
       this.updateModel();
     } else {
+      if (!this.selectedThumbnail) {
+        this.notifier.warning(
+          this.props.i10n['site-news.validation.missing-thumbnail']
+        );
+        return;
+      }
+
       this.createModel();
     }
+  };
+
+  onFileSelected = file => {
+    this.selectedThumbnail = file;
+  };
+
+  uploadImage = id => {
+    this.api.request
+      .put('sitenewsthumbnail', this.selectedThumbnail, id)
+      .setHeader('thumbnail-filename', this.selectedThumbnail.name)
+      .success(() => {
+        this.props.history.push(fallbackRoute);
+      })
+      .go();
   };
 
   createModel = () => {
     this.api.request
       .post(apiRoute, this.state.model)
-      .success(() => {
-        this.props.history.push(fallbackRoute);
+      .preventDefaultSuccess()
+      .success(res => {
+        const id = res.body.Result;
+        this.uploadImage(id);
       })
       .go();
   };
@@ -77,7 +101,8 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
           <EditSiteNewsArticlesTemplate
             modelId={this.modelId}
             model={model}
-            onConfirm={() => this.onConfirm()}
+            onFileSelected={this.onFileSelected}
+            onConfirm={this.onConfirm}
           />
         )}
       </PlatformPageLayout>
@@ -85,6 +110,6 @@ class EditSiteNewsArticlesPageComponent extends PureComponent {
   }
 }
 
-export const EditSiteNewsArticlesPage = withSnackbar(
-  EditSiteNewsArticlesPageComponent
+export const EditSiteNewsArticlesPage = withLocalization(
+  withSnackbar(EditSiteNewsArticlesPageComponent)
 );

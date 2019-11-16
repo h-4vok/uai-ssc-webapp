@@ -55,6 +55,11 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
     this.setState({ PublicationDate: date });
   };
 
+  onFileChange = evt => {
+    const File = evt.target.files[0];
+    this.props.onFileSelected(File);
+  };
+
   render() {
     const { classes, onConfirm, i10n } = this.props;
     const { Author, Title, Content, PublicationDate } = this.state;
@@ -111,6 +116,19 @@ class EditSiteNewsArticlesTemplateComponent extends PureComponent {
                   }}
                 />
               </MuiPickersUtilsProvider>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography>{i10n['site-news.thumbnail-image']}</Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+              <input
+                type="file"
+                name="File"
+                onChange={this.onFileChange}
+                accept="image/*"
+              />
             </Grid>
 
             <Grid item xs={12}>
