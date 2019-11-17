@@ -55,6 +55,7 @@ class BuyMorePageComponent extends PureComponent {
 
     this.api.request
       .post('clientmanagement/validateCreditCard', newCard)
+      .preventSpinner()
       .preventDefaultSuccess()
       .success(() => {
         this.setState(prevState => ({
@@ -91,7 +92,8 @@ class BuyMorePageComponent extends PureComponent {
       SaveCard: saveCard,
       CreditNotes: [],
       PricingPlanCode: selectedPrice.code,
-      isAnualBuy
+      isAnualBuy,
+      IncomingHost: `${window.location.hostname}:${window.location.port}`
     };
 
     this.api.request
