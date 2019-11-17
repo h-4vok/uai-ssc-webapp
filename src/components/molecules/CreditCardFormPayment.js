@@ -11,7 +11,11 @@ import {
   CreditCardShowoff
 } from '../atoms';
 import { fromI10n } from '../../lib/GlobalState';
-import { handleNumericChange, identifyCreditCardIssuer } from '../../operators';
+import {
+  handleNumericChange,
+  identifyCreditCardIssuer,
+  makeChangeUppercase
+} from '../../operators';
 
 const handleChange = setter => evt => setter(evt.target.value);
 
@@ -171,7 +175,7 @@ export function CreditCardFormPayment(props) {
               label={fromI10n('payment.credit-card-holder')}
               fullWidth
               value={holder}
-              onChange={handleChange(setHolder)}
+              onChange={makeChangeUppercase(setHolder)}
             />
           </Grid>
 
@@ -193,7 +197,8 @@ export function CreditCardFormPayment(props) {
           onClick={() =>
             props.onConfirm(
               isSavedCard ? getSelectedCardObject() : buildCardObject(),
-              cleanAll
+              cleanAll,
+              saveCard
             )
           }
         >

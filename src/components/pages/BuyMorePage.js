@@ -50,9 +50,12 @@ class BuyMorePageComponent extends PureComponent {
       .go();
   };
 
-  onCreditCardConfirm = (newCard, callback) => {
+  onCreditCardConfirm = (newCard, callback, saveCard) => {
+    this.weAreSavingCard = saveCard;
+
     this.api.request
       .post('clientmanagement/validateCreditCard', newCard)
+      .preventDefaultSuccess()
       .success(() => {
         this.setState(prevState => ({
           paymentMethods: [...prevState.paymentMethods, newCard],
@@ -74,8 +77,27 @@ class BuyMorePageComponent extends PureComponent {
     }));
   };
 
-  onBuyConfirm = () => {
-    console.log('hasta aca llegamos');
+  onBuyConfirm = selectedPrice => {
+    // Figure out some values
+    const soleCreditCard = this.state.paymentMethods.find(x => !!x.CCV);
+
+    const saveCard =
+      this.weAreSavingCard && !!soleCreditCard && !soleCreditCard.Id;
+
+    const isAnualBuy = this.state.prices.Year.Price === selectedPrice.price;
+
+    const body = {
+      CreditCard: soleCreditCard,
+      SaveCard: saveCard,
+      CreditNotes: [],
+      PricingPlanCode: selectedPrice.code,
+      isAnualBuy
+    };
+
+    this.api.request
+      .post('clientmanagement/buy', body)
+      .success(() => this.props.history.push('/client-landing'))
+      .go();
   };
 
   render() {

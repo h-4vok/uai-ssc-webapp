@@ -99,7 +99,7 @@ class BuyMoreTemplateComponent extends PureComponent {
                 color="primary"
                 variant="contained"
                 fullWidth
-                onClick={onBuyConfirm}
+                onClick={() => onBuyConfirm(selectedPrice)}
               >
                 {i10n['global.confirm']}
               </Button>

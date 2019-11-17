@@ -33,7 +33,7 @@ class EstablishedPaymentMethodsComponent extends PureComponent {
     if (params.value) return params.value;
 
     if (this.props.paymentMethods.length === 1) {
-      return this.props.currentPriceToPay;
+      return this.props.currentPriceToPay + this.props.currentPriceToPay * 0.21;
     }
 
     return this.props.i10n['payment-method.grid.remainder'];
