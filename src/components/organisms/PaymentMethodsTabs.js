@@ -39,6 +39,11 @@ export function PaymentMethodsTabs(props) {
 
   return (
     <div className={classes.root}>
+      <Box mt={3} mb={1}>
+        <Typography variant="h5">
+          {fromI10n('payment-methods-tabs.title')}
+        </Typography>
+      </Box>
       <AppBar position="static" color="default">
         <Tabs
           value={tabValue}
@@ -59,7 +64,7 @@ export function PaymentMethodsTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={tabValue} index={0}>
-        Sos un negro
+        En desarrollo
       </TabPanel>
       <TabPanel value={tabValue} index={1}>
         {props.showCreditCard && (

@@ -44,7 +44,7 @@ class EstablishedPaymentMethodsComponent extends PureComponent {
       headerName: i10n['payment-method.grid.type'],
       field: 'PaymentMethodType',
       checkboxSelection: true,
-      width: 100
+      width: 200
     },
     {
       headerName: i10n['payment-method.grid.reference'],
@@ -100,7 +100,7 @@ class EstablishedPaymentMethodsComponent extends PureComponent {
             {i10n['global.action.delete']}
           </Button>
         </ButtonBar>
-        <div className="ag-theme-material" style={{ height: 300, width: 896 }}>
+        <div className="ag-theme-material" style={{ height: 200, width: 896 }}>
           <AgGridReact
             ref={c => (this.dataGrid = c)}
             rowSelection="single"

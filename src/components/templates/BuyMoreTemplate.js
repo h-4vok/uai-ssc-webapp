@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Container, Typography, Grid, Box, Button } from '@material-ui/core';
 import { PriceSelectionCard } from '../molecules';
-import { PaymentMethodsTabs, EstablishedPaymentMethods } from '../organisms';
+import {
+  PaymentMethodsTabs,
+  EstablishedPaymentMethods,
+  PurchaseBillDetail
+} from '../organisms';
 import withLocalization from '../../localization/withLocalization';
 import './BuyMoreTemplate.scss';
 
@@ -47,34 +51,49 @@ class BuyMoreTemplateComponent extends PureComponent {
           <Typography variant="h3">{model.ServicePlanName}</Typography>
         </Box>
         <Grid container>
-          <Grid item xs={6}>
-            <PriceSelectionCard
-              title={i10n['buy-more.months']}
-              priceFormatted={this.formatPrice(prices.Month.Price)}
-              onClick={() =>
-                this.onPriceSelection(
-                  prices.Month.Code,
-                  prices.Month.Price,
-                  'Month'
-                )
-              }
-              selected={selectedCard === 'Month'}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <PriceSelectionCard
-              title={i10n['buy-more.years']}
-              priceFormatted={this.formatPrice(prices.Year.Price)}
-              onClick={() =>
-                this.onPriceSelection(
-                  prices.Year.Code,
-                  prices.Year.Price,
-                  'Year'
-                )
-              }
-              selected={selectedCard === 'Year'}
-            />
-          </Grid>
+          {(!establishedPaymentMethods ||
+            !establishedPaymentMethods.length) && (
+            <Grid item xs={6}>
+              <PriceSelectionCard
+                title={i10n['buy-more.months']}
+                priceFormatted={this.formatPrice(prices.Month.Price)}
+                onClick={() =>
+                  this.onPriceSelection(
+                    prices.Month.Code,
+                    prices.Month.Price,
+                    'Month'
+                  )
+                }
+                selected={selectedCard === 'Month'}
+              />
+            </Grid>
+          )}
+          {(!establishedPaymentMethods ||
+            !establishedPaymentMethods.length) && (
+            <Grid item xs={6}>
+              <PriceSelectionCard
+                title={i10n['buy-more.years']}
+                priceFormatted={this.formatPrice(prices.Year.Price)}
+                onClick={() =>
+                  this.onPriceSelection(
+                    prices.Year.Code,
+                    prices.Year.Price,
+                    'Year'
+                  )
+                }
+                selected={selectedCard === 'Year'}
+              />
+            </Grid>
+          )}
+          {selectedPrice && (
+            <Grid item xs={12}>
+              <PurchaseBillDetail
+                selectedPurchase={selectedPrice}
+                servicePlanName={model.ServicePlanName}
+                isAnualBuy={selectedCard === 'Year'}
+              />
+            </Grid>
+          )}
           {selectedPrice && (
             <PaymentMethodsTabs
               creditCards={creditCards}
@@ -92,17 +111,18 @@ class BuyMoreTemplateComponent extends PureComponent {
                 />
               )}
           </Grid>
-
           <Grid item xs={12}>
             {establishedPaymentMethods && !!establishedPaymentMethods.length && (
-              <Button
-                color="primary"
-                variant="contained"
-                fullWidth
-                onClick={() => onBuyConfirm(selectedPrice)}
-              >
-                {i10n['global.confirm']}
-              </Button>
+              <Box m={4}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  fullWidth
+                  onClick={() => onBuyConfirm(selectedPrice)}
+                >
+                  {i10n['global.confirm']}
+                </Button>
+              </Box>
             )}
           </Grid>
         </Grid>

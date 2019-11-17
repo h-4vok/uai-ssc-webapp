@@ -607,6 +607,7 @@ export const defaultDictionary = {
   'payment-methods.tab.credit-note': 'Nota de Crédito',
   'payment.credit-card-select': 'Tarjeta de Crédito Guardada',
   'payment.credit-card-number': 'Número de Tarjeta de Crédito',
+  'payment.credit-card.number': 'Número de Tarjeta de Crédito',
   'payment.credit-card-ccv': 'Código CCV',
   'payment.credit-card-expiration': 'Fecha de Expiración (Formato MM/YY)',
   'payment.credit-card-holder': 'Titular',
@@ -624,11 +625,19 @@ export const defaultDictionary = {
   'payment.credit-card.validation.expired':
     'Ha ingresado una fecha de expiración que ya ha caducado. Por favor, intente con otra tarjeta de crédito o corrija el campo.',
   'payment.credit-card.validation.ccv-empty': 'El campo CCV no es válido.',
-  'payment.credit-card.number': 'Número de Tarjeta de Crédito',
   'payment.credit-card.validation.date-invalid-format':
     'Formato de fecha debe ser MMYY.',
+  'payment-method.type.credit-card': 'Tarjeta de Crédito',
   'payment-method.grid.type': 'Forma de Pago',
   'payment-method.grid.reference': 'Referencia',
   'payment-method.grid.value': 'Importe',
-  'payment-method.grid.remainder': 'Remanente'
+  'payment-method.grid.remainder': 'Remanente',
+  'purchase.extension.month': 'Extensión 1 Mes',
+  'purchase.extension.year': 'Extensión 12 Meses',
+  'purchase.payment-part.credit-note': 'Nota de Crédito',
+  'purchase.payment-part.credit-card': 'Tarjeta de Crédito',
+  'purchase-bill-detail.title': 'Detalle de la Compra',
+  'purchase-bill-detail.concept': 'Concepto',
+  'purchase-bill-detail.amount': 'Importe',
+  'payment-methods-tabs.title': 'Especificar formas de pago'
 };

@@ -17,8 +17,6 @@ import {
   makeChangeUppercase
 } from '../../operators';
 
-const handleChange = setter => evt => setter(evt.target.value);
-
 const creditCardIcons = {
   generic: <CreditCardGenericIcon width="48" height="48" />,
   visa: <CreditCardVisaIcon width="48" height="48" />,
