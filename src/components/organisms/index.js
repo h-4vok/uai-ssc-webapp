@@ -8,3 +8,4 @@ export { SurveySubmission } from './SurveySubmission';
 export { PaymentMethodsTabs } from './PaymentMethodsTabs';
 export { EstablishedPaymentMethods } from './EstablishedPaymentMethods';
 export { PurchaseBillDetail } from './PurchaseBillDetail';
+export { AccountTransactions } from './AccountTransactions';

@@ -32,6 +32,9 @@ class ClientLandingPageComponent extends PureComponent {
 
   onBuy = () => this.props.history.push('/client/buy-more');
 
+  onViewReceipt = id =>
+    this.props.history.push(`/client-management/bill/${id}`);
+
   render() {
     const { model } = this.state;
 
@@ -42,6 +45,8 @@ class ClientLandingPageComponent extends PureComponent {
             model={model}
             onManage={this.onManage}
             onBuy={this.onBuy}
+            onRefresh={this.loadClientData}
+            onViewReceipt={this.onViewReceipt}
           />
         )}
       </PlatformPageLayout>

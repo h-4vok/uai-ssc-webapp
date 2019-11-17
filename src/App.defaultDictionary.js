@@ -640,5 +640,14 @@ export const defaultDictionary = {
   'purchase-bill-detail.concept': 'Concepto',
   'purchase-bill-detail.amount': 'Importe',
   'payment-methods-tabs.title': 'Especificar formas de pago',
-  'menu.platform.account.my-service-status': 'Estado de Servicio'
+  'menu.platform.account.my-service-status': 'Estado de Servicio',
+  'transaction.date': 'Fecha',
+  'transaction.receipt-type': 'Tipo Comprobante',
+  'transaction.receipt-number': 'Número Cbte.',
+  'transaction.description': 'Servicio',
+  'transaction.amount': 'Importe',
+  'client-landing.account-status': 'Estado de Cuenta',
+  'transaction-type.purchase-bill': 'Factura',
+  'transaction-type.credit-note': 'Nota de Crédito',
+  'account-transactions.actions.view-receipt': 'Ver Comprobante'
 };
