@@ -16,7 +16,8 @@ class BuyMorePageComponent extends PureComponent {
       model: null,
       prices: null,
       creditCards: null,
-      paymentMethods: []
+      paymentMethods: [],
+      showCreditCard: true
     };
   }
 
@@ -54,15 +55,37 @@ class BuyMorePageComponent extends PureComponent {
       .post('clientmanagement/validateCreditCard', newCard)
       .success(() => {
         this.setState(prevState => ({
-          paymentMethods: [...prevState.paymentMethods, newCard]
+          paymentMethods: [...prevState.paymentMethods, newCard],
+          showCreditCard: false
         }));
       })
       .success(callback)
       .go();
   };
 
+  onDeletePaymentMethod = itemToDelete => {
+    const isCreditCard = itemToDelete.ReferenceModel.CCV;
+
+    this.setState(prevState => ({
+      paymentMethods: prevState.paymentMethods.filter(
+        item => itemToDelete.ReferenceModel !== item
+      ),
+      showCreditCard: isCreditCard
+    }));
+  };
+
+  onBuyConfirm = () => {
+    console.log('hasta aca llegamos');
+  };
+
   render() {
-    const { model, prices, creditCards, paymentMethods } = this.state;
+    const {
+      model,
+      prices,
+      creditCards,
+      paymentMethods,
+      showCreditCard
+    } = this.state;
 
     return (
       <PlatformPageLayout>
@@ -73,6 +96,9 @@ class BuyMorePageComponent extends PureComponent {
             prices={prices}
             onCreditCardConfirm={this.onCreditCardConfirm}
             establishedPaymentMethods={paymentMethods}
+            onDeletePaymentMethod={this.onDeletePaymentMethod}
+            showCreditCard={showCreditCard}
+            onBuyConfirm={this.onBuyConfirm}
           />
         )}
       </PlatformPageLayout>

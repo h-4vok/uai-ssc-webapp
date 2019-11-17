@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Container, Typography, Grid, Box } from '@material-ui/core';
+import { Container, Typography, Grid, Box, Button } from '@material-ui/core';
 import { PriceSelectionCard } from '../molecules';
-import { PaymentMethodsTabs } from '../organisms';
+import { PaymentMethodsTabs, EstablishedPaymentMethods } from '../organisms';
 import withLocalization from '../../localization/withLocalization';
 import './BuyMoreTemplate.scss';
 
@@ -31,7 +31,10 @@ class BuyMoreTemplateComponent extends PureComponent {
       i10n,
       onCreditCardConfirm,
       creditCards,
-      establishedPaymentMethods
+      establishedPaymentMethods,
+      onDeletePaymentMethod,
+      showCreditCard,
+      onBuyConfirm
     } = this.props;
     const { selectedPrice, selectedCard } = this.state;
 
@@ -76,12 +79,33 @@ class BuyMoreTemplateComponent extends PureComponent {
             <PaymentMethodsTabs
               creditCards={creditCards}
               onConfirm={onCreditCardConfirm}
+              showCreditCard={showCreditCard}
             />
           )}
+          <Grid item xs={12}>
+            {establishedPaymentMethods &&
+              !!establishedPaymentMethods.length && (
+                <EstablishedPaymentMethods
+                  currentPriceToPay={selectedPrice.price}
+                  paymentMethods={establishedPaymentMethods}
+                  onDeletePaymentMethod={onDeletePaymentMethod}
+                />
+              )}
+          </Grid>
+
+          <Grid item xs={12}>
+            {establishedPaymentMethods && !!establishedPaymentMethods.length && (
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                onClick={onBuyConfirm}
+              >
+                {i10n['global.confirm']}
+              </Button>
+            )}
+          </Grid>
         </Grid>
-        {establishedPaymentMethods && !!establishedPaymentMethods.length && (
-          <div>{JSON.stringify(establishedPaymentMethods)}</div>
-        )}
       </Container>
     );
   }

@@ -48,7 +48,7 @@ export function CreditCardFormPayment(props) {
   const [focused, setFocused] = React.useState('');
 
   const cleanAll = () => {
-    setCreditCard(0);
+    setCreditCard('0');
     setNumber('');
     setCcv('');
     setExpirationDate('');

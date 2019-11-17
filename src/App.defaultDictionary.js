@@ -626,5 +626,9 @@ export const defaultDictionary = {
   'payment.credit-card.validation.ccv-empty': 'El campo CCV no es válido.',
   'payment.credit-card.number': 'Número de Tarjeta de Crédito',
   'payment.credit-card.validation.date-invalid-format':
-    'Formato de fecha debe ser MMYY.'
+    'Formato de fecha debe ser MMYY.',
+  'payment-method.grid.type': 'Forma de Pago',
+  'payment-method.grid.reference': 'Referencia',
+  'payment-method.grid.value': 'Importe',
+  'payment-method.grid.remainder': 'Remanente'
 };

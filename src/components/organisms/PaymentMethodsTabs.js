@@ -47,23 +47,27 @@ export function PaymentMethodsTabs(props) {
           textColor="primary"
         >
           <Tab
-            label={fromI10n('payment-methods.tab.credit-card')}
-            icon={<CreditCard />}
-          />
-          <Tab
             label={fromI10n('payment-methods.tab.credit-note')}
             icon={<Loyalty />}
           />
+          {props.showCreditCard && (
+            <Tab
+              label={fromI10n('payment-methods.tab.credit-card')}
+              icon={<CreditCard />}
+            />
+          )}
         </Tabs>
       </AppBar>
       <TabPanel value={tabValue} index={0}>
-        <CreditCardFormPayment
-          creditCards={creditCards}
-          onConfirm={onConfirm}
-        />
+        Sos un negro
       </TabPanel>
       <TabPanel value={tabValue} index={1}>
-        Sos un negro
+        {props.showCreditCard && (
+          <CreditCardFormPayment
+            creditCards={creditCards}
+            onConfirm={onConfirm}
+          />
+        )}
       </TabPanel>
     </div>
   );
