@@ -639,5 +639,6 @@ export const defaultDictionary = {
   'purchase-bill-detail.title': 'Detalle de la Compra',
   'purchase-bill-detail.concept': 'Concepto',
   'purchase-bill-detail.amount': 'Importe',
-  'payment-methods-tabs.title': 'Especificar formas de pago'
+  'payment-methods-tabs.title': 'Especificar formas de pago',
+  'menu.platform.account.my-service-status': 'Estado de Servicio'
 };

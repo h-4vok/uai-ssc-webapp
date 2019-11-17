@@ -316,6 +316,27 @@ class PlatformBarComponent extends PureComponent {
                   'WORK_ORDER_EXECUTE',
                   'WORK_ORDER_REPORT'
                 )}
+                {this.buildMenuItem(
+                  '/client-landing',
+                  i10n['menu.platform.account.my-service-status'],
+                  'MEMBER_MANAGEMENT',
+                  'MEMBER_REPORT',
+                  'PATIENTS_MANAGEMENT',
+                  'PAYMENT_METHOD_MANAGEMENT',
+                  'RUN_EXECUTION_CANCEL',
+                  'RUN_EXECUTION_PRIMARY',
+                  'RUN_EXECUTION_QA',
+                  'RUN_EXECUTION_QC',
+                  'SAMPLE_FUNCTION_MANAGEMENT',
+                  'SAMPLE_FUNCTION_REPORT',
+                  'SAMPLE_MANAGEMENT',
+                  'SAMPLE_TYPE_MANAGEMENT',
+                  'SAMPLE_TYPE_REPORT',
+                  'USERS_INVITE',
+                  'WORK_ORDER_CREATE',
+                  'WORK_ORDER_EXECUTE',
+                  'WORK_ORDER_REPORT'
+                )}
               </Menu>
             </Toolbar>
           </AppBar>
