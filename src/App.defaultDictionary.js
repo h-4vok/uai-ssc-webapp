@@ -60,7 +60,7 @@ export const defaultDictionary = {
   'menu.platform.inventory-menu': 'Inventario',
   'menu.platform.inventory.patient': 'Gestión de Pacientes',
   'menu.platform.inventory.sample': 'Gestión de Muestras',
-  'menu.platform.management-menu': 'Auto-Gestión',
+  'menu.platform.management-menu': 'Gestión',
   'menu.platform.management.billing': 'Facturación',
   'menu.platform.management.members': 'Usuarios Miembro',
   'menu.platform.management.payment-type': 'Formas de Pago',
@@ -668,5 +668,28 @@ export const defaultDictionary = {
   'transaction.status-code.return-requested': 'Devolución Pedida',
   'transaction.status-code.return-approved': 'Anulada',
   'transaction.status-code.emitted': 'Emitida',
-  'transaction.status': 'Estado'
+  'transaction.status': 'Estado',
+  'global.action.approve': 'Aprobar',
+  'global.action.reject': 'Rechazar',
+  'receipt-return-request.status.approved': 'Aprobado',
+  'receipt-return-request.status.rejected': 'Rechazado',
+  'receipt-return-request.status.pending': 'Pendiente',
+  'menu.platform.management.receipt-return-request': 'Pedidos de Devolución',
+  'receipt-return-request.grid.receipt-number': 'Factura',
+  'receipt-return-request.grid.status': 'Estado',
+  'receipt-return-request.grid.request-date': 'Fecha de Pedido',
+  'receipt-return-request.grid.review-by': 'Revisado Por',
+  'receipt-return-request.grid.review-date': 'Fecha de Revisión',
+  'receipt-return-request.validation.bad-expiration-after':
+    'De aprobarse la devolución la fecha de vencimiento del servicio del cliente quedaría en el pasado. Debe rechazar la devolución y comunicarle al usuario el problema.',
+  'request-for-return.validation.not-purchase-bill':
+    'El comprobante seleccionado no es una factura.',
+  'receipt-return-request.grid.related-credit-note-number': 'Nota de Crédito',
+  'account-transactions.actions.view-credit-note': 'Ver Nota de Crédito',
+  'reject-return-request.page.title': 'Rechazo de Devolución',
+  'reject-return-request.page.help':
+    'Debe especificar un mensaje para el usuario sobre el rechazo de su pedido de devolución. Debe ingresar al menos 50 caracteres explicando el motivo del rechazo.',
+  'reject-return-request.rejection-text': 'Motivo de Rechazo',
+  'receipt-return-request.validation.rejection-motive-too-short':
+    'Debe especificar un motivo de rechazo de al menos 50 caracteres.'
 };

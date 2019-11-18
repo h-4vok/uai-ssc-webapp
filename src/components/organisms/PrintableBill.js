@@ -1,15 +1,13 @@
 import React from 'react';
-import {
-  BillHeader,
-  BillClientHeader,
-  BillProductDetail
-} from '../molecules';
+import { BillHeader, BillClientHeader, BillProductDetail } from '../molecules';
 
 export const PrintableBill = ({ receipt }) => (
   <>
     <BillHeader
       ReceiptNumber={receipt.ReceiptNumber}
       FormattedTransactionDate={receipt.FormattedTransactionDate}
+      ReceiptTypeDescription={receipt.ReceiptTypeDescription}
+      IsNullified={receipt.IsNullified}
     />
     <BillClientHeader
       ClientLegalName={receipt.ClientLegalName}
@@ -18,8 +16,11 @@ export const PrintableBill = ({ receipt }) => (
       IsCreditCardSale={receipt.IsCreditCardSale}
       IsCreditNoteSale={receipt.IsCreditNoteSale}
     />
-    <BillProductDetail Lines={receipt.Lines} FormattedSubtotal={receipt.FormattedSubtotal}
+    <BillProductDetail
+      Lines={receipt.Lines}
+      FormattedSubtotal={receipt.FormattedSubtotal}
       FormattedVAT={receipt.FormattedVAT}
-      FormattedTotal={receipt.FormattedTotal} />
+      FormattedTotal={receipt.FormattedTotal}
+    />
   </>
 );

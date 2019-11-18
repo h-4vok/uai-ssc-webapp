@@ -77,3 +77,7 @@ export { ClientLandingTemplate } from './ClientLandingTemplate';
 export { BuyMoreTemplate } from './BuyMoreTemplate';
 export { PrintBillTemplate } from './PrintBillTemplate';
 export { RequestReturnTemplate } from './RequestReturnTemplate';
+export {
+  ListReceiptReturnRequestsTemplate
+} from './ListReceiptReturnRequestsTemplate';
+export { RejectReturnRequestTemplate } from './RejectReturnRequestTemplate';

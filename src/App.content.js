@@ -57,6 +57,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'management/receipt-return-request/reject/:id',
+    Pages.RejectReturnRequestPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'management/receipt-return-request',
+    Pages.ListReceiptReturnRequestsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'support/chat-conversation/:id/reply',
     Pages.ReplyChatConversationPage,
     'PLATFORM_ADMIN'

@@ -75,3 +75,5 @@ export { ClientLandingPage } from './ClientLandingPage';
 export { BuyMorePage } from './BuyMorePage';
 export { PrintBillPage } from './PrintBillPage';
 export { RequestReturnPage } from './RequestReturnPage';
+export { ListReceiptReturnRequestsPage } from './ListReceiptReturnRequestsPage';
+export { RejectReturnRequestPage } from './RejectReturnRequestPage';

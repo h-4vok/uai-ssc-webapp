@@ -2,7 +2,12 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import './BillHeader.scss';
 
-export const BillHeader = ({ ReceiptNumber, FormattedTransactionDate }) => (
+export const BillHeader = ({
+  ReceiptNumber,
+  FormattedTransactionDate,
+  ReceiptTypeDescription,
+  IsNullified
+}) => (
   <>
     <Grid
       item
@@ -25,7 +30,10 @@ export const BillHeader = ({ ReceiptNumber, FormattedTransactionDate }) => (
       style={{ textAlign: 'right' }}
     >
       <Typography variant="h5">ORIGINAL</Typography>
-      <Typography>FACTURA</Typography>
+      <Typography>{ReceiptTypeDescription.toUpperCase()}</Typography>
+      <Typography style={{ color: 'red' }}>
+        {IsNullified ? 'ANULADA' : ''}
+      </Typography>
     </Grid>
 
     <Grid
