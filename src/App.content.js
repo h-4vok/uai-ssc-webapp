@@ -33,7 +33,11 @@ export const unprotectedRoutes = [
   buildRoute('survey-results/:id', Pages.SurveyResultsPage),
   buildRoute('blog', Pages.BlogPage),
   buildRoute('newsletter/subscribe', Pages.SubscribeToNewsletterPage),
-  buildRoute('newsletter/unsubscribe/:token', Pages.UnsubscribeToNewsletterPage)
+  buildRoute(
+    'newsletter/unsubscribe/:token',
+    Pages.UnsubscribeToNewsletterPage
+  ),
+  buildRoute('client-management/bill/:id', Pages.PrintBillPage)
 ];
 
 export const authenticatedRoutes = [

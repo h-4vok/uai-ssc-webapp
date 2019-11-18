@@ -649,5 +649,7 @@ export const defaultDictionary = {
   'client-landing.account-status': 'Estado de Cuenta',
   'transaction-type.purchase-bill': 'Factura',
   'transaction-type.credit-note': 'Nota de Crédito',
-  'account-transactions.actions.view-receipt': 'Ver Comprobante'
+  'account-transactions.actions.view-receipt': 'Ver Comprobante',
+  'global.action.goback': 'Volver',
+  'global.action.print': 'Imprimir'
 };

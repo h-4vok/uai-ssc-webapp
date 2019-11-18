@@ -73,3 +73,4 @@ export { ListSiteNewsCategoriesPage } from './ListSiteNewsCategoriesPage';
 export { EditSiteNewsCategoryPage } from './EditSiteNewsCategoryPage';
 export { ClientLandingPage } from './ClientLandingPage';
 export { BuyMorePage } from './BuyMorePage';
+export { PrintBillPage } from './PrintBillPage';

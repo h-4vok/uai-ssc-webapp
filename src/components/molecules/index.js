@@ -25,3 +25,6 @@ export { ChatDrawer } from './ChatDrawer';
 export { AdminChatNotifier } from './AdminChatNotifier';
 export { PriceSelectionCard } from './PriceSelectionCard';
 export { CreditCardFormPayment } from './CreditCardFormPayment';
+export { BillHeader } from './BillHeader';
+export { BillClientHeader } from './BillClientHeader';
+export { BillProductDetail } from './BillProductDetail';
