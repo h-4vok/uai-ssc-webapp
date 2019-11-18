@@ -76,3 +76,4 @@ export { EditSiteNewsCategoryTemplate } from './EditSiteNewsCategoryTemplate';
 export { ClientLandingTemplate } from './ClientLandingTemplate';
 export { BuyMoreTemplate } from './BuyMoreTemplate';
 export { PrintBillTemplate } from './PrintBillTemplate';
+export { RequestReturnTemplate } from './RequestReturnTemplate';

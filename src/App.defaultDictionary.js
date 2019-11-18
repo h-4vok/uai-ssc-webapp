@@ -651,5 +651,22 @@ export const defaultDictionary = {
   'transaction-type.credit-note': 'Nota de Crédito',
   'account-transactions.actions.view-receipt': 'Ver Comprobante',
   'global.action.goback': 'Volver',
-  'global.action.print': 'Imprimir'
+  'global.action.print': 'Imprimir',
+  'account-transactions.actions.request-return': 'Solicitar Devolución',
+  'request-return.typography.are-you-sure':
+    '¿Está seguro de solicitar una anulación de la siguiente compra?',
+  'request-return.typography.bill-row-header': 'Factura Comprobante:',
+  'request-return.typography.admin-notice':
+    'Un administrador de Sample Supply Chain revisará su pedido y se pondrá en contacto con usted.',
+  'request-return.typography.expiration-date-notice':
+    'Recuerde que la fecha de vencimiento de su servicio se verá afectada al aplicarse la devolución.',
+  'request-return.typography.credit-note-notice':
+    'De aprobarse la devolución, usted recibirá una nota de crédito que podrá utilizar en nuestra plataforma.',
+  'request-for-return.validation.already-exists':
+    'Ya existe un pedido de devolución para esta compra.',
+  'transaction.status-code.finalized': 'Finalizada',
+  'transaction.status-code.return-requested': 'Devolución Pedida',
+  'transaction.status-code.return-approved': 'Anulada',
+  'transaction.status-code.emitted': 'Emitida',
+  'transaction.status': 'Estado'
 };

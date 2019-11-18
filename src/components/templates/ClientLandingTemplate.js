@@ -12,7 +12,8 @@ class ClientLandingTemplateComponent extends PureComponent {
       onManage,
       onBuy,
       onRefresh,
-      onViewReceipt
+      onViewReceipt,
+      onRequestReturn
     } = this.props;
 
     return (
@@ -51,6 +52,7 @@ class ClientLandingTemplateComponent extends PureComponent {
             <AccountTransactions
               onViewReceipt={onViewReceipt}
               onRefresh={onRefresh}
+              onRequestReturn={onRequestReturn}
               items={model.Transactions}
             />
           </Box>

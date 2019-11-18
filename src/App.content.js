@@ -33,11 +33,7 @@ export const unprotectedRoutes = [
   buildRoute('survey-results/:id', Pages.SurveyResultsPage),
   buildRoute('blog', Pages.BlogPage),
   buildRoute('newsletter/subscribe', Pages.SubscribeToNewsletterPage),
-  buildRoute(
-    'newsletter/unsubscribe/:token',
-    Pages.UnsubscribeToNewsletterPage
-  ),
-  buildRoute('client-management/bill/:id', Pages.PrintBillPage)
+  buildRoute('newsletter/unsubscribe/:token', Pages.UnsubscribeToNewsletterPage)
 ];
 
 export const authenticatedRoutes = [
@@ -51,6 +47,11 @@ export const authenticatedRoutes = [
   buildRoute('do-feedback-form', Pages.DoFeedbackFormPage),
   buildRoute('client-landing', Pages.ClientLandingPage),
   buildRoute('client/buy-more', Pages.BuyMorePage),
+  buildRoute('client-management/bill/:id', Pages.PrintBillPage),
+  buildRoute(
+    'client-management/return-request/:receiptId',
+    Pages.RequestReturnPage
+  ),
   buildRoute('platform', inProgressPlatformPage)
 ];
 

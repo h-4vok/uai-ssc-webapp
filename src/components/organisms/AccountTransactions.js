@@ -57,6 +57,11 @@ class AccountTransactionsComponent extends PureComponent {
     {
       headerName: i10n['transaction.amount'],
       field: 'Total'
+    },
+    {
+      headerName: i10n['transaction.status'],
+      field: 'TransactionStatusCode',
+      valueFormatter: ({ value }) => i10n[`transaction.status-code.${value}`]
     }
   ];
 
@@ -69,7 +74,13 @@ class AccountTransactionsComponent extends PureComponent {
 
   render() {
     const { oneRowSelected } = this.state;
-    const { items, onRefresh, onViewReceipt, i10n } = this.props;
+    const {
+      items,
+      onRefresh,
+      onViewReceipt,
+      onRequestReturn,
+      i10n
+    } = this.props;
 
     return (
       <Container>
@@ -83,6 +94,13 @@ class AccountTransactionsComponent extends PureComponent {
             disabled={!oneRowSelected}
           >
             {i10n['account-transactions.actions.view-receipt']}
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => this.callWithOne(onRequestReturn)}
+            disabled={!oneRowSelected}
+          >
+            {i10n['account-transactions.actions.request-return']}
           </Button>
         </ButtonBar>
         <div className="ag-theme-material" style={{ height: 500, width: 1042 }}>

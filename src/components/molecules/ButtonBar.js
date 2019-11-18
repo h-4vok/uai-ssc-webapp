@@ -22,9 +22,18 @@ class ButtonBarComponent extends PureComponent {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, centerItems } = this.props;
+    const divStyle = {};
 
-    return <div className={classes.buttonBar}>{this.buildItems()}</div>;
+    if (centerItems) {
+      divStyle.justifyContent = 'center';
+    }
+
+    return (
+      <div style={divStyle} className={classes.buttonBar}>
+        {this.buildItems()}
+      </div>
+    );
   }
 }
 
