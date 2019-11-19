@@ -34,10 +34,13 @@ class BuyMoreTemplateComponent extends PureComponent {
       prices,
       i10n,
       onCreditCardConfirm,
+      onCreditNoteConfirm,
       creditCards,
+      creditNotes,
       establishedPaymentMethods,
       onDeletePaymentMethod,
       showCreditCard,
+      showCreditNotes,
       onBuyConfirm
     } = this.props;
     const { selectedPrice, selectedCard } = this.state;
@@ -97,8 +100,11 @@ class BuyMoreTemplateComponent extends PureComponent {
           {selectedPrice && (
             <PaymentMethodsTabs
               creditCards={creditCards}
-              onConfirm={onCreditCardConfirm}
+              creditNotes={creditNotes}
+              onCreditCardConfirm={onCreditCardConfirm}
+              onCreditNoteConfirm={onCreditNoteConfirm}
               showCreditCard={showCreditCard}
+              showCreditNotes={showCreditNotes}
             />
           )}
           <Grid item xs={12}>

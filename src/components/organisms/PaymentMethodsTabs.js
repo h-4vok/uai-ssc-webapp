@@ -3,7 +3,7 @@ import { Tabs, Tab, AppBar, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { CreditCard, Loyalty } from '@material-ui/icons';
 import { fromI10n } from '../../lib/GlobalState';
-import { CreditCardFormPayment } from '../molecules';
+import { CreditCardFormPayment, CreditNoteFormPayment } from '../molecules';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,7 +32,12 @@ function TabPanel(props) {
 
 export function PaymentMethodsTabs(props) {
   const classes = useStyles();
-  const { onConfirm, creditCards } = props;
+  const {
+    onCreditCardConfirm,
+    onCreditNoteConfirm,
+    creditCards,
+    creditNotes
+  } = props;
   const [tabValue, setTabValue] = React.useState(0);
 
   const handleTabChange = (evt, newTab) => setTabValue(newTab);
@@ -51,10 +56,12 @@ export function PaymentMethodsTabs(props) {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab
-            label={fromI10n('payment-methods.tab.credit-note')}
-            icon={<Loyalty />}
-          />
+          {props.showCreditNotes && (
+            <Tab
+              label={fromI10n('payment-methods.tab.credit-note')}
+              icon={<Loyalty />}
+            />
+          )}
           {props.showCreditCard && (
             <Tab
               label={fromI10n('payment-methods.tab.credit-card')}
@@ -64,13 +71,18 @@ export function PaymentMethodsTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={tabValue} index={0}>
-        En desarrollo
+        {props.showCreditNotes && (
+          <CreditNoteFormPayment
+            creditNotes={creditNotes}
+            onConfirm={onCreditNoteConfirm}
+          />
+        )}
       </TabPanel>
       <TabPanel value={tabValue} index={1}>
         {props.showCreditCard && (
           <CreditCardFormPayment
             creditCards={creditCards}
-            onConfirm={onConfirm}
+            onConfirm={onCreditCardConfirm}
           />
         )}
       </TabPanel>

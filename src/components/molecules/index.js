@@ -28,3 +28,4 @@ export { CreditCardFormPayment } from './CreditCardFormPayment';
 export { BillHeader } from './BillHeader';
 export { BillClientHeader } from './BillClientHeader';
 export { BillProductDetail } from './BillProductDetail';
+export { CreditNoteFormPayment } from './CreditNoteFormPayment';

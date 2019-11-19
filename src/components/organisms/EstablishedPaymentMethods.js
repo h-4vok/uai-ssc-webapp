@@ -71,9 +71,9 @@ class EstablishedPaymentMethodsComponent extends PureComponent {
       }
 
       return {
-        PaymentMethodType: this.props.i10n['payment-method.type.credit-card'],
-        PaymentMethodReference: item.Number,
-        PaymentMethodValue: item.Total,
+        PaymentMethodType: this.props.i10n['payment-method.type.credit-note'],
+        PaymentMethodReference: item.CreditNoteNumber,
+        PaymentMethodValue: item.Amount,
         ReferenceModel: item
       };
     });

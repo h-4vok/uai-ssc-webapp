@@ -4,6 +4,7 @@ import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
 import { PlatformPageLayout } from '../organisms';
 import { BuyMoreTemplate } from '../templates';
+import { fromI10n } from '../../lib/GlobalState';
 
 class BuyMorePageComponent extends PureComponent {
   constructor(props) {
@@ -16,8 +17,10 @@ class BuyMorePageComponent extends PureComponent {
       model: null,
       prices: null,
       creditCards: null,
+      creditNotes: null,
       paymentMethods: [],
-      showCreditCard: true
+      showCreditCard: true,
+      showCreditNotes: true
     };
   }
 
@@ -25,6 +28,7 @@ class BuyMorePageComponent extends PureComponent {
     this.loadLandingData();
     this.loadPrices();
     this.loadCreditCards();
+    this.loadCreditNotes();
   }
 
   loadLandingData = () => {
@@ -50,6 +54,15 @@ class BuyMorePageComponent extends PureComponent {
       .go();
   };
 
+  loadCreditNotes = () => {
+    this.api.request
+      .get('clientmanagement/selectableCreditNotes')
+      .success(({ body: { Result: creditNotes } }) =>
+        this.setState({ creditNotes })
+      )
+      .go();
+  };
+
   onCreditCardConfirm = (newCard, callback, saveCard) => {
     this.weAreSavingCard = saveCard;
 
@@ -67,15 +80,52 @@ class BuyMorePageComponent extends PureComponent {
       .go();
   };
 
+  onCreditNoteConfirm = newCreditNote => {
+    const noteExists = this.state.paymentMethods.some(
+      x => x.CreditNoteNumber === newCreditNote.CreditNoteNumber
+    );
+
+    if (noteExists) {
+      this.notifier.warning(
+        fromI10n('payment-methods.credit-note-already-selected')
+      );
+      return;
+    }
+
+    this.setState(
+      prevState => ({
+        paymentMethods: [...prevState.paymentMethods, newCreditNote],
+        creditNotes: prevState.creditNotes.filter(x => x !== newCreditNote),
+        showCreditNotes: false
+      }),
+      () => this.setState({ showCreditNotes: true })
+    );
+  };
+
   onDeletePaymentMethod = itemToDelete => {
     const isCreditCard = itemToDelete.ReferenceModel.CCV;
+    const resolveCreditNotes = prevState => {
+      if (isCreditCard) return prevState.creditNotes;
 
-    this.setState(prevState => ({
-      paymentMethods: prevState.paymentMethods.filter(
-        item => itemToDelete.ReferenceModel !== item
-      ),
-      showCreditCard: isCreditCard
-    }));
+      prevState.creditNotes.push(itemToDelete.ReferenceModel);
+      return prevState.creditNotes;
+    };
+
+    if (isCreditCard) {
+      this.setState(prevState => ({
+        paymentMethods: prevState.paymentMethods.filter(
+          item => itemToDelete.ReferenceModel !== item
+        ),
+        showCreditCard: isCreditCard
+      }));
+    } else {
+      this.setState(prevState => ({
+        paymentMethods: prevState.paymentMethods.filter(
+          item => itemToDelete.ReferenceModel !== item
+        ),
+        creditNotes: resolveCreditNotes(prevState)
+      }));
+    }
   };
 
   onBuyConfirm = selectedPrice => {
@@ -90,7 +140,7 @@ class BuyMorePageComponent extends PureComponent {
     const body = {
       CreditCard: soleCreditCard,
       SaveCard: saveCard,
-      CreditNotes: [],
+      CreditNotes: this.state.paymentMethods.filter(x => !x.CCV),
       PricingPlanCode: selectedPrice.code,
       isAnualBuy,
       IncomingHost: `${window.location.hostname}:${window.location.port}`
@@ -107,8 +157,10 @@ class BuyMorePageComponent extends PureComponent {
       model,
       prices,
       creditCards,
+      creditNotes,
       paymentMethods,
-      showCreditCard
+      showCreditCard,
+      showCreditNotes
     } = this.state;
 
     return (
@@ -117,11 +169,14 @@ class BuyMorePageComponent extends PureComponent {
           <BuyMoreTemplate
             model={model}
             creditCards={creditCards}
+            creditNotes={creditNotes}
             prices={prices}
             onCreditCardConfirm={this.onCreditCardConfirm}
+            onCreditNoteConfirm={this.onCreditNoteConfirm}
             establishedPaymentMethods={paymentMethods}
             onDeletePaymentMethod={this.onDeletePaymentMethod}
             showCreditCard={showCreditCard}
+            showCreditNotes={showCreditNotes}
             onBuyConfirm={this.onBuyConfirm}
           />
         )}

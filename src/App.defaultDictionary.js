@@ -691,5 +691,9 @@ export const defaultDictionary = {
     'Debe especificar un mensaje para el usuario sobre el rechazo de su pedido de devolución. Debe ingresar al menos 50 caracteres explicando el motivo del rechazo.',
   'reject-return-request.rejection-text': 'Motivo de Rechazo',
   'receipt-return-request.validation.rejection-motive-too-short':
-    'Debe especificar un motivo de rechazo de al menos 50 caracteres.'
+    'Debe especificar un motivo de rechazo de al menos 50 caracteres.',
+  'payment.credit-note-select': 'Seleccionar una nota de crédito',
+  'payment-methods.credit-note-already-selected':
+    'Esta nota de crédito ya se encuentra seleccionada.',
+  'payment-method.type.credit-note': 'Nota de Crédito'
 };
