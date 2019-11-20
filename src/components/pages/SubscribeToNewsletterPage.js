@@ -14,11 +14,30 @@ class SubscribeToNewsletterPageComponent extends PureComponent {
 
     this.notifier = new SnackbarVisitor(this.props);
     this.api = new API(this.notifier);
+
+    this.state = {
+      categories: null
+    };
   }
 
-  onConfirm = Email => {
+  componentDidMount() {
+    this.loadCategories();
+  }
+
+  loadCategories = () => {
     this.api.request
-      .put(apiroute, { Email }, 0)
+      .get('sitenewscategory')
+      .success(res => {
+        this.setState({
+          categories: res.body.Result
+        });
+      })
+      .go();
+  };
+
+  onConfirm = (Email, SelectedCategories) => {
+    this.api.request
+      .put(apiroute, { Email, SelectedCategories }, 0)
       .preventDefaultSuccess()
       .success(() =>
         this.notifier.success(this.props.i10n['subscribe-newsletter.success'])
@@ -28,9 +47,14 @@ class SubscribeToNewsletterPageComponent extends PureComponent {
   };
 
   render() {
+    const { categories } = this.state;
+
     return (
       <PageLayout>
-        <SubscribeToNewsletterTemplate onConfirm={this.onConfirm} />
+        <SubscribeToNewsletterTemplate
+          categories={categories}
+          onConfirm={this.onConfirm}
+        />
       </PageLayout>
     );
   }

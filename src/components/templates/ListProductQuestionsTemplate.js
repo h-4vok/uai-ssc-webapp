@@ -89,7 +89,7 @@ class ListProductQuestionsTemplateComponent extends PureComponent {
 
   render() {
     const { items, classes, onRefresh, onReplyAction, i10n } = this.props;
-    const { oneNonRepliedRowSelected: oneNonRepliedRowSelected } = this.state;
+    const { oneNonRepliedRowSelected } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">

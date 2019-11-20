@@ -3,7 +3,6 @@ import { withSnackbar } from 'notistack';
 import { PlatformPageLayout } from '../organisms';
 import { SnackbarVisitor } from '../../lib/SnackbarVisitor';
 import { API } from '../../lib/xhr';
-import { ConfirmDialog } from '../molecules';
 import { ListProductQuestionsTemplate } from '../templates';
 
 const apiRoute = 'productquestion';
