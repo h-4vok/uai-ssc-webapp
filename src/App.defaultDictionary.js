@@ -695,5 +695,36 @@ export const defaultDictionary = {
   'payment.credit-note-select': 'Seleccionar una nota de crédito',
   'payment-methods.credit-note-already-selected':
     'Esta nota de crédito ya se encuentra seleccionada.',
-  'payment-method.type.credit-note': 'Nota de Crédito'
+  'payment-method.type.credit-note': 'Nota de Crédito',
+  'buy-more.validation.combined-payment-not-needed':
+    'Las notas de crédito especificadas ya cubren el importe. Puede remover la tarjeta de crédito.',
+  'buy-more.validation.amount-not-met':
+    'Las notas de crédito especificadas no cubren el importe. Agregue otra nota de crédito o especifique una tarjeta de crédito.',
+  'buy-more.validation.too-many-credit-notes':
+    'Ha especificado demasiadas notas de crédito. Puede cubrir el importe con menos notas. Revise y vuelva a intentarlo.',
+  'product-detail.no-scoring-yet': 'Sin valoraciones aún ',
+  'product-detail.your-question': 'Escriba su pregunta',
+  'product-detail.action.send-question': 'Enviar Pregunta',
+  'product-detail.question-sent':
+    'Nuestros especialistas pronto responderán su pregunta.',
+  'product-detail.your-name': 'Indique su nombre',
+  'product-question.question-by': 'Su Nombre',
+  'product-question.question': 'Pregunta',
+  'validator.api.int-positive-non-zero': 'El campo {0} debe ser mayor a cero.',
+  'product-question.reply': 'Respuesta',
+  'menu.platform.management.product-question': 'Preguntas y Respuestas',
+  'product-question.field.question-by': 'Pregunta Por',
+  'product-question.field.posted-date': 'Fecha Pregunta',
+  'product-question.field.pricing-plan-name': 'Servicio',
+  'product-question.field.replied-date': 'Fecha Respuesta',
+  'product-question.action.reply': 'Responder',
+  'management.product-question.reply.title': 'Responder al usuario',
+  'management.product-question.reply.field.reply': 'Respuesta',
+  'management.product-question.reply.field.question-by': 'Pregunta por:',
+  'management.product-question.reply.field.question': 'Pregunta:',
+  'management.product-question.reply.field.posted-date': 'Fecha de la Pregunta',
+  'management.product-question.reply.field.pricing-plan-name':
+    'Plan de Servicio',
+  'product-detail.scores': 'Valoraciones',
+  'product-detail.questions': 'Preguntas'
 };

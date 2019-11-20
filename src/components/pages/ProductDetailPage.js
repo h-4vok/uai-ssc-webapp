@@ -16,27 +16,54 @@ class ProductDetailPageComponent extends PureComponent {
     this.planCode = this.props.match.params.code;
 
     this.state = {
-      detailModel: {},
-      allLoaded: false
+      detailModel: null,
+      questions: null
     };
   }
 
   componentDidMount() {
-    this.api.request
-      .get(`pricingplancomment?planCode=${this.planCode}`)
-      .success(res =>
-        this.setState({ detailModel: res.body.Result, allLoaded: true })
-      )
-      .go();
+    this.loadDetailsAndValorations();
+    this.loadQuestionsAndAnswers();
   }
 
+  loadDetailsAndValorations = () => {
+    this.api.request
+      .get(`pricingplancomment?planCode=${this.planCode}`)
+      .success(res => this.setState({ detailModel: res.body.Result }))
+      .go();
+  };
+
+  loadQuestionsAndAnswers = () => {
+    this.api.request
+      .get(`productquestion?pricingPlanCode=${this.planCode}`)
+      .success(res => this.setState({ questions: res.body.Result }))
+      .go();
+  };
+
+  onQuestionConfirm = (body, i10n, callback) => {
+    this.api.request
+      .post('productquestion', { PricingPlanCode: this.planCode, ...body })
+      .preventDefaultSuccess()
+      .success(() =>
+        this.notifier.success(i10n['product-detail.question-sent'])
+      )
+      .success(callback)
+      .success(this.loadQuestionsAndAnswers)
+      .go();
+  };
+
   render() {
-    const { allLoaded, detailModel } = this.state;
+    const { questions, detailModel } = this.state;
 
     return (
       <PageLayout>
-        {allLoaded && (
-          <ProductDetailTemplate model={detailModel} planCode={this.planCode} />
+        {detailModel && questions && (
+          <ProductDetailTemplate
+            questions={questions}
+            model={detailModel}
+            planCode={this.planCode}
+            onQuestionConfirm={this.onQuestionConfirm}
+          />
         )}
       </PageLayout>
     );

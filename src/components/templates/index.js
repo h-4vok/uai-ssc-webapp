@@ -81,3 +81,5 @@ export {
   ListReceiptReturnRequestsTemplate
 } from './ListReceiptReturnRequestsTemplate';
 export { RejectReturnRequestTemplate } from './RejectReturnRequestTemplate';
+export { ListProductQuestionsTemplate } from './ListProductQuestionsTemplate';
+export { ReplyProductQuestionTemplate } from './ReplyProductQuestionTemplate';

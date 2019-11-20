@@ -77,3 +77,5 @@ export { PrintBillPage } from './PrintBillPage';
 export { RequestReturnPage } from './RequestReturnPage';
 export { ListReceiptReturnRequestsPage } from './ListReceiptReturnRequestsPage';
 export { RejectReturnRequestPage } from './RejectReturnRequestPage';
+export { ListProductQuestionsPage } from './ListProductQuestionsPage';
+export { ReplyProductQuestionPage } from './ReplyProductQuestionPage';

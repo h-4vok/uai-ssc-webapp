@@ -60,6 +60,16 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'management/product-question/reply/:id',
+    Pages.ReplyProductQuestionPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
+    'management/product-question',
+    Pages.ListProductQuestionsPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'management/receipt-return-request/reject/:id',
     Pages.RejectReturnRequestPage,
     'PLATFORM_ADMIN'
