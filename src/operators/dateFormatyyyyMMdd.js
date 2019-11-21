@@ -1,5 +1,5 @@
 const asTwoDigits = text => {
-  if (text.length === 1) return `0${text}`;
+  if (text.toString().length === 1) return `0${text}`;
   return text;
 };
 

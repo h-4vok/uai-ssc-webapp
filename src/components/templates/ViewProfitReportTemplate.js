@@ -18,12 +18,13 @@ class ViewProfitReportTemplateComponent extends PureComponent {
 
     this.state = {
       dateFrom: oneYearAgo,
-      dateTo: today
+      dateTo: today,
+      showGraph: false
     };
   }
 
   onDateChange = fieldName => date => {
-    this.setState({ [fieldName]: date });
+    this.setState({ [fieldName]: date, showGraph: false });
   };
 
   mapToChartData = data =>
@@ -34,10 +35,10 @@ class ViewProfitReportTemplateComponent extends PureComponent {
 
   render() {
     const { data, i10n, onRefresh } = this.props;
-    const { dateFrom, dateTo } = this.state;
+    const { dateFrom, dateTo, showGraph } = this.state;
 
     let dataPoints = null;
-    console.log({ data });
+
     if (data) {
       dataPoints = this.mapToChartData(data);
     }
@@ -84,14 +85,17 @@ class ViewProfitReportTemplateComponent extends PureComponent {
                 color="primary"
                 variant="contained"
                 fullWidth
-                onClick={() => onRefresh(dateFrom, dateTo)}
+                onClick={() => {
+                  this.setState({ showGraph: true });
+                  onRefresh(dateFrom, dateTo);
+                }}
               >
                 {i10n['global.action.refresh']}
               </Button>
             </Grid>
           </Grid>
         </Container>
-        {data && (
+        {data && showGraph && (
           <ProfitReportChart
             containerId="view-profit-chart-div"
             dataPoints={dataPoints}

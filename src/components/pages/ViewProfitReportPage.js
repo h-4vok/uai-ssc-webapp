@@ -14,7 +14,7 @@ class ViewProfitReportPageComponent extends PureComponent {
     this.api = new API(this.notifier);
 
     this.state = {
-      data: null
+      data: null,
     };
   }
 
@@ -25,7 +25,7 @@ class ViewProfitReportPageComponent extends PureComponent {
           dateFrom
         )}&dateTo=${dateFormatyyyyMMdd(dateTo)}`
       )
-      .success(res => this.setState({ data: res.body.Result }))
+      .success(res => this.setState({ data: res.body.Result}))
       .go();
   };
 
@@ -34,7 +34,10 @@ class ViewProfitReportPageComponent extends PureComponent {
 
     return (
       <PlatformPageLayout>
-        <ViewProfitReportTemplate data={data} onRefresh={this.onRefresh} />
+        <ViewProfitReportTemplate
+          data={data}
+          onRefresh={this.onRefresh}
+        />
       </PlatformPageLayout>
     );
   }

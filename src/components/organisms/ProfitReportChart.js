@@ -32,12 +32,23 @@ class ProfitReportChartComponent extends PureComponent {
   }
 
   componentDidMount() {
+    this.updateChart();
+  }
+
+  componentDidUpdate() {
+    this.updateChart();
+  }
+
+  updateChart = () => {
     const chart = new this.CanvasJS.Chart(this.props.containerId, this.options);
 
     chart.render();
-  }
+  };
 
   render() {
+    const { dataPoints } = this.props;
+    this.options.data[0].dataPoints = dataPoints;
+
     return <div id={this.props.containerId} />;
   }
 }
