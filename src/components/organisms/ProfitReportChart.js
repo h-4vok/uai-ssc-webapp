@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import withLocalization from '../../localization/withLocalization';
 
-class ChatStatisticsChartComponent extends PureComponent {
+class ProfitReportChartComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -10,16 +10,15 @@ class ChatStatisticsChartComponent extends PureComponent {
     const { dataPoints, i10n } = this.props;
 
     this.options = {
+      zoomEnabled: true,
       exportEnabled: true,
       animationEnabled: true,
       title: {
-        text: i10n['chat-statistics-chart.title']
+        text: i10n['profit-report-chart.title']
       },
       axisY: {
-        title: i10n['chat-statistics-chart.axis-y'],
-        suffix: ' %',
-        minimum: 0,
-        maximum: 100
+        title: i10n['profit-report-chart.axis-y'],
+        prefix: '$ '
       },
       data: [
         {
@@ -43,6 +42,4 @@ class ChatStatisticsChartComponent extends PureComponent {
   }
 }
 
-export const ChatStatisticsChart = withLocalization(
-  ChatStatisticsChartComponent
-);
+export const ProfitReportChart = withLocalization(ProfitReportChartComponent);

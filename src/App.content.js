@@ -60,6 +60,11 @@ export const authenticatedRoutes = [
 
 export const protectedRoutes = [
   buildPlatformRoute(
+    'management/profit-report',
+    Pages.ViewProfitReportPage,
+    'PLATFORM_ADMIN'
+  ),
+  buildPlatformRoute(
     'management/chat-statistics',
     Pages.ViewChatStatisticsPage,
     'PLATFORM_ADMIN'

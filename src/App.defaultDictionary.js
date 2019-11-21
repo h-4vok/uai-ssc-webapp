@@ -731,5 +731,11 @@ export const defaultDictionary = {
   'chat-statistics-chart.title': 'Efectividad en Respuestas al Cliente por Día',
   'view-chat-stats.page.title': 'Estadísticas de la Mensajería',
   'chat-statistics-chart.axis-y': 'Porcentaje de Efectividad',
-  'menu.platform.management.chat-statistics': 'Estadísticas de Mensajería'
+  'menu.platform.management.chat-statistics': 'Estadísticas de Mensajería',
+  'view-profit-report.page.title': 'Reporte de Utilidades',
+  'view-profit-report.filter.date-from': 'Fecha desde',
+  'view-profit-report.filter.date-to': 'Fecha hasta',
+  'menu.platform.management.profit-report': 'Reporte de Utilidades',
+  'profit-report-chart.title': 'Utilidades',
+  'profit-report-chart.axis-y': 'Facturación'
 };

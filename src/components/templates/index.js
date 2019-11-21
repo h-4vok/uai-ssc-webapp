@@ -84,3 +84,4 @@ export { RejectReturnRequestTemplate } from './RejectReturnRequestTemplate';
 export { ListProductQuestionsTemplate } from './ListProductQuestionsTemplate';
 export { ReplyProductQuestionTemplate } from './ReplyProductQuestionTemplate';
 export { ViewChatStatisticsTemplate } from './ViewChatStatisticsTemplate';
+export { ViewProfitReportTemplate } from './ViewProfitReportTemplate';
