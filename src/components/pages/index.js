@@ -79,3 +79,4 @@ export { ListReceiptReturnRequestsPage } from './ListReceiptReturnRequestsPage';
 export { RejectReturnRequestPage } from './RejectReturnRequestPage';
 export { ListProductQuestionsPage } from './ListProductQuestionsPage';
 export { ReplyProductQuestionPage } from './ReplyProductQuestionPage';
+export { ViewChatStatisticsPage } from './ViewChatStatisticsPage';

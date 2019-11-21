@@ -41,7 +41,7 @@ class ChatDrawerComponent extends PureComponent {
     if (chatboxDiv) chatboxDiv.scrollTop = chatboxDiv.scrollHeight;
   };
 
-  onChatReply = () => {
+  onChatReply = callback => {
     const body = { Content: this.state.reply.Content };
 
     this.api.request
@@ -52,6 +52,7 @@ class ChatDrawerComponent extends PureComponent {
         this.setConversation(res.body.Result);
         this.setState({ reply: { Content: '' } });
       })
+      .success(callback)
       .go();
   };
 

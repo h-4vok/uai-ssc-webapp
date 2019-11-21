@@ -18,9 +18,8 @@ class ReplySupportTicketTemplateComponent extends PureComponent {
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
-  cleanAndReply = callback => {
+  cleanAndReply = () => {
     this.setState({ Content: '' });
-    callback();
   };
 
   render() {
@@ -55,7 +54,7 @@ class ReplySupportTicketTemplateComponent extends PureComponent {
           fullWidth
           variant="contained"
           color="primary"
-          onClick={() => this.cleanAndReply(onConfirmReply)}
+          onClick={() => onConfirmReply(this.cleanAndReply)}
         >
           {i10n['support-ticket.action.reply']}
         </Button>

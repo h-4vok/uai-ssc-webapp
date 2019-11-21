@@ -726,5 +726,10 @@ export const defaultDictionary = {
   'management.product-question.reply.field.pricing-plan-name':
     'Plan de Servicio',
   'product-detail.scores': 'Valoraciones',
-  'product-detail.questions': 'Preguntas'
+  'product-detail.questions': 'Preguntas',
+  'subscribe-newsletter.categories': 'Categorías',
+  'chat-statistics-chart.title': 'Efectividad en Respuestas al Cliente por Día',
+  'view-chat-stats.page.title': 'Estadísticas de la Mensajería',
+  'chat-statistics-chart.axis-y': 'Porcentaje de Efectividad',
+  'menu.platform.management.chat-statistics': 'Estadísticas de Mensajería'
 };

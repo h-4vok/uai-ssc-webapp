@@ -10,3 +10,5 @@ export { EstablishedPaymentMethods } from './EstablishedPaymentMethods';
 export { PurchaseBillDetail } from './PurchaseBillDetail';
 export { AccountTransactions } from './AccountTransactions';
 export { PrintableBill } from './PrintableBill';
+export { ChatStatisticsChart } from './ChatStatisticsChart';
+export { ChatStatisticsGrid } from './ChatStatisticsGrid';

@@ -57,7 +57,7 @@ class ReplyChatConversationPageComponent extends PureComponent {
       .go();
   };
 
-  onConfirmReply = () => {
+  onConfirmReply = callback => {
     const body = { Content: this.state.reply.Content };
 
     this.api.request
@@ -65,6 +65,7 @@ class ReplyChatConversationPageComponent extends PureComponent {
       .preventSpinner()
       .preventDefaultSuccess()
       .success(res => this.setConversation(res.body.Result))
+      .success(callback)
       .go();
   };
 
