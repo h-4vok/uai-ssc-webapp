@@ -42,7 +42,7 @@ class NewBackupFSTemplateComponent extends PureComponent {
           mt={3}
           onClick={this.showBrowseFolder}
         >
-          Seleccionar Carpeta
+          {i10n['new-backup-fs.browse-folder']}
         </Button>
         <Box mt={3}>
           <Typography>{FilePath}</Typography>

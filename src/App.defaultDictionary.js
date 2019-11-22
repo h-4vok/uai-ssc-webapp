@@ -737,5 +737,7 @@ export const defaultDictionary = {
   'view-profit-report.filter.date-to': 'Fecha hasta',
   'menu.platform.management.profit-report': 'Reporte de Utilidades',
   'profit-report-chart.title': 'Utilidades',
-  'profit-report-chart.axis-y': 'Facturación'
+  'profit-report-chart.axis-y': 'Facturación',
+  'new-backup-fs.browse-folder': 'Seleccionar Carpeta',
+  'backup.doBackupTo': 'Resguardar En'
 };

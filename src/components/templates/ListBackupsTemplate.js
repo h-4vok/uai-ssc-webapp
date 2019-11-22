@@ -130,7 +130,7 @@ class ListBackupsTemplateComponent extends PureComponent {
                 onClick={onBackupBrowseAction}
                 className={classes.button}
               >
-                Resguardo a carpeta
+                {i10n['backup.doBackupTo']}
               </Button>
             )}
             {GlobalState.Authorizer.has('PLATFORM_RESTORE') && (
