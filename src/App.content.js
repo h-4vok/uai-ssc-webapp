@@ -303,6 +303,11 @@ export const protectedRoutes = [
     'PLATFORM_ADMIN'
   ),
   buildPlatformRoute(
+    'security/backup/browse-new',
+    Pages.NewBackupFSPage,
+    'PLATFORM_BACKUP'
+  ),
+  buildPlatformRoute(
     'security/backup/new',
     Pages.NewBackupPage,
     'PLATFORM_BACKUP'

@@ -96,6 +96,7 @@ class ListBackupsTemplateComponent extends PureComponent {
       classes,
       onRefresh,
       onBackupAction,
+      onBackupBrowseAction,
       onRestoreAction,
       onRestoreFromAction,
       i10n
@@ -121,6 +122,15 @@ class ListBackupsTemplateComponent extends PureComponent {
                 className={classes.button}
               >
                 {i10n['backup.doBackup']}
+              </Button>
+            )}
+            {GlobalState.Authorizer.has('PLATFORM_BACKUP') && (
+              <Button
+                variant="contained"
+                onClick={onBackupBrowseAction}
+                className={classes.button}
+              >
+                Resguardo a carpeta
               </Button>
             )}
             {GlobalState.Authorizer.has('PLATFORM_RESTORE') && (

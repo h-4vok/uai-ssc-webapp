@@ -85,3 +85,4 @@ export { ListProductQuestionsTemplate } from './ListProductQuestionsTemplate';
 export { ReplyProductQuestionTemplate } from './ReplyProductQuestionTemplate';
 export { ViewChatStatisticsTemplate } from './ViewChatStatisticsTemplate';
 export { ViewProfitReportTemplate } from './ViewProfitReportTemplate';
+export { NewBackupFSTemplate } from './NewBackupFSTemplate';

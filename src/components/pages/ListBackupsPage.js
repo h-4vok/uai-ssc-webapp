@@ -39,12 +39,6 @@ class ListBackupsPageComponent extends PureComponent {
   };
 
   onBackupConfirm = () => {
-    // primero levantar el dialog
-
-    // que elija el usuario un path con archivo
-
-    // y ahora si, llamamos a la api con eso
-
     this.api.request
       .post(apiRoute, { FilePath: '' })
       .preventDefaultSuccess()
@@ -71,6 +65,9 @@ class ListBackupsPageComponent extends PureComponent {
     this.props.history.push('/security/backup/new');
   };
 
+  onBackupBrowseAction = () =>
+    this.props.history.push('/security/backup/browse-new');
+
   onRestoreAction = (id, dataGridApi) => {
     this.setState({
       dialogOpen: true,
@@ -95,6 +92,7 @@ class ListBackupsPageComponent extends PureComponent {
           items={items}
           onRefresh={this.onRefresh}
           onBackupAction={this.onBackupAction}
+          onBackupBrowseAction={this.onBackupBrowseAction}
           onRestoreAction={this.onRestoreAction}
           onRestoreFromAction={this.onRestoreFromAction}
         />
