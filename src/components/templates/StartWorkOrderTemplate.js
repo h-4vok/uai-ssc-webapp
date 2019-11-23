@@ -33,26 +33,19 @@ class StartWorkOrderTemplateComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { samples } = this.props;
-
     this.state = {
-      selectableSamples: this.mapAsSelectableSamples(samples),
       tabValue: 0
     };
   }
 
-  mapAsSelectableSamples = samples => {
-    return samples;
-  };
-
   handleTabChange = (evt, newTab) => this.setState({ tabValue: newTab });
 
   render() {
-    const { model, i10n, onConfirm } = this.props;
-    const { selectableSamples, tabValue } = this.state;
+    const { model, samples, i10n, onConfirm } = this.props;
+    const { tabValue } = this.state;
 
     return (
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box mt={3} mb={1}>
           <Typography variant="h5">
             {i10n['start-work-order.page.title']}
@@ -76,7 +69,7 @@ class StartWorkOrderTemplateComponent extends PureComponent {
           </Tabs>
         </AppBar>
         <TabPanel value={tabValue} index={0}>
-          <ParentSamplesSearch samples={selectableSamples} />
+          <ParentSamplesSearch model={model} samples={samples} />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
           <p>Hola maestro 2</p>

@@ -9,7 +9,6 @@ class ParentSamplesSearchComponent extends PureComponent {
     super(props);
 
     this.state = {
-      atLeastOneRowSelected: false,
       selectedSamples: []
     };
   }
@@ -21,7 +20,10 @@ class ParentSamplesSearchComponent extends PureComponent {
 
   onRowSelection = e => {
     const selected = e.api.getSelectedRows();
-    this.setState({ selectedSamples: selected });
+    this.setState(
+      { selectedSamples: selected },
+      () => (this.props.model.ParentSamples = this.state.selectedSamples)
+    );
   };
 
   asTextCell = field => ({
@@ -37,6 +39,7 @@ class ParentSamplesSearchComponent extends PureComponent {
       headerCheckboxSelection: true,
       width: 150
     },
+    this.asTextCell('Barcode'),
     this.asTextCell('SampleTypeCode'),
     this.asTextCell('AvailableVolume'),
     this.asTextCell('UnitOfMeasureCode')
