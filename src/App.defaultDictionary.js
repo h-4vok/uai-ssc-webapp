@@ -739,5 +739,6 @@ export const defaultDictionary = {
   'profit-report-chart.title': 'Utilidades',
   'profit-report-chart.axis-y': 'Facturación',
   'new-backup-fs.browse-folder': 'Seleccionar Carpeta',
-  'backup.doBackupTo': 'Resguardar En'
+  'backup.doBackupTo': 'Resguardar En',
+  'work-order.action.continue': 'Ejecutar/Continuar'
 };

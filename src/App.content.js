@@ -339,7 +339,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'inventory/sample',
-    inProgressPlatformPage,
+    Pages.ListSamplesPage,
     'SAMPLE_MANAGEMENT'
   ),
   buildPlatformRoute(
@@ -359,7 +359,7 @@ export const protectedRoutes = [
   ),
   buildPlatformRoute(
     'work-order/work-order',
-    inProgressPlatformPage,
+    Pages.ListWorkOrdersPage,
     'WORK_ORDER_REPORT'
   )
 ];

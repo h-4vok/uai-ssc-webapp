@@ -82,3 +82,5 @@ export { ReplyProductQuestionPage } from './ReplyProductQuestionPage';
 export { ViewChatStatisticsPage } from './ViewChatStatisticsPage';
 export { ViewProfitReportPage } from './ViewProfitReportPage';
 export { NewBackupFSPage } from './NewBackupFSPage';
+export { ListSamplesPage } from './ListSamplesPage';
+export { ListWorkOrdersPage } from './ListWorkOrdersPage';

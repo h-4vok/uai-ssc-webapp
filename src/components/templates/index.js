@@ -86,3 +86,5 @@ export { ReplyProductQuestionTemplate } from './ReplyProductQuestionTemplate';
 export { ViewChatStatisticsTemplate } from './ViewChatStatisticsTemplate';
 export { ViewProfitReportTemplate } from './ViewProfitReportTemplate';
 export { NewBackupFSTemplate } from './NewBackupFSTemplate';
+export { ListSamplesTemplate } from './ListSamplesTemplate';
+export { ListWorkOrdersTemplate } from './ListWorkOrdersTemplate';
