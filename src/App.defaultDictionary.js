@@ -740,5 +740,8 @@ export const defaultDictionary = {
   'profit-report-chart.axis-y': 'Facturación',
   'new-backup-fs.browse-folder': 'Seleccionar Carpeta',
   'backup.doBackupTo': 'Resguardar En',
-  'work-order.action.continue': 'Ejecutar/Continuar'
+  'work-order.action.continue': 'Ejecutar/Continuar',
+  'start-work-order.page.title': 'Crear Orden de Trabajo',
+  'start-work-order.page.select-your-samples': 'Seleccionar Muestras',
+  'start-work-order.page.selected-samples': 'Configurar Salida'
 };

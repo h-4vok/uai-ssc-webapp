@@ -13,3 +13,4 @@ export { PrintableBill } from './PrintableBill';
 export { ChatStatisticsChart } from './ChatStatisticsChart';
 export { ChatStatisticsGrid } from './ChatStatisticsGrid';
 export { ProfitReportChart } from './ProfitReportChart';
+export { ParentSamplesSearch } from './ParentSamplesSearch';

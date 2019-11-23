@@ -88,3 +88,4 @@ export { ViewProfitReportTemplate } from './ViewProfitReportTemplate';
 export { NewBackupFSTemplate } from './NewBackupFSTemplate';
 export { ListSamplesTemplate } from './ListSamplesTemplate';
 export { ListWorkOrdersTemplate } from './ListWorkOrdersTemplate';
+export { StartWorkOrderTemplate } from './StartWorkOrderTemplate';
