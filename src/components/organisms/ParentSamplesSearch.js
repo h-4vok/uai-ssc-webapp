@@ -5,14 +5,6 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import withLocalization from '../../localization/withLocalization';
 
 class ParentSamplesSearchComponent extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedSamples: []
-    };
-  }
-
   componentDidMount() {
     this.dataGrid.api.sizeColumnsToFit();
     this.dataGrid.api.addEventListener('selectionChanged', this.onRowSelection);
@@ -20,21 +12,22 @@ class ParentSamplesSearchComponent extends PureComponent {
 
   onRowSelection = e => {
     const selected = e.api.getSelectedRows();
-    this.setState(
-      { selectedSamples: selected },
-      () => (this.props.model.ParentSamples = this.state.selectedSamples)
-    );
+    this.props.onParentSelection(selected);
   };
 
   asTextCell = field => ({
     headerName: this.props.i10n[`parent-sample-search.grid.${field}`],
-    field
+    field,
+    filter: true,
+    sortable: true
   });
 
   buildGridDef = i10n => [
     {
       headerName: i10n['global.id'],
       field: 'Id',
+      filter: true,
+      sortable: true,
       checkboxSelection: true,
       headerCheckboxSelection: true,
       width: 150

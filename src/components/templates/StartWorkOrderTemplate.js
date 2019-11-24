@@ -9,7 +9,7 @@ import {
   Tab
 } from '@material-ui/core';
 import { PlaylistAddCheck, PlaylistAdd } from '@material-ui/icons';
-import { ParentSamplesSearch } from '../organisms';
+import { ParentSamplesSearch, ExpectedChildSamples } from '../organisms';
 import withLocalization from '../../localization/withLocalization';
 
 function TabPanel(props) {
@@ -41,7 +41,14 @@ class StartWorkOrderTemplateComponent extends PureComponent {
   handleTabChange = (evt, newTab) => this.setState({ tabValue: newTab });
 
   render() {
-    const { model, samples, i10n, onConfirm } = this.props;
+    const {
+      ParentSamples,
+      onExpectedChildsSetup,
+      samples,
+      i10n,
+      onConfirm,
+      onParentSelection
+    } = this.props;
     const { tabValue } = this.state;
 
     return (
@@ -69,10 +76,16 @@ class StartWorkOrderTemplateComponent extends PureComponent {
           </Tabs>
         </AppBar>
         <TabPanel value={tabValue} index={0}>
-          <ParentSamplesSearch model={model} samples={samples} />
+          <ParentSamplesSearch
+            samples={samples}
+            onParentSelection={onParentSelection}
+          />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          <p>Hola maestro 2</p>
+          <ExpectedChildSamples
+            ParentSamples={ParentSamples}
+            onExpectedChildsSetup={onExpectedChildsSetup}
+          />
         </TabPanel>
         <Box mt={4}>
           <Button

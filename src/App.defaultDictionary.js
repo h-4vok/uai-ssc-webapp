@@ -743,5 +743,26 @@ export const defaultDictionary = {
   'work-order.action.continue': 'Ejecutar/Continuar',
   'start-work-order.page.title': 'Crear Orden de Trabajo',
   'start-work-order.page.select-your-samples': 'Seleccionar Muestras',
-  'start-work-order.page.selected-samples': 'Configurar Salida'
+  'start-work-order.page.selected-samples': 'Configurar Salida',
+  'expected-child.action.edit': 'Configurar',
+  'expected-child-sample.grid.parent-barcode': 'Muestra Padre',
+  'expected-child-sample.grid.ExpectedChildQuantity': 'Cant. Hijos Pedida',
+  'expected-child-sample.grid.DilutionFactor': 'Factor de dilución',
+  'expected-child-sample.grid.ResultingVolume':
+    'Volumen Resultante (por Muestra)',
+  'expected-child-sample.grid.UnitOfMeasureCode': 'Unidad de Medida',
+  'work-order.start.validation.parent-samples-empty': 'Muestras Padre',
+  'validator.api.decimal-positive-non-zero':
+    'El valor {0} no puede ser vacío, negativo o cero.',
+  'work-order.start.field.expected-child-quantity':
+    'Cantidad de Hijos Esperada',
+  'work-order.start.field.dilution-factor': 'Factor de dilución',
+  'work-order.start.field.resulting-volume': 'Volumen Resultante',
+  'work-order.grid.StatusDescription': 'Estado',
+  'work-order.grid.CreatedBy': 'Manager',
+  'work-order.grid.RequestDate': 'Fecha pedido',
+  'work-order.grid.QuantityOfParentSamples': '# de Muestras Padre',
+  'work-order.grid.QuantityOfExpectedSamples': '# de Muestras Hija',
+  'work-order.grid.CurrentlyAssignedTo': 'Asignado a',
+  'work-order.grid.QuantityOfExpectedChildSamples': '# de Muestras Hija'
 };

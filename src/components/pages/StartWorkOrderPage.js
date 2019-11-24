@@ -14,10 +14,8 @@ class StartWorkOrderPageComponent extends PureComponent {
 
     this.state = {
       samples: [],
-      model: {
-        ParentSamples: [],
-        ExpectedChilds: []
-      }
+      ParentSamples: [],
+      ExpectedChilds: []
     };
   }
 
@@ -33,19 +31,38 @@ class StartWorkOrderPageComponent extends PureComponent {
   };
 
   onConfirm = () => {
-    // asd
+    const { ParentSamples, ExpectedChilds } = this.state;
+
+    const body = { ParentSamples, ExpectedChilds };
+
+    this.api.request
+      .post('workorder', body)
+      .success(() => this.props.history.push('/work-order/work-order'))
+      .go();
+  };
+
+  onParentSelection = ParentSamples => {
+    this.setState({ ParentSamples });
+  };
+
+  onExpectedChildsSetup = ExpectedChilds => {
+    console.log({ ExpectedChilds });
+    this.setState({ ExpectedChilds });
   };
 
   render() {
-    const { model, samples } = this.state;
+    const { ParentSamples, ExpectedChilds, samples } = this.state;
 
     return (
       <PlatformPageLayout>
         {samples && (
           <StartWorkOrderTemplate
-            model={model}
+            ParentSamples={ParentSamples}
+            ExpectedChilds={ExpectedChilds}
             samples={samples}
             onConfirm={this.onConfirm}
+            onParentSelection={this.onParentSelection}
+            onExpectedChildsSetup={this.onExpectedChildsSetup}
           />
         )}
       </PlatformPageLayout>

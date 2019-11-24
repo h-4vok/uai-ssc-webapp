@@ -3,8 +3,6 @@ export const handleNumericChange = setter => evt => {
 
   const isValid = /^\d+$/.test(value) || !value;
 
-  console.log({ value, isValid });
-
   if (!isValid) return;
 
   setter(evt.target.value);

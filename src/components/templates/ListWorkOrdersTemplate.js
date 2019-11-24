@@ -57,6 +57,13 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
     });
   };
 
+  asTextCell = field => ({
+    header: this.props.i10n[`work-order.grid.${field}`],
+    field,
+    filter: true,
+    sortable: true
+  });
+
   buildGridDef = i10n => [
     {
       headerName: i10n['global.id'],
@@ -66,25 +73,12 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
       checkboxSelection: true,
       headerCheckboxSelection: true
     },
-    {
-      headerName: i10n['global.code'],
-      field: 'Code',
-      sortable: true,
-      filter: true
-    },
-    {
-      headerName: i10n['global.description'],
-      field: 'Name',
-      sortable: true,
-      filter: true
-    },
-    {
-      headerName: i10n['global.isenabled'],
-      field: 'IsEnabled',
-      sortable: true,
-      filter: true,
-      valueFormatter: params => this.isEnabledFormatter(params, i10n)
-    }
+    this.asTextCell('StatusDescription'),
+    this.asTextCell('CreatedBy'),
+    this.asTextCell('RequestDate'),
+    this.asTextCell('QuantityOfParentSamples'),
+    this.asTextCell('QuantityOfExpectedChildSamples'),
+    this.asTextCell('CurrentlyAssignedTo')
   ];
 
   callWithOneItem = action => {

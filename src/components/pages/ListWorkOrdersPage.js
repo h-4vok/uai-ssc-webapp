@@ -28,7 +28,7 @@ class ListWorkOrdersPageComponent extends PureComponent {
     this.onRefresh();
   }
 
-  onRefresh() {
+  onRefresh = () => {
     this.api.request
       .get(apiRoute)
       .success(res => {
@@ -37,7 +37,7 @@ class ListWorkOrdersPageComponent extends PureComponent {
         });
       })
       .go();
-  }
+  };
 
   onNewAction = () => {
     this.props.history.push(getEditRoute());
