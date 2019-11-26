@@ -357,7 +357,11 @@ export const protectedRoutes = [
     inProgressPlatformPage,
     'PAYMENT_METHOD_MANAGEMENT'
   ),
-
+  buildPlatformRoute(
+    'work-order/work-order/:id/check',
+    Pages.CheckWorkOrderPage,
+    'WORK_ORDER_CREATE'
+  ),
   buildPlatformRoute(
     'work-order/work-order/new',
     Pages.StartWorkOrderPage,

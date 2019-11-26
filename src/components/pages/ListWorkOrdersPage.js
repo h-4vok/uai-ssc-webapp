@@ -43,8 +43,15 @@ class ListWorkOrdersPageComponent extends PureComponent {
     this.props.history.push(getEditRoute());
   };
 
-  onContinueAction = id => {
-    this.props.history.push(getEditRoute(id));
+  onContinueAction = (id, item) => {
+    if (
+      item.StatusDescription === 'En Comprobación' ||
+      item.StatusDescription === 'Borrador'
+    ) {
+      this.props.history.push(`/work-order/work-order/${id}/check`);
+    } else if (item.StatusDescription === 'En Ejecución') {
+      this.props.history.push(`/work-order/work-order/${id}/execute`);
+    }
   };
 
   onCancelAction = (selectedItems, dataGridApi) => {

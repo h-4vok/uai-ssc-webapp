@@ -85,3 +85,4 @@ export { NewBackupFSPage } from './NewBackupFSPage';
 export { ListSamplesPage } from './ListSamplesPage';
 export { ListWorkOrdersPage } from './ListWorkOrdersPage';
 export { StartWorkOrderPage } from './StartWorkOrderPage';
+export { CheckWorkOrderPage } from './CheckWorkOrderPage';

@@ -764,5 +764,21 @@ export const defaultDictionary = {
   'work-order.grid.QuantityOfParentSamples': '# de Muestras Padre',
   'work-order.grid.QuantityOfExpectedSamples': '# de Muestras Hija',
   'work-order.grid.CurrentlyAssignedTo': 'Asignado a',
-  'work-order.grid.QuantityOfExpectedChildSamples': '# de Muestras Hija'
+  'work-order.grid.QuantityOfExpectedChildSamples': '# de Muestras Hija',
+  'check-work-order.dialog.confirm':
+    'Las muestras que no han sido confirmadas serán marcadas como Estado Desconocido y no se utilizarán en esta órden de trabajo. ¿Desea continuar?',
+  'global.scan-barcode': 'Escanee o Escriba el código de barras',
+  'check-work-order.checked': 'Comprobada',
+  'parent-sample-search.grid.Checked': 'Comprobado',
+  'parent-sample-search.grid.Barcode': 'Código',
+  'parent-sample-search.grid.SampleTypeCode': 'Tipo',
+  'parent-sample-search.grid.AvailableVolume': 'Volumen',
+  'parent-sample-search.grid.UnitOfMeasureCode': 'Unidad',
+  'check-barcode.empty':
+    'Ingrese o escanee un código de barra para comprobar una muestra.',
+  'check-barcode.not-found':
+    'El código de barras ingresado no ha sido encontrado en esta órden.',
+  'check-barcode.success': 'Muestra comprobada',
+  'check-samples.all-unchecked':
+    'No puede continuar sin al menos comprobar una muestra.'
 };

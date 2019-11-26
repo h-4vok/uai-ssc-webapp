@@ -25,7 +25,7 @@ class StartWorkOrderPageComponent extends PureComponent {
 
   loadSamples = () => {
     this.api.request
-      .get('sample?functionCode=&typeCode=')
+      .get('sample')
       .success(res => this.setState({ samples: res.body.Result }))
       .go();
   };

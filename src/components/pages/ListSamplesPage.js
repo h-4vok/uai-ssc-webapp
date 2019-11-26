@@ -25,7 +25,7 @@ class ListSamplesPageComponent extends PureComponent {
 
   onRefresh() {
     this.api.request
-      .get(`${apiRoute}?functionCode=&typeCode=`)
+      .get(`${apiRoute}`)
       .success(res => {
         this.setState({
           items: res.body.Result

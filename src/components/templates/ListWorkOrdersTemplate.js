@@ -58,7 +58,7 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
   };
 
   asTextCell = field => ({
-    header: this.props.i10n[`work-order.grid.${field}`],
+    headerName: this.props.i10n[`work-order.grid.${field}`],
     field,
     filter: true,
     sortable: true
@@ -85,7 +85,7 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
     const item = this.dataGrid.api.getSelectedRows()[0];
     const id = item.Id;
 
-    action(id);
+    action(id, item);
   };
 
   callWithSelected = action => {
