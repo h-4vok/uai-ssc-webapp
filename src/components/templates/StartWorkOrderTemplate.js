@@ -52,7 +52,7 @@ class StartWorkOrderTemplateComponent extends PureComponent {
     const { tabValue } = this.state;
 
     return (
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Box mt={3} mb={1}>
           <Typography variant="h5">
             {i10n['start-work-order.page.title']}
@@ -87,15 +87,17 @@ class StartWorkOrderTemplateComponent extends PureComponent {
             onExpectedChildsSetup={onExpectedChildsSetup}
           />
         </TabPanel>
-        <Box mt={4}>
-          <Button
-            fullWidth
-            color="primary"
-            variant="contained"
-            onClick={onConfirm}
-          >
-            {i10n['global.confirm']}
-          </Button>
+        <Box mt={1}>
+          {tabValue === 1 && (
+            <Button
+              fullWidth
+              color="primary"
+              variant="contained"
+              onClick={onConfirm}
+            >
+              {i10n['global.confirm']}
+            </Button>
+          )}
         </Box>
       </Container>
     );

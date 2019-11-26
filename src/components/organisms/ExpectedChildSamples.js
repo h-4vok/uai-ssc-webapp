@@ -105,7 +105,7 @@ class ExpectedChildSamplesComponent extends PureComponent {
         </ButtonBar>
         <div
           className="ag-theme-material"
-          style={{ height: 400, width: 'auto' }}
+          style={{ height: 350, width: 'auto' }}
         >
           <AgGridReact
             ref={c => (this.dataGrid = c)}

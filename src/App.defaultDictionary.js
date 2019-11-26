@@ -762,9 +762,8 @@ export const defaultDictionary = {
   'work-order.grid.CreatedBy': 'Manager',
   'work-order.grid.RequestDate': 'Fecha pedido',
   'work-order.grid.QuantityOfParentSamples': '# de Muestras Padre',
-  'work-order.grid.QuantityOfExpectedSamples': '# de Muestras Hija',
-  'work-order.grid.CurrentlyAssignedTo': 'Asignado a',
   'work-order.grid.QuantityOfExpectedChildSamples': '# de Muestras Hija',
+  'work-order.grid.CurrentlyAssignedTo': 'Asignado a',
   'check-work-order.dialog.confirm':
     'Las muestras que no han sido confirmadas serán marcadas como Estado Desconocido y no se utilizarán en esta órden de trabajo. ¿Desea continuar?',
   'global.scan-barcode': 'Escanee o Escriba el código de barras',
@@ -780,5 +779,16 @@ export const defaultDictionary = {
     'El código de barras ingresado no ha sido encontrado en esta órden.',
   'check-barcode.success': 'Muestra comprobada',
   'check-samples.all-unchecked':
-    'No puede continuar sin al menos comprobar una muestra.'
+    'No puede continuar sin al menos comprobar una muestra.',
+  'execute-work-order.aliquot': 'Ingresar Alícuota',
+  'execute-work-order.grid.ParentBarcode': 'Muestra Padre',
+  'execute-work-order.grid.ChildBarcode': 'Muestra Hija',
+  'execute-work-order.grid.DilutionFactor': 'Factor de Dilución',
+  'execute-work-order.grid.VolumeToUse': 'Vol. a Usar',
+  'execute-work-order.grid.ResultingVolume': 'Vol. Esperado',
+  'execute-work-order.grid.UnitOfMeasureCode': 'Unidad',
+  'execute-work-order.grid.UsedParentVolume': 'Vol. Usado',
+  'execute-work-order.grid.FinalChildVolume': 'Vol. Final',
+  'work-order.action.complete': 'Finalizar',
+  'work-order.start.validation.expected-childs-empty': 'Muestras de Salida'
 };

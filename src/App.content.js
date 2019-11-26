@@ -360,7 +360,12 @@ export const protectedRoutes = [
   buildPlatformRoute(
     'work-order/work-order/:id/check',
     Pages.CheckWorkOrderPage,
-    'WORK_ORDER_CREATE'
+    'WORK_ORDER_EXECUTE'
+  ),
+  buildPlatformRoute(
+    'work-order/work-order/:id/execute',
+    Pages.ExecuteWorkOrderPage,
+    'WORK_ORDER_EXECUTE'
   ),
   buildPlatformRoute(
     'work-order/work-order/new',
