@@ -38,6 +38,7 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
 
     this.state = {
       oneRowSelected: false,
+      selectionHasFinalizedWorkOrders: false,
       multipleRowsSelected: false
     };
   }
@@ -53,6 +54,11 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
 
     this.setState({
       oneRowSelected: selected.length === 1,
+      selectionHasFinalizedWorkOrders: selected.some(
+        x =>
+          x.StatusDescription === 'Completado' ||
+          x.StatusDescription === 'Cancelado'
+      ),
       multipleRowsSelected: selected.length > 0
     });
   };
@@ -104,7 +110,11 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
       onCancelAction,
       i10n
     } = this.props;
-    const { oneRowSelected, multipleRowsSelected } = this.state;
+    const {
+      oneRowSelected,
+      multipleRowsSelected,
+      selectionHasFinalizedWorkOrders
+    } = this.state;
 
     return (
       <Container component="main" maxWidth="lg">
@@ -132,7 +142,7 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
                 variant="contained"
                 onClick={() => this.callWithOneItem(onContinueAction)}
                 className={classes.button}
-                disabled={!oneRowSelected}
+                disabled={!oneRowSelected || selectionHasFinalizedWorkOrders}
               >
                 {i10n['work-order.action.continue']}
               </Button>
@@ -142,7 +152,9 @@ class ListWorkOrdersTemplateComponent extends PureComponent {
                 variant="contained"
                 onClick={() => this.callWithSelected(onCancelAction)}
                 className={classes.button}
-                disabled={!multipleRowsSelected}
+                disabled={
+                  !multipleRowsSelected || selectionHasFinalizedWorkOrders
+                }
               >
                 {i10n['global.action.cancel']}
               </Button>

@@ -368,6 +368,11 @@ export const protectedRoutes = [
     'WORK_ORDER_EXECUTE'
   ),
   buildPlatformRoute(
+    'work-order/work-order/:id/child-barcodes-print',
+    Pages.PrintChildCodesPage,
+    'WORK_ORDER_EXECUTE'
+  ),
+  buildPlatformRoute(
     'work-order/work-order/new',
     Pages.StartWorkOrderPage,
     'WORK_ORDER_CREATE'

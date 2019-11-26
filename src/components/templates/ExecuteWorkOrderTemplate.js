@@ -63,7 +63,7 @@ class ExecuteWorkOrderTemplateComponent extends PureComponent {
   };
 
   render() {
-    const { i10n, expectedSamples, onComplete } = this.props;
+    const { i10n, expectedSamples, onComplete, onPrintLabels } = this.props;
     const { oneRowSelected, editDialogOpen, selectedItemToEdit } = this.state;
 
     return (
@@ -96,6 +96,14 @@ class ExecuteWorkOrderTemplateComponent extends PureComponent {
             </div>
           </Grid>
           <Grid item xs={12}>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={onPrintLabels}
+              disabled={!oneRowSelected}
+            >
+              {i10n['execute-work-order.print-aliquot-labels']}
+            </Button>
             <Button
               fullWidth
               onClick={onComplete}

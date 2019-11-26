@@ -66,7 +66,7 @@ class ListWorkOrdersPageComponent extends PureComponent {
     const operations = items.map(item => ({
       key: item.Id,
       op: 'replace',
-      field: 'IsEnabled',
+      field: 'WorkOrderStatusId',
       value
     }));
 
@@ -74,13 +74,13 @@ class ListWorkOrdersPageComponent extends PureComponent {
       Operations: operations
     };
 
-    // this.api.request
-    //   .patch(apiRoute, body, 0)
-    //   .success(() => {
-    //     this.state.dataGridApi.deselectAll();
-    //     this.onRefresh();
-    //   })
-    //   .go();
+    this.api.request
+      .patch(apiRoute, body, 0)
+      .success(() => {
+        this.state.dataGridApi.deselectAll();
+        this.onRefresh();
+      })
+      .go();
   };
 
   onCancelConfirm = items => this.doPatchIsEnabled(items, true);

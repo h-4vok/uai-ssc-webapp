@@ -790,5 +790,8 @@ export const defaultDictionary = {
   'execute-work-order.grid.UsedParentVolume': 'Vol. Usado',
   'execute-work-order.grid.FinalChildVolume': 'Vol. Final',
   'work-order.action.complete': 'Finalizar',
-  'work-order.start.validation.expected-childs-empty': 'Muestras de Salida'
+  'work-order.start.validation.expected-childs-empty': 'Muestras de Salida',
+  'work-order.start.field.too-much-volume':
+    'No hay suficiente volumen en la muestra {0} para la configuración establecida. Se dispone de {1}{3} y se está requiriendo {2}{3}.',
+  'execute-work-order.print-aliquot-labels': 'Imprimir Códigos de Barra'
 };

@@ -91,3 +91,4 @@ export { ListWorkOrdersTemplate } from './ListWorkOrdersTemplate';
 export { StartWorkOrderTemplate } from './StartWorkOrderTemplate';
 export { CheckWorkOrderTemplate } from './CheckWorkOrderTemplate';
 export { ExecuteWorkOrderTemplate } from './ExecuteWorkOrderTemplate';
+export { PrintChildCodesTemplate } from './PrintChildCodesTemplate';

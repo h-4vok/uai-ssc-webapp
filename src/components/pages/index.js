@@ -87,3 +87,4 @@ export { ListWorkOrdersPage } from './ListWorkOrdersPage';
 export { StartWorkOrderPage } from './StartWorkOrderPage';
 export { CheckWorkOrderPage } from './CheckWorkOrderPage';
 export { ExecuteWorkOrderPage } from './ExecuteWorkOrderPage';
+export { PrintChildCodesPage } from './PrintChildCodesPage';

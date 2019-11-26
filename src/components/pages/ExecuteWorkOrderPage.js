@@ -38,6 +38,12 @@ class ExecuteWorkOrderPageComponent extends PureComponent {
       .go();
   };
 
+  onPrintLabels = () => {
+    this.props.history.push(
+      `/work-order/work-order/${this.modelId}/child-barcodes-print`
+    );
+  };
+
   render() {
     const { expectedSamples } = this.state;
 
@@ -47,6 +53,7 @@ class ExecuteWorkOrderPageComponent extends PureComponent {
           <ExecuteWorkOrderTemplate
             expectedSamples={expectedSamples}
             onComplete={this.onComplete}
+            onPrintLabels={this.onPrintLabels}
           />
         )}
       </PlatformPageLayout>
